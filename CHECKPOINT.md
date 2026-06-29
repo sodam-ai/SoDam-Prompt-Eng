@@ -49,7 +49,7 @@
 
 | M | 산출물 | done-when (테스트 가능) | 핵심 함정 | 종류 | 상태 |
 |---|--------|--------------------------|-----------|------|------|
-| **M0** | 레포 부트스트랩·git init·`.gitignore(.env*)`·`.env.example`·`LICENSE`(Apache-2.0 전문)·`NOTICE`·폴더골격 | `build && tsc --noEmit` 0에러 · `git ls-files`에 `.env.local` **0건** · LICENSE+NOTICE 존재 | `NEXT_PUBLIC_` 오용 금지 / NOTICE 누락 시 Apache-2.0 의무 위반 | [코드] | pending |
+| **M0** | 레포 부트스트랩·git init·`.gitignore(.env*)`·`.env.example`·`LICENSE`(Apache-2.0 전문)·`NOTICE`·폴더골격 | `build && tsc --noEmit` 0에러 · `git ls-files`에 `.env.local` **0건** · LICENSE+NOTICE 존재 | `NEXT_PUBLIC_` 오용 금지 / NOTICE 누락 시 Apache-2.0 의무 위반 | [코드] | **done** ✅ a7e6048 |
 | **M1** | 라이선스 확정·약관/처리방침/면책 확정본·**모더레이션 정책표**(1393 등) | `LICENSE` 존재 · 정책표가 M6 코드화 가능 수준 | 임의 법적 보장 문구 금지 | [설정·결정·콘텐츠] | blocked(G2) |
 | **M2** | 스키마 6테이블 + **전 테이블 RLS 기본 deny + 정책**(마이그레이션에 포함) | anon으로 타인 `Run` SELECT→0행 · **B가 A의 run_id 조회→거부** · 정책이 파일에 존재 | `Run` 정책 한 줄 누락=전량 유출 / service_role 남용 | [코드] | blocked(G1) |
 | **M3** | Anthropic Console 예산($50)+80%알림 · Haiku4.5·max_tokens 800·한도10 고정 | Console 한도·알림 활성 · env 값 적용 | 코드가드(M5)와 **별개 최후 안전망** | [설정·결정] | pending |
