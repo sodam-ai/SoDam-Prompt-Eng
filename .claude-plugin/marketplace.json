@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "sodam-marketplace",
+  "description": "SoDam AI Studio 로컬 플러그인 마켓플레이스",
+  "owner": {
+    "name": "SoDam AI Studio"
+  },
+  "plugins": [
+    {
+      "name": "sodam-student",
+      "source": "./",
+      "description": "초·중·고 학생용 AI 글쓰기 도우미 10종 (독후감·영작·요약·메시지·발표·사과·자기소개·설명·SNS·공부계획)",
+      "version": "0.1.0",
+      "author": {
+        "name": "SoDam AI Studio"
+      },
+      "license": "Apache-2.0"
+    }
+  ]
+}

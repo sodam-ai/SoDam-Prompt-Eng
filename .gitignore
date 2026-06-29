@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editor
+.vscode/
+.idea/
+
+# logs / temp
+*.log
+*.tmp
+
+# plugin/session state (do not publish)
+.omc/

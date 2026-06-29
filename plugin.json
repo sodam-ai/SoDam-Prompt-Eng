@@ -1,0 +1,12 @@
+{
+  "name": "sodam-student",
+  "displayName": "SoDam 학생 도우미",
+  "version": "0.1.0",
+  "description": "초·중·고 학생용 AI 글쓰기 도우미 10종 — 독후감·영작·3줄요약·정중한 메시지·발표대본·사과/부탁·자기소개·쉽게 설명·SNS 캡션·공부계획. 슬래시 커맨드(/sodam-student:이름)와 자연어 둘 다 지원.",
+  "author": {
+    "name": "SoDam AI Studio"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["education", "korean", "student", "writing", "beginner"],
+  "skills": ["./skills/"]
+}
