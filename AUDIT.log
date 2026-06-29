@@ -1,0 +1,2 @@
+[2026-06-29T00:00] claude MILESTONE_START M0 레포 부트스트랩 착수
+[2026-06-29T00:01] claude MILESTONE_DONE M0 Next.js 16+shadcn+Supabase+AI SDK 설치 완료, build 0에러, .env.local git 미추적, LICENSE+NOTICE 존재
