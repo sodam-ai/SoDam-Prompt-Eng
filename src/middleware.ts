@@ -1,6 +1,11 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+// 비로그인 시 401 JSON 반환할 API 경로
+const PROTECTED_API_PATHS = ['/api/run', '/api/refine', '/api/report', '/api/export']
+// 지역 차단을 건너뛸 경로 (인증 플로우 자체는 허용)
+const GEO_BYPASS_PATHS = ['/login', '/auth/', '/blocked-region', '/terms', '/privacy', '/gate']
+
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
@@ -25,12 +30,31 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // 세션 갱신 (토큰 만료 방지) — getUser()는 서버 검증, getSession() 사용 금지
-  await supabase.auth.getUser()
+  // 세션 갱신 + 사용자 서버 검증 (getUser만 — getSession 금지)
+  const { data: { user } } = await supabase.auth.getUser()
 
-  // M4에서 추가: 지역 차단(KR 외), 14세 게이트, 동의 게이트
-  // const { data: { user } } = await supabase.auth.getUser()
-  // if (!user && protectedPaths.includes(request.nextUrl.pathname)) ...
+  const pathname = request.nextUrl.pathname
+
+  // 1. 지역 차단: KR 외 접근 차단 (PRD SEC-B)
+  //    Vercel Fluid Compute는 x-vercel-ip-country 헤더로 국가 코드를 제공한다.
+  //    로컬 개발은 DEV_GEO_COUNTRY 환경변수로 폴백 (기본값 'KR').
+  const country =
+    request.headers.get('x-vercel-ip-country') ??
+    process.env.DEV_GEO_COUNTRY ??
+    'KR'
+  const isGeoBypassed = GEO_BYPASS_PATHS.some(p => pathname.startsWith(p))
+
+  if (country !== 'KR' && !isGeoBypassed) {
+    return NextResponse.redirect(new URL('/blocked-region', request.url))
+  }
+
+  // 2. 보호 API: 비로그인 → 401 JSON (리다이렉트 아님)
+  if (PROTECTED_API_PATHS.some(p => pathname.startsWith(p)) && !user) {
+    return new NextResponse(
+      JSON.stringify({ error: 'unauthorized' }),
+      { status: 401, headers: { 'Content-Type': 'application/json' } }
+    )
+  }
 
   return supabaseResponse
 }
