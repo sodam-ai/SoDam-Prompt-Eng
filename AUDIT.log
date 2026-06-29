@@ -3,3 +3,13 @@
 [2026-06-29T01:00] claude MILESTONE_START M2 DB스키마 7테이블+RLS+pg_cron+원자함수 SQL 작성 착수
 [2026-06-29T01:01] claude MILESTONE_INPROGRESS M2 supabase/migrations/0001_init.sql 완성, src/lib/supabase/server.ts·client.ts·middleware.ts 생성, build 0에러 확인 — Supabase 프로젝트 생성 후 SQL 적용 대기
 [2026-06-29T01:10] claude MILESTONE_DONE M2 20260629000001_init.sql(7테이블·RLS·인덱스·increment_daily_run·pg_cron)+seed.sql+server.ts·client.ts·middleware.ts 커밋 완료 (6dc200a→3a4ffae), build 0에러 — 사람 선결조건: Supabase 프로젝트 생성+.env.local 채우기→SQL 적용
+[2026-06-29T02:00] claude MILESTONE_START M4/M5/M6/M11 OAuth게이트·api/run·모더레이션·보안헤더 구현 착수
+[2026-06-29T02:30] claude MILESTONE_DONE M2 20260629000002_security_patch.sql 추가(increment_daily_run auth.uid() 내부화·last_run_date 자동리셋·pg_cron 백업)
+[2026-06-29T02:31] claude MILESTONE_DONE M6 src/lib/moderation.ts — 3층(selfHarm L3·refusal L1·dangerous L2) 서버 전용 완료
+[2026-06-29T02:32] claude MILESTONE_DONE M4 src/app/login/page.tsx·src/app/gate/page.tsx·src/app/auth/callback/route.ts·src/components/login-button.tsx·src/components/age-region-gate.tsx·src/app/blocked-region/page.tsx 완료 + middleware x-vercel-ip-country 지역차단
+[2026-06-29T02:33] claude MILESTONE_DONE M5 src/app/api/run/route.ts — server-only·Zod·getUser·increment_daily_run(p_limit)·generateText(maxOutputTokens)·moderate·serviceClient INSERT 완료
+[2026-06-29T02:34] claude MILESTONE_DONE M11 next.config.ts — HSTS·nosniff·X-Frame-Options·Referrer-Policy·Permissions-Policy·CSP(report-only) 6종 완료
+[2026-06-29T02:35] claude VALIDATION build 0에러(TypeScript strict) — maxOutputTokens(ai@7.0.4 API명), request.geo→x-vercel-ip-country(Next.js16) 수정 포함. 라우트: /api/run(ƒ)·/auth/callback(ƒ)·/gate(ƒ)·/login(ƒ)·/blocked-region(○) 확인
+[2026-06-29T03:00] user DIRECTION_CHANGE B-플러그인전용 — "Supabase 같은 서버가 왜 필요하지?" 질문 후 Next.js+Supabase 웹앱 방향 폐기. SKILL.md 플러그인 전용(Claude Code·Codex·Claude.ai 앱)으로 전환 확정
+[2026-06-29T03:01] claude MILESTONE_START P1 SKILL.md 10개 작성 착수 (플러그인 전용 전환, 기존 M7~M15 웹앱 마일스톤 전부 취소)
+[2026-06-29T03:10] claude MILESTONE_DONE P1 skills/ 10개 SKILL.md 생성 완료 (독후감-도우미·정중한-메시지·긴글-3줄요약·쉽게-설명해줘·공부-계획표·자기소개-다듬기·sns-캡션·영어-자연스럽게·발표-대본·부탁-사과-메시지) + README.md 교체 완료
