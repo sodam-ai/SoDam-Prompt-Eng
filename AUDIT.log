@@ -2,3 +2,4 @@
 [2026-06-29T00:01] claude MILESTONE_DONE M0 Next.js 16+shadcn+Supabase+AI SDK 설치 완료, build 0에러, .env.local git 미추적, LICENSE+NOTICE 존재 (commit a7e6048)
 [2026-06-29T01:00] claude MILESTONE_START M2 DB스키마 7테이블+RLS+pg_cron+원자함수 SQL 작성 착수
 [2026-06-29T01:01] claude MILESTONE_INPROGRESS M2 supabase/migrations/0001_init.sql 완성, src/lib/supabase/server.ts·client.ts·middleware.ts 생성, build 0에러 확인 — Supabase 프로젝트 생성 후 SQL 적용 대기
+[2026-06-29T01:10] claude MILESTONE_DONE M2 20260629000001_init.sql(7테이블·RLS·인덱스·increment_daily_run·pg_cron)+seed.sql+server.ts·client.ts·middleware.ts 커밋 완료 (6dc200a→3a4ffae), build 0에러 — 사람 선결조건: Supabase 프로젝트 생성+.env.local 채우기→SQL 적용

@@ -51,7 +51,7 @@
 |---|--------|--------------------------|-----------|------|------|
 | **M0** | 레포 부트스트랩·git init·`.gitignore(.env*)`·`.env.example`·`LICENSE`(Apache-2.0 전문)·`NOTICE`·폴더골격 | `build && tsc --noEmit` 0에러 · `git ls-files`에 `.env.local` **0건** · LICENSE+NOTICE 존재 | `NEXT_PUBLIC_` 오용 금지 / NOTICE 누락 시 Apache-2.0 의무 위반 | [코드] | **done** ✅ a7e6048 |
 | **M1** | 라이선스 확정·약관/처리방침/면책 확정본·**모더레이션 정책표**(1393 등) | `LICENSE` 존재 · 정책표가 M6 코드화 가능 수준 | 임의 법적 보장 문구 금지 | [설정·결정·콘텐츠] | blocked(G2) |
-| **M2** | 스키마 **7테이블**(Level·User·Consent·Prompt·Variable·Verification·Run·Report) + **전 테이블 RLS 기본 deny** + pg_cron 30일삭제 + `increment_daily_run` 원자함수 | anon으로 타인 `Run` SELECT→0행 · **B가 A의 run_id 조회→거부** · pg_cron job 등록 확인 | `Run` 정책 한 줄 누락=전량 유출 / `getSession()` 사용 금지(`getUser()` 강제) | [코드] | **in-progress** — SQL 파일 완성, Supabase 프로젝트 생성 후 적용 필요 |
+| **M2** | 스키마 **7테이블**(level·profiles·consent·prompt·variable·verification·run·report) + **전 테이블 RLS 기본 deny** + 인덱스 7개 + pg_cron 30일삭제 + `increment_daily_run` 원자함수 | anon으로 타인 `run` SELECT→0행 · **B가 A의 run_id 조회→거부** · pg_cron job 등록 확인 | `run` 정책 한 줄 누락=전량 유출 / `getSession()` 사용 금지(`getUser()` 강제) | [코드] | **done ✅ 3a4ffae** — 사람 선결: Supabase 프로젝트 생성 → `.env.local` 채우기 → SQL Editor에서 마이그레이션+seed 실행 |
 | **M3** | Anthropic Console 예산($50)+80%알림 · Haiku4.5·max_tokens 800·한도10 고정 | Console 한도·알림 활성 · env 값 적용 | 코드가드(M5)와 **별개 최후 안전망** | [설정·결정] | pending |
 | **M4** | 구글OAuth + @supabase/ssr 쿠키 + 14세 + 한국 게이트 | 토큰 **localStorage 없음**(쿠키만) · 14세미만/한국외 차단 · 미인증 api/run→401 | ssr 서버/클라/미들웨어 3패턴·`getUser`(검증) 사용 | [코드] | blocked(G3) |
 | **M5** | `api/run`: 키 서버격리·Zod 빈칸검증·max_tokens·타임아웃·per-user 한도 | 번들/응답 grep **키 0건** · `' OR 1=1--`·`<script>` 유출0 · 11번째→한도초과(서버) · 클라끊김 시 업스트림 abort | 한도 클라카운트/자유입력 금지·구분자 래핑 | [코드] | pending |
