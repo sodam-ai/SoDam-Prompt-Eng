@@ -13,3 +13,6 @@ desktop.ini
 
 # plugin/session state (do not publish)
 .omc/
+.plugin-config/
+.complexity-log.md
+.todos-report.md
