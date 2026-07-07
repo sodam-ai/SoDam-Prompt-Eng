@@ -134,14 +134,14 @@ Codex 공식 사이트에서 CLI를 설치하세요. (Codex 계정 필요)
 1. 이 저장소 페이지에서 초록색 **Code** 버튼 클릭
 2. **Download ZIP** 클릭
 3. 내 컴퓨터의 원하는 폴더에 압축 풀기
-4. `sodam-prompt-main` 또는 `SoDam-Prompt-Eng-main` 폴더가 생깁니다
+4. `SoDam-Prompt-Eng-main` 폴더가 생깁니다
 
 **방법 2: git clone (git이 설치된 경우)**
 
 검은 창에서:
 ```bash
-git clone https://github.com/sodam-ai/sodam-prompt.git
-cd sodam-prompt
+git clone https://github.com/sodam-ai/SoDam-Prompt-Eng.git
+cd SoDam-Prompt-Eng
 ```
 
 ---
@@ -173,12 +173,12 @@ AI가 자동으로 `독후감-도우미` 스킬을 사용해 독후감을 만들
 
 ```bash
 # 다운로드 폴더 기준 (Windows)
-cp -r C:\Users\내이름\Downloads\sodam-prompt\skills\* ~/.claude/skills/
+cp -r C:\Users\내이름\Downloads\SoDam-Prompt-Eng\skills\* ~/.claude/skills/
 ```
 
 Mac/Linux:
 ```bash
-cp -r ~/Downloads/sodam-prompt/skills/* ~/.claude/skills/
+cp -r ~/Downloads/SoDam-Prompt-Eng/skills/* ~/.claude/skills/
 ```
 
 **Step 2**: Claude Code 실행
@@ -548,7 +548,7 @@ AI 도구 (Claude / Codex 등)
 ## 11. 아키텍처 — 파일 구조
 
 ```
-sodam-prompt/                       ← 저장소 루트
+SoDam-Prompt-Eng/                       ← 저장소 루트
 │
 ├── skills/                         ← 스킬 10개 폴더
 │   ├── 독후감-도우미/
@@ -787,7 +787,7 @@ Claude.ai 앱: Customize → Skills → 해당 스킬 → 삭제
 ---
 
 **Q: 업데이트가 있으면 어떻게 알아요?**
-A: GitHub 저장소(`sodam-ai/sodam-prompt`)에서 **Watch** 또는 **Star**를 눌러두면 업데이트 알림을 받을 수 있습니다.
+A: GitHub 저장소(`sodam-ai/SoDam-Prompt-Eng`)에서 **Watch** 또는 **Star**를 눌러두면 업데이트 알림을 받을 수 있습니다.
 
 ---
 
@@ -821,7 +821,7 @@ A: 스킬 본문은 한국어 출력으로 설계되었습니다. 영어 입력�
 
 | 항목 | 설명 |
 |------|------|
-| 저작권 표시 | `Copyright 2024 SoDam AI Studio` 표기 필수 |
+| 저작권 표시 | `Copyright 2026 SoDam AI Studio` 표기 필수 |
 | 라이선스 고지 | Apache-2.0 명시 필수 |
 | 변경 사항 표시 | 수정했다면 변경 내용 명시 |
 | NOTICE 파일 유지 | 배포 시 NOTICE 파일 포함 필수 |
@@ -840,7 +840,7 @@ A: 스킬 본문은 한국어 출력으로 설계되었습니다. 영어 입력�
 
 **이 스킬 파일(Apache-2.0)을 상업적으로 사용하려면:**
 
-1. 저작권 표시: `Copyright 2024 SoDam AI Studio` 를 어딘가에 명시
+1. 저작권 표시: `Copyright 2026 SoDam AI Studio` 를 어딘가에 명시
 2. 라이선스 고지: Apache-2.0 라이선스임을 밝힘
 3. NOTICE 파일을 배포물에 포함
 4. 수정했다면 "수정된 버전임"을 명시
@@ -884,7 +884,7 @@ AI가 생성한 결과물의 정확성, 완전성, 적합성을 보장하지 않
 ## 16. 연락처 · 저작권 고지
 
 ```
-Copyright 2024 SoDam AI Studio
+Copyright 2026 SoDam AI Studio
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -899,7 +899,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-**문의 · 버그 리포트**: GitHub Issues (`sodam-ai/sodam-prompt`)
+**문의 · 버그 리포트**: GitHub Issues (`sodam-ai/SoDam-Prompt-Eng`)
 **이메일**: 저장소 Issues 탭을 우선 이용해 주세요
 
 ---
