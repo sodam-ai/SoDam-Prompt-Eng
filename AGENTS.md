@@ -1,5 +1,9 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# SoDam-Prompt-Eng — 에이전트 가이드
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+이 저장소는 **순수 SKILL.md 프롬프트 플러그인** 모음입니다. 서버·빌드·런타임 의존성이 없습니다.
+
+## 원칙
+- 산출물 = `skills/<이름>/SKILL.md` (순수 마크다운). 셸 명령·코드 실행·MCP 훅 없음.
+- 안전: 개인정보(이름·전화·주소·계좌) 유도 금지 / 위험·민감 주제(의료·법률·금융·자해·성인) 금지.
+- 입력 변수는 `$1`·`$2`·`$ARGUMENTS` 표준 사용.
+- 배포 전 사람 검수(실제 작동 확인) 필수 — "거짓말하지 않기".
