@@ -14,7 +14,7 @@
 | README.md (설치 안내) | ✅ done |
 | LICENSE (Apache-2.0) | ✅ done |
 | NOTICE | ✅ done |
-| 기존 Next.js 코드 정리 | 🟡 in-progress |
+| 기존 Next.js 코드 정리 | ✅ done (2026-07-11, git 추적 해제) |
 | GitHub push | pending |
 | 사람 검수 (10개 실제 동작) | pending |
 
@@ -67,8 +67,8 @@ skills/
 - `.PRD/` (참고용 유지)
 
 ### done-when
-- [ ] 저장소에 Next.js 관련 파일 없음
-- [ ] `git ls-files` 에 `.env*` 0건
+- [x] 저장소에 Next.js 관련 파일 없음 (2026-07-11 확인)
+- [x] `git ls-files` 에 `.env*` 0건 (2026-07-11 확인)
 
 ---
 
