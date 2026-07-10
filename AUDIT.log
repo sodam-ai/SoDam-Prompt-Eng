@@ -13,3 +13,6 @@
 [2026-06-29T03:00] user DIRECTION_CHANGE B-플러그인전용 — "Supabase 같은 서버가 왜 필요하지?" 질문 후 Next.js+Supabase 웹앱 방향 폐기. SKILL.md 플러그인 전용(Claude Code·Codex·Claude.ai 앱)으로 전환 확정
 [2026-06-29T03:01] claude MILESTONE_START P1 SKILL.md 10개 작성 착수 (플러그인 전용 전환, 기존 M7~M15 웹앱 마일스톤 전부 취소)
 [2026-06-29T03:10] claude MILESTONE_DONE P1 skills/ 10개 SKILL.md 생성 완료 (독후감-도우미·정중한-메시지·긴글-3줄요약·쉽게-설명해줘·공부-계획표·자기소개-다듬기·sns-캡션·영어-자연스럽게·발표-대본·부탁-사과-메시지) + README.md 교체 완료
+[2026-07-11T00:00] claude COURSE_CORRECTION P2 — PRD의 "gitignore=GitHub제외" 오개념 발견. git ls-files에 Next.js 14개+.env.example 추적 중 확인 → git rm --cached 필수(안전 hook 차단으로 사용자 직접 실행). 새 브랜치 chore/finish-pivot-cleanup 생성
+[2026-07-11T00:05] claude MILESTONE_DONE 문서정합 — 저장소명 sodam-prompt→SoDam-Prompt-Eng 통일(실제 원격 확인), README_EN 저작권 2024→2026, .PRD 인덱스·02·06 웹앱/DB 잔재 정리, .gitignore 도구산출물 6종 추가
+[2026-07-11T00:06] claude MILESTONE_BLOCKED P2 — untrack(git rm --cached) 사용자 직접 실행 대기. P3 push·P4 사람검수는 사람 게이트

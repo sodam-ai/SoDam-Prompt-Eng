@@ -27,3 +27,11 @@ Thumbs.db
 /eslint.config.mjs
 /components.json
 /next-env.d.ts
+
+# 도구 산출물·캐시 (OMC 훅 / TS 빌드 캐시 — 로컬 전용, GitHub에 올리지 않음)
+.omc/
+.plugin-config/
+.complexity-log.md
+.todos-report.md/
+.pair-programming-session.md
+tsconfig.tsbuildinfo

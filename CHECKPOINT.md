@@ -44,7 +44,9 @@ skills/
 
 ---
 
-## P2 — 저장소 정리 🟡 in-progress
+## P2 — 저장소 정리 🟡 in-progress (untrack 방식으로 정정)
+
+> **정정(2026-07-11):** `.gitignore` 추가만으로는 이미 커밋된 파일이 GitHub에서 빠지지 않는다. 실제로는 `git rm --cached`로 추적 해제해야 하며(디스크 파일은 보존), 안전 hook이 `git rm`을 차단하므로 **사용자가 직접 1회 실행**해야 P2가 완료된다. 명령·검증(`git ls-files`에 `.env*` 0건)은 루트 계획서 참조.
 
 ### 삭제 대상 (Next.js 잔재)
 - `src/` 폴더
@@ -79,7 +81,7 @@ git push origin main
 ```
 
 ### done-when
-- [ ] `sodam-ai/sodam-prompt` GitHub에 push 완료
+- [ ] `sodam-ai/SoDam-Prompt-Eng` GitHub에 push 완료
 - [ ] `skills/` 폴더 10개 SKILL.md 공개 확인
 
 ---

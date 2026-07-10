@@ -132,14 +132,14 @@ Install the Codex CLI from the official Codex site. (Codex account required)
 1. On this repository page, click the green **Code** button
 2. Click **Download ZIP**
 3. Extract the ZIP to any folder on your computer
-4. A folder named `sodam-prompt-main` or `SoDam-Prompt-Eng-main` will be created
+4. A folder named `SoDam-Prompt-Eng-main` or `SoDam-Prompt-Eng-main` will be created
 
 **Method 2: git clone (if git is installed)**
 
 In your terminal:
 ```bash
-git clone https://github.com/sodam-ai/sodam-prompt.git
-cd sodam-prompt
+git clone https://github.com/sodam-ai/SoDam-Prompt-Eng.git
+cd SoDam-Prompt-Eng
 ```
 
 ---
@@ -171,12 +171,12 @@ AI will automatically use the `독후감-도우미` skill and produce the book r
 
 ```bash
 # Windows (from your Downloads folder)
-cp -r C:\Users\YourName\Downloads\sodam-prompt\skills\* ~/.claude/skills/
+cp -r C:\Users\YourName\Downloads\SoDam-Prompt-Eng\skills\* ~/.claude/skills/
 ```
 
 Mac/Linux:
 ```bash
-cp -r ~/Downloads/sodam-prompt/skills/* ~/.claude/skills/
+cp -r ~/Downloads/SoDam-Prompt-Eng/skills/* ~/.claude/skills/
 ```
 
 **Step 2**: Launch Claude Code
@@ -546,7 +546,7 @@ AI Tool (Claude / Codex / etc.)
 ## 11. Architecture — File Structure
 
 ```
-sodam-prompt/                       ← Repository root
+SoDam-Prompt-Eng/                       ← Repository root
 │
 ├── skills/                         ← 10 skill folders
 │   ├── 독후감-도우미/
@@ -785,7 +785,7 @@ Claude.ai App: Customize → Skills → select skill → Delete
 ---
 
 **Q: How do I receive update notifications?**
-A: Click **Watch** or **Star** on the GitHub repository (`sodam-ai/sodam-prompt`) to receive update alerts.
+A: Click **Watch** or **Star** on the GitHub repository (`sodam-ai/SoDam-Prompt-Eng`) to receive update alerts.
 
 ---
 
@@ -819,7 +819,7 @@ All skill files and documentation in this repository are distributed under **Apa
 
 | Item | Description |
 |------|-------------|
-| Copyright notice | Must include `Copyright 2024 SoDam AI Studio` |
+| Copyright notice | Must include `Copyright 2026 SoDam AI Studio` |
 | License notice | Must specify Apache-2.0 |
 | Indicate changes | If modified, must note what was changed |
 | Retain NOTICE file | Must include NOTICE file when distributing |
@@ -838,7 +838,7 @@ All skill files and documentation in this repository are distributed under **Apa
 
 **To use these skill files (Apache-2.0) commercially:**
 
-1. Copyright notice: Include `Copyright 2024 SoDam AI Studio` somewhere visible
+1. Copyright notice: Include `Copyright 2026 SoDam AI Studio` somewhere visible
 2. License notice: State that it uses the Apache-2.0 license
 3. Include the NOTICE file in your distribution
 4. If modified, indicate "This is a modified version"
@@ -884,7 +884,7 @@ Data entered by users into AI services (Claude, Codex, etc.) is subject to each 
 ## 16. Contact & Copyright Notice
 
 ```
-Copyright 2024 SoDam AI Studio
+Copyright 2026 SoDam AI Studio
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -899,7 +899,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-**Bug reports / suggestions**: GitHub Issues (`sodam-ai/sodam-prompt`)
+**Bug reports / suggestions**: GitHub Issues (`sodam-ai/SoDam-Prompt-Eng`)
 **Email**: Please use the repository Issues tab as the primary contact
 
 ---
