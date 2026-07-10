@@ -25,6 +25,7 @@ License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean Output
 14. [FAQ](#14-faq)
 15. [Legal · Copyright · License · Commercial Use](#15-legal--copyright--license--commercial-use)
 16. [Contact & Copyright Notice](#16-contact--copyright-notice)
+17. [Update History](#17-update-history)
 
 ---
 
@@ -909,6 +910,33 @@ limitations under the License.
 
 **Bug reports / suggestions**: GitHub Issues (`sodam-ai/SoDam-Prompt-Eng`)
 **Email**: Please use the repository Issues tab as the primary contact
+
+---
+
+## 17. Update History
+
+<details>
+<summary><strong>2026-07-11 — Finished the transition cleanup (click to expand)</strong></summary>
+
+- Fully cleaned up the Next.js+Supabase web app direction (untracked from git, disk files preserved)
+- Unified the repository name to `SoDam-Prompt-Eng` across all documents
+- Ran static QA on all 10 skills — found and fixed 3 spec deviations (single-input variable syntax, missing PII notices, unbounded study-plan output)
+- Added a "trust only the official source" install safety warning + a "No-code (★Safe)" badge to the README
+- Created `P4_검수_가이드.md` (a 50-item human-verification checklist)
+- Created `GUIDE.md`/`GUIDE_EN.md` (absolute-beginner guide, MD+HTML, Korean/English)
+- Confirmed lint, typecheck, and production build all pass (exit code 0), and zero secrets are exposed
+
+</details>
+
+<details>
+<summary><strong>2026-06-29 — First public release of the 10 skills</strong></summary>
+
+- First release of 10 skills: Book Report Helper, Polite Message, 3-Line Summary, Explain Simply, Study Planner, Polish Self-Intro, SNS Caption, Natural English, Presentation Script, Request/Apology Message
+- Distributed under the Apache-2.0 license; added LICENSE and NOTICE files
+
+</details>
+
+> Future updates will continue to be added to this section.
 
 ---
 

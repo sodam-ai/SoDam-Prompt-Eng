@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SoDam Prompt — Beginner Guide</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SoDam Prompt — Beginner Guide</h1>
+</header>
+<h1
+id="sodam-prompt-absolute-beginner-guide-for-those-new-to-computersai">SoDam
+Prompt — Absolute Beginner Guide (For Those New to Computers/AI)</h1>
+<blockquote>
+<p>This document is for people who have <strong>never used a computer,
+smartphone, messenger app, or AI before.</strong> No jargon — we explain
+exactly where to click on the screen, step by step.</p>
+<p>For <strong>more technical detail</strong> (full command list,
+security architecture, developer-facing structure), see <a
+href="./README_EN.md">README_EN.md</a> (the complete reference) in the
+same folder. This document and README_EN.md never contradict each other
+— GUIDE_EN.md is the “easy summary,” README_EN.md is the “full
+detail.”</p>
+</blockquote>
+<p>License: Apache-2.0 | Language: English (한국어: <a
+href="./GUIDE.md">GUIDE.md</a>)</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#1-what-is-this-exactly">What Is This, Exactly?</a></li>
+<li><a href="#2-what-you-need-before-you-start">What You Need Before You
+Start</a></li>
+<li><a href="#3-installing-required-programs">Installing Required
+Programs</a></li>
+<li><a href="#4-how-to-download-the-files">How to Download the
+Files</a></li>
+<li><a href="#5-your-first-result-in-5-minutes-quick-start">Your First
+Result in 5 Minutes (Quick Start)</a></li>
+<li><a href="#6-how-to-run-it--step-by-step-no-screenshots-needed">How
+to Run It — Step by Step, No Screenshots Needed</a></li>
+<li><a href="#7-how-to-use-it--just-say-this">How to Use It — Just Say
+This</a></li>
+<li><a href="#8-full-list-of-10-commands-skills">Full List of 10
+Commands (Skills)</a></li>
+<li><a href="#9-update-history-summary">Update History Summary</a></li>
+<li><a href="#10-where-are-my-files-stored">Where Are My Files
+Stored?</a></li>
+<li><a href="#11-the-full-workflow-simple-diagram">The Full Workflow
+(Simple Diagram)</a></li>
+<li><a href="#12-is-this-safe-plain-language-explanation">Is This Safe?
+(Plain-Language Explanation)</a></li>
+<li><a href="#13-what-to-do-if-something-goes-wrong">What to Do If
+Something Goes Wrong</a></li>
+<li><a href="#14-frequently-asked-questions-faq">Frequently Asked
+Questions (FAQ)</a></li>
+<li><a
+href="#15-copyright-license-and-can-i-make-money-from-this">Copyright,
+License, and Can I Make Money From This?</a></li>
+<li><a href="#16-getting-help">Getting Help</a></li>
+</ol>
+<hr />
+<h2 id="what-is-this-exactly">1. What Is This, Exactly?</h2>
+<p><strong>SoDam Prompt</strong> is a set of <strong>10 pre-made
+“question templates”</strong> you give to an AI (artificial
+intelligence) when you want it to write something for you.</p>
+<p>Think of it like a fill-in-the-blank worksheet from school: - The
+worksheet has 2–3 blanks - You fill in the blanks and hand it to the
+“teacher” (the AI) - The teacher writes a finished piece (a book report,
+a message, etc.) and hands it back</p>
+<p><strong>Does it cost money?</strong> The templates (skill files)
+themselves are completely free. To actually use an AI, you need an
+account with an AI service (like Claude), and that service’s own pricing
+is set by the AI company, not by this project.</p>
+<p><strong>Do I need to know how to code?</strong> Not at all. Just
+follow this document from start to finish.</p>
+<hr />
+<h2 id="what-you-need-before-you-start">2. What You Need Before You
+Start</h2>
+<p>Check that you have these 3 things before beginning.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>What you need</th>
+<th>Why</th>
+<th>Don’t have it?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A computer or laptop with internet</td>
+<td>You need to install software and download files</td>
+<td>Some methods (the Claude.ai app) also work on a smartphone
+alone</td>
+</tr>
+<tr>
+<td>An AI service account (e.g. Claude, ChatGPT)</td>
+<td>The AI is what actually writes the text</td>
+<td>Sign up free at <code>claude.ai</code></td>
+</tr>
+<tr>
+<td>An email address</td>
+<td>Required to sign up for an AI service</td>
+<td>Create one first (e.g. Gmail) if you don’t have one</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Terms explained</strong> - <strong>“Computer”</strong>: the
+device you’re reading this on right now (Windows PC, MacBook, etc.) -
+<strong>“AI (Artificial Intelligence)”</strong>: a computer program that
+understands and writes text like a human (Claude, ChatGPT, etc.) -
+<strong>“Account (login)”</strong>: your personal online ID, made with
+an email and password</p>
+</blockquote>
+<hr />
+<h2 id="installing-required-programs">3. Installing Required
+Programs</h2>
+<p><strong>The easiest path installs nothing at all.</strong> Just
+follow “Method A” below and you won’t need to install anything.</p>
+<h3 id="method-a-install-nothing-recommended-easiest">Method A — Install
+Nothing (Recommended, ★Easiest)</h3>
+<ol type="1">
+<li>Open your web browser (Chrome, Edge, etc.).</li>
+<li>Type <code>claude.ai</code> into the address bar and press
+Enter.</li>
+<li>Follow the on-screen instructions to sign up (or log in) with your
+email.</li>
+</ol>
+<p>That’s it. No installation required.</p>
+<h3
+id="method-b-using-the-developer-tool-claude-code-optional-more-advanced">Method
+B — Using the Developer Tool (Claude Code) (Optional, More
+Advanced)</h3>
+<p>Recommended only if you have some prior computer experience. If this
+is your first time, <strong>Method A alone is enough.</strong></p>
+<ol type="1">
+<li><p>In your browser, go to <code>nodejs.org</code> → click the button
+labeled <strong>LTS</strong> → download it</p></li>
+<li><p>Double-click the downloaded file → keep clicking “Next” to
+install</p></li>
+<li><p>Open a “black window” (terminal): on Windows search “cmd” in the
+Start menu; on Mac, search “Terminal”</p></li>
+<li><p>Type the following exactly and press Enter:</p>
+<pre><code>npm install -g @anthropic-ai/claude-code</code></pre></li>
+<li><p>When installation finishes, confirm it worked by typing:</p>
+<pre><code>claude --version</code></pre>
+<p>If a version number appears, it succeeded.</p></li>
+</ol>
+<hr />
+<h2 id="how-to-download-the-files">4. How to Download the Files</h2>
+<ol type="1">
+<li>In your browser, go to this project’s GitHub page.</li>
+<li>Click the <strong>green “Code” button</strong> near the top of the
+page.</li>
+<li>From the menu that appears, click <strong>“Download
+ZIP.”</strong></li>
+<li>Find the downloaded ZIP file (usually in your “Downloads” folder)
+and <strong>double-click to unzip it.</strong></li>
+<li>Unzipping creates a folder named <code>SoDam-Prompt-Eng-main</code>.
+If it contains a <code>skills</code> folder inside, you’re done.</li>
+</ol>
+<blockquote>
+<p><strong>What does “unzip” mean?</strong> A ZIP file bundles many
+files into one, like a gift box. Double-clicking it “unpacks” the box so
+you can see the folders and files inside.</p>
+</blockquote>
+<hr />
+<h2 id="your-first-result-in-5-minutes-quick-start">5. Your First Result
+in 5 Minutes (Quick Start)</h2>
+<p><strong>If you used Method A (no install)</strong>, follow these
+steps for your first result in about 5 minutes.</p>
+<p><strong>Step 1</strong>: Log in to <code>claude.ai</code> → click
+your profile icon (top right) → click <strong>“Customize”</strong></p>
+<p><strong>Step 2</strong>: In the left menu, click
+<strong>“Skills”</strong> → click <strong>“+ Create skill”</strong></p>
+<p><strong>Step 3</strong>: Open the <code>skills</code> folder from the
+folder you downloaded in Step 4 above, and upload one entire skill
+folder (e.g., <code>독후감-도우미</code>, meaning “Book Report
+Helper”).</p>
+<p><strong>Step 4</strong>: Turn the toggle switch next to the uploaded
+skill <strong>ON</strong>.</p>
+<p><strong>Step 5</strong>: In the chat box, type something like:</p>
+<pre><code>Write a book report about The Little Prince. I was moved by the fox scene.</code></pre>
+<p>If the AI writes a 3-paragraph book report, it worked!</p>
+<hr />
+<h2 id="how-to-run-it-step-by-step-no-screenshots-needed">6. How to Run
+It — Step by Step, No Screenshots Needed</h2>
+<p>There is only one way to “use” this project: <strong>ask the AI in
+plain, natural language.</strong></p>
+<p>No buttons to press, no commands to memorize. Just talk to it like
+you’d ask a human assistant.</p>
+<p>Examples: - “Write a polite message asking my manager for a day off
+next week” → the “Polite Message” skill responds automatically -
+“Summarize this long text in 3 lines” (+ paste the long text) → the
+“3-Line Summary” skill responds</p>
+<p><strong>Why does this work?</strong> Each skill file contains a
+description of “when to use me,” so the AI automatically picks the right
+one.</p>
+<hr />
+<h2 id="how-to-use-it-just-say-this">7. How to Use It — Just Say
+This</h2>
+<p>To try all 10 skills, type the following sentences directly into your
+AI chat window.</p>
+<pre><code>Write a book report about The Little Prince. It was touching.
+Write a polite message to my manager requesting a day off next week.
+Summarize this text in 3 lines. (+ paste a long text)
+Explain what artificial intelligence is, simply, for an elementary schooler.
+Make me a 2-week study plan for math.
+Polish my self-introduction for a club application. (+ paste your notes)
+Write an SNS caption for a picnic photo by the river, upbeat mood.
+Rewrite this sentence in natural English: I&#39;m so tired today.
+Write a 5-minute presentation script about climate change.
+Write an apology message to my teacher for turning in homework late.</code></pre>
+<hr />
+<h2 id="full-list-of-10-commands-skills">8. Full List of 10 Commands
+(Skills)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Name</th>
+<th>What to Fill In</th>
+<th>What You Get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>독후감-도우미 (Book Report Helper)</td>
+<td>Book title, one-line impression</td>
+<td>3-paragraph book report</td>
+</tr>
+<tr>
+<td>2</td>
+<td>정중한-메시지 (Polite Message)</td>
+<td>Recipient, purpose</td>
+<td>Subject + body message</td>
+</tr>
+<tr>
+<td>3</td>
+<td>긴글-3줄요약 (3-Line Summary)</td>
+<td>The long text to summarize</td>
+<td>3-line key summary</td>
+</tr>
+<tr>
+<td>4</td>
+<td>쉽게-설명해줘 (Explain Simply)</td>
+<td>Topic, listener’s age</td>
+<td>1 analogy + simple explanation</td>
+</tr>
+<tr>
+<td>5</td>
+<td>공부-계획표 (Study Planner)</td>
+<td>Subject/goal, time period</td>
+<td>Weekly study table</td>
+</tr>
+<tr>
+<td>6</td>
+<td>자기소개-다듬기 (Polish Self-Intro)</td>
+<td>Your draft, its purpose</td>
+<td>Polished self-introduction</td>
+</tr>
+<tr>
+<td>7</td>
+<td>sns-캡션 (SNS Caption)</td>
+<td>Situation, mood</td>
+<td>2 captions + hashtags</td>
+</tr>
+<tr>
+<td>8</td>
+<td>영어-자연스럽게 (Natural English)</td>
+<td>A Korean sentence</td>
+<td>Natural English + explanation</td>
+</tr>
+<tr>
+<td>9</td>
+<td>발표-대본 (Presentation Script)</td>
+<td>Topic, time limit</td>
+<td>Presentation script</td>
+</tr>
+<tr>
+<td>10</td>
+<td>부탁-사과-메시지 (Request/Apology Message)</td>
+<td>Situation, relationship</td>
+<td>2 tone versions</td>
+</tr>
+</tbody>
+</table>
+<p><strong>“Do I need to memorize the commands?”</strong> No. As
+explained in Section 6, just ask in natural language and the AI picks
+the right skill automatically. This table is just for browsing.</p>
+<hr />
+<h2 id="update-history-summary">9. Update History Summary</h2>
+<details>
+<summary>
+<strong>2026-07-11 — Finished the transition cleanup (click to
+expand)</strong>
+</summary>
+<ul>
+<li>Fully cleaned up the earlier “login website” plan (now only these 10
+files are needed)</li>
+<li>Reviewed all 10 skills carefully and fixed 3 small defects
+(e.g. long text being truncated on input)</li>
+<li>Added a “trust only the official source” safety notice to the
+install instructions</li>
+<li>Created this beginner guide (GUIDE_EN.md)</li>
+</ul>
+</details>
+<details>
+<summary>
+<strong>2026-06-29 — First public release of the 10 skills</strong>
+</summary>
+<ul>
+<li>Released 10 skills for the first time: book report, message,
+summary, explanation, study plan, self-intro, SNS caption, English
+translation, presentation script, apology message</li>
+<li>Distributed under the free Apache-2.0 license</li>
+</ul>
+</details>
+<blockquote>
+<p>New updates will keep being added here. (Click the toggles to expand
+or collapse them.)</p>
+</blockquote>
+<hr />
+<h2 id="where-are-my-files-stored">10. Where Are My Files Stored?</h2>
+<ul>
+<li><strong>The original downloaded folder</strong>: wherever you
+unzipped it (e.g., <code>Downloads\SoDam-Prompt-Eng-main</code>)</li>
+<li><strong>Skills uploaded to the Claude.ai app</strong>: stored on
+Claude.ai’s servers, not on your computer (like any online account)</li>
+<li><strong>Skills copied for Claude Code</strong>: in your computer’s
+<code>~/.claude/skills/</code> folder (a hidden folder)</li>
+</ul>
+<p><strong>Important</strong>: This project has no server that stores
+your personal information. Whatever you type is sent only to the AI
+company’s servers (e.g., Anthropic).</p>
+<hr />
+<h2 id="the-full-workflow-simple-diagram">11. The Full Workflow (Simple
+Diagram)</h2>
+<pre><code>① Discover it on GitHub
+      ↓
+② Download the ZIP (see Section 4)
+      ↓
+③ Upload it to the Claude.ai app, or copy it into your local AI program
+      ↓
+④ Ask in plain language in the chat box
+      ↓
+⑤ The AI writes the finished text
+      ↓
+⑥ Copy and use it (repeat from step ④ anytime)</code></pre>
+<blockquote>
+<p>For a <strong>more technical explanation</strong> (developer-facing
+architecture, file structure), see <a
+href="./README_EN.md#9-workflow--internal-mechanics">README_EN.md
+Sections 9 and 11</a>.</p>
+</blockquote>
+<hr />
+<h2 id="is-this-safe-plain-language-explanation">12. Is This Safe?
+(Plain-Language Explanation)</h2>
+<p><strong>Yes, it’s safe.</strong> Here’s why, in 3 points:</p>
+<ol type="1">
+<li><strong>These skill files are pure “question templates.”</strong>
+They contain no code that runs programs, deletes files, or secretly
+connects anywhere.</li>
+<li><strong>They never ask for personal information</strong> (name,
+phone number, address). All 10 skills were checked for this.</li>
+<li><strong>They are designed to avoid risky or sensitive
+topics</strong> (medical, legal, financial, self-harm, adult
+content).</li>
+</ol>
+<p><strong>But please keep these rules in mind:</strong> - Never type
+real personal information (phone number, home address, passwords) into
+an AI chat window. - Only download from the official GitHub repository
+(<code>sodam-ai/SoDam-Prompt-Eng</code>). Files from other sources may
+have been altered.</p>
+<blockquote>
+<p>For a <strong>deeper security explanation</strong>, see <a
+href="./README_EN.md#10-security--data-flow">README_EN.md Section
+10</a>.</p>
+</blockquote>
+<hr />
+<h2 id="what-to-do-if-something-goes-wrong">13. What to Do If Something
+Goes Wrong</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The AI doesn’t recognize the skill</td>
+<td>The skill hasn’t been uploaded/installed yet</td>
+<td>Re-check Section 5 (Quick Start)</td>
+</tr>
+<tr>
+<td>Korean text shows as broken characters</td>
+<td>A text-encoding setting in the app you’re using</td>
+<td>Try opening the file with a different editor instead of Notepad</td>
+</tr>
+<tr>
+<td>The ZIP file won’t unzip</td>
+<td>The download was interrupted</td>
+<td>Try downloading it again</td>
+</tr>
+<tr>
+<td>The Claude Code install command doesn’t work</td>
+<td>Node.js isn’t installed</td>
+<td>Re-check Section 3, “Method B,” starting from step 1</td>
+</tr>
+<tr>
+<td>The output doesn’t match what you wanted</td>
+<td>The blanks were too vague or incomplete</td>
+<td>Be more specific, like the example sentences in Section 7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Still stuck?</strong> See Section 16, “Getting Help.”</p>
+<hr />
+<h2 id="frequently-asked-questions-faq">14. Frequently Asked Questions
+(FAQ)</h2>
+<p><strong>Q: Is this completely free?</strong> A: The 10 skill files
+themselves are completely free. However, the AI service’s own pricing
+(free/paid tiers) is set by the AI company (e.g., Anthropic), not by
+this project.</p>
+<p><strong>Q: Do I need to sign up for anything?</strong> A: This
+project itself requires no sign-up. But to use an AI (like Claude),
+you’ll need an account with that service.</p>
+<p><strong>Q: Is my personal data stored anywhere?</strong> A: No. This
+project has no server, so nothing is stored. Whatever you type is sent
+only to the AI company’s servers.</p>
+<p><strong>Q: Does this work on a smartphone?</strong> A: Yes, via the
+Claude.ai mobile app. However, uploading skills is easier from a
+computer browser.</p>
+<p><strong>Q: If the result looks wrong, is it my fault?</strong> A:
+No. AI isn’t perfect. Get in the habit of double-checking results rather
+than trusting them blindly.</p>
+<p><strong>Q: Can I make money using these skills?</strong> A: Please
+read Section 15 carefully — it’s allowed under certain conditions.</p>
+<hr />
+<h2 id="copyright-license-and-can-i-make-money-from-this">15. Copyright,
+License, and Can I Make Money From This?</h2>
+<p>This is legally important, so <strong>the authoritative text is <a
+href="./README_EN.md#15-legal--copyright--license--commercial-use">README_EN.md
+Section 15</a> and this project’s <code>LICENSE</code> and
+<code>NOTICE</code> files.</strong> The summary below is simplified for
+easy reading; if it ever conflicts with the original text, <strong>the
+original (LICENSE/NOTICE/README_EN.md) always takes
+precedence.</strong></p>
+<h3 id="plain-language-summary-apache-license-2.0">Plain-Language
+Summary (Apache License 2.0)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>You May</th>
+<th>You Must</th>
+<th>You May Not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use it freely for personal purposes</td>
+<td>Keep the copyright notice
+(<code>Copyright 2026 SoDam AI Studio</code>)</td>
+<td>Use the “SoDam” name/logo as your own without permission</td>
+</tr>
+<tr>
+<td>Use it commercially (include it in a product/service)</td>
+<td>State that it’s licensed under Apache-2.0</td>
+<td>Falsely claim this software guarantees any specific result</td>
+</tr>
+<tr>
+<td>Modify and redistribute it</td>
+<td>Include the NOTICE file when you distribute it</td>
+<td>Impersonate the original author</td>
+</tr>
+</tbody>
+</table>
+<h3 id="about-the-text-the-ai-generates-for-you">About the Text the AI
+Generates for You</h3>
+<ul>
+<li>The <strong>copyright of the output text</strong> (book reports,
+messages, etc.) generated by running a skill is governed by <strong>the
+terms of service of the AI service you used</strong>, not by this
+project.</li>
+<li>If you used Claude, check Anthropic’s terms. If you used Codex,
+check OpenAI’s terms.</li>
+<li><strong>Do not rely on AI output as-is for important
+decisions</strong> (medical, legal, financial, etc.). This software and
+any AI-generated output are provided “as is,” with no warranty of any
+kind.</li>
+</ul>
+<h3 id="protection-of-minors">Protection of Minors</h3>
+<ul>
+<li>Users under 14 are recommended to use this with a guardian’s consent
+and guidance.</li>
+<li>The skills are designed to avoid encouraging dangerous or sexual
+content, but final output moderation is handled by the AI service
+itself.</li>
+</ul>
+<hr />
+<h2 id="getting-help">16. Getting Help</h2>
+<ul>
+<li><strong>Bug reports / suggestions</strong>: Open a new issue on the
+GitHub Issues tab (Korean is fine too)</li>
+<li><strong>Official repository</strong>:
+<code>github.com/sodam-ai/SoDam-Prompt-Eng</code> — always verify this
+exact address before downloading</li>
+</ul>
+<pre><code>Copyright 2026 SoDam AI Studio
+Licensed under the Apache License, Version 2.0
+Full terms: see the LICENSE file</code></pre>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SoDam Prompt — 왕초보 가이드</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SoDam Prompt — 왕초보 가이드</h1>
+</header>
+<h1 id="sodam-prompt-왕초보-가이드-컴퓨터ai-처음이신-분-전용">SoDam
+Prompt — 왕초보 가이드 (컴퓨터·AI 처음이신 분 전용)</h1>
+<blockquote>
+<p>이 문서는 <strong>컴퓨터, 스마트폰, 카카오톡 같은 메신저, AI를 한
+번도 안 써보신 분</strong>을 위한 문서입니다. 전문 용어 없이, 화면에서
+“어디를 눌러야 하는지”까지 최대한 자세히 설명합니다.</p>
+<p><strong>더 자세하고 기술적인 내용</strong>(전체 명령어 목록, 보안
+구조, 개발자용 아키텍처 등)이 필요하시면 같은 폴더의 <a
+href="./README.md">README.md</a> (전체 안내서)를 참고하세요. 이 문서와
+README.md는 서로 다른 내용을 말하지 않습니다 — GUIDE.md는 “쉬운 요약”,
+README.md는 “전체 상세”입니다.</p>
+</blockquote>
+<p>라이선스: Apache-2.0 | 언어: 한국어 (English: <a
+href="./GUIDE_EN.md">GUIDE_EN.md</a>)</p>
+<hr />
+<h2 id="목차">목차</h2>
+<ol type="1">
+<li><a href="#1-이게-대체-뭔가요">이게 대체 뭔가요?</a></li>
+<li><a href="#2-사전-준비물">사전 준비물</a></li>
+<li><a href="#3-필요한-프로그램-설치하기">필요한 프로그램
+설치하기</a></li>
+<li><a href="#4-파일-다운로드-방법">파일 다운로드 방법</a></li>
+<li><a href="#5-5분-만에-첫-결과-받아보기-빠른-시작">5분 만에 첫 결과
+받아보기 (빠른 시작)</a></li>
+<li><a href="#6-실행-방법--하나씩-그림-없이-설명">실행 방법 — 하나씩
+그림 없이 설명</a></li>
+<li><a href="#7-사용-방법--실제로-이렇게-말하세요">사용 방법 — 실제로
+이렇게 말하세요</a></li>
+<li><a href="#8-10개-명령어스킬-전체-목록">10개 명령어(스킬) 전체
+목록</a></li>
+<li><a href="#9-업데이트-내용-요약">업데이트 내용 요약</a></li>
+<li><a href="#10-파일이-어디에-저장되나요">파일이 어디에
+저장되나요?</a></li>
+<li><a href="#11-전체-작동-흐름-쉬운-그림-설명">전체 작동 흐름 (쉬운
+그림 설명)</a></li>
+<li><a href="#12-보안은-안전한가요-쉬운-설명">보안은 안전한가요? (쉬운
+설명)</a></li>
+<li><a href="#13-문제가-생겼을-때-대처법">문제가 생겼을 때
+대처법</a></li>
+<li><a href="#14-자주-묻는-질문-faq">자주 묻는 질문 (FAQ)</a></li>
+<li><a href="#15-저작권라이선스돈-받고-써도-되나요">저작권·라이선스·돈
+받고 써도 되나요?</a></li>
+<li><a href="#16-문의하기">문의하기</a></li>
+</ol>
+<hr />
+<h2 id="이게-대체-뭔가요">1. 이게 대체 뭔가요?</h2>
+<p><strong>SoDam Prompt(소담 프롬프트)</strong>는 AI(인공지능)에게
+“이렇게 써줘”라고 말할 때 쓰는 <strong>미리 만들어진 질문 종이
+10장</strong>입니다.</p>
+<p>쉽게 비유하면: 학교에서 나눠주는 “빈칸 채우기 시험지”와 같습니다. -
+시험지에 빈칸이 2~3개 있고 - 빈칸을 채워서 선생님(AI)에게 내면 -
+선생님이 완성된 글(독후감, 메시지 등)을 써서 돌려줍니다</p>
+<p><strong>돈이 드나요?</strong> 이 종이(스킬 파일) 자체는 완전히
+무료입니다. 다만 AI를 쓰려면 AI 서비스(Claude 등)에 가입해야 하는데, 그
+가입·이용료는 이 프로젝트와 상관없이 AI 회사가 정합니다.</p>
+<p><strong>코딩을 알아야 하나요?</strong> 전혀요. 이 문서를 처음부터
+끝까지 따라오시면 됩니다.</p>
+<hr />
+<h2 id="사전-준비물">2. 사전 준비물</h2>
+<p>시작하기 전에 아래 3가지가 있는지 확인하세요.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>준비물</th>
+<th>왜 필요한가요?</th>
+<th>없다면?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인터넷이 되는 컴퓨터 또는 노트북</td>
+<td>프로그램을 설치하고 파일을 받아야 합니다</td>
+<td>스마트폰만으로는 일부 방법(Claude.ai 앱)만 가능합니다</td>
+</tr>
+<tr>
+<td>AI 서비스 계정 (예: Claude, ChatGPT 등)</td>
+<td>실제로 글을 써주는 건 AI입니다</td>
+<td><code>claude.ai</code>에서 무료로 가입 가능합니다</td>
+</tr>
+<tr>
+<td>이메일 주소</td>
+<td>AI 서비스 가입에 필요합니다</td>
+<td>없으면 먼저 이메일부터 만드세요 (Gmail 등)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>용어 설명</strong> - <strong>“컴퓨터”</strong>: 여러분이 지금
+이 글을 읽고 있는 기기(윈도우 PC, 맥북 등) -
+<strong>“AI(인공지능)”</strong>: 사람처럼 글을 이해하고 써주는 컴퓨터
+프로그램 (Claude, ChatGPT 등) - <strong>“계정(로그인)”</strong>:
+이메일과 비밀번호로 만드는 나만의 온라인 신분증</p>
+</blockquote>
+<hr />
+<h2 id="필요한-프로그램-설치하기">3. 필요한 프로그램 설치하기</h2>
+<p><strong>가장 쉬운 방법은 프로그램을 아예 설치하지 않는
+것입니다.</strong> 아래 “방법 A”만 따라 하시면 설치가 필요 없습니다.</p>
+<h3 id="방법-a-아무것도-설치-안-하기-추천-가장-쉬움">방법 A — 아무것도
+설치 안 하기 (추천, ★가장 쉬움)</h3>
+<ol type="1">
+<li>인터넷 브라우저(크롬, 엣지 등)를 엽니다.</li>
+<li>주소창에 <code>claude.ai</code> 라고 입력하고 엔터를 누릅니다.</li>
+<li>화면에 나오는 안내대로 이메일로 가입(또는 로그인)합니다.</li>
+</ol>
+<p>이게 전부입니다. 프로그램 설치가 필요 없습니다.</p>
+<h3
+id="방법-b-개발자용-프로그램claude-code을-쓰고-싶다면-선택-다소-어려움">방법
+B — 개발자용 프로그램(Claude Code)을 쓰고 싶다면 (선택, 다소
+어려움)</h3>
+<p>이 방법은 컴퓨터를 다뤄본 경험이 있는 분께 추천합니다. 처음이시라면
+<strong>방법 A만 하셔도 충분</strong>합니다.</p>
+<ol type="1">
+<li><p>브라우저에서 <code>nodejs.org</code> 접속 →
+<strong>LTS</strong>라고 써 있는 버튼 클릭 → 다운로드</p></li>
+<li><p>다운로드된 파일을 더블클릭 → “다음(Next)”을 계속 눌러
+설치</p></li>
+<li><p>“검은 창”(터미널)을 엽니다: 윈도우는 시작 메뉴에서 “cmd” 검색,
+맥은 “터미널” 검색</p></li>
+<li><p>검은 창에 아래 글자를 그대로 입력하고 엔터:</p>
+<pre><code>npm install -g @anthropic-ai/claude-code</code></pre></li>
+<li><p>설치가 끝나면 아래 글자를 입력해 확인:</p>
+<pre><code>claude --version</code></pre>
+<p>버전 숫자가 나오면 성공입니다.</p></li>
+</ol>
+<hr />
+<h2 id="파일-다운로드-방법">4. 파일 다운로드 방법</h2>
+<ol type="1">
+<li>브라우저에서 이 프로젝트의 인터넷 주소(GitHub 페이지)로
+이동합니다.</li>
+<li>화면 위쪽에 있는 <strong>초록색 “Code” 버튼</strong>을
+클릭합니다.</li>
+<li>메뉴가 나오면 <strong>“Download ZIP”</strong>을 클릭합니다.</li>
+<li>다운로드된 압축 파일을 찾아 (보통 “다운로드” 폴더)
+<strong>더블클릭해서 압축을 풉니다.</strong></li>
+<li>압축을 풀면 <code>SoDam-Prompt-Eng-main</code> 이라는 이름의 폴더가
+생깁니다. 이 폴더 안에 <code>skills</code>라는 폴더가 있으면
+성공입니다.</li>
+</ol>
+<blockquote>
+<p><strong>압축 풀기가 뭔가요?</strong> ZIP 파일은 여러 파일을 하나로
+묶어놓은 “선물 상자” 같은 것입니다. 더블클릭하면 상자 안의 내용물(폴더와
+파일들)이 꺼내집니다.</p>
+</blockquote>
+<hr />
+<h2 id="분-만에-첫-결과-받아보기-빠른-시작">5. 5분 만에 첫 결과 받아보기
+(빠른 시작)</h2>
+<p><strong>방법 A(설치 없음)를 하셨다면</strong>, 아래 순서로 5분이면 첫
+결과를 받습니다.</p>
+<p><strong>1단계</strong>: <code>claude.ai</code> 에 로그인 → 화면
+오른쪽 위 내 프로필 아이콘 클릭 → <strong>“Customize”</strong>(사용자화)
+클릭</p>
+<p><strong>2단계</strong>: 왼쪽 메뉴에서 <strong>“Skills”</strong>(스킬)
+클릭 → <strong>“+ Create skill”</strong>(스킬 만들기) 버튼 클릭</p>
+<p><strong>3단계</strong>: 4번에서 다운로드한 폴더 안
+<code>skills</code> 폴더를 열어, 원하는 스킬 폴더(예:
+<code>독후감-도우미</code>) 하나를 통째로 업로드합니다.</p>
+<p><strong>4단계</strong>: 업로드된 스킬 옆의 토글(켜고 끄는 스위치)을
+<strong>ON</strong>으로 켭니다.</p>
+<p><strong>5단계</strong>: 채팅창에 이렇게 말해보세요:</p>
+<pre><code>어린 왕자 독후감 써줘. 여우와의 만남이 인상 깊었어.</code></pre>
+<p>AI가 3문단짜리 독후감을 써주면 성공입니다!</p>
+<hr />
+<h2 id="실행-방법-하나씩-그림-없이-설명">6. 실행 방법 — 하나씩 그림 없이
+설명</h2>
+<p>이 프로젝트를 “쓰는” 방법은 딱 하나입니다: <strong>AI에게 사람 말로
+자연스럽게 부탁하는 것.</strong></p>
+<p>버튼을 누르거나 복잡한 명령어를 외울 필요가 없습니다. 마치 사람
+비서에게 부탁하듯이 말하면 됩니다.</p>
+<p>예시: - “정중한 메시지 하나 써줘, 팀장님한테 월차 신청하는 내용으로”
+→ 정중한-메시지 스킬이 자동으로 반응합니다 - “이 긴 글 3줄로 요약해줘”
+(+ 요약할 글 붙여넣기) → 긴글-3줄요약 스킬이 반응합니다</p>
+<p><strong>왜 이렇게 되나요?</strong> 각 스킬 파일 안에는 “이런 말을
+하면 나를 써줘”라는 설명이 들어있어서, AI가 알아서 골라 씁니다.</p>
+<hr />
+<h2 id="사용-방법-실제로-이렇게-말하세요">7. 사용 방법 — 실제로 이렇게
+말하세요</h2>
+<p>10개 스킬을 다 시험해보고 싶으시면, 아래 문장을 그대로 AI 채팅창에
+입력해보세요.</p>
+<pre><code>어린 왕자 독후감 써줘. 감동적이었어.
+팀장님께 다음 주 월차 신청 메시지 써줘.
+이 글 3줄로 요약해줘. (+ 긴 글 붙여넣기)
+인공지능이 뭔지 초등학생한테 쉽게 설명해줘.
+수학 2주 공부 계획표 만들어줘.
+자기소개 좀 다듬어줘. 동아리 지원용이야. (+ 내 소개 메모)
+한강 피크닉 사진 SNS 캡션 써줘. 신나는 분위기로.
+이 문장 자연스러운 영어로 바꿔줘: 나 오늘 너무 피곤해.
+기후변화 5분 발표 대본 써줘.
+선생님께 과제 늦게 낼 때 사과 메시지 써줘.</code></pre>
+<hr />
+<h2 id="개-명령어스킬-전체-목록">8. 10개 명령어(스킬) 전체 목록</h2>
+<table>
+<thead>
+<tr>
+<th>번호</th>
+<th>이름</th>
+<th>뭘 채워야 하나요?</th>
+<th>뭐가 나오나요?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>독후감-도우미</td>
+<td>책 제목, 느낀 점</td>
+<td>3문단 독후감</td>
+</tr>
+<tr>
+<td>2</td>
+<td>정중한-메시지</td>
+<td>받는 사람, 용건</td>
+<td>제목+본문 메시지</td>
+</tr>
+<tr>
+<td>3</td>
+<td>긴글-3줄요약</td>
+<td>요약할 긴 글</td>
+<td>핵심 3줄</td>
+</tr>
+<tr>
+<td>4</td>
+<td>쉽게-설명해줘</td>
+<td>궁금한 것, 듣는 사람 나이</td>
+<td>비유 1개 + 쉬운 설명</td>
+</tr>
+<tr>
+<td>5</td>
+<td>공부-계획표</td>
+<td>과목/목표, 기간</td>
+<td>요일별 계획표</td>
+</tr>
+<tr>
+<td>6</td>
+<td>자기소개-다듬기</td>
+<td>내 소개 메모, 용도</td>
+<td>다듬어진 자기소개</td>
+</tr>
+<tr>
+<td>7</td>
+<td>sns-캡션</td>
+<td>상황, 분위기</td>
+<td>SNS 캡션 2개 + 해시태그</td>
+</tr>
+<tr>
+<td>8</td>
+<td>영어-자연스럽게</td>
+<td>한국어 문장</td>
+<td>자연스러운 영어 + 설명</td>
+</tr>
+<tr>
+<td>9</td>
+<td>발표-대본</td>
+<td>주제, 발표 시간</td>
+<td>발표 대본</td>
+</tr>
+<tr>
+<td>10</td>
+<td>부탁-사과-메시지</td>
+<td>상황, 상대</td>
+<td>부탁/사과 메시지 2가지 톤</td>
+</tr>
+</tbody>
+</table>
+<p><strong>“명령어를 외워야 하나요?”</strong> 아니요. 6장에서 설명한
+것처럼 그냥 사람 말로 부탁하면 AI가 알아서 골라 씁니다. 이 표는 “뭐가
+있는지 훑어보는 용도”입니다.</p>
+<hr />
+<h2 id="업데이트-내용-요약">9. 업데이트 내용 요약</h2>
+<details>
+<summary>
+<strong>2026-07-11 — 전환 마무리 정리 (클릭해서 펼치기)</strong>
+</summary>
+<ul>
+<li>예전에 시도했던 “로그인하는 웹사이트” 계획을 완전히 정리했습니다
+(지금은 이 파일 10개만 있으면 됩니다)</li>
+<li>스킬 10개를 꼼꼼히 점검해서 작은 오류 3개를 찾아 고쳤습니다 (긴 글
+입력 시 일부만 잘리던 문제 등)</li>
+<li>설치 안내에 “공식 출처만 신뢰하세요” 같은 안전 안내를
+추가했습니다</li>
+<li>이 왕초보 가이드(GUIDE.md)를 새로 만들었습니다</li>
+</ul>
+</details>
+<details>
+<summary>
+<strong>2026-06-29 — 스킬 10개 첫 공개</strong>
+</summary>
+<ul>
+<li>독후감·메시지·요약·설명·계획표·자기소개·SNS캡션·영작·발표·사과
+메시지, 총 10개 스킬을 처음 만들어 공개했습니다</li>
+<li>Apache-2.0 무료 라이선스로 배포했습니다</li>
+</ul>
+</details>
+<blockquote>
+<p>앞으로 새 소식이 있으면 이 자리에 계속 추가됩니다. (토글을 눌러
+펼치고 접을 수 있습니다)</p>
+</blockquote>
+<hr />
+<h2 id="파일이-어디에-저장되나요">10. 파일이 어디에 저장되나요?</h2>
+<ul>
+<li><strong>다운로드한 원본 폴더</strong>: 여러분이 압축을 푼 그 위치
+그대로 (예: <code>다운로드\SoDam-Prompt-Eng-main</code>)</li>
+<li><strong>Claude.ai 앱에 올린 스킬</strong>: 여러분 컴퓨터가 아니라
+Claude.ai 서버 안에 저장됩니다 (온라인 계정에 저장되는 것과
+같습니다)</li>
+<li><strong>Claude Code에 복사한 스킬</strong>: 내 컴퓨터의
+<code>~/.claude/skills/</code> 폴더 (숨김 폴더입니다)</li>
+</ul>
+<p><strong>중요</strong>: 이 프로젝트는 여러분의 개인정보를 저장하는
+서버가 없습니다. 여러분이 입력한 내용은 AI 회사(Anthropic 등)의 서버로만
+전달됩니다.</p>
+<hr />
+<h2 id="전체-작동-흐름-쉬운-그림-설명">11. 전체 작동 흐름 (쉬운 그림
+설명)</h2>
+<pre><code>① GitHub에서 발견
+      ↓
+② ZIP 다운로드 (4장 참고)
+      ↓
+③ Claude.ai 앱에 업로드하거나, 내 컴퓨터 AI 프로그램에 복사
+      ↓
+④ 채팅창에 사람 말로 부탁
+      ↓
+⑤ AI가 완성된 글을 만들어줌
+      ↓
+⑥ 복사해서 실제로 사용 (또 필요하면 ④번부터 반복)</code></pre>
+<blockquote>
+<p><strong>더 기술적인 설명</strong>(개발자용 아키텍처·파일 구조)이
+궁금하시면 <a href="./README.md#9-워크플로우--내부-작동-흐름">README.md
+9장·11장</a>을 참고하세요.</p>
+</blockquote>
+<hr />
+<h2 id="보안은-안전한가요-쉬운-설명">12. 보안은 안전한가요? (쉬운
+설명)</h2>
+<p><strong>네, 안전합니다.</strong> 이유는 3가지입니다.</p>
+<ol type="1">
+<li><strong>이 스킬 파일들은 순수한 “질문 종이”입니다.</strong>
+컴퓨터에서 프로그램을 실행하거나, 파일을 지우거나, 다른 곳에 몰래
+접속하는 코드가 전혀 없습니다.</li>
+<li><strong>개인정보(이름·전화번호·주소)를 물어보지 않습니다.</strong>
+10개 스킬 전부 확인했습니다.</li>
+<li><strong>위험하거나 민감한
+주제</strong>(의료·법률·금융·자해·성인물)를 <strong>다루지
+않도록</strong> 설계되었습니다.</li>
+</ol>
+<p><strong>다만 이건 꼭 지켜주세요:</strong> - AI 채팅창에 진짜
+개인정보(전화번호, 집 주소, 비밀번호)를 입력하지 마세요. - 반드시 공식
+GitHub 저장소(<code>sodam-ai/SoDam-Prompt-Eng</code>)에서만 받으세요.
+다른 곳에서 받은 파일은 내용이 바뀌었을 수 있습니다.</p>
+<blockquote>
+<p><strong>더 자세한 보안 구조</strong>가 궁금하시면 <a
+href="./README.md#10-보안--데이터-흐름">README.md 10장</a>을
+참고하세요.</p>
+</blockquote>
+<hr />
+<h2 id="문제가-생겼을-때-대처법">13. 문제가 생겼을 때 대처법</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>증상</th>
+<th>원인</th>
+<th>해결 방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI가 스킬을 못 알아듣는다</td>
+<td>스킬이 아직 업로드/설치 안 됨</td>
+<td>5장(빠른 시작)을 다시 확인하세요</td>
+</tr>
+<tr>
+<td>한글이 깨져서 보인다</td>
+<td>파일을 여는 프로그램의 글자 설정 문제</td>
+<td>메모장 대신 다른 편집기로 열어보세요</td>
+</tr>
+<tr>
+<td>ZIP 파일 압축이 안 풀린다</td>
+<td>다운로드가 중간에 끊김</td>
+<td>다시 다운로드해보세요</td>
+</tr>
+<tr>
+<td>Claude Code 설치 명령이 안 먹힌다</td>
+<td>Node.js 미설치</td>
+<td>3장 “방법 B”의 1번부터 다시 확인하세요</td>
+</tr>
+<tr>
+<td>원하는 형식과 다른 결과가 나온다</td>
+<td>빈칸 내용이 부족하거나 모호함</td>
+<td>7장 예시 문장처럼 구체적으로 말해보세요</td>
+</tr>
+</tbody>
+</table>
+<p><strong>그래도 안 되면?</strong> 16장 “문의하기”를 확인하세요.</p>
+<hr />
+<h2 id="자주-묻는-질문-faq">14. 자주 묻는 질문 (FAQ)</h2>
+<p><strong>Q: 완전 공짜인가요?</strong> A: 이 스킬 파일 10개는 완전
+무료입니다. 다만 AI 서비스 자체의 유료/무료 정책은 AI 회사(Anthropic
+등)가 정합니다.</p>
+<p><strong>Q: 회원가입을 꼭 해야 하나요?</strong> A: 이 프로젝트 자체는
+회원가입이 필요 없습니다. 다만 AI(Claude 등)를 쓰려면 그 서비스에
+가입해야 합니다.</p>
+<p><strong>Q: 제 개인정보가 어딘가에 저장되나요?</strong> A: 아니요. 이
+프로젝트는 서버가 없어서 아무것도 저장하지 않습니다. 여러분이 입력한
+내용은 AI 회사 서버로만 전달됩니다.</p>
+<p><strong>Q: 스마트폰으로도 되나요?</strong> A: 네, Claude.ai
+앱(모바일)으로 가능합니다. 다만 스킬 업로드는 컴퓨터 브라우저가 더
+편합니다.</p>
+<p><strong>Q: 결과가 이상하게 나오면 제 잘못인가요?</strong> A:
+아닙니다. AI는 완벽하지 않을 수 있습니다. 결과를 그대로 믿지 말고 한 번
+더 확인하는 습관을 들이세요.</p>
+<p><strong>Q: 이 스킬로 돈을 벌어도 되나요?</strong> A: 15장을 꼭
+읽어보세요 — 조건부로 가능합니다.</p>
+<hr />
+<h2 id="저작권라이선스돈-받고-써도-되나요">15. 저작권·라이선스·돈 받고
+써도 되나요?</h2>
+<p>이 내용은 법적으로 중요하니 <strong>정확한 원문은 반드시 <a
+href="./README.md#15-법률--저작권--라이선스--상업적-용도">README.md
+15장</a>과 프로젝트의 <code>LICENSE</code>·<code>NOTICE</code>
+파일</strong>을 확인하세요. 아래는 쉬운 요약이며, 원문과 다르게 해석될
+여지가 있으면 <strong>원문(LICENSE/NOTICE/README.md)이
+우선</strong>합니다.</p>
+<h3 id="쉬운-요약-apache-license-2.0">쉬운 요약 (Apache License
+2.0)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>할 수 있는 것</th>
+<th>반드시 해야 하는 것</th>
+<th>할 수 없는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>개인적으로 자유롭게 사용</td>
+<td>저작권 표시(<code>Copyright 2026 SoDam AI Studio</code>) 남기기</td>
+<td>“SoDam” 이름·로고를 허락 없이 내 것처럼 쓰기</td>
+</tr>
+<tr>
+<td>상업적으로 사용(제품·서비스에 포함)</td>
+<td>Apache-2.0 라이선스임을 밝히기</td>
+<td>이 소프트웨어가 특정 결과를 보장한다고 거짓 주장하기</td>
+</tr>
+<tr>
+<td>수정해서 재배포</td>
+<td>NOTICE 파일 함께 배포하기</td>
+<td>원 저작자인 척 사칭하기</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai가-만들어준-결과물글에-대해">AI가 만들어준 결과물(글)에
+대해</h3>
+<ul>
+<li>스킬을 실행해서 나온 <strong>결과 글(독후감, 메시지 등)의
+저작권</strong>은 이 프로젝트가 아니라 <strong>여러분이 쓴 AI 서비스의
+약관</strong>을 따릅니다.</li>
+<li>Claude를 쓰셨다면 Anthropic 약관, Codex를 쓰셨다면 OpenAI 약관을
+확인하세요.</li>
+<li><strong>중요한 결정(의료·법률·금융 등)에는 AI 결과물을 그대로
+사용하지 마세요.</strong> 이 소프트웨어와 AI 결과물은 “있는 그대로”
+제공되며 어떤 보증도 하지 않습니다.</li>
+</ul>
+<h3 id="미성년자-보호">미성년자 보호</h3>
+<ul>
+<li>만 14세 미만은 보호자의 동의·지도 하에 사용을 권장합니다.</li>
+<li>위험하거나 성적인 내용을 유도하지 않도록 스킬이 설계되었으나, 최종
+출력 관리(모더레이션)는 AI 서비스가 담당합니다.</li>
+</ul>
+<hr />
+<h2 id="문의하기">16. 문의하기</h2>
+<ul>
+<li><strong>오류·개선 제안</strong>: GitHub Issues 탭에서 새 이슈를
+열어주세요 (한국어 가능)</li>
+<li><strong>공식 저장소</strong>:
+<code>github.com/sodam-ai/SoDam-Prompt-Eng</code> — 반드시 이 주소인지
+확인하고 이용하세요</li>
+</ul>
+<pre><code>Copyright 2026 SoDam AI Studio
+Licensed under the Apache License, Version 2.0
+전체 조항: LICENSE 파일 참고</code></pre>
+</body>
+</html>

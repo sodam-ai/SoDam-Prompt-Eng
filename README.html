@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SoDam Prompt — 전체 안내서</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SoDam Prompt — 전체 안내서</h1>
+</header>
+<h1 id="sodam-prompt-ai-글쓰기-스킬-10종-완전-가이드">SoDam Prompt — AI
+글쓰기 스킬 10종 완전 가이드</h1>
+<blockquote>
+<p>AI를 처음 쓰는 분도 빈칸만 채우면 바로 되는 한국어 글쓰기 도구
+모음입니다. Claude Code · Claude.ai 앱 · Codex · Cursor · Gemini CLI
+에서 동일하게 작동합니다.</p>
+</blockquote>
+<p>라이선스: Apache-2.0 | 단계: SoDam Prompt (1단계) | 언어: 한국어</p>
+<hr />
+<h2 id="목차">목차</h2>
+<ol type="1">
+<li><a href="#1-한눈에-보기">한눈에 보기</a></li>
+<li><a href="#2-사전-준비물">사전 준비물</a></li>
+<li><a href="#3-필요-프로그램-설치">필요 프로그램 설치</a></li>
+<li><a href="#4-다운로드-방법">다운로드 방법</a></li>
+<li><a href="#5-빠른-시작">빠른 시작</a></li>
+<li><a href="#6-실행-방법--플랫폼별-상세">실행 방법 — 플랫폼별
+상세</a></li>
+<li><a href="#7-스킬별-사용-방법-10종-전부">스킬별 사용 방법 (10종
+전부)</a></li>
+<li><a href="#8-명령어-전체-목록">명령어 전체 목록</a></li>
+<li><a href="#9-워크플로우--내부-작동-흐름">워크플로우 — 내부 작동
+흐름</a></li>
+<li><a href="#10-보안--데이터-흐름">보안 · 데이터 흐름</a></li>
+<li><a href="#11-아키텍처--파일-구조">아키텍처 — 파일 구조</a></li>
+<li><a href="#12-파일--문서-위치">파일 · 문서 위치</a></li>
+<li><a href="#13-문제--오류-대처-방법">문제 · 오류 대처 방법</a></li>
+<li><a href="#14-faq--자주-묻는-질문">FAQ — 자주 묻는 질문</a></li>
+<li><a href="#15-법률--저작권--라이선스--상업적-용도">법률 · 저작권 ·
+라이선스 · 상업적 용도</a></li>
+<li><a href="#16-연락처--저작권-고지">연락처 · 저작권 고지</a></li>
+<li><a href="#17-업데이트-내역">업데이트 내역</a></li>
+</ol>
+<hr />
+<h2 id="한눈에-보기">1. 한눈에 보기</h2>
+<p>SoDam Prompt는 학생·직장인·일반인이 AI에게 글쓰기를 요청할 때 쓰는
+<strong>10종 스킬 모음</strong>입니다. 스킬 하나 = 미리 설계된 질문 틀
+하나. 빈칸에 내 상황을 채우면 AI가 완성글을 만들어 줍니다.</p>
+<table>
+<thead>
+<tr>
+<th>번호</th>
+<th>스킬 이름</th>
+<th>필요한 정보</th>
+<th>결과물</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>독후감-도우미</td>
+<td>책 제목, 느낀 점 한 줄</td>
+<td>3문단 독후감</td>
+</tr>
+<tr>
+<td>2</td>
+<td>정중한-메시지</td>
+<td>받는 사람, 용건 한 줄</td>
+<td>제목+본문 메시지</td>
+</tr>
+<tr>
+<td>3</td>
+<td>긴글-3줄요약</td>
+<td>요약할 글 전체</td>
+<td>핵심 3줄 요약</td>
+</tr>
+<tr>
+<td>4</td>
+<td>쉽게-설명해줘</td>
+<td>개념, 듣는 사람 나이</td>
+<td>비유+3문장 설명</td>
+</tr>
+<tr>
+<td>5</td>
+<td>공부-계획표</td>
+<td>과목·목표, 기간</td>
+<td>요일별 공부 계획표</td>
+</tr>
+<tr>
+<td>6</td>
+<td>자기소개-다듬기</td>
+<td>내 소개 메모, 쓸 곳</td>
+<td>완성된 자기소개</td>
+</tr>
+<tr>
+<td>7</td>
+<td>sns-캡션</td>
+<td>상황, 분위기</td>
+<td>캡션 2개 + 해시태그 5개</td>
+</tr>
+<tr>
+<td>8</td>
+<td>영어-자연스럽게</td>
+<td>한국어 문장</td>
+<td>자연스러운 영어+이유 설명</td>
+</tr>
+<tr>
+<td>9</td>
+<td>발표-대본</td>
+<td>주제, 발표 시간</td>
+<td>도입-본론-마무리 대본</td>
+</tr>
+<tr>
+<td>10</td>
+<td>부탁-사과-메시지</td>
+<td>상황, 상대 관계</td>
+<td>정중한·친근한 2가지 버전</td>
+</tr>
+</tbody>
+</table>
+<p><strong>비용</strong>: $0 (AI 사용 요금은 각자 가입한 Claude/Codex
+요금제 기준) <strong>서버</strong>: 없음 (내 컴퓨터 + AI 회사 서버
+사이에서만 작동) <strong>코드 실행</strong>: 없음 (텍스트 질문·답변만
+오갑니다)</p>
+<hr />
+<h2 id="사전-준비물">2. 사전 준비물</h2>
+<p>스킬을 사용하려면 아래 중 <strong>하나</strong>만 있으면 됩니다. 전부
+필요하지 않습니다.</p>
+<table>
+<thead>
+<tr>
+<th>방법</th>
+<th>필요한 것</th>
+<th>난이도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude.ai 앱 (가장 쉬움)</td>
+<td>Claude.ai 계정 (무료)</td>
+<td>★☆☆</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>Node.js 18+ · Claude Code CLI</td>
+<td>★★☆</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>Codex 계정 · Codex CLI</td>
+<td>★★☆</td>
+</tr>
+<tr>
+<td>Cursor · Gemini CLI 등</td>
+<td>해당 도구 설치</td>
+<td>★★☆</td>
+</tr>
+</tbody>
+</table>
+<h3 id="계정-만들기-claude.ai-방법-기준">계정 만들기 (Claude.ai 방법
+기준)</h3>
+<ol type="1">
+<li>인터넷 브라우저(크롬, 엣지 등)를 엽니다</li>
+<li>주소창에 <code>claude.ai</code> 를 입력하고 Enter</li>
+<li><strong>Sign up</strong> 버튼 클릭 → 이메일 주소 입력 → 비밀번호
+설정</li>
+<li>이메일로 온 인증 메일 확인 → 로그인 완료</li>
+</ol>
+<blockquote>
+<p><strong>만 14세 미만은 보호자와 함께 가입해야 합니다.</strong>
+<strong>대한민국 거주자를 대상으로 만든 도구입니다.</strong></p>
+</blockquote>
+<hr />
+<h2 id="필요-프로그램-설치">3. 필요 프로그램 설치</h2>
+<h3 id="방법-a-claude.ai-앱-터미널-불필요-가장-쉬움">방법 A — Claude.ai
+앱 (터미널 불필요, 가장 쉬움)</h3>
+<p>별도 프로그램 설치 없이 <strong>인터넷 브라우저만 있으면
+됩니다.</strong> → 4단계(다운로드)로 바로 이동하세요.</p>
+<hr />
+<h3 id="방법-b-claude-code-개발자고급-사용자">방법 B — Claude Code
+(개발자·고급 사용자)</h3>
+<p><strong>Node.js 설치 확인</strong></p>
+<p>Node.js가 이미 설치되어 있는지 확인합니다.</p>
+<p>Windows 기준: 1. 키보드 <code>Windows키</code> + <code>R</code> →
+<code>cmd</code> 입력 → Enter (검은 창이 열림) 2. 아래를 입력하고 Enter:
+<code>node --version</code> 3. <code>v18.0.0</code> 이상이 표시되면 OK.
+아무것도 안 나오면 설치 필요.</p>
+<p><strong>Node.js 설치 (없는 경우)</strong></p>
+<ol type="1">
+<li>브라우저에서 <code>nodejs.org</code> 접속</li>
+<li><strong>LTS</strong> 버전 다운로드 버튼 클릭</li>
+<li>다운로드된 파일 더블클릭 → 설치 마법사 따라 Next → Finish</li>
+</ol>
+<p><strong>Claude Code 설치</strong></p>
+<p>검은 창(터미널)에 입력:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span></code></pre></div>
+<p>설치 확인:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> <span class="at">--version</span></span></code></pre></div>
+<p>버전 번호가 나오면 성공.</p>
+<hr />
+<h3 id="방법-c-codex-openai-codex-사용자">방법 C — Codex (OpenAI Codex
+사용자)</h3>
+<p>Codex 공식 사이트에서 CLI를 설치하세요. (Codex 계정 필요)</p>
+<hr />
+<h2 id="다운로드-방법">4. 다운로드 방법</h2>
+<h3 id="스킬-파일-다운로드">스킬 파일 다운로드</h3>
+<p><strong>방법 1: ZIP 다운로드 (가장 쉬움)</strong></p>
+<ol type="1">
+<li>이 저장소 페이지에서 초록색 <strong>Code</strong> 버튼 클릭</li>
+<li><strong>Download ZIP</strong> 클릭</li>
+<li>내 컴퓨터의 원하는 폴더에 압축 풀기</li>
+<li><code>SoDam-Prompt-Eng-main</code> 폴더가 생깁니다</li>
+</ol>
+<p><strong>방법 2: git clone (git이 설치된 경우)</strong></p>
+<p>검은 창에서:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sodam-ai/SoDam-Prompt-Eng.git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> SoDam-Prompt-Eng</span></code></pre></div>
+<hr />
+<h3 id="설치-전-확인-안전-체크">설치 전 확인 (안전 체크)</h3>
+<ul>
+<li>✅ <strong>무코드 (★ Safe)</strong> — 이 저장소의 스킬 10개는 전부
+순수 텍스트입니다. 셸 명령·프로그램 실행·외부 도구 호출이 전혀
+없습니다.</li>
+<li>✅ <strong>출처 확인</strong> — 반드시 공식
+저장소(<code>sodam-ai/SoDam-Prompt-Eng</code>)에서만 받으세요. 다른
+곳에서 받은 파일은 내용이 다를 수 있습니다.</li>
+<li>✅ <strong>미리보기 가능</strong> — 설치 전에 GitHub에서
+<code>skills/&lt;이름&gt;/SKILL.md</code> 파일을 직접 클릭해 내용을
+확인할 수 있습니다.</li>
+</ul>
+<hr />
+<h2 id="빠른-시작">5. 빠른 시작</h2>
+<h3 id="claude.ai-앱에서-5분-안에-시작하기">Claude.ai 앱에서 5분 안에
+시작하기</h3>
+<p><strong>Step 1</strong>: <code>claude.ai</code> 로그인 → 우측 상단
+프로필 → <strong>Customize</strong> 클릭</p>
+<p><strong>Step 2</strong>: 왼쪽 메뉴 <strong>Skills</strong> 탭 클릭 →
+<strong>+ Create skill</strong> 또는 <strong>+ Add skill</strong></p>
+<p><strong>Step 3</strong>: 압축 푼 폴더 전체를 ZIP으로 다시 압축하거나,
+<code>skills</code> 폴더를 ZIP으로 압축 → 업로드</p>
+<p><strong>Step 4</strong>: 토글을 <strong>ON</strong> (파란색)으로
+변경</p>
+<p><strong>Step 5</strong>: 채팅창에서 자연어로 말하기:</p>
+<pre><code>독후감 써줘. 책 제목은 &quot;어린 왕자&quot;, 느낀 점은 &quot;어른도 아이 마음이 필요하다&quot; 야.</code></pre>
+<p>AI가 자동으로 <code>독후감-도우미</code> 스킬을 사용해 독후감을
+만들어줍니다.</p>
+<hr />
+<h3 id="claude-code에서-시작하기">Claude Code에서 시작하기</h3>
+<p><strong>Step 1</strong>: 스킬 파일 복사</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 다운로드 폴더 기준 (Windows)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> C:<span class="dt">\U</span>sers<span class="dt">\내</span>이름<span class="dt">\D</span>ownloads<span class="dt">\S</span>oDam-Prompt-Eng<span class="dt">\s</span>kills<span class="dt">\*</span> ~/.claude/skills/</span></code></pre></div>
+<p>Mac/Linux:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/Downloads/SoDam-Prompt-Eng/skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+<p><strong>Step 2</strong>: Claude Code 실행</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+<p><strong>Step 3</strong>: 슬래시 명령어로 사용</p>
+<pre><code>/독후감-도우미 &quot;어린 왕자&quot; &quot;어른도 아이 마음이 필요하다&quot;</code></pre>
+<p>또는 자연어:</p>
+<pre><code>독후감 도와줘. 책은 &quot;해리 포터&quot;, 느낀 점은 &quot;용기가 중요해&quot;</code></pre>
+<hr />
+<h2 id="실행-방법-플랫폼별-상세">6. 실행 방법 — 플랫폼별 상세</h2>
+<h3 id="claude.ai-앱-웹앱">Claude.ai 앱 (웹/앱)</h3>
+<p><strong>설치</strong>: 1. 로그인 → Customize → Skills → + Create
+skill 2. ZIP 파일 업로드 → 토글 ON</p>
+<p><strong>실행</strong>: - 자연어:
+<code>독후감 써줘. "어린 왕자", 느낀 점은 "성장"</code> - 슬래시:
+<code>/독후감-도우미 "책제목" "느낀점"</code></p>
+<hr />
+<h3 id="claude-code-터미널">Claude Code (터미널)</h3>
+<p><strong>설치</strong>:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skills 폴더 전체 복사</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 개별 스킬만 설치하려면</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/독후감-도우미 ~/.claude/skills/</span></code></pre></div>
+<p><strong>실행</strong>:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+<p>그 후 채팅에서:</p>
+<pre><code>/독후감-도우미 &quot;책 제목&quot; &quot;느낀 점&quot;</code></pre>
+<hr />
+<h3 id="codex">Codex</h3>
+<p><strong>설치</strong>:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.codex/skills/</span></code></pre></div>
+<p><strong>실행</strong>:</p>
+<pre><code>$독후감-도우미 &quot;책 제목&quot; &quot;느낀 점&quot;</code></pre>
+<hr />
+<h3 id="cursor-gemini-cli-기타-ai-도구">Cursor · Gemini CLI · 기타 AI
+도구</h3>
+<p>각 도구의 skills 폴더(또는 지시사항 폴더)에 원하는 스킬의
+<code>SKILL.md</code> 파일을 복사하세요.</p>
+<p>Cursor 예시: 1. <code>skills/독후감-도우미/SKILL.md</code> 파일을
+Cursor의 <code>.cursor/skills/</code> 폴더에 복사 2. Cursor 채팅에서:
+<code>독후감 써줘</code></p>
+<hr />
+<h2 id="스킬별-사용-방법-10종-전부">7. 스킬별 사용 방법 (10종 전부)</h2>
+<h3 id="스킬-1-독후감-도우미">스킬 1: 독후감-도우미</h3>
+<p><strong>언제 쓰나요?</strong> 책을 읽고 독후감을 써야 할 때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 책 제목 -
+<code>$2</code>: 느낀 점 한 줄</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/독후감-도우미 &quot;어린 왕자&quot; &quot;어른도 아이 마음이 필요하다&quot;</code></pre>
+<p><strong>자연어로도 됩니다</strong>:</p>
+<pre><code>독후감 도와줘. 어린 왕자 읽었고 어른도 아이 마음이 필요하다고 느꼈어.</code></pre>
+<p><strong>결과물</strong>: 3문단 독후감 (①읽기 전 기대 ②핵심 내용 ③느낀
+점과 배운 것)</p>
+<hr />
+<h3 id="스킬-2-정중한-메시지">스킬 2: 정중한-메시지</h3>
+<p><strong>언제 쓰나요?</strong> 선생님·상사·어른에게 메시지를 보낼
+때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 받는 사람 (예: 담임
+선생님) - <code>$2</code>: 용건 한 줄 (예: 결석 사유 전달)</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/정중한-메시지 &quot;담임 선생님&quot; &quot;내일 병원 진료로 결석합니다&quot;</code></pre>
+<p><strong>결과물</strong>: 제목 + 정중한 본문 메시지</p>
+<hr />
+<h3 id="스킬-3-긴글-3줄요약">스킬 3: 긴글-3줄요약</h3>
+<p><strong>언제 쓰나요?</strong> 긴 글을 핵심 3줄로 정리하고 싶을 때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 요약할 글 전체</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/긴글-3줄요약 [긴 글 전체 붙여넣기]</code></pre>
+<p><strong>결과물</strong>: 핵심 내용 3줄 (• 기호로 정리)</p>
+<hr />
+<h3 id="스킬-4-쉽게-설명해줘">스킬 4: 쉽게-설명해줘</h3>
+<p><strong>언제 쓰나요?</strong> 어려운 개념을 누군가에게 쉽게 설명해야
+할 때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 설명할 개념 (예:
+광합성) - <code>$2</code>: 듣는 사람 나이 (예: 10살)</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/쉽게-설명해줘 &quot;광합성&quot; &quot;10살&quot;</code></pre>
+<p><strong>결과물</strong>: 비유 1개 + 쉬운 말 3문장 설명</p>
+<hr />
+<h3 id="스킬-5-공부-계획표">스킬 5: 공부-계획표</h3>
+<p><strong>언제 쓰나요?</strong> 시험 준비나 공부 계획을 세울 때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 과목·목표 (예: 수학
+중간고사 80점) - <code>$2</code>: 기간 (예: 2주)</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/공부-계획표 &quot;수학 중간고사 80점&quot; &quot;2주&quot;</code></pre>
+<p><strong>결과물</strong>: 요일별 공부 계획표 (하루 분량 포함)</p>
+<hr />
+<h3 id="스킬-6-자기소개-다듬기">스킬 6: 자기소개-다듬기</h3>
+<p><strong>언제 쓰나요?</strong> 자기소개를 써야 하는데 어떻게 쓸지 모를
+때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 내 소개 메모
+(짧게라도 OK) - <code>$2</code>: 쓸 곳 (예: 동아리 지원서)</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/자기소개-다듬기 &quot;이름 김민준, 축구 좋아함, 성실함&quot; &quot;동아리 지원서&quot;</code></pre>
+<p><strong>결과물</strong>: 상황에 맞게 다듬어진 자기소개 완성본</p>
+<hr />
+<h3 id="스킬-7-sns-캡션">스킬 7: sns-캡션</h3>
+<p><strong>언제 쓰나요?</strong> 인스타그램·페이스북 등 SNS에 글을 올릴
+때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 상황 (예: 친구들과
+카페에서 공부) - <code>$2</code>: 분위기 (예: 따뜻하고 즐거운)</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/sns-캡션 &quot;친구들과 카페에서 공부&quot; &quot;따뜻하고 즐거운&quot;</code></pre>
+<p><strong>결과물</strong>: 캡션 2가지 버전 + 해시태그 5개</p>
+<hr />
+<h3 id="스킬-8-영어-자연스럽게">스킬 8: 영어-자연스럽게</h3>
+<p><strong>언제 쓰나요?</strong> 한국어를 자연스러운 영어로 바꾸고 싶을
+때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 한국어 문장</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/영어-자연스럽게 &quot;나는 오늘 학교에서 발표를 잘 했어&quot;</code></pre>
+<p><strong>결과물</strong>: 자연스러운 영어 문장 + 왜 그렇게 표현하는지
+한국어 설명</p>
+<hr />
+<h3 id="스킬-9-발표-대본">스킬 9: 발표-대본</h3>
+<p><strong>언제 쓰나요?</strong> 발표 내용을 대본으로 정리해야 할 때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 발표 주제 (예: 환경
+보호의 중요성) - <code>$2</code>: 발표 시간 (예: 5분)</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/발표-대본 &quot;환경 보호의 중요성&quot; &quot;5분&quot;</code></pre>
+<p><strong>결과물</strong>: 도입–본론–마무리 대본 (읽는 시간 포함)</p>
+<hr />
+<h3 id="스킬-10-부탁-사과-메시지">스킬 10: 부탁-사과-메시지</h3>
+<p><strong>언제 쓰나요?</strong> 부탁하거나 사과하는 메시지를 써야 할
+때</p>
+<p><strong>필요한 정보</strong>: - <code>$1</code>: 상황 (예: 숙제
+제출이 늦었음) - <code>$2</code>: 상대와의 관계 (예: 선생님)</p>
+<p><strong>예시</strong>:</p>
+<pre><code>/부탁-사과-메시지 &quot;숙제 제출이 하루 늦었음&quot; &quot;선생님&quot;</code></pre>
+<p><strong>결과물</strong>: 정중한 버전 + 친근한 버전 2가지</p>
+<hr />
+<h2 id="명령어-전체-목록">8. 명령어 전체 목록</h2>
+<h3 id="claude-code-claude.ai-앱-슬래시-명령어">Claude Code / Claude.ai
+앱 슬래시 명령어</h3>
+<pre><code>/독후감-도우미 [책 제목] [느낀 점 한 줄]
+/정중한-메시지 [받는 사람] [용건 한 줄]
+/긴글-3줄요약 [요약할 글]
+/쉽게-설명해줘 [개념] [듣는 사람 나이]
+/공부-계획표 [과목·목표] [기간]
+/자기소개-다듬기 [내 소개 메모] [쓸 곳]
+/sns-캡션 [상황] [분위기]
+/영어-자연스럽게 [한국어 문장]
+/발표-대본 [주제] [발표 시간]
+/부탁-사과-메시지 [상황] [상대 관계]</code></pre>
+<h3 id="codex-달러-명령어">Codex 달러 명령어</h3>
+<pre><code>$독후감-도우미 [책 제목] [느낀 점]
+$정중한-메시지 [받는 사람] [용건]
+$긴글-3줄요약 [글 전체]
+$쉽게-설명해줘 [개념] [나이]
+$공부-계획표 [목표] [기간]
+$자기소개-다듬기 [메모] [용도]
+$sns-캡션 [상황] [분위기]
+$영어-자연스럽게 [한국어]
+$발표-대본 [주제] [시간]
+$부탁-사과-메시지 [상황] [관계]</code></pre>
+<h3 id="자연어-명령어-없이도-됩니다">자연어 (명령어 없이도 됩니다)</h3>
+<p>스킬을 설치하면 AI가 상황에 맞는 스킬을 자동으로 선택합니다.</p>
+<pre><code>독후감 써줘. 책은 &quot;해리 포터&quot;, 느낀 점은 &quot;용기가 중요해&quot;.
+선생님께 결석 사유 메시지 써줘.
+이 긴 글 3줄로 요약해줘: [글 붙여넣기]</code></pre>
+<hr />
+<h2 id="워크플로우-내부-작동-흐름">9. 워크플로우 — 내부 작동 흐름</h2>
+<pre><code>사용자 입력
+    │
+    ▼
+AI 도구 (Claude / Codex 등)
+    │
+    ├─── 슬래시 명령어? ─────────────────────┐
+    │    /독후감-도우미 &quot;어린 왕자&quot; &quot;느낀 점&quot;  │
+    │                                       │
+    └─── 자연어? ──────────────────────────┐ │
+         &quot;독후감 써줘 어린 왕자&quot;             │ │
+                                          ▼ ▼
+                              SKILL.md 파일 로드
+                        (skills/독후감-도우미/SKILL.md)
+                                          │
+                                          ▼
+                         빈칸 채우기 ($1=책제목, $2=느낀점)
+                                          │
+                                          ▼
+                        AI 모델이 지시사항 읽고 글 생성
+                     (AI 회사 서버에서 처리 — 내 PC 아님)
+                                          │
+                                          ▼
+                              결과 텍스트 반환
+                                          │
+                                          ▼
+                              채팅창에 출력</code></pre>
+<p><strong>핵심 포인트</strong>: - <code>SKILL.md</code> 파일은 내
+컴퓨터에만 있습니다 (서버 전송 없음) - AI 모델 처리는 Claude/OpenAI
+서버에서 이루어집니다 - 결과물은 채팅창에만 나타납니다 (자동 저장
+없음)</p>
+<hr />
+<h2 id="보안-데이터-흐름">10. 보안 · 데이터 흐름</h2>
+<h3 id="무엇이-ai-서버로-전송되나요">무엇이 AI 서버로 전송되나요?</h3>
+<table>
+<thead>
+<tr>
+<th>전송되는 것</th>
+<th>전송 안 되는 것</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>내가 입력한 텍스트 (책 제목, 느낀 점 등)</td>
+<td>SKILL.md 파일 자체</td>
+</tr>
+<tr>
+<td>AI 모델 지시사항 (SKILL.md 내용)</td>
+<td>내 컴퓨터 다른 파일</td>
+</tr>
+<tr>
+<td>—</td>
+<td>비밀번호·계정 정보</td>
+</tr>
+</tbody>
+</table>
+<h3 id="개인정보-안전-원칙">개인정보 안전 원칙</h3>
+<ul>
+<li>이 스킬은 이름·전화번호·주소·학교명 등 <strong>개인정보 입력을
+유도하지 않습니다</strong></li>
+<li>입력란에 개인정보를 넣지 마세요 — AI 서버 처리 기록에 남을 수
+있습니다</li>
+<li>스킬 자체는 코드를 실행하지 않습니다 (순수 텍스트 질문·답변)</li>
+</ul>
+<h3 id="ai-서버-정책">AI 서버 정책</h3>
+<ul>
+<li>Claude 사용 시: Anthropic 개인정보 처리방침 적용
+(<code>anthropic.com/privacy</code>)</li>
+<li>Codex 사용 시: OpenAI 개인정보 처리방침 적용
+(<code>openai.com/privacy</code>)</li>
+</ul>
+<h3 id="이-도구-자체의-보안">이 도구 자체의 보안</h3>
+<ul>
+<li>서버 없음, DB 없음, 인증 없음</li>
+<li>네트워크 통신: AI 도구가 직접 처리 (이 스킬이 별도 통신 없음)</li>
+<li>스킬 파일은 내 컴퓨터 로컬에만 저장</li>
+</ul>
+<hr />
+<h2 id="아키텍처-파일-구조">11. 아키텍처 — 파일 구조</h2>
+<pre><code>SoDam-Prompt-Eng/                       ← 저장소 루트
+│
+├── skills/                         ← 스킬 10개 폴더
+│   ├── 독후감-도우미/
+│   │   └── SKILL.md               ← 스킬 정의 파일
+│   ├── 정중한-메시지/
+│   │   └── SKILL.md
+│   ├── 긴글-3줄요약/
+│   │   └── SKILL.md
+│   ├── 쉽게-설명해줘/
+│   │   └── SKILL.md
+│   ├── 공부-계획표/
+│   │   └── SKILL.md
+│   ├── 자기소개-다듬기/
+│   │   └── SKILL.md
+│   ├── sns-캡션/
+│   │   └── SKILL.md
+│   ├── 영어-자연스럽게/
+│   │   └── SKILL.md
+│   ├── 발표-대본/
+│   │   └── SKILL.md
+│   └── 부탁-사과-메시지/
+│       └── SKILL.md
+│
+├── README.md                       ← 이 파일 (한국어 가이드)
+├── README_EN.md                    ← 영문 가이드
+├── README.pdf                      ← PDF 버전 (한국어)
+├── README_EN.pdf                   ← PDF 버전 (영문)
+├── LICENSE                         ← Apache-2.0 라이선스
+├── NOTICE                          ← 저작권 고지
+└── .gitignore                      ← git 제외 목록</code></pre>
+<h3 id="skill.md-파일-구조">SKILL.md 파일 구조</h3>
+<pre><code>---
+name: 독후감-도우미                  ← 스킬 이름
+description: 언제 사용하는지 설명     ← AI가 자동 선택할 때 읽는 부분
+argument-hint: [책 제목] [느낀 점]   ← 입력 힌트
+---
+
+[AI 지시사항 본문]                   ← AI가 실행할 내용
+
+$1 = 첫 번째 입력값 (책 제목)
+$2 = 두 번째 입력값 (느낀 점)</code></pre>
+<hr />
+<h2 id="파일-문서-위치">12. 파일 · 문서 위치</h2>
+<h3 id="설치-후-스킬-파일-위치">설치 후 스킬 파일 위치</h3>
+<table>
+<thead>
+<tr>
+<th>플랫폼</th>
+<th>설치 경로</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code (Windows)</td>
+<td><code>C:\Users\사용자명\.claude\skills\</code></td>
+</tr>
+<tr>
+<td>Claude Code (Mac)</td>
+<td><code>~/.claude/skills/</code></td>
+</tr>
+<tr>
+<td>Claude Code (Linux)</td>
+<td><code>~/.claude/skills/</code></td>
+</tr>
+<tr>
+<td>Codex</td>
+<td><code>~/.codex/skills/</code></td>
+</tr>
+<tr>
+<td>Claude.ai 앱</td>
+<td>클라우드 저장 (로컬 없음)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="이-저장소-파일-위치">이 저장소 파일 위치</h3>
+<table>
+<thead>
+<tr>
+<th>파일</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skills/*/SKILL.md</code></td>
+<td>스킬 정의 파일 (핵심)</td>
+</tr>
+<tr>
+<td><code>README.md</code></td>
+<td>한국어 가이드 (이 파일)</td>
+</tr>
+<tr>
+<td><code>README_EN.md</code></td>
+<td>영문 가이드</td>
+</tr>
+<tr>
+<td><code>README.pdf</code></td>
+<td>PDF 한국어</td>
+</tr>
+<tr>
+<td><code>README_EN.pdf</code></td>
+<td>PDF 영문</td>
+</tr>
+<tr>
+<td><code>LICENSE</code></td>
+<td>Apache-2.0 전문</td>
+</tr>
+<tr>
+<td><code>NOTICE</code></td>
+<td>저작권 고지</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="문제-오류-대처-방법">13. 문제 · 오류 대처 방법</h2>
+<h3 id="q1.-슬래시-명령어-독후감-도우미-가-나타나지-않아요">Q1. 슬래시
+명령어 <code>/독후감-도우미</code> 가 나타나지 않아요</h3>
+<p><strong>원인</strong>: 스킬 파일이 올바른 위치에 없거나 Claude Code를
+재시작해야 함</p>
+<p><strong>해결</strong>: 1. 스킬 파일 위치 확인:
+<code>bash    ls ~/.claude/skills/</code> <code>독후감-도우미</code>
+폴더가 보여야 합니다.</p>
+<ol start="2" type="1">
+<li><p>없으면 다시 복사:</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div></li>
+<li><p>Claude Code 종료 후 재시작:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
+</ol>
+<hr />
+<h3 id="q2.-자연어로-말했는데-스킬을-안-쓰고-일반-답변만-해요">Q2.
+자연어로 말했는데 스킬을 안 쓰고 일반 답변만 해요</h3>
+<p><strong>원인</strong>: 자연어 매칭은 AI가 상황을 판단합니다. 더
+구체적으로 말하면 됩니다.</p>
+<p><strong>해결</strong>: 더 직접적으로 요청하세요:</p>
+<pre><code>독후감 스킬 써서 독후감 써줘. 책: 어린 왕자, 느낀 점: 어른도 아이 마음이 필요해</code></pre>
+<p>또는 슬래시 명령어를 직접 쓰세요:</p>
+<pre><code>/독후감-도우미 &quot;어린 왕자&quot; &quot;어른도 아이 마음이 필요해&quot;</code></pre>
+<hr />
+<h3 id="q3.-claude.ai-앱에서-zip-업로드가-안-돼요">Q3. Claude.ai 앱에서
+ZIP 업로드가 안 돼요</h3>
+<p><strong>원인</strong>: 파일 형식 또는 크기 문제</p>
+<p><strong>해결</strong>: 1. ZIP 파일이 올바르게 압축되었는지 확인 2.
+<code>skills</code> 폴더만 압축하거나 저장소 전체를 ZIP으로 다운로드해
+업로드 시도 3. 브라우저 새로고침 후 재시도 4. 다른 브라우저(크롬→엣지)
+시도</p>
+<hr />
+<h3 id="q4.-결과가-이상해요-기대와-달라요">Q4. 결과가 이상해요 / 기대와
+달라요</h3>
+<p><strong>원인</strong>: AI 결과물은 매번 조금씩 달라질 수
+있습니다.</p>
+<p><strong>해결</strong>: 1. 더 구체적인 정보를 입력하세요 (짧은
+힌트보다 상세한 내용이 좋습니다) 2. 마음에 안 들면 “다시 써줘” 또는 “더
+쉽게 써줘” 요청 3. 같은 스킬을 다시 실행하면 다른 버전이 나올 수
+있습니다</p>
+<hr />
+<h3 id="q5.-cp-no-such-file-오류가-나요">Q5.
+<code>cp: no such file</code> 오류가 나요</h3>
+<p><strong>원인</strong>: 경로가 틀렸거나 <code>.claude/skills</code>
+폴더가 없음</p>
+<p><strong>해결</strong>:</p>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 폴더 먼저 만들기</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 다시 복사</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+<hr />
+<h3 id="q6.-windows에서-cp-명령어가-안-돼요">Q6. Windows에서
+<code>cp</code> 명령어가 안 돼요</h3>
+<p><strong>원인</strong>: Windows 기본 터미널(PowerShell/CMD)은
+<code>cp</code> 대신 <code>Copy-Item</code> 사용</p>
+<p><strong>해결 (PowerShell)</strong>:</p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">.</span>\skills\<span class="op">*</span> <span class="va">$env</span><span class="op">:</span><span class="va">USERPROFILE</span>\<span class="op">.</span><span class="fu">claude</span>\skills\</span></code></pre></div>
+<p>또는 파일 탐색기에서 직접 복사: 1. <code>skills</code> 폴더 안의 모든
+폴더 선택 → Ctrl+C 2. <code>C:\Users\사용자명\.claude\skills\</code>
+폴더 열기 → Ctrl+V</p>
+<hr />
+<h3 id="q7.-한글-폴더명이-깨져요">Q7. 한글 폴더명이 깨져요</h3>
+<p><strong>원인</strong>: 터미널 인코딩 문제</p>
+<p><strong>해결</strong>:</p>
+<div class="sourceCode" id="cb38"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UTF-8 설정 확인</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD 기준</span></span></code></pre></div>
+<p>또는 파일 탐색기를 사용해 직접 폴더를 복사하세요.</p>
+<hr />
+<h2 id="faq-자주-묻는-질문">14. FAQ — 자주 묻는 질문</h2>
+<p><strong>Q: 무료로 쓸 수 있나요?</strong> A: 이 스킬 파일 자체는
+무료(Apache-2.0)입니다. AI 사용 요금은 Claude·OpenAI 등 가입한 서비스의
+요금제를 따릅니다. Claude 무료 플랜으로도 사용 가능합니다.</p>
+<hr />
+<p><strong>Q: 인터넷이 없어도 되나요?</strong> A: 아니요. AI 모델이
+인터넷(AI 회사 서버)에 연결되어야 합니다. SKILL.md 파일은 로컬에 있지만,
+실제 글 생성은 서버에서 이루어집니다.</p>
+<hr />
+<p><strong>Q: 스마트폰에서도 쓸 수 있나요?</strong> A: Claude.ai 앱(웹
+버전)은 스마트폰 브라우저에서도 작동합니다. 다만 스킬 업로드는
+컴퓨터에서 하는 것이 편합니다.</p>
+<hr />
+<p><strong>Q: 10개 중 일부만 설치할 수 있나요?</strong> A: 네. 원하는
+스킬 폴더만 골라서 복사하면 됩니다:</p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/독후감-도우미 ~/.claude/skills/</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/정중한-메시지 ~/.claude/skills/</span></code></pre></div>
+<hr />
+<p><strong>Q: 새 스킬을 직접 만들 수 있나요?</strong> A: 네.
+<code>skills/</code> 폴더에 새 폴더를 만들고 <code>SKILL.md</code>
+파일을 작성하면 됩니다. 형식은 기존 파일을 참고하세요.</p>
+<hr />
+<p><strong>Q: 결과물을 상업적으로 사용해도 되나요?</strong> A: AI가
+생성한 텍스트의 상업적 사용은 각 AI 서비스(Anthropic, OpenAI 등)의
+이용약관을 따릅니다. 이 스킬 파일 자체의 수정·배포는 Apache-2.0 조건
+하에 상업적으로도 허용됩니다. 자세한 내용은 15장 참조.</p>
+<hr />
+<p><strong>Q: 이 스킬이 내 개인 데이터를 학습에 사용하나요?</strong> A:
+이 스킬 파일 자체는 데이터를 수집하지 않습니다. AI 서비스의 학습 데이터
+사용 정책은 각 서비스(Anthropic, OpenAI 등)의 정책에 따릅니다.</p>
+<hr />
+<p><strong>Q: Windows · Mac · Linux 모두 되나요?</strong> A: 네.
+SKILL.md 파일은 텍스트 파일이므로 운영체제 무관합니다. 설치 명령어만
+OS에 맞게 쓰면 됩니다.</p>
+<hr />
+<p><strong>Q: 스킬을 삭제하고 싶어요</strong> A: 설치한 폴더를 지우면
+됩니다:</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.claude/skills/독후감-도우미</span></code></pre></div>
+<p>Claude.ai 앱: Customize → Skills → 해당 스킬 → 삭제</p>
+<hr />
+<p><strong>Q: 업데이트가 있으면 어떻게 알아요?</strong> A: GitHub
+저장소(<code>sodam-ai/SoDam-Prompt-Eng</code>)에서
+<strong>Watch</strong> 또는 <strong>Star</strong>를 눌러두면 업데이트
+알림을 받을 수 있습니다.</p>
+<hr />
+<p><strong>Q: 오류나 개선 사항을 어떻게 알려요?</strong> A: GitHub
+Issues 탭에서 새 이슈를 열어주세요. 한국어로 작성해도 됩니다.</p>
+<hr />
+<p><strong>Q: 다른 언어(영어, 일본어 등)로도 쓸 수 있나요?</strong> A:
+스킬 본문은 한국어 출력으로 설계되었습니다. 영어 입력에도 반응하지만,
+결과는 한국어로 나올 수 있습니다. 다국어 버전은 별도 스킬로 만들어야
+합니다.</p>
+<hr />
+<h2 id="법률-저작권-라이선스-상업적-용도">15. 법률 · 저작권 · 라이선스 ·
+상업적 용도</h2>
+<h3 id="라이선스-요약">라이선스 요약</h3>
+<p>이 저장소의 모든 스킬 파일 및 문서는 <strong>Apache License
+2.0</strong> 으로 배포됩니다.</p>
+<h4 id="할-수-있는-것">할 수 있는 것</h4>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>개인 사용</td>
+<td>제한 없이 사용</td>
+</tr>
+<tr>
+<td>상업적 사용</td>
+<td>제품·서비스에 포함 가능</td>
+</tr>
+<tr>
+<td>수정</td>
+<td>스킬 내용 자유롭게 변경 가능</td>
+</tr>
+<tr>
+<td>재배포</td>
+<td>수정본 포함해 재배포 가능</td>
+</tr>
+<tr>
+<td>서브라이선스</td>
+<td>조건 내 가능</td>
+</tr>
+</tbody>
+</table>
+<h4 id="반드시-해야-하는-것">반드시 해야 하는 것</h4>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>저작권 표시</td>
+<td><code>Copyright 2026 SoDam AI Studio</code> 표기 필수</td>
+</tr>
+<tr>
+<td>라이선스 고지</td>
+<td>Apache-2.0 명시 필수</td>
+</tr>
+<tr>
+<td>변경 사항 표시</td>
+<td>수정했다면 변경 내용 명시</td>
+</tr>
+<tr>
+<td>NOTICE 파일 유지</td>
+<td>배포 시 NOTICE 파일 포함 필수</td>
+</tr>
+</tbody>
+</table>
+<h4 id="할-수-없는-것-불허">할 수 없는 것 (불허)</h4>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>상표 사용</td>
+<td>“SoDam” 이름·로고 무단 사용 금지</td>
+</tr>
+<tr>
+<td>보증 주장</td>
+<td>이 소프트웨어가 특정 결과를 보장한다고 허위 주장 금지</td>
+</tr>
+<tr>
+<td>저작자 사칭</td>
+<td>원 저작자인 척 허위 표기 금지</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="상업적-사용-상세-안내">상업적 사용 상세 안내</h3>
+<p><strong>이 스킬 파일(Apache-2.0)을 상업적으로
+사용하려면:</strong></p>
+<ol type="1">
+<li>저작권 표시: <code>Copyright 2026 SoDam AI Studio</code> 를 어딘가에
+명시</li>
+<li>라이선스 고지: Apache-2.0 라이선스임을 밝힘</li>
+<li>NOTICE 파일을 배포물에 포함</li>
+<li>수정했다면 “수정된 버전임”을 명시</li>
+</ol>
+<p><strong>AI 생성 결과물(스킬 실행 후 나온 텍스트)의 상업적
+사용:</strong></p>
+<ul>
+<li>Anthropic(Claude) 이용약관:
+<code>anthropic.com/legal/consumer-usage-policy</code></li>
+<li>OpenAI(Codex) 이용약관: <code>openai.com/terms</code></li>
+<li>각 서비스 약관에서 AI 출력물의 소유권·상업적 사용을 확인하세요</li>
+</ul>
+<hr />
+<h3 id="면책-조항">면책 조항</h3>
+<pre><code>이 소프트웨어는 &quot;있는 그대로(AS IS)&quot; 제공됩니다.
+명시적이든 묵시적이든 어떠한 보증도 하지 않습니다.
+상품성, 특정 목적에의 적합성, 비침해성에 대한 묵시적 보증 포함.
+
+AI가 생성한 결과물의 정확성, 완전성, 적합성을 보장하지 않습니다.
+중요한 결정(의료, 법률, 금융 등)에 AI 결과를 그대로 사용하지 마세요.</code></pre>
+<hr />
+<h3 id="개인정보-처리">개인정보 처리</h3>
+<p>이 소프트웨어 자체는 개인정보를 수집·처리·저장하지 않습니다. 사용자가
+AI 서비스(Claude, Codex 등)에 입력한 데이터는 해당 서비스의 개인정보
+처리방침을 따릅니다.</p>
+<hr />
+<h3 id="미성년자-보호">미성년자 보호</h3>
+<ul>
+<li><strong>만 14세 미만</strong>: 보호자의 동의 및 지도 하에 사용
+권장</li>
+<li>스킬은 위험·폭력·성적 내용 생성을 유도하지 않도록 설계</li>
+<li>실제 출력 모더레이션은 AI 서비스(Claude, Codex)가 처리</li>
+</ul>
+<hr />
+<h2 id="연락처-저작권-고지">16. 연락처 · 저작권 고지</h2>
+<pre><code>Copyright 2026 SoDam AI Studio
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</code></pre>
+<hr />
+<h2 id="업데이트-내역">17. 업데이트 내역</h2>
+<details>
+<summary>
+<strong>2026-07-11 — 전환 마무리 정리 (클릭해서 펼치기)</strong>
+</summary>
+<ul>
+<li>Next.js+Supabase 웹앱 방향을 완전히 정리(git 추적 해제, 디스크는
+보존)</li>
+<li>저장소명을 <code>SoDam-Prompt-Eng</code>로 통일 (문서 전체
+반영)</li>
+<li>스킬 10개 정적 QA 수행 — 명세 이탈 3건 발견·수정(단일 입력 변수
+표기, 개인정보 안내 누락, 계획표 출력 상한)</li>
+<li>README에 “공식 출처만 신뢰” 설치 안전 경고 + “무코드(★Safe)” 배지
+추가</li>
+<li><code>P4_검수_가이드.md</code>(사람 검수용 50항목 체크리스트)
+신설</li>
+<li><code>GUIDE.md</code>/<code>GUIDE_EN.md</code>(왕초보 가이드,
+MD+HTML, 한/영) 신설</li>
+<li>lint·타입체크·프로덕션 빌드 전부 통과 확인(종료코드 0), 민감정보
+노출 0건 확인</li>
+</ul>
+</details>
+<details>
+<summary>
+<strong>2026-06-29 — 스킬 10개 첫 공개</strong>
+</summary>
+<ul>
+<li>독후감-도우미·정중한-메시지·긴글-3줄요약·쉽게-설명해줘·공부-계획표·자기소개-다듬기·sns-캡션·영어-자연스럽게·발표-대본·부탁-사과-메시지
+10개 스킬 최초 공개</li>
+<li>Apache-2.0 라이선스로 배포, LICENSE·NOTICE 파일 추가
+</details></li>
+</ul>
+<blockquote>
+<p>이후 업데이트는 이 섹션에 계속 추가됩니다.</p>
+</blockquote>
+<p><strong>문의 · 버그 리포트</strong>: GitHub Issues
+(<code>sodam-ai/SoDam-Prompt-Eng</code>) <strong>이메일</strong>: 저장소
+Issues 탭을 우선 이용해 주세요</p>
+<hr />
+<p><em>SoDam Prompt — SoDam 6-Engine의 1단계. 가장 쉬운 AI 글쓰기 첫
+입구.</em> <em>Prompt → Context → Loop → Harness → Agentic (+
+Reverse)</em></p>
+</body>
+</html>

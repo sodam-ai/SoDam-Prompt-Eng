@@ -25,6 +25,7 @@
 14. [FAQ — 자주 묻는 질문](#14-faq--자주-묻는-질문)
 15. [법률 · 저작권 · 라이선스 · 상업적 용도](#15-법률--저작권--라이선스--상업적-용도)
 16. [연락처 · 저작권 고지](#16-연락처--저작권-고지)
+17. [업데이트 내역](#17-업데이트-내역)
 
 ---
 
@@ -906,6 +907,31 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+---
+
+## 17. 업데이트 내역
+
+<details>
+<summary><strong>2026-07-11 — 전환 마무리 정리 (클릭해서 펼치기)</strong></summary>
+
+- Next.js+Supabase 웹앱 방향을 완전히 정리(git 추적 해제, 디스크는 보존)
+- 저장소명을 `SoDam-Prompt-Eng`로 통일 (문서 전체 반영)
+- 스킬 10개 정적 QA 수행 — 명세 이탈 3건 발견·수정(단일 입력 변수 표기, 개인정보 안내 누락, 계획표 출력 상한)
+- README에 "공식 출처만 신뢰" 설치 안전 경고 + "무코드(★Safe)" 배지 추가
+- `P4_검수_가이드.md`(사람 검수용 50항목 체크리스트) 신설
+- `GUIDE.md`/`GUIDE_EN.md`(왕초보 가이드, MD+HTML, 한/영) 신설
+- lint·타입체크·프로덕션 빌드 전부 통과 확인(종료코드 0), 민감정보 노출 0건 확인
+
+</details>
+
+<details>
+<summary><strong>2026-06-29 — 스킬 10개 첫 공개</strong></summary>
+
+- 독후감-도우미·정중한-메시지·긴글-3줄요약·쉽게-설명해줘·공부-계획표·자기소개-다듬기·sns-캡션·영어-자연스럽게·발표-대본·부탁-사과-메시지 10개 스킬 최초 공개
+- Apache-2.0 라이선스로 배포, LICENSE·NOTICE 파일 추가</details>
+
+> 이후 업데이트는 이 섹션에 계속 추가됩니다.
 
 **문의 · 버그 리포트**: GitHub Issues (`sodam-ai/SoDam-Prompt-Eng`)
 **이메일**: 저장소 Issues 탭을 우선 이용해 주세요
