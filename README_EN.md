@@ -144,6 +144,14 @@ cd SoDam-Prompt-Eng
 
 ---
 
+### Before You Install (Safety Check)
+
+- ✅ **No-code (★ Safe)** — All 10 skills in this repository are pure text. No shell commands, program execution, or external tool calls of any kind.
+- ✅ **Verify the source** — Only download from the official repository (`sodam-ai/SoDam-Prompt-Eng`). Files from other sources may differ in content.
+- ✅ **Preview before installing** — Click any `skills/<name>/SKILL.md` file directly on GitHub to review its contents before you install.
+
+---
+
 ## 5. Quick Start
 
 ### Start in 5 Minutes with the Claude.ai App
