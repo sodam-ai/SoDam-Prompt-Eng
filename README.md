@@ -583,8 +583,6 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │
 ├── README.md                       ← 이 파일 (한국어 가이드)
 ├── README_EN.md                    ← 영문 가이드
-├── README.pdf                      ← PDF 버전 (한국어)
-├── README_EN.pdf                   ← PDF 버전 (영문)
 ├── LICENSE                         ← Apache-2.0 라이선스
 ├── NOTICE                          ← 저작권 고지
 └── .gitignore                      ← git 제외 목록
@@ -626,8 +624,6 @@ $2 = 두 번째 입력값 (느낀 점)
 | `skills/*/SKILL.md` | 스킬 정의 파일 (핵심) |
 | `README.md` | 한국어 가이드 (이 파일) |
 | `README_EN.md` | 영문 가이드 |
-| `README.pdf` | PDF 한국어 |
-| `README_EN.pdf` | PDF 영문 |
 | `LICENSE` | Apache-2.0 전문 |
 | `NOTICE` | 저작권 고지 |
 

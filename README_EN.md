@@ -581,8 +581,6 @@ SoDam-Prompt-Eng/                       ← Repository root
 │
 ├── README.md                       ← Korean guide (this file in Korean)
 ├── README_EN.md                    ← English guide (this file)
-├── README.pdf                      ← PDF version (Korean)
-├── README_EN.pdf                   ← PDF version (English)
 ├── LICENSE                         ← Apache-2.0 full text
 ├── NOTICE                          ← Copyright notice
 └── .gitignore                      ← Git exclusion list
@@ -624,8 +622,6 @@ $2 = Second input value (impression)
 | `skills/*/SKILL.md` | Skill definition files (core) |
 | `README.md` | Korean guide |
 | `README_EN.md` | English guide (this file) |
-| `README.pdf` | PDF — Korean |
-| `README_EN.pdf` | PDF — English |
 | `LICENSE` | Apache-2.0 full text |
 | `NOTICE` | Copyright notice |
 
