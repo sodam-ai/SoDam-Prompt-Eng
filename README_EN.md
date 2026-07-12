@@ -133,7 +133,7 @@ Install the Codex CLI from the official Codex site. (Codex account required)
 1. On this repository page, click the green **Code** button
 2. Click **Download ZIP**
 3. Extract the ZIP to any folder on your computer
-4. A folder named `SoDam-Prompt-Eng-main` or `SoDam-Prompt-Eng-main` will be created
+4. A folder named `SoDam-Prompt-Eng-main` will be created
 
 **Method 2: git clone (if git is installed)**
 
@@ -170,7 +170,7 @@ cd SoDam-Prompt-Eng
 Please write a book report. The book is "The Little Prince" and my impression is "Adults need a child's heart too."
 ```
 
-AI will automatically use the `독후감-도우미` skill and produce the book report.
+AI will automatically use the `book-report-helper` (독후감-도우미) skill and produce the book report.
 
 ---
 
@@ -557,26 +557,26 @@ AI Tool (Claude / Codex / etc.)
 ```
 SoDam-Prompt-Eng/                       ← Repository root
 │
-├── skills/                         ← 10 skill folders
-│   ├── 독후감-도우미/
+├── skills/                         ← 10 skill folders (English slugs since 2026-07-13)
+│   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← Skill definition file
-│   ├── 정중한-메시지/
+│   ├── polite-message/             ← 정중한-메시지
 │   │   └── SKILL.md
-│   ├── 긴글-3줄요약/
+│   ├── long-text-summary/          ← 긴글-3줄요약
 │   │   └── SKILL.md
-│   ├── 쉽게-설명해줘/
+│   ├── explain-simply/             ← 쉽게-설명해줘
 │   │   └── SKILL.md
-│   ├── 공부-계획표/
+│   ├── study-planner/              ← 공부-계획표
 │   │   └── SKILL.md
-│   ├── 자기소개-다듬기/
+│   ├── self-intro-polish/          ← 자기소개-다듬기
 │   │   └── SKILL.md
-│   ├── sns-캡션/
+│   ├── sns-caption/                ← sns-캡션
 │   │   └── SKILL.md
-│   ├── 영어-자연스럽게/
+│   ├── natural-english/            ← 영어-자연스럽게
 │   │   └── SKILL.md
-│   ├── 발표-대본/
+│   ├── presentation-script/        ← 발표-대본
 │   │   └── SKILL.md
-│   └── 부탁-사과-메시지/
+│   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
 ├── README.md                       ← Korean guide (this file in Korean)
@@ -590,7 +590,7 @@ SoDam-Prompt-Eng/                       ← Repository root
 
 ```
 ---
-name: 독후감-도우미                  ← Skill name
+name: book-report-helper            ← Skill name (must match folder name)
 description: When and how to use   ← Read by AI for auto-selection
 argument-hint: [Book Title] [Impression]  ← Input hint
 ---
@@ -629,7 +629,7 @@ $2 = Second input value (impression)
 
 ## 13. Troubleshooting
 
-### Q1. The slash command `/독후감-도우미` doesn't appear
+### Q1. The slash command `/book-report-helper` doesn't appear
 
 **Cause**: Skill file is not in the correct location, or Claude Code needs to be restarted
 
@@ -638,7 +638,7 @@ $2 = Second input value (impression)
    ```bash
    ls ~/.claude/skills/
    ```
-   You should see a `독후감-도우미` folder.
+   You should see a `book-report-helper` folder.
 
 2. If missing, copy again:
    ```bash
@@ -871,6 +871,17 @@ Do not use AI output directly for critical decisions
 
 ---
 
+### Legal Review Status (Strict Disclosure)
+
+This project **has not yet undergone formal legal review (attorney review).** Two items in particular remain legally unresolved:
+
+1. **Copyright ownership of AI-generated output**: Who owns the copyright to text produced by running a skill (book reports, messages, etc.) varies by jurisdiction and by each AI service's terms, and remains a legally uncertain area.
+2. **References to "Claude," "Anthropic," "Codex," "OpenAI," etc.**: This repository mentions these names solely to describe compatibility. There is no affiliation, sponsorship, or endorsement relationship with these companies (see the NOTICE file). Check each company's official trademark guidelines separately for their name/logo usage policy.
+
+**If you plan large-scale commercial use, redistribution, or inclusion in a paid service, we strongly recommend obtaining independent legal counsel.** This document and the LICENSE/NOTICE files are provided for general informational purposes and do not substitute for legal advice. (For reference only — no legal guarantee is made; you are responsible for verifying with an attorney.)
+
+---
+
 ### Personal Information Handling
 
 This software itself does not collect, process, or store personal information.
@@ -910,6 +921,18 @@ limitations under the License.
 ---
 
 ## 17. Update History
+
+<details>
+<summary><strong>2026-07-13 — Official plugin registration + English skill slugs + documentation reconciliation (click to expand)</strong></summary>
+
+- Added `.claude-plugin/plugin.json` and `marketplace.json` to formally register this as a Claude Code plugin (previously, natural-language auto-matching failed 10/10 in live testing — root cause traced to missing formal registration)
+- Renamed all 10 skill folders from Korean names to English slugs (e.g., `독후감-도우미` → `book-report-helper`) to address a skill-name encoding corruption issue (`sns---`) observed during live testing
+- Corrected 5 PRD design documents, `CHECKPOINT.md`, and this guide to match the actual current code state (leftover Korean folder paths, stale completion status, etc.)
+- Ran 4 skills (book-report-helper, long-text-summary, request-apology-message, sns-caption) through real AI model execution to confirm spec compliance; passed adversarial tests for personal-info leakage, system-prompt extraction, and exaggerated-ad-copy injection (the remaining 6 skills passed only static checks — live execution testing is not yet done)
+- Performed a security review against OWASP ASVS — zero exposed secrets (checked working tree and full commit history), zero vulnerabilities found
+- **Still outstanding**: whether skills actually auto-trigger from natural language inside Claude Code / the Claude.ai app has not yet been confirmed by a human opening a fresh session as of this entry — this is the one item AI cannot verify on its own by design.
+
+</details>
 
 <details>
 <summary><strong>2026-07-11 — Finished the transition cleanup (click to expand)</strong></summary>

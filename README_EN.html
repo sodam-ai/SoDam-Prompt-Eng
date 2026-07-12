@@ -312,8 +312,8 @@ required)</p>
 button</li>
 <li>Click <strong>Download ZIP</strong></li>
 <li>Extract the ZIP to any folder on your computer</li>
-<li>A folder named <code>SoDam-Prompt-Eng-main</code> or
-<code>SoDam-Prompt-Eng-main</code> will be created</li>
+<li>A folder named <code>SoDam-Prompt-Eng-main</code> will be
+created</li>
 </ol>
 <p><strong>Method 2: git clone (if git is installed)</strong></p>
 <p>In your terminal:</p>
@@ -348,8 +348,8 @@ your profile icon (top right) → <strong>Customize</strong></p>
 (blue)</p>
 <p><strong>Step 5</strong>: In the chat window, type naturally:</p>
 <pre><code>Please write a book report. The book is &quot;The Little Prince&quot; and my impression is &quot;Adults need a child&#39;s heart too.&quot;</code></pre>
-<p>AI will automatically use the <code>독후감-도우미</code> skill and
-produce the book report.</p>
+<p>AI will automatically use the <code>book-report-helper</code>
+(독후감-도우미) skill and produce the book report.</p>
 <hr />
 <h3 id="quick-start-with-claude-code">Quick Start with Claude Code</h3>
 <p><strong>Step 1</strong>: Copy skill files</p>
@@ -645,26 +645,26 @@ does not make separate network calls)</li>
 Structure</h2>
 <pre><code>SoDam-Prompt-Eng/                       ← Repository root
 │
-├── skills/                         ← 10 skill folders
-│   ├── 독후감-도우미/
+├── skills/                         ← 10 skill folders (English slugs since 2026-07-13)
+│   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← Skill definition file
-│   ├── 정중한-메시지/
+│   ├── polite-message/             ← 정중한-메시지
 │   │   └── SKILL.md
-│   ├── 긴글-3줄요약/
+│   ├── long-text-summary/          ← 긴글-3줄요약
 │   │   └── SKILL.md
-│   ├── 쉽게-설명해줘/
+│   ├── explain-simply/             ← 쉽게-설명해줘
 │   │   └── SKILL.md
-│   ├── 공부-계획표/
+│   ├── study-planner/              ← 공부-계획표
 │   │   └── SKILL.md
-│   ├── 자기소개-다듬기/
+│   ├── self-intro-polish/          ← 자기소개-다듬기
 │   │   └── SKILL.md
-│   ├── sns-캡션/
+│   ├── sns-caption/                ← sns-캡션
 │   │   └── SKILL.md
-│   ├── 영어-자연스럽게/
+│   ├── natural-english/            ← 영어-자연스럽게
 │   │   └── SKILL.md
-│   ├── 발표-대본/
+│   ├── presentation-script/        ← 발표-대본
 │   │   └── SKILL.md
-│   └── 부탁-사과-메시지/
+│   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
 ├── README.md                       ← Korean guide (this file in Korean)
@@ -674,7 +674,7 @@ Structure</h2>
 └── .gitignore                      ← Git exclusion list</code></pre>
 <h3 id="skill.md-file-structure">SKILL.md File Structure</h3>
 <pre><code>---
-name: 독후감-도우미                  ← Skill name
+name: book-report-helper            ← Skill name (must match folder name)
 description: When and how to use   ← Read by AI for auto-selection
 argument-hint: [Book Title] [Impression]  ← Input hint
 ---
@@ -750,13 +750,13 @@ After Installation</h3>
 </table>
 <hr />
 <h2 id="troubleshooting">13. Troubleshooting</h2>
-<h3 id="q1.-the-slash-command-독후감-도우미-doesnt-appear">Q1. The slash
-command <code>/독후감-도우미</code> doesn’t appear</h3>
+<h3 id="q1.-the-slash-command-book-report-helper-doesnt-appear">Q1. The
+slash command <code>/book-report-helper</code> doesn’t appear</h3>
 <p><strong>Cause</strong>: Skill file is not in the correct location, or
 Claude Code needs to be restarted</p>
 <p><strong>Solution</strong>: 1. Check skill file location:
 <code>bash    ls ~/.claude/skills/</code> You should see a
-<code>독후감-도우미</code> folder.</p>
+<code>book-report-helper</code> folder.</p>
 <ol start="2" type="1">
 <li><p>If missing, copy again:</p>
 <div class="sourceCode" id="cb32"><pre
@@ -1003,6 +1003,30 @@ suitability of AI-generated content.
 Do not use AI output directly for critical decisions
 (medical, legal, financial, etc.).</code></pre>
 <hr />
+<h3 id="legal-review-status-strict-disclosure">Legal Review Status
+(Strict Disclosure)</h3>
+<p>This project <strong>has not yet undergone formal legal review
+(attorney review).</strong> Two items in particular remain legally
+unresolved:</p>
+<ol type="1">
+<li><strong>Copyright ownership of AI-generated output</strong>: Who
+owns the copyright to text produced by running a skill (book reports,
+messages, etc.) varies by jurisdiction and by each AI service’s terms,
+and remains a legally uncertain area.</li>
+<li><strong>References to “Claude,” “Anthropic,” “Codex,” “OpenAI,”
+etc.</strong>: This repository mentions these names solely to describe
+compatibility. There is no affiliation, sponsorship, or endorsement
+relationship with these companies (see the NOTICE file). Check each
+company’s official trademark guidelines separately for their name/logo
+usage policy.</li>
+</ol>
+<p><strong>If you plan large-scale commercial use, redistribution, or
+inclusion in a paid service, we strongly recommend obtaining independent
+legal counsel.</strong> This document and the LICENSE/NOTICE files are
+provided for general informational purposes and do not substitute for
+legal advice. (For reference only — no legal guarantee is made; you are
+responsible for verifying with an attorney.)</p>
+<hr />
 <h3 id="personal-information-handling">Personal Information
 Handling</h3>
 <p>This software itself does not collect, process, or store personal
@@ -1038,6 +1062,39 @@ limitations under the License.</code></pre>
 use the repository Issues tab as the primary contact</p>
 <hr />
 <h2 id="update-history">17. Update History</h2>
+<details>
+<summary>
+<strong>2026-07-13 — Official plugin registration + English skill slugs
++ documentation reconciliation (click to expand)</strong>
+</summary>
+<ul>
+<li>Added <code>.claude-plugin/plugin.json</code> and
+<code>marketplace.json</code> to formally register this as a Claude Code
+plugin (previously, natural-language auto-matching failed 10/10 in live
+testing — root cause traced to missing formal registration)</li>
+<li>Renamed all 10 skill folders from Korean names to English slugs
+(e.g., <code>독후감-도우미</code> → <code>book-report-helper</code>) to
+address a skill-name encoding corruption issue (<code>sns---</code>)
+observed during live testing</li>
+<li>Corrected 5 PRD design documents, <code>CHECKPOINT.md</code>, and
+this guide to match the actual current code state (leftover Korean
+folder paths, stale completion status, etc.)</li>
+<li>Ran 4 skills (book-report-helper, long-text-summary,
+request-apology-message, sns-caption) through real AI model execution to
+confirm spec compliance; passed adversarial tests for personal-info
+leakage, system-prompt extraction, and exaggerated-ad-copy injection
+(the remaining 6 skills passed only static checks — live execution
+testing is not yet done)</li>
+<li>Performed a security review against OWASP ASVS — zero exposed
+secrets (checked working tree and full commit history), zero
+vulnerabilities found</li>
+<li><strong>Still outstanding</strong>: whether skills actually
+auto-trigger from natural language inside Claude Code / the Claude.ai
+app has not yet been confirmed by a human opening a fresh session as of
+this entry — this is the one item AI cannot verify on its own by
+design.</li>
+</ul>
+</details>
 <details>
 <summary>
 <strong>2026-07-11 — Finished the transition cleanup (click to

@@ -184,6 +184,17 @@ Write an apology message to my teacher for turning in homework late.
 ## 9. Update History Summary
 
 <details>
+<summary><strong>2026-07-13 — Official plugin registration + skill folder names switched to English (click to expand)</strong></summary>
+
+- This tool is now formally registered as a Claude Code "plugin" (previously, natural-language calling didn't always work reliably)
+- Renamed all 10 skill folders from Korean to English (e.g., 독후감-도우미 → book-report-helper). How you use the skills and what you say to trigger them hasn't changed
+- Reviewed and corrected the guide documents (including this one) to match the current actual state
+- Ran real attack tests trying to trick the AI into leaking personal info or breaking its own rules — all were successfully blocked
+- **Still unconfirmed**: whether this change actually fixed the natural-language auto-recognition issue needs to be confirmed by a human opening a brand-new chat session and testing it directly
+
+</details>
+
+<details>
 <summary><strong>2026-07-11 — Finished the transition cleanup (click to expand)</strong></summary>
 
 - Fully cleaned up the earlier "login website" plan (now only these 10 files are needed)
