@@ -1,0 +1,12 @@
+{
+  "name": "sodam-prompt",
+  "displayName": "SoDam Prompt",
+  "version": "0.1.0",
+  "description": "AI 처음 쓰는 초보자를 위한 한국어 글쓰기 스킬 10종 — 독후감·정중한 메시지·긴글 3줄요약·쉽게 설명·공부 계획표·자기소개 다듬기·SNS 캡션·영어 변환·발표 대본·부탁·사과 메시지. 슬래시 커맨드와 자연어 둘 다 지원.",
+  "author": {
+    "name": "SoDam AI Studio"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["education", "korean", "student", "writing", "beginner", "prompt-engineering"],
+  "skills": ["./skills/"]
+}
