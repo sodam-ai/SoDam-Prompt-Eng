@@ -1,5 +1,5 @@
 ---
-name: 영어-자연스럽게
+name: natural-english
 description: 한국어 문장을 주면 자연스러운 영어로 바꾸고 이유를 설명해준다. "영어로 써줘", "영작해줘", "이거 영어로 어떻게 해" 일 때 사용.
 argument-hint: [한국어 문장]
 ---

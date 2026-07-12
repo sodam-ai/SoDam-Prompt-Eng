@@ -1,5 +1,5 @@
 ---
-name: 긴글-3줄요약
+name: long-text-summary
 description: 긴 글을 붙여넣으면 핵심 3줄로 요약해준다. "요약해줘", "3줄로 줄여줘", "핵심만 알려줘" 일 때 사용.
 argument-hint: [요약할 글]
 ---

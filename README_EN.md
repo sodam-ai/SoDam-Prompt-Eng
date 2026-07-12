@@ -197,7 +197,7 @@ claude
 **Step 3**: Use a slash command
 
 ```
-/독후감-도우미 "The Little Prince" "Adults need a child's heart too"
+/book-report-helper "The Little Prince" "Adults need a child's heart too"
 ```
 
 Or in natural language:
@@ -217,7 +217,7 @@ Help me write a book report. The book is "Harry Potter" and I felt that courage 
 
 **Run**:
 - Natural language: `Write a book report. "The Little Prince", impression: "growth"`
-- Slash command: `/독후감-도우미 "Book Title" "Impression"`
+- Slash command: `/book-report-helper "Book Title" "Impression"`
 
 ---
 
@@ -229,7 +229,7 @@ Help me write a book report. The book is "Harry Potter" and I felt that courage 
 cp -r ./skills/* ~/.claude/skills/
 
 # To install individual skills only
-cp -r ./skills/독후감-도우미 ~/.claude/skills/
+cp -r ./skills/book-report-helper ~/.claude/skills/
 ```
 
 **Run**:
@@ -238,7 +238,7 @@ claude
 ```
 Then in chat:
 ```
-/독후감-도우미 "Book Title" "Impression"
+/book-report-helper "Book Title" "Impression"
 ```
 
 ---
@@ -252,7 +252,7 @@ cp -r ./skills/* ~/.codex/skills/
 
 **Run**:
 ```
-$독후감-도우미 "Book Title" "Impression"
+$book-report-helper "Book Title" "Impression"
 ```
 
 ---
@@ -262,7 +262,7 @@ $독후감-도우미 "Book Title" "Impression"
 Copy the desired skill's `SKILL.md` file into the skills folder (or instructions folder) of your respective tool.
 
 Cursor example:
-1. Copy `skills/독후감-도우미/SKILL.md` to Cursor's `.cursor/skills/` folder
+1. Copy `skills/book-report-helper/SKILL.md` to Cursor's `.cursor/skills/` folder
 2. In Cursor chat: `Write a book report`
 
 ---
@@ -279,7 +279,7 @@ Cursor example:
 
 **Example**:
 ```
-/독후감-도우미 "The Little Prince" "Adults need a child's heart too"
+/book-report-helper "The Little Prince" "Adults need a child's heart too"
 ```
 
 **Natural language also works**:
@@ -301,7 +301,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/정중한-메시지 "Homeroom Teacher" "I will be absent tomorrow due to a medical appointment"
+/polite-message "Homeroom Teacher" "I will be absent tomorrow due to a medical appointment"
 ```
 
 **Output**: Subject line + formal message body
@@ -317,7 +317,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/긴글-3줄요약 [paste full text here]
+/long-text-summary [paste full text here]
 ```
 
 **Output**: 3 key points (formatted with • bullets)
@@ -334,7 +334,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/쉽게-설명해줘 "photosynthesis" "10 years old"
+/explain-simply "photosynthesis" "10 years old"
 ```
 
 **Output**: 1 analogy + 3-sentence plain explanation
@@ -351,7 +351,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/공부-계획표 "Math midterm 80 points" "2 weeks"
+/study-planner "Math midterm 80 points" "2 weeks"
 ```
 
 **Output**: Day-by-day study schedule (with daily study amounts)
@@ -368,7 +368,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/자기소개-다듬기 "Name Kim Minjun, likes soccer, diligent" "Club application"
+/self-intro-polish "Name Kim Minjun, likes soccer, diligent" "Club application"
 ```
 
 **Output**: Polished self-introduction tailored to the context
@@ -385,7 +385,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/sns-캡션 "studying at a café with friends" "warm and fun"
+/sns-caption "studying at a café with friends" "warm and fun"
 ```
 
 **Output**: 2 caption versions + 5 hashtags
@@ -401,7 +401,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/영어-자연스럽게 "나는 오늘 학교에서 발표를 잘 했어"
+/natural-english "나는 오늘 학교에서 발표를 잘 했어"
 ```
 
 **Output**: Natural English sentence + Korean explanation of why it's phrased that way
@@ -418,7 +418,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/발표-대본 "importance of environmental protection" "5 minutes"
+/presentation-script "importance of environmental protection" "5 minutes"
 ```
 
 **Output**: Introduction–body–conclusion script (includes reading time estimate)
@@ -435,7 +435,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 **Example**:
 ```
-/부탁-사과-메시지 "submitted homework one day late" "teacher"
+/request-apology-message "submitted homework one day late" "teacher"
 ```
 
 **Output**: 2 versions — formal + casual
@@ -447,31 +447,31 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 ### Claude Code / Claude.ai App Slash Commands
 
 ```
-/독후감-도우미 [Book Title] [One-line Impression]
-/정중한-메시지 [Recipient] [Purpose (one line)]
-/긴글-3줄요약 [Full text to summarize]
-/쉽게-설명해줘 [Concept] [Listener's Age]
-/공부-계획표 [Subject/Goal] [Duration]
-/자기소개-다듬기 [Personal Notes] [Where it's used]
-/sns-캡션 [Situation] [Mood]
-/영어-자연스럽게 [Korean Sentence]
-/발표-대본 [Topic] [Presentation Duration]
-/부탁-사과-메시지 [Situation] [Relationship]
+/book-report-helper [Book Title] [One-line Impression]
+/polite-message [Recipient] [Purpose (one line)]
+/long-text-summary [Full text to summarize]
+/explain-simply [Concept] [Listener's Age]
+/study-planner [Subject/Goal] [Duration]
+/self-intro-polish [Personal Notes] [Where it's used]
+/sns-caption [Situation] [Mood]
+/natural-english [Korean Sentence]
+/presentation-script [Topic] [Presentation Duration]
+/request-apology-message [Situation] [Relationship]
 ```
 
 ### Codex Dollar Commands
 
 ```
-$독후감-도우미 [Book Title] [Impression]
-$정중한-메시지 [Recipient] [Purpose]
-$긴글-3줄요약 [Full text]
-$쉽게-설명해줘 [Concept] [Age]
-$공부-계획표 [Goal] [Duration]
-$자기소개-다듬기 [Notes] [Purpose]
-$sns-캡션 [Situation] [Mood]
-$영어-자연스럽게 [Korean text]
-$발표-대본 [Topic] [Duration]
-$부탁-사과-메시지 [Situation] [Relationship]
+$book-report-helper [Book Title] [Impression]
+$polite-message [Recipient] [Purpose]
+$long-text-summary [Full text]
+$explain-simply [Concept] [Age]
+$study-planner [Goal] [Duration]
+$self-intro-polish [Notes] [Purpose]
+$sns-caption [Situation] [Mood]
+$natural-english [Korean text]
+$presentation-script [Topic] [Duration]
+$request-apology-message [Situation] [Relationship]
 ```
 
 ### Natural Language (No commands needed)
@@ -494,13 +494,13 @@ User Input
 AI Tool (Claude / Codex / etc.)
     │
     ├─── Slash command? ────────────────────────────┐
-    │    /독후감-도우미 "The Little Prince" "grown-ups" │
+    │    /book-report-helper "The Little Prince" "grown-ups" │
     │                                               │
     └─── Natural language? ────────────────────────┐│
          "Write me a book report about..."         ││
                                                    ▼▼
                                     SKILL.md file loaded
-                             (skills/독후감-도우미/SKILL.md)
+                             (skills/book-report-helper/SKILL.md)
                                                    │
                                                    ▼
                               Fill variables ($1=title, $2=impression)
@@ -663,7 +663,7 @@ Use the book report skill to write a report. Book: The Little Prince, impression
 
 Or use the slash command directly:
 ```
-/독후감-도우미 "The Little Prince" "adults need a child's heart"
+/book-report-helper "The Little Prince" "adults need a child's heart"
 ```
 
 ---
@@ -754,8 +754,8 @@ A: The Claude.ai web app works on smartphone browsers. However, uploading skills
 **Q: Can I install only some of the 10 skills?**
 A: Yes. Copy only the skill folders you want:
 ```bash
-cp -r ./skills/독후감-도우미 ~/.claude/skills/
-cp -r ./skills/정중한-메시지 ~/.claude/skills/
+cp -r ./skills/book-report-helper ~/.claude/skills/
+cp -r ./skills/polite-message ~/.claude/skills/
 ```
 
 ---
@@ -783,7 +783,7 @@ A: Yes. SKILL.md files are plain text, so they work on any operating system. Jus
 **Q: How do I remove a skill?**
 A: Delete the installed folder:
 ```bash
-rm -rf ~/.claude/skills/독후감-도우미
+rm -rf ~/.claude/skills/book-report-helper
 ```
 Claude.ai App: Customize → Skills → select skill → Delete
 

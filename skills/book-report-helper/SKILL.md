@@ -1,5 +1,5 @@
 ---
-name: 독후감-도우미
+name: book-report-helper
 description: 책 제목과 느낀 점을 주면 초등·중학생 눈높이의 3문단 독후감을 써준다. "독후감 써줘", "책 리뷰 도와줘", "책 읽고 뭐 써야 해" 일 때 사용.
 argument-hint: [책 제목] [느낀 점 한 줄]
 ---
