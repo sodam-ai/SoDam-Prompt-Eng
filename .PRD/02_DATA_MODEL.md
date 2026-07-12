@@ -12,25 +12,25 @@
 ```
 SoDam-Prompt-Eng/
 ├── skills/                          ← 핵심 산출물
-│   ├── 독후감-도우미/
+│   ├── book-report-helper/
 │   │   └── SKILL.md
-│   ├── 정중한-메시지/
+│   ├── polite-message/
 │   │   └── SKILL.md
-│   ├── 긴글-3줄요약/
+│   ├── long-text-summary/
 │   │   └── SKILL.md
-│   ├── 쉽게-설명해줘/
+│   ├── explain-simply/
 │   │   └── SKILL.md
-│   ├── 공부-계획표/
+│   ├── study-planner/
 │   │   └── SKILL.md
-│   ├── 자기소개-다듬기/
+│   ├── self-intro-polish/
 │   │   └── SKILL.md
-│   ├── sns-캡션/
+│   ├── sns-caption/
 │   │   └── SKILL.md
-│   ├── 영어-자연스럽게/
+│   ├── natural-english/
 │   │   └── SKILL.md
-│   ├── 발표-대본/
+│   ├── presentation-script/
 │   │   └── SKILL.md
-│   └── 부탁-사과-메시지/
+│   └── request-apology-message/
 │       └── SKILL.md
 ├── README.md                        ← 설치 안내 (왕초보용)
 ├── LICENSE                          ← Apache-2.0
@@ -59,7 +59,7 @@ SoDam-Prompt-Eng/
 
 | 필드 | 필수 | 설명 | 예시 |
 |------|------|------|------|
-| `name` | 권장 | 도구 식별자 (kebab-case) | `독후감-도우미` |
+| `name` | 권장 | 도구 식별자 (kebab-case) | `book-report-helper` |
 | `description` | 필수 | 한 줄 설명 + 언제 사용하는지 | "책 제목·느낀 점을 주면 독후감을 써준다. '독후감 써줘' 일 때." |
 | `argument-hint` | 권장 | 빈칸 설명 (초보 안내용) | `[책 제목] [느낀 점]` |
 
@@ -95,16 +95,16 @@ argument-hint: [빈칸1] [빈칸2]
 
 | # | 폴더명 | 빈칸 | 출력형식 |
 |---|--------|------|----------|
-| 1 | 독후감-도우미 | 책 제목 · 느낀 점 | 3문단 |
-| 2 | 정중한-메시지 | 받는 사람 · 용건 | 제목+3~5문장 |
-| 3 | 긴글-3줄요약 | 요약할 글 | 핵심 3줄 (•) |
-| 4 | 쉽게-설명해줘 | 개념 · 듣는 사람 나이 | 비유+3문장 |
-| 5 | 공부-계획표 | 과목/목표 · 기간 | 요일별 표 |
-| 6 | 자기소개-다듬기 | 소개 메모 · 용도 | 완성 3~4문장 |
-| 7 | sns-캡션 | 상황 · 분위기 | 캡션 2개 + 해시태그 5개 |
-| 8 | 영어-자연스럽게 | 한국어 문장 | 영어 + 이유 설명 |
-| 9 | 발표-대본 | 주제 · 발표 시간 | 도입-본론-마무리 |
-| 10 | 부탁-사과-메시지 | 상황 · 상대 | 정중/친근 2가지 버전 |
+| 1 | book-report-helper (독후감-도우미) | 책 제목 · 느낀 점 | 3문단 |
+| 2 | polite-message (정중한-메시지) | 받는 사람 · 용건 | 제목+3~5문장 |
+| 3 | long-text-summary (긴글-3줄요약) | 요약할 글 | 핵심 3줄 (•) |
+| 4 | explain-simply (쉽게-설명해줘) | 개념 · 듣는 사람 나이 | 비유+3문장 |
+| 5 | study-planner (공부-계획표) | 과목/목표 · 기간 | 요일별 표 |
+| 6 | self-intro-polish (자기소개-다듬기) | 소개 메모 · 용도 | 완성 3~4문장 |
+| 7 | sns-caption (sns-캡션) | 상황 · 분위기 | 캡션 2개 + 해시태그 5개 |
+| 8 | natural-english (영어-자연스럽게) | 한국어 문장 | 영어 + 이유 설명 |
+| 9 | presentation-script (발표-대본) | 주제 · 발표 시간 | 도입-본론-마무리 |
+| 10 | request-apology-message (부탁-사과-메시지) | 상황 · 상대 | 정중/친근 2가지 버전 |
 
 ---
 

@@ -363,7 +363,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
 <p><strong>Step 3</strong>: Use a slash command</p>
-<pre><code>/독후감-도우미 &quot;The Little Prince&quot; &quot;Adults need a child&#39;s heart too&quot;</code></pre>
+<pre><code>/book-report-helper &quot;The Little Prince&quot; &quot;Adults need a child&#39;s heart too&quot;</code></pre>
 <p>Or in natural language:</p>
 <pre><code>Help me write a book report. The book is &quot;Harry Potter&quot; and I felt that courage matters.</code></pre>
 <hr />
@@ -375,7 +375,7 @@ skill 2. Upload ZIP file → Toggle ON</p>
 <p><strong>Run</strong>: - Natural language:
 <code>Write a book report. "The Little Prince", impression: "growth"</code>
 - Slash command:
-<code>/독후감-도우미 "Book Title" "Impression"</code></p>
+<code>/book-report-helper "Book Title" "Impression"</code></p>
 <hr />
 <h3 id="claude-code-terminal">Claude Code (Terminal)</h3>
 <p><strong>Install</strong>:</p>
@@ -384,26 +384,27 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href=
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To install individual skills only</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/독후감-도우미 ~/.claude/skills/</span></code></pre></div>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span></code></pre></div>
 <p><strong>Run</strong>:</p>
 <div class="sourceCode" id="cb11"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
 <p>Then in chat:</p>
-<pre><code>/독후감-도우미 &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
+<pre><code>/book-report-helper &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
 <hr />
 <h3 id="codex">Codex</h3>
 <p><strong>Install</strong>:</p>
 <div class="sourceCode" id="cb13"><pre
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.codex/skills/</span></code></pre></div>
 <p><strong>Run</strong>:</p>
-<pre><code>$독후감-도우미 &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
+<pre><code>$book-report-helper &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
 <hr />
 <h3 id="cursor-gemini-cli-other-ai-tools">Cursor · Gemini CLI · Other AI
 Tools</h3>
 <p>Copy the desired skill’s <code>SKILL.md</code> file into the skills
 folder (or instructions folder) of your respective tool.</p>
-<p>Cursor example: 1. Copy <code>skills/독후감-도우미/SKILL.md</code> to
-Cursor’s <code>.cursor/skills/</code> folder 2. In Cursor chat:
+<p>Cursor example: 1. Copy
+<code>skills/book-report-helper/SKILL.md</code> to Cursor’s
+<code>.cursor/skills/</code> folder 2. In Cursor chat:
 <code>Write a book report</code></p>
 <hr />
 <h2 id="how-to-use-each-skill-all-10">7. How to Use Each Skill (All
@@ -415,7 +416,7 @@ write a book report</p>
 <p><strong>Required input</strong>: - <code>$1</code>: Book title -
 <code>$2</code>: One-line impression</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/독후감-도우미 &quot;The Little Prince&quot; &quot;Adults need a child&#39;s heart too&quot;</code></pre>
+<pre><code>/book-report-helper &quot;The Little Prince&quot; &quot;Adults need a child&#39;s heart too&quot;</code></pre>
 <p><strong>Natural language also works</strong>:</p>
 <pre><code>Help me with a book report. I read &quot;Harry Potter&quot; and felt that courage is important.</code></pre>
 <p><strong>Output</strong>: 3-paragraph report (① Pre-reading
@@ -429,7 +430,7 @@ supervisor, or elder</p>
 homeroom teacher) - <code>$2</code>: Purpose in one line (e.g.,
 notifying absence for medical appointment)</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/정중한-메시지 &quot;Homeroom Teacher&quot; &quot;I will be absent tomorrow due to a medical appointment&quot;</code></pre>
+<pre><code>/polite-message &quot;Homeroom Teacher&quot; &quot;I will be absent tomorrow due to a medical appointment&quot;</code></pre>
 <p><strong>Output</strong>: Subject line + formal message body</p>
 <hr />
 <h3 id="skill-3-긴글-3줄요약-long-text-3-line-summary">Skill 3:
@@ -439,7 +440,7 @@ into 3 key points</p>
 <p><strong>Required input</strong>: - <code>$1</code>: Full text to
 summarize</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/긴글-3줄요약 [paste full text here]</code></pre>
+<pre><code>/long-text-summary [paste full text here]</code></pre>
 <p><strong>Output</strong>: 3 key points (formatted with • bullets)</p>
 <hr />
 <h3 id="skill-4-쉽게-설명해줘-explain-simply">Skill 4: 쉽게-설명해줘
@@ -450,7 +451,7 @@ concept in simple terms</p>
 explain (e.g., photosynthesis) - <code>$2</code>: Listener’s age (e.g.,
 10 years old)</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/쉽게-설명해줘 &quot;photosynthesis&quot; &quot;10 years old&quot;</code></pre>
+<pre><code>/explain-simply &quot;photosynthesis&quot; &quot;10 years old&quot;</code></pre>
 <p><strong>Output</strong>: 1 analogy + 3-sentence plain explanation</p>
 <hr />
 <h3 id="skill-5-공부-계획표-study-schedule">Skill 5: 공부-계획표 (Study
@@ -461,7 +462,7 @@ study sessions</p>
 (e.g., Math midterm — score 80) - <code>$2</code>: Duration (e.g., 2
 weeks)</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/공부-계획표 &quot;Math midterm 80 points&quot; &quot;2 weeks&quot;</code></pre>
+<pre><code>/study-planner &quot;Math midterm 80 points&quot; &quot;2 weeks&quot;</code></pre>
 <p><strong>Output</strong>: Day-by-day study schedule (with daily study
 amounts)</p>
 <hr />
@@ -473,7 +474,7 @@ self-introduction but don’t know how</p>
 (brief is fine) - <code>$2</code>: Where it will be used (e.g., club
 application form)</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/자기소개-다듬기 &quot;Name Kim Minjun, likes soccer, diligent&quot; &quot;Club application&quot;</code></pre>
+<pre><code>/self-intro-polish &quot;Name Kim Minjun, likes soccer, diligent&quot; &quot;Club application&quot;</code></pre>
 <p><strong>Output</strong>: Polished self-introduction tailored to the
 context</p>
 <hr />
@@ -485,7 +486,7 @@ other social media</p>
 studying at a café with friends) - <code>$2</code>: Mood (e.g., warm and
 fun)</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/sns-캡션 &quot;studying at a café with friends&quot; &quot;warm and fun&quot;</code></pre>
+<pre><code>/sns-caption &quot;studying at a café with friends&quot; &quot;warm and fun&quot;</code></pre>
 <p><strong>Output</strong>: 2 caption versions + 5 hashtags</p>
 <hr />
 <h3 id="skill-8-영어-자연스럽게-natural-english">Skill 8:
@@ -495,7 +496,7 @@ natural English</p>
 <p><strong>Required input</strong>: - <code>$1</code>: Korean
 sentence</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/영어-자연스럽게 &quot;나는 오늘 학교에서 발표를 잘 했어&quot;</code></pre>
+<pre><code>/natural-english &quot;나는 오늘 학교에서 발표를 잘 했어&quot;</code></pre>
 <p><strong>Output</strong>: Natural English sentence + Korean
 explanation of why it’s phrased that way</p>
 <hr />
@@ -507,7 +508,7 @@ presentation</p>
 topic (e.g., importance of environmental protection) - <code>$2</code>:
 Presentation duration (e.g., 5 minutes)</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/발표-대본 &quot;importance of environmental protection&quot; &quot;5 minutes&quot;</code></pre>
+<pre><code>/presentation-script &quot;importance of environmental protection&quot; &quot;5 minutes&quot;</code></pre>
 <p><strong>Output</strong>: Introduction–body–conclusion script
 (includes reading time estimate)</p>
 <hr />
@@ -519,33 +520,33 @@ a favor or apologizing</p>
 submitted homework one day late) - <code>$2</code>: Relationship with
 the recipient (e.g., teacher)</p>
 <p><strong>Example</strong>:</p>
-<pre><code>/부탁-사과-메시지 &quot;submitted homework one day late&quot; &quot;teacher&quot;</code></pre>
+<pre><code>/request-apology-message &quot;submitted homework one day late&quot; &quot;teacher&quot;</code></pre>
 <p><strong>Output</strong>: 2 versions — formal + casual</p>
 <hr />
 <h2 id="full-command-reference">8. Full Command Reference</h2>
 <h3 id="claude-code-claude.ai-app-slash-commands">Claude Code /
 Claude.ai App Slash Commands</h3>
-<pre><code>/독후감-도우미 [Book Title] [One-line Impression]
-/정중한-메시지 [Recipient] [Purpose (one line)]
-/긴글-3줄요약 [Full text to summarize]
-/쉽게-설명해줘 [Concept] [Listener&#39;s Age]
-/공부-계획표 [Subject/Goal] [Duration]
-/자기소개-다듬기 [Personal Notes] [Where it&#39;s used]
-/sns-캡션 [Situation] [Mood]
-/영어-자연스럽게 [Korean Sentence]
-/발표-대본 [Topic] [Presentation Duration]
-/부탁-사과-메시지 [Situation] [Relationship]</code></pre>
+<pre><code>/book-report-helper [Book Title] [One-line Impression]
+/polite-message [Recipient] [Purpose (one line)]
+/long-text-summary [Full text to summarize]
+/explain-simply [Concept] [Listener&#39;s Age]
+/study-planner [Subject/Goal] [Duration]
+/self-intro-polish [Personal Notes] [Where it&#39;s used]
+/sns-caption [Situation] [Mood]
+/natural-english [Korean Sentence]
+/presentation-script [Topic] [Presentation Duration]
+/request-apology-message [Situation] [Relationship]</code></pre>
 <h3 id="codex-dollar-commands">Codex Dollar Commands</h3>
-<pre><code>$독후감-도우미 [Book Title] [Impression]
-$정중한-메시지 [Recipient] [Purpose]
-$긴글-3줄요약 [Full text]
-$쉽게-설명해줘 [Concept] [Age]
-$공부-계획표 [Goal] [Duration]
-$자기소개-다듬기 [Notes] [Purpose]
-$sns-캡션 [Situation] [Mood]
-$영어-자연스럽게 [Korean text]
-$발표-대본 [Topic] [Duration]
-$부탁-사과-메시지 [Situation] [Relationship]</code></pre>
+<pre><code>$book-report-helper [Book Title] [Impression]
+$polite-message [Recipient] [Purpose]
+$long-text-summary [Full text]
+$explain-simply [Concept] [Age]
+$study-planner [Goal] [Duration]
+$self-intro-polish [Notes] [Purpose]
+$sns-caption [Situation] [Mood]
+$natural-english [Korean text]
+$presentation-script [Topic] [Duration]
+$request-apology-message [Situation] [Relationship]</code></pre>
 <h3 id="natural-language-no-commands-needed">Natural Language (No
 commands needed)</h3>
 <p>Once installed, AI automatically selects the right skill based on
@@ -562,13 +563,13 @@ Internally</h2>
 AI Tool (Claude / Codex / etc.)
     │
     ├─── Slash command? ────────────────────────────┐
-    │    /독후감-도우미 &quot;The Little Prince&quot; &quot;grown-ups&quot; │
+    │    /book-report-helper &quot;The Little Prince&quot; &quot;grown-ups&quot; │
     │                                               │
     └─── Natural language? ────────────────────────┐│
          &quot;Write me a book report about...&quot;         ││
                                                    ▼▼
                                     SKILL.md file loaded
-                             (skills/독후감-도우미/SKILL.md)
+                             (skills/book-report-helper/SKILL.md)
                                                    │
                                                    ▼
                               Fill variables ($1=title, $2=impression)
@@ -773,7 +774,7 @@ judgment. Try being more specific.</p>
 <p><strong>Solution</strong>: Use more direct phrasing:</p>
 <pre><code>Use the book report skill to write a report. Book: The Little Prince, impression: adults need a child&#39;s heart</code></pre>
 <p>Or use the slash command directly:</p>
-<pre><code>/독후감-도우미 &quot;The Little Prince&quot; &quot;adults need a child&#39;s heart&quot;</code></pre>
+<pre><code>/book-report-helper &quot;The Little Prince&quot; &quot;adults need a child&#39;s heart&quot;</code></pre>
 <hr />
 <h3 id="q3.-zip-upload-doesnt-work-in-the-claude.ai-app">Q3. ZIP upload
 doesn’t work in the Claude.ai App</h3>
@@ -840,8 +841,8 @@ convenient from a computer.</p>
 <p><strong>Q: Can I install only some of the 10 skills?</strong> A: Yes.
 Copy only the skill folders you want:</p>
 <div class="sourceCode" id="cb39"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/독후감-도우미 ~/.claude/skills/</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/정중한-메시지 ~/.claude/skills/</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/polite-message ~/.claude/skills/</span></code></pre></div>
 <hr />
 <p><strong>Q: Can I create my own skills?</strong> A: Yes. Create a new
 folder inside <code>skills/</code> and write a <code>SKILL.md</code>
@@ -865,7 +866,7 @@ Just use the appropriate installation command for your OS.</p>
 <p><strong>Q: How do I remove a skill?</strong> A: Delete the installed
 folder:</p>
 <div class="sourceCode" id="cb40"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.claude/skills/독후감-도우미</span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
 <p>Claude.ai App: Customize → Skills → select skill → Delete</p>
 <hr />
 <p><strong>Q: How do I receive update notifications?</strong> A: Click

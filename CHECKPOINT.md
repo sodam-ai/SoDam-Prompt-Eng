@@ -16,7 +16,9 @@
 | NOTICE | ✅ done |
 | 기존 Next.js 코드 정리 | ✅ done (2026-07-11, git 추적 해제) |
 | GitHub push | ✅ done (2026-07-11, origin/main 동기화 확인) |
-| 사람 검수 (10개 실제 동작) | 🔴 **다음 작업** — pending, 사람 전용 |
+| plugin.json/marketplace.json 정식 등록 | ✅ done (2026-07-13, 커밋 `94c8582`/`6552a48`) |
+| 스킬 폴더 영문 슬러그 전환 | ✅ done (2026-07-13, 커밋 `42cc622`) |
+| 사람 검수 (10개 실제 동작) | 🔴 **다음 작업** — pending, 사람 전용 (등록+리네임 수정 완료, 라이브 재검증만 남음) |
 
 ---
 
@@ -25,17 +27,19 @@
 ### 생성된 스킬
 ```
 skills/
-  독후감-도우미/SKILL.md
-  정중한-메시지/SKILL.md
-  긴글-3줄요약/SKILL.md
-  쉽게-설명해줘/SKILL.md
-  공부-계획표/SKILL.md
-  자기소개-다듬기/SKILL.md
-  sns-캡션/SKILL.md
-  영어-자연스럽게/SKILL.md
-  발표-대본/SKILL.md
-  부탁-사과-메시지/SKILL.md
+  book-report-helper/SKILL.md
+  polite-message/SKILL.md
+  long-text-summary/SKILL.md
+  explain-simply/SKILL.md
+  study-planner/SKILL.md
+  self-intro-polish/SKILL.md
+  sns-caption/SKILL.md
+  natural-english/SKILL.md
+  presentation-script/SKILL.md
+  request-apology-message/SKILL.md
 ```
+
+> 2026-07-13 커밋 `42cc622`에서 한글 폴더명 → 영문 슬러그로 전환(라이브에서 관찰된 `sns---` 스킬명 인코딩 손상 증거 기반). 위 경로는 전환 후 기준.
 
 ### done-when
 - [ ] Claude Haiku 4.5에서 10개 전부 실제 작동 확인 (사람 검수)
@@ -71,6 +75,8 @@ skills/
 ---
 
 ## P4 — 사람 검수 🔴 다음 작업 (pending, 사람 전용)
+
+> **2026-07-13 기준:** 두 차례 근본원인 수정 시도 완료 — ① plugin.json/marketplace.json 정식 등록(`94c8582`/`6552a48`), ② 한글→영문 폴더명 전환(`42cc622`, 라이브에서 관찰된 `sns---` 스킬명 손상 증거 기반). 두 수정 모두 라이브 재검증 전이라 P4 done-when 조건은 변경 없음.
 
 ### 왜 이게 유일하게 남은 작업인가
 P1(스킬 생성)·P2(저장소 정리)·P3(push) 전부 완료. PRD의 나머지 항목(Phase 1.5 promptfoo 자동화, Phase 2 마켓 등록)은 **P4 완료를 전제 조건으로 명시**(`.PRD/03_PHASES.md:146`) — P4 없이 다음 단계로 가면 순서 위반.

@@ -116,7 +116,7 @@ Recommended only if you have some prior computer experience. If this is your fir
 
 **Step 2**: In the left menu, click **"Skills"** → click **"+ Create skill"**
 
-**Step 3**: Open the `skills` folder from the folder you downloaded in Step 4 above, and upload one entire skill folder (e.g., `독후감-도우미`, meaning "Book Report Helper").
+**Step 3**: Open the `skills` folder from the folder you downloaded in Step 4 above, and upload one entire skill folder (e.g., `book-report-helper` — Book Report Helper).
 
 **Step 4**: Turn the toggle switch next to the uploaded skill **ON**.
 

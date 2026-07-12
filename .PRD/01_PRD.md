@@ -55,7 +55,7 @@
 | **Codex 설치** | `cp -r skills/* ~/.codex/skills/` → `$이름` 호출 | P1 ✅ |
 | **작동 검증 배지(사람 검수)** | Haiku 4.5에서 실제 작동 확인 "✅ 사람 검수" | P1 (pending) |
 | **작동 검증 자동화** | promptfoo로 재테스트 → 작동률 숫자 표시 | P2 |
-| **Claude Code 마켓 등록** | `/plugin install <이름>@sodam` 한 줄 설치 | P2 |
+| **Claude Code 마켓 등록** | `/plugin install <이름>@sodam` 한 줄 설치 | P2 ✅ 등록 완료(라이브 재검증 대기) |
 | **스킬 수 확장** | 10개 → 커뮤니티 기여 수용 | P3 |
 
 ---
@@ -118,7 +118,7 @@
 |---|------|------|
 | R1 | SKILL.md 실작동 미확인 — 생성했지만 Claude Haiku 4.5에서 미검증 | 🔴 P4 pending (사람 검수 필요) |
 | R2 | Next.js 잔재 파일이 로컬에 남아있음 (.gitignore로 GitHub 제외 처리) | 🟡 탐색기 수동 삭제 권고 |
-| R3 | GitHub push 미완 | 🟡 P3 pending |
+| R3 | GitHub push 미완 | ✅ GitHub push 완료(origin/main 동기화 확인) |
 | R4 | argument-hint 형식이 Claude.ai 앱에서 제대로 파싱되는지 | 확인 필요 (P4 검수 시) |
 | R5 | SKILL.md 개인정보 유도 없음 확인 | 🔴 P4 검수 시 체크 |
 
@@ -128,7 +128,7 @@
 
 - [x] **B) 플러그인 전용** — 웹앱(Next.js+Supabase) 방향 완전 폐기.
 - [x] **SKILL.md 10개** — 생성 완료(P1).
-- [x] **GitHub 배포 채널** — `sodam-ai/SoDam-Prompt-Eng` (push 대기 중).
+- [x] **GitHub 배포 채널** — `sodam-ai/SoDam-Prompt-Eng` (push 완료, origin/main 동기화 확인).
 - [x] **Apache-2.0 라이선스** — LICENSE + NOTICE 존재.
 - [x] **서버 없음·비용 $0** — 사용자 AI 도구가 실행 담당.
 - [ ] **사람 검수(P4)** — Claude Haiku 4.5에서 10개 실작동 확인 (미완).

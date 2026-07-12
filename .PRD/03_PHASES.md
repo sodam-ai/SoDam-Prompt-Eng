@@ -22,16 +22,16 @@
 
 ### 완료된 스킬 (10개)
 ```
-skills/독후감-도우미/SKILL.md
-skills/정중한-메시지/SKILL.md
-skills/긴글-3줄요약/SKILL.md
-skills/쉽게-설명해줘/SKILL.md
-skills/공부-계획표/SKILL.md
-skills/자기소개-다듬기/SKILL.md
-skills/sns-캡션/SKILL.md
-skills/영어-자연스럽게/SKILL.md
-skills/발표-대본/SKILL.md
-skills/부탁-사과-메시지/SKILL.md
+skills/book-report-helper/SKILL.md
+skills/polite-message/SKILL.md
+skills/long-text-summary/SKILL.md
+skills/explain-simply/SKILL.md
+skills/study-planner/SKILL.md
+skills/self-intro-polish/SKILL.md
+skills/sns-caption/SKILL.md
+skills/natural-english/SKILL.md
+skills/presentation-script/SKILL.md
+skills/request-apology-message/SKILL.md
 ```
 
 ### 완료 기준 (done-when)
@@ -108,7 +108,7 @@ git push -u origin main
 ### 검수 방법 (Claude Haiku 4.5에서)
 
 > **핵심**: Claude Code와 Claude.ai 앱 모두 자연어(description 매칭)로 테스트.
-> 슬래시 커맨드(`/독후감-도우미`)는 한글 폴더명 스캔 한계로 사용하지 않음.
+> 슬래시 커맨드는 과거 한글 폴더명 스캔 한계로 배제했으나, 폴더명을 영문 슬러그로 전환(커밋 42cc622)했다. 단 이 전환이 실제로 자동매칭을 고쳤는지는 라이브 재검증 전이라, 지금도 자연어 호출을 정본으로 삼는다. (예: `/book-report-helper`)
 
 Claude Code 및 Claude.ai 앱에서 자연어 입력:
 ```
@@ -144,7 +144,7 @@ Claude Code 및 Claude.ai 앱에서 자연어 입력:
 | Phase | 내용 | 전제 |
 |-------|------|------|
 | Phase 1.5 | promptfoo 자동 작동률 검증 + GitHub Actions CI | P4 완료 |
-| Phase 2 | Claude Code 마켓 등록 (`/plugin install @sodam`) + 안전 배지 자동화 | P4 완료 |
+| Phase 2 | 마켓 등록(`.claude-plugin/plugin.json`+`marketplace.json` 생성 ✅ 완료, `/plugin install @sodam` 실사용은 라이브 재검증 대기) + 안전 배지 자동화(P4 완료 전제, 미착수) | 마켓 등록 완료 · 안전 배지는 P4 완료 |
 | Phase 3 | 스킬 수 확장 (커뮤니티 기여 수용) + 다국어 | Phase 2 완료 |
 
 ---

@@ -39,11 +39,11 @@
 | 2 | **Claude Code 수동 복사** | `cp -r skills/* ~/.claude/skills/` → `/이름 값` | ★2 | 터미널 | ✅ P1 완료 |
 | 3 | **Codex 수동 복사** | `cp -r skills/* ~/.codex/skills/` → `$이름` | ★2 | 터미널 | ✅ P1 완료 |
 | 4 | 수동 파일 복사 | 탐색기로 `skills/<이름>/SKILL.md` 복사 | ★3 | 파일탐색기 | ✅ P1 완료 |
-| **Phase 2** | **Claude Code 마켓 한 줄** | `/plugin install <이름>@sodam` | ★1 | 터미널 | Phase 2 |
+| **Phase 2** | **Claude Code 마켓 한 줄** | `/plugin install <이름>@sodam` | ★1 | 터미널 | ✅ plugin.json/marketplace.json 생성 완료 · 공개 등록·실사용 검증 대기 |
 | **Phase 2** | **Codex `$skill-installer`** | `$skill-installer <이름>` | ★2 | 터미널(Codex) | Phase 2 |
 
 > **현재(P1)**: README.md 경로 1~4가 모두 안내됨.
-> **Phase 2**: Claude Code 마켓 등록 후 `/plugin install` 한 줄로 단축.
+> **Phase 2**: `.claude-plugin/plugin.json`·`marketplace.json` 로컬 생성은 완료. 단 `/plugin install` 원클릭 공개 마켓 등록(GitHub 마켓플레이스 소스 공개 등)과 실사용 검증은 아직 남음.
 
 ---
 
@@ -53,7 +53,7 @@
 |---|---|---|
 | Claude.ai 앱 | "독후감 써줘" 같은 자연어 → description 매칭으로 자동 사용 | ✅ (description 기반) |
 | Claude Code | "독후감 써줘" 자연어 → description 매칭 자동 사용 | ✅ (description 기반) |
-| Codex | `$독후감-도우미 "어린 왕자" "감동적"` | 자동 선택 가능 |
+| Codex | `$book-report-helper "어린 왕자" "감동적"` | 자동 선택 가능 |
 | Cursor·Gemini CLI | `skills/<이름>/SKILL.md` 복사 후 도구별 방식 | 도구마다 다름 |
 
 ---
@@ -62,7 +62,7 @@
 
 ```markdown
 ---
-name: 독후감-도우미
+name: book-report-helper
 description: 책 제목과 느낀 점을 주면 3문단 독후감을 써준다. "독후감 써줘", "독서감상문 도와줘" 일 때 사용.
 argument-hint: [책 제목] [느낀 점]
 ---
@@ -105,7 +105,7 @@ argument-hint: [책 제목] [느낀 점]
 |---|---|---|
 | **P1 (현재 완료)** | GitHub 저장소 = 마켓. README 설치 안내(3경로). ZIP 무코드 설치(★1) 우선. | ✅ done |
 | **Phase 1.5** | promptfoo 작동률 자동 검증 (GitHub Actions) → 배지에 숫자 표시 가능 | pending |
-| **Phase 2** | Claude Code 마켓 등록(`.claude-plugin/marketplace.json`) → `/plugin install @sodam` + Codex 마켓 + 안전 배지 자동화 | pending |
+| **Phase 2** | Claude Code 마켓 등록(`.claude-plugin/marketplace.json`) → `/plugin install @sodam` + Codex 마켓 + 안전 배지 자동화 | 로컬 매니페스트 생성 ✅ 완료 · 공개 등록/실사용 검증·Codex 마켓·안전 배지 자동화는 pending |
 | **Phase 3** | 커뮤니티 기여: 스킬 수 확장. 안전 심사 통과해야 마켓 노출. | pending |
 
 ---
@@ -127,8 +127,8 @@ Prompt (★1 지금 여기) → Context → Loop → Harness → Agentic
 ## 결정 확정 (2026-06-29)
 
 - [x] P1 설치 = **3경로 안내 완료** (ZIP·Claude Code·Codex)
-- [x] 공개 마켓 repo = `sodam-ai/SoDam-Prompt-Eng` (P3 push 대기)
+- [x] 공개 마켓 repo = `sodam-ai/SoDam-Prompt-Eng` (P3 push 완료)
 - [x] 초보 1순위 = **ZIP 무코드 설치(★1)**
 - [x] 전체 스킬 = **순수 텍스트** (코드포함 없음)
 - [ ] Phase 1.5 promptfoo 자동화 = pending (P4 검수 완료 후)
-- [ ] Phase 2 마켓 등록 = pending
+- [x] Phase 2 마켓 등록 = 로컬 plugin.json/marketplace.json 생성 완료(라이브 재검증 대기)
