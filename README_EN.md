@@ -313,7 +313,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you want to condense a long text into 3 key points
 
 **Required input**:
-- `$1`: Full text to summarize
+- `$ARGUMENTS`: Full text to summarize (single input — not `$1`/`$2`; all following text is captured at once)
 
 **Example**:
 ```
