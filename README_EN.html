@@ -101,7 +101,7 @@ does the rest. Works on Claude Code · Claude.ai App · Codex · Cursor ·
 Gemini CLI.</p>
 </blockquote>
 <p>License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean
-Output</p>
+Output | Verified: ✅ Confirmed via personal use (2026-07-15)</p>
 <hr />
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol type="1">
@@ -645,6 +645,10 @@ does not make separate network calls)</li>
 Structure</h2>
 <pre><code>SoDam-Prompt-Eng/                       ← Repository root
 │
+├── .claude-plugin/                 ← Official Claude Code plugin registration (2026-07-13)
+│   ├── plugin.json                 ← Plugin metadata
+│   └── marketplace.json            ← Local marketplace definition (for installing on your own devices)
+│
 ├── skills/                         ← 10 skill folders (English slugs since 2026-07-13)
 │   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← Skill definition file
@@ -667,8 +671,15 @@ Structure</h2>
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
-├── README.md                       ← Korean guide (this file in Korean)
-├── README_EN.md                    ← English guide (this file)
+├── README.md / README.html         ← Korean full guide (md·html identical content)
+├── README_EN.md / README_EN.html   ← English full guide (this file)
+├── GUIDE.md / GUIDE.html           ← Korean beginner guide
+├── GUIDE_EN.md / GUIDE_EN.html     ← English beginner guide
+├── CHECKPOINT.md                   ← Development progress log (maintainer-facing, not needed by end users)
+├── P4_검수_가이드.md               ← Human-verification checklist
+├── PROMPTFOO_로컬_가이드.md         ← Local automated-verification instructions (developer-facing, optional)
+├── promptfooconfig.yaml            ← Local verification config for all 10 skills (no CI, keeps $0 principle)
+├── promptfoo-skill-prompt.js       ← Verification loader (reads the real SKILL.md files directly, no copy)
 ├── LICENSE                         ← Apache-2.0 full text
 ├── NOTICE                          ← Copyright notice
 └── .gitignore                      ← Git exclusion list</code></pre>
@@ -719,6 +730,10 @@ After Installation</h3>
 </table>
 <h3 id="repository-file-locations">Repository File Locations</h3>
 <table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 68%" />
+</colgroup>
 <thead>
 <tr>
 <th>File</th>
@@ -731,12 +746,44 @@ After Installation</h3>
 <td>Skill definition files (core)</td>
 </tr>
 <tr>
-<td><code>README.md</code></td>
-<td>Korean guide</td>
+<td><code>.claude-plugin/plugin.json</code> ·
+<code>marketplace.json</code></td>
+<td>Claude Code plugin/marketplace registration</td>
 </tr>
 <tr>
-<td><code>README_EN.md</code></td>
-<td>English guide (this file)</td>
+<td><code>README.md</code> / <code>README.html</code></td>
+<td>Korean full guide (md·html identical content)</td>
+</tr>
+<tr>
+<td><code>README_EN.md</code> / <code>README_EN.html</code></td>
+<td>English full guide (this file)</td>
+</tr>
+<tr>
+<td><code>GUIDE.md</code> / <code>GUIDE.html</code></td>
+<td>Korean beginner guide</td>
+</tr>
+<tr>
+<td><code>GUIDE_EN.md</code> / <code>GUIDE_EN.html</code></td>
+<td>English beginner guide</td>
+</tr>
+<tr>
+<td><code>CHECKPOINT.md</code></td>
+<td>Development progress log (maintainer-facing, not needed by end
+users)</td>
+</tr>
+<tr>
+<td><code>P4_검수_가이드.md</code></td>
+<td>Human-verification checklist</td>
+</tr>
+<tr>
+<td><code>PROMPTFOO_로컬_가이드.md</code></td>
+<td>Local automated-verification instructions (developer-facing,
+optional)</td>
+</tr>
+<tr>
+<td><code>promptfooconfig.yaml</code> ·
+<code>promptfoo-skill-prompt.js</code></td>
+<td>Local verification config/script (developer-facing, optional)</td>
 </tr>
 <tr>
 <td><code>LICENSE</code></td>
@@ -1062,6 +1109,39 @@ limitations under the License.</code></pre>
 use the repository Issues tab as the primary contact</p>
 <hr />
 <h2 id="update-history">17. Update History</h2>
+<details>
+<summary>
+<strong>2026-07-14~15 — Live execution testing reached 10/10 + human
+verification passed + Phase 1.5 local verification setup (click to
+expand)</strong>
+</summary>
+<ul>
+<li>Ran the remaining 6 skills (polite-message, explain-simply,
+study-planner, self-intro-polish, natural-english, presentation-script)
+through real AI model execution — <strong>all 10 skills now confirmed to
+match spec</strong> (10/10 live execution tests complete)</li>
+<li>Ran adversarial tests for personal-info leakage, system-prompt
+extraction, and exaggerated-ad-copy injection on 3 skills
+(book-report-helper, natural-english, presentation-script) — all
+successfully blocked</li>
+<li>The human verification item (natural-language auto-matching) left as
+“still outstanding” in the 2026-07-13 entry below has now been
+<strong>confirmed directly by the user through personal, hands-on
+use</strong> — this repository continues to be used as a PRIVATE
+(personal-use only) tool; that describes distribution scope, not a lower
+quality bar</li>
+<li>Added <code>promptfooconfig.yaml</code>,
+<code>promptfoo-skill-prompt.js</code>, and
+<code>PROMPTFOO_로컬_가이드.md</code> to set up <strong>local-only
+automated verification (no CI, uses only the user’s own API
+key)</strong> — GitHub Actions automation was deliberately not built, to
+preserve this repository’s “$0 operating cost, no AI key management”
+principle</li>
+<li>Re-checked documentation (including <code>CHECKPOINT.md</code> and
+this README) for consistency with the actual current code state, and
+corrected drift where found</li>
+</ul>
+</details>
 <details>
 <summary>
 <strong>2026-07-13 — Official plugin registration + English skill slugs

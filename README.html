@@ -100,7 +100,8 @@
 모음입니다. Claude Code · Claude.ai 앱 · Codex · Cursor · Gemini CLI
 에서 동일하게 작동합니다.</p>
 </blockquote>
-<p>라이선스: Apache-2.0 | 단계: SoDam Prompt (1단계) | 언어: 한국어</p>
+<p>라이선스: Apache-2.0 | 단계: SoDam Prompt (1단계) | 언어: 한국어 |
+검수: ✅ 실사용 확인 완료 (2026-07-15)</p>
 <hr />
 <h2 id="목차">목차</h2>
 <ol type="1">
@@ -586,6 +587,10 @@ AI 도구 (Claude / Codex 등)
 <h2 id="아키텍처-파일-구조">11. 아키텍처 — 파일 구조</h2>
 <pre><code>SoDam-Prompt-Eng/                       ← 저장소 루트
 │
+├── .claude-plugin/                 ← Claude Code 플러그인 정식 등록(2026-07-13)
+│   ├── plugin.json                 ← 플러그인 메타데이터
+│   └── marketplace.json            ← 로컬 마켓플레이스 정의(본인 여러 기기 설치용)
+│
 ├── skills/                         ← 스킬 10개 폴더 (2026-07-13부터 영문 폴더명)
 │   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← 스킬 정의 파일
@@ -608,8 +613,15 @@ AI 도구 (Claude / Codex 등)
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
-├── README.md                       ← 이 파일 (한국어 가이드)
-├── README_EN.md                    ← 영문 가이드
+├── README.md / README.html         ← 이 문서 — 한국어 전체 안내서 (md·html 내용 동일)
+├── README_EN.md / README_EN.html   ← 영문 전체 안내서
+├── GUIDE.md / GUIDE.html           ← 한국어 왕초보 가이드
+├── GUIDE_EN.md / GUIDE_EN.html     ← 영문 왕초보 가이드
+├── CHECKPOINT.md                   ← 개발 진행 상태 기록 (유지보수용, 최종 사용자에겐 불필요)
+├── P4_검수_가이드.md               ← 사람 검수용 체크리스트
+├── PROMPTFOO_로컬_가이드.md         ← 로컬 자동 검증 실행 안내 (개발자용, 선택사항)
+├── promptfooconfig.yaml            ← 10개 스킬 로컬 검증 설정 (CI 없음, $0 원칙 유지)
+├── promptfoo-skill-prompt.js       ← 검증용 SKILL.md 로더 (실제 파일을 그대로 읽음, 사본 없음)
 ├── LICENSE                         ← Apache-2.0 라이선스
 ├── NOTICE                          ← 저작권 고지
 └── .gitignore                      ← git 제외 목록</code></pre>
@@ -659,6 +671,10 @@ $2 = 두 번째 입력값 (느낀 점)</code></pre>
 </table>
 <h3 id="이-저장소-파일-위치">이 저장소 파일 위치</h3>
 <table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr>
 <th>파일</th>
@@ -671,12 +687,42 @@ $2 = 두 번째 입력값 (느낀 점)</code></pre>
 <td>스킬 정의 파일 (핵심)</td>
 </tr>
 <tr>
-<td><code>README.md</code></td>
-<td>한국어 가이드 (이 파일)</td>
+<td><code>.claude-plugin/plugin.json</code> ·
+<code>marketplace.json</code></td>
+<td>Claude Code 플러그인·마켓플레이스 등록 정보</td>
 </tr>
 <tr>
-<td><code>README_EN.md</code></td>
-<td>영문 가이드</td>
+<td><code>README.md</code> / <code>README.html</code></td>
+<td>한국어 전체 가이드 (이 파일, md·html 내용 동일)</td>
+</tr>
+<tr>
+<td><code>README_EN.md</code> / <code>README_EN.html</code></td>
+<td>영문 전체 가이드</td>
+</tr>
+<tr>
+<td><code>GUIDE.md</code> / <code>GUIDE.html</code></td>
+<td>한국어 왕초보 가이드</td>
+</tr>
+<tr>
+<td><code>GUIDE_EN.md</code> / <code>GUIDE_EN.html</code></td>
+<td>영문 왕초보 가이드</td>
+</tr>
+<tr>
+<td><code>CHECKPOINT.md</code></td>
+<td>개발 진행 상태 기록 (유지보수용, 최종 사용자는 몰라도 됨)</td>
+</tr>
+<tr>
+<td><code>P4_검수_가이드.md</code></td>
+<td>사람 검수용 체크리스트</td>
+</tr>
+<tr>
+<td><code>PROMPTFOO_로컬_가이드.md</code></td>
+<td>로컬 자동 검증 실행 안내 (개발자용, 선택사항)</td>
+</tr>
+<tr>
+<td><code>promptfooconfig.yaml</code> ·
+<code>promptfoo-skill-prompt.js</code></td>
+<td>로컬 자동 검증 설정·스크립트 (개발자용, 선택사항)</td>
 </tr>
 <tr>
 <td><code>LICENSE</code></td>
@@ -980,6 +1026,32 @@ See the License for the specific language governing permissions and
 limitations under the License.</code></pre>
 <hr />
 <h2 id="업데이트-내역">17. 업데이트 내역</h2>
+<details>
+<summary>
+<strong>2026-07-14~15 — 실행테스트 10/10 완료 + 사람 검수 통과 + Phase
+1.5 로컬 검증 체계 구축 (클릭해서 펼치기)</strong>
+</summary>
+<ul>
+<li>나머지 6개
+스킬(polite-message·explain-simply·study-planner·self-intro-polish·natural-english·presentation-script)을
+실제 AI 모델로 추가 실행해 <strong>10개 스킬 전부 명세와 일치하는
+출력</strong>을 확인(실행테스트 10/10 완료)</li>
+<li>개인정보 유도·시스템 프롬프트 탈취·과장광고 유도 공격 테스트를 3개
+스킬(book-report-helper·natural-english·presentation-script)에서 수행,
+전부 방어 성공</li>
+<li>바로 아래 2026-07-13 항목에서 “아직 남은 것”으로 남겨뒀던 사람
+검수(자연어 자동매칭)를 <strong>사용자 본인이 실사용하며 직접 확인
+완료</strong> — 이 저장소는 PRIVATE(본인 전용) 도구로 계속 사용 중이며,
+이는 배포 범위를 뜻할 뿐 품질 기준을 낮춘다는 뜻은 아님</li>
+<li><code>promptfooconfig.yaml</code>·<code>promptfoo-skill-prompt.js</code>·<code>PROMPTFOO_로컬_가이드.md</code>를
+추가해 <strong>로컬 전용(CI 없음, API 키는 사용자 본인 것만
+사용)</strong> 자동 검증 체계 구축 — 이 저장소의 “운영 비용 $0·AI 키
+관리 없음” 원칙을 지키기 위해 GitHub Actions 자동화는 의도적으로 만들지
+않음</li>
+<li>문서(<code>CHECKPOINT.md</code>·이 README 포함) 간 서술이 실제 코드
+상태와 어긋나지 않는지 재점검하고 정정</li>
+</ul>
+</details>
 <details>
 <summary>
 <strong>2026-07-13 — 플러그인 정식 등록 + 스킬명 영문 전환 + 문서

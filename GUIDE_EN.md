@@ -184,6 +184,16 @@ Write an apology message to my teacher for turning in homework late.
 ## 9. Update History Summary
 
 <details>
+<summary><strong>2026-07-14~15 — All 10 skills confirmed working + human verification passed (click to expand)</strong></summary>
+
+- Actually ran the remaining 6 skills too — **all 10 skills now confirmed to work correctly**
+- Directly tried to trick 3 of the skills into leaking personal info or breaking their own rules — every attempt was blocked
+- The item marked "still unconfirmed" in the 2026-07-13 entry below (whether skills actually get called automatically from natural language) has now been **confirmed by the user through direct, hands-on use**
+- Added a tool (`promptfoo`) for re-checking that all 10 skills still work correctly after future changes. It doesn't run automatically — the user has to run it manually whenever they want to check (see `PROMPTFOO_로컬_가이드.md`, developer-facing)
+
+</details>
+
+<details>
 <summary><strong>2026-07-13 — Official plugin registration + skill folder names switched to English (click to expand)</strong></summary>
 
 - This tool is now formally registered as a Claude Code "plugin" (previously, natural-language calling didn't always work reliably)

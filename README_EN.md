@@ -3,7 +3,7 @@
 > A collection of Korean writing tools — just fill in the blanks and AI does the rest.
 > Works on Claude Code · Claude.ai App · Codex · Cursor · Gemini CLI.
 
-License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean Output
+License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean Output | Verified: ✅ Confirmed via personal use (2026-07-15)
 
 ---
 
@@ -397,7 +397,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you want to translate Korean into natural English
 
 **Required input**:
-- `$1`: Korean sentence
+- `$ARGUMENTS`: Korean sentence (single input — not `$1`/`$2`; all following text is captured at once)
 
 **Example**:
 ```
@@ -557,6 +557,10 @@ AI Tool (Claude / Codex / etc.)
 ```
 SoDam-Prompt-Eng/                       ← Repository root
 │
+├── .claude-plugin/                 ← Official Claude Code plugin registration (2026-07-13)
+│   ├── plugin.json                 ← Plugin metadata
+│   └── marketplace.json            ← Local marketplace definition (for installing on your own devices)
+│
 ├── skills/                         ← 10 skill folders (English slugs since 2026-07-13)
 │   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← Skill definition file
@@ -579,8 +583,15 @@ SoDam-Prompt-Eng/                       ← Repository root
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
-├── README.md                       ← Korean guide (this file in Korean)
-├── README_EN.md                    ← English guide (this file)
+├── README.md / README.html         ← Korean full guide (md·html identical content)
+├── README_EN.md / README_EN.html   ← English full guide (this file)
+├── GUIDE.md / GUIDE.html           ← Korean beginner guide
+├── GUIDE_EN.md / GUIDE_EN.html     ← English beginner guide
+├── CHECKPOINT.md                   ← Development progress log (maintainer-facing, not needed by end users)
+├── P4_검수_가이드.md               ← Human-verification checklist
+├── PROMPTFOO_로컬_가이드.md         ← Local automated-verification instructions (developer-facing, optional)
+├── promptfooconfig.yaml            ← Local verification config for all 10 skills (no CI, keeps $0 principle)
+├── promptfoo-skill-prompt.js       ← Verification loader (reads the real SKILL.md files directly, no copy)
 ├── LICENSE                         ← Apache-2.0 full text
 ├── NOTICE                          ← Copyright notice
 └── .gitignore                      ← Git exclusion list
@@ -620,8 +631,15 @@ $2 = Second input value (impression)
 | File | Description |
 |------|-------------|
 | `skills/*/SKILL.md` | Skill definition files (core) |
-| `README.md` | Korean guide |
-| `README_EN.md` | English guide (this file) |
+| `.claude-plugin/plugin.json` · `marketplace.json` | Claude Code plugin/marketplace registration |
+| `README.md` / `README.html` | Korean full guide (md·html identical content) |
+| `README_EN.md` / `README_EN.html` | English full guide (this file) |
+| `GUIDE.md` / `GUIDE.html` | Korean beginner guide |
+| `GUIDE_EN.md` / `GUIDE_EN.html` | English beginner guide |
+| `CHECKPOINT.md` | Development progress log (maintainer-facing, not needed by end users) |
+| `P4_검수_가이드.md` | Human-verification checklist |
+| `PROMPTFOO_로컬_가이드.md` | Local automated-verification instructions (developer-facing, optional) |
+| `promptfooconfig.yaml` · `promptfoo-skill-prompt.js` | Local verification config/script (developer-facing, optional) |
 | `LICENSE` | Apache-2.0 full text |
 | `NOTICE` | Copyright notice |
 
@@ -877,6 +895,7 @@ This project **has not yet undergone formal legal review (attorney review).** Tw
 
 1. **Copyright ownership of AI-generated output**: Who owns the copyright to text produced by running a skill (book reports, messages, etc.) varies by jurisdiction and by each AI service's terms, and remains a legally uncertain area.
 2. **References to "Claude," "Anthropic," "Codex," "OpenAI," etc.**: This repository mentions these names solely to describe compatibility. There is no affiliation, sponsorship, or endorsement relationship with these companies (see the NOTICE file). Check each company's official trademark guidelines separately for their name/logo usage policy.
+3. **Distribution scope (currently PRIVATE)**: This GitHub repository is currently kept **PRIVATE** and was built for the creator's personal use. Items 1 and 2 above must be resolved before this repository is ever made PUBLIC or separately redistributed/commercialized; within the current PRIVATE, personal-use scope, these open items do not create actual legal exposure.
 
 **If you plan large-scale commercial use, redistribution, or inclusion in a paid service, we strongly recommend obtaining independent legal counsel.** This document and the LICENSE/NOTICE files are provided for general informational purposes and do not substitute for legal advice. (For reference only — no legal guarantee is made; you are responsible for verifying with an attorney.)
 
@@ -921,6 +940,17 @@ limitations under the License.
 ---
 
 ## 17. Update History
+
+<details>
+<summary><strong>2026-07-14~15 — Live execution testing reached 10/10 + human verification passed + Phase 1.5 local verification setup (click to expand)</strong></summary>
+
+- Ran the remaining 6 skills (polite-message, explain-simply, study-planner, self-intro-polish, natural-english, presentation-script) through real AI model execution — **all 10 skills now confirmed to match spec** (10/10 live execution tests complete)
+- Ran adversarial tests for personal-info leakage, system-prompt extraction, and exaggerated-ad-copy injection on 3 skills (book-report-helper, natural-english, presentation-script) — all successfully blocked
+- The human verification item (natural-language auto-matching) left as "still outstanding" in the 2026-07-13 entry below has now been **confirmed directly by the user through personal, hands-on use** — this repository continues to be used as a PRIVATE (personal-use only) tool; that describes distribution scope, not a lower quality bar
+- Added `promptfooconfig.yaml`, `promptfoo-skill-prompt.js`, and `PROMPTFOO_로컬_가이드.md` to set up **local-only automated verification (no CI, uses only the user's own API key)** — GitHub Actions automation was deliberately not built, to preserve this repository's "$0 operating cost, no AI key management" principle
+- Re-checked documentation (including `CHECKPOINT.md` and this README) for consistency with the actual current code state, and corrected drift where found
+
+</details>
 
 <details>
 <summary><strong>2026-07-13 — Official plugin registration + English skill slugs + documentation reconciliation (click to expand)</strong></summary>

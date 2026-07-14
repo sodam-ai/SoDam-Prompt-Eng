@@ -399,7 +399,7 @@ Cursor 예시:
 **언제 쓰나요?** 한국어를 자연스러운 영어로 바꾸고 싶을 때
 
 **필요한 정보**:
-- `$1`: 한국어 문장
+- `$ARGUMENTS`: 한국어 문장 (단일 입력 — `$1`/`$2`가 아니라 뒤에 오는 텍스트 전체가 한 번에 들어갑니다)
 
 **예시**:
 ```
@@ -559,6 +559,10 @@ AI 도구 (Claude / Codex 등)
 ```
 SoDam-Prompt-Eng/                       ← 저장소 루트
 │
+├── .claude-plugin/                 ← Claude Code 플러그인 정식 등록(2026-07-13)
+│   ├── plugin.json                 ← 플러그인 메타데이터
+│   └── marketplace.json            ← 로컬 마켓플레이스 정의(본인 여러 기기 설치용)
+│
 ├── skills/                         ← 스킬 10개 폴더 (2026-07-13부터 영문 폴더명)
 │   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← 스킬 정의 파일
@@ -581,8 +585,15 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
-├── README.md                       ← 이 파일 (한국어 가이드)
-├── README_EN.md                    ← 영문 가이드
+├── README.md / README.html         ← 이 문서 — 한국어 전체 안내서 (md·html 내용 동일)
+├── README_EN.md / README_EN.html   ← 영문 전체 안내서
+├── GUIDE.md / GUIDE.html           ← 한국어 왕초보 가이드
+├── GUIDE_EN.md / GUIDE_EN.html     ← 영문 왕초보 가이드
+├── CHECKPOINT.md                   ← 개발 진행 상태 기록 (유지보수용, 최종 사용자에겐 불필요)
+├── P4_검수_가이드.md               ← 사람 검수용 체크리스트
+├── PROMPTFOO_로컬_가이드.md         ← 로컬 자동 검증 실행 안내 (개발자용, 선택사항)
+├── promptfooconfig.yaml            ← 10개 스킬 로컬 검증 설정 (CI 없음, $0 원칙 유지)
+├── promptfoo-skill-prompt.js       ← 검증용 SKILL.md 로더 (실제 파일을 그대로 읽음, 사본 없음)
 ├── LICENSE                         ← Apache-2.0 라이선스
 ├── NOTICE                          ← 저작권 고지
 └── .gitignore                      ← git 제외 목록
@@ -622,8 +633,15 @@ $2 = 두 번째 입력값 (느낀 점)
 | 파일 | 설명 |
 |------|------|
 | `skills/*/SKILL.md` | 스킬 정의 파일 (핵심) |
-| `README.md` | 한국어 가이드 (이 파일) |
-| `README_EN.md` | 영문 가이드 |
+| `.claude-plugin/plugin.json` · `marketplace.json` | Claude Code 플러그인·마켓플레이스 등록 정보 |
+| `README.md` / `README.html` | 한국어 전체 가이드 (이 파일, md·html 내용 동일) |
+| `README_EN.md` / `README_EN.html` | 영문 전체 가이드 |
+| `GUIDE.md` / `GUIDE.html` | 한국어 왕초보 가이드 |
+| `GUIDE_EN.md` / `GUIDE_EN.html` | 영문 왕초보 가이드 |
+| `CHECKPOINT.md` | 개발 진행 상태 기록 (유지보수용, 최종 사용자는 몰라도 됨) |
+| `P4_검수_가이드.md` | 사람 검수용 체크리스트 |
+| `PROMPTFOO_로컬_가이드.md` | 로컬 자동 검증 실행 안내 (개발자용, 선택사항) |
+| `promptfooconfig.yaml` · `promptfoo-skill-prompt.js` | 로컬 자동 검증 설정·스크립트 (개발자용, 선택사항) |
 | `LICENSE` | Apache-2.0 전문 |
 | `NOTICE` | 저작권 고지 |
 
@@ -877,6 +895,7 @@ AI가 생성한 결과물의 정확성, 완전성, 적합성을 보장하지 않
 
 1. **AI 생성물의 저작권 귀속**: 스킬 실행으로 나온 결과물(독후감, 메시지 등)의 저작권이 누구에게 귀속되는지는 국가·서비스 약관마다 다르며 법적으로 아직 불확실한 영역입니다.
 2. **"Claude"·"Anthropic"·"Codex"·"OpenAI" 등 명칭 언급**: 이 저장소는 호환성을 설명하기 위한 목적으로만 이들 명칭을 언급하며, 해당 기업과 제휴·후원·보증 관계가 없습니다(NOTICE 파일 참조). 상표 사용 정책은 각 기업의 공식 가이드라인을 별도로 확인하세요.
+3. **배포 범위(현재 PRIVATE)**: 이 GitHub 저장소는 현재 **PRIVATE(비공개)**로 유지되고 있으며 제작자 개인 용도로 만들어졌습니다. 위 1·2번 항목은 이 저장소를 PUBLIC으로 전환하거나 별도로 재배포·상업화할 때 반드시 먼저 해소해야 하는 조건이며, 현재의 PRIVATE·개인용 범위에서는 위 미해결 사안이 실제 법적 노출로 이어지지 않습니다.
 
 **대규모 상업적 사용, 재배포, 유료 서비스 포함을 계획 중이시라면 반드시 별도로 법률 전문가의 확인을 받으시길 강력히 권장합니다.** 이 문서와 LICENSE/NOTICE 파일은 일반 정보 제공 목적이며 법적 자문을 대체하지 않습니다. (참고용·법적 효력 보장 안 함, 사용자 책임·변호사 확인 권장)
 
@@ -918,6 +937,17 @@ limitations under the License.
 ---
 
 ## 17. 업데이트 내역
+
+<details>
+<summary><strong>2026-07-14~15 — 실행테스트 10/10 완료 + 사람 검수 통과 + Phase 1.5 로컬 검증 체계 구축 (클릭해서 펼치기)</strong></summary>
+
+- 나머지 6개 스킬(polite-message·explain-simply·study-planner·self-intro-polish·natural-english·presentation-script)을 실제 AI 모델로 추가 실행해 **10개 스킬 전부 명세와 일치하는 출력**을 확인(실행테스트 10/10 완료)
+- 개인정보 유도·시스템 프롬프트 탈취·과장광고 유도 공격 테스트를 3개 스킬(book-report-helper·natural-english·presentation-script)에서 수행, 전부 방어 성공
+- 바로 아래 2026-07-13 항목에서 "아직 남은 것"으로 남겨뒀던 사람 검수(자연어 자동매칭)를 **사용자 본인이 실사용하며 직접 확인 완료** — 이 저장소는 PRIVATE(본인 전용) 도구로 계속 사용 중이며, 이는 배포 범위를 뜻할 뿐 품질 기준을 낮춘다는 뜻은 아님
+- `promptfooconfig.yaml`·`promptfoo-skill-prompt.js`·`PROMPTFOO_로컬_가이드.md`를 추가해 **로컬 전용(CI 없음, API 키는 사용자 본인 것만 사용)** 자동 검증 체계 구축 — 이 저장소의 "운영 비용 $0·AI 키 관리 없음" 원칙을 지키기 위해 GitHub Actions 자동화는 의도적으로 만들지 않음
+- 문서(`CHECKPOINT.md`·이 README 포함) 간 서술이 실제 코드 상태와 어긋나지 않는지 재점검하고 정정
+
+</details>
 
 <details>
 <summary><strong>2026-07-13 — 플러그인 정식 등록 + 스킬명 영문 전환 + 문서 정합·검증 (클릭해서 펼치기)</strong></summary>
