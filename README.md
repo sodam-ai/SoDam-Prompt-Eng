@@ -3,7 +3,7 @@
 > AI를 처음 쓰는 분도 빈칸만 채우면 바로 되는 한국어 글쓰기 도구 모음입니다.
 > Claude Code · Claude.ai 앱 · Codex · Cursor · Gemini CLI 에서 동일하게 작동합니다.
 
-라이선스: Apache-2.0 | 단계: SoDam Prompt (1단계) | 언어: 한국어
+라이선스: Apache-2.0 | 단계: SoDam Prompt (1단계) | 언어: 한국어 | 검수: ✅ 실사용 확인 완료 (2026-07-15)
 
 ---
 
