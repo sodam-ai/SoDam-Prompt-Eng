@@ -121,7 +121,7 @@ P1(스킬 생성)·P2(저장소 정리)·P3(push) 전부 완료. PRD의 나머�
 
 > **배포 범위 확정**: 저장소는 **계속 PRIVATE 유지**(공개 마켓 디스커버리로 대중 노출 안 함). 단 이건 "대충 만든다"는 뜻이 아니라 **Phase 1.5·2·3 전부 끝까지 정식으로 진행**한다는 뜻 — "개인용"은 배포 범위(본인 전용)를 말한 것이지 엔지니어링 완성도를 낮추라는 게 아님. 마켓플레이스(`marketplace.json`) 등록은 PRIVATE 상태로도 가능(본인 여러 기기에서 `/plugin install`용, 공개 디스커버리와는 별개).
 
-1. Phase 1.5 — promptfoo 자동 작동률 검증 + GitHub Actions CI. **[2026-07-15 신규 리스크, 아직 유효]** GitHub Actions에서 자동 실행하려면 Anthropic API 키를 Secret으로 등록해야 하고 매 실행마다 실제 비용이 발생 — `04_PROJECT_SPEC.md`의 NFR-비용1("운영 비용 $0")·NFR-키1("AI 키 관리 없음")을 처음으로 깨는 결정이라 **키/비용 부담 주체를 사용자가 먼저 확정해야 착수 가능**(코드로 임의 진행 금지). "개인용"과 무관한 별개의 실질 리스크.
+1. Phase 1.5 — promptfoo 작동률 검증. **[2026-07-15 완료 — 로컬 전용으로 확정]** 사용자 결정: "CI 자동화는 보류, 로컬에서만 수동 실행"(API 비용·키 관리를 자동화하지 않기로 함). 구현 완료: `promptfooconfig.yaml`(10개 스킬 테스트) + `promptfoo-skill-prompt.js`(실제 SKILL.md를 그대로 읽어 렌더링, 별도 사본 없어 드리프트 방지) + `PROMPTFOO_로컬_가이드.md`(실행 안내) + `.gitignore`에 `.promptfoo/` 캐시 제외 추가. **GitHub Actions 워크플로우는 의도적으로 없음** — 만들려면 이 결정을 먼저 뒤집어야 함. 로더 함수는 node로 직접 실행해 렌더링 정확성 확인(API 호출 없이, $0). 실제 `promptfoo eval` 실행(API 호출 발생)은 사용자가 원할 때 직접.
 2. Phase 2 — `.claude-plugin/plugin.json`/`marketplace.json` 로컬 생성은 끝남(94c8582/6552a48). 남은 건 **본인 전용(PRIVATE) 마켓 등록**으로 `/plugin install @sodam` 여러 기기에서 설치 가능하게 마무리 + 안전 배지 자동화.
 3. **저장소를 PUBLIC으로 전환할 때만 발동하는 조건부 게이트 — 지금은 미적용**: `.PRD/01_PRD.md` §9 C-4("출시 전 변호사 검토")와 `.PRD/04_PROJECT_SPEC.md`의 미확인 2건(AI 생성물 저작권 귀속, Anthropic 이름·로고 사용 정책). 현재 계획(PRIVATE 유지)에서는 블로킹하지 않으나, 나중에 PUBLIC 전환을 결정하면 그때 반드시 선행해야 함.
 4. Phase 3 — 스킬 수 확장(PRIVATE 상태에서도 본인 필요에 따라 진행 가능)

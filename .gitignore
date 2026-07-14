@@ -35,3 +35,6 @@ Thumbs.db
 .todos-report.md/
 .pair-programming-session.md
 tsconfig.tsbuildinfo
+
+# Phase 1.5 promptfoo 로컬 실행 캐시·결과물 (API 응답 포함 가능 — 커밋 금지)
+.promptfoo/

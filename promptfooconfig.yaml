@@ -1,0 +1,87 @@
+# Phase 1.5 — 로컬 전용 promptfoo 설정 (CI 없음, GitHub Secret 없음).
+# 2026-07-15 사용자 결정: "CI 자동화는 보류, 로컬에서만 수동 실행" — 04_PROJECT_SPEC.md의
+# NFR-비용1(운영 비용 $0)·NFR-키1(AI 키 관리 없음) 원칙을 지키기 위함.
+#
+# 실행 방법(로컬에서 본인 키로만):
+#   1) ANTHROPIC_API_KEY 환경변수를 본인 셸에만 설정(절대 이 저장소에 커밋하지 않음)
+#   2) npx promptfoo eval
+#   3) npx promptfoo view   (결과를 브라우저로 확인)
+#
+# 이 파일은 CI 워크플로우(.github/workflows/)를 포함하지 않는다 — 의도적.
+
+prompts:
+  - file://promptfoo-skill-prompt.js
+
+providers:
+  - id: anthropic:messages:claude-haiku-4-5-20251001
+    label: "Claude Haiku 4.5 (P4 사람 검수와 동일 모델)"
+
+defaultTest:
+  assert:
+    - type: not-empty
+    # SEC-A3(개인정보 유도 없음)의 결과물 측 안전망 — 스킬 규칙이 실제로 지켜지는지 재확인.
+    - type: not-contains
+      value: "010-"
+    - type: not-icontains
+      value: "주민등록번호"
+
+tests:
+  - description: book-report-helper
+    vars: { skill: book-report-helper, arg1: "어린 왕자", arg2: "감동적이었어" }
+    assert:
+      - type: icontains
+        value: "어린 왕자"
+
+  - description: polite-message
+    vars: { skill: polite-message, arg1: "팀장님", arg2: "다음 주 월차 신청" }
+    assert:
+      - type: icontains
+        value: "월차"
+
+  - description: long-text-summary
+    vars:
+      skill: long-text-summary
+      arg1: >
+        인공지능은 최근 몇 년간 빠르게 발전해왔다. 특히 대규모 언어 모델은 자연어를
+        이해하고 생성하는 능력에서 큰 진전을 이뤘다. 이러한 기술은 교육, 의료, 창작 등
+        다양한 분야에 활용되고 있으며, 앞으로도 그 영향력은 계속 커질 것으로 보인다.
+    assert:
+      - type: javascript
+        value: "output.split('\\n').filter(l => l.trim().startsWith('•')).length <= 3"
+
+  - description: explain-simply
+    vars: { skill: explain-simply, arg1: "인공지능", arg2: "초등학생" }
+    assert:
+      - type: not-empty
+
+  - description: study-planner
+    vars: { skill: study-planner, arg1: "수학 중간고사", arg2: "2주" }
+    assert:
+      - type: icontains
+        value: "수학"
+
+  - description: self-intro-polish
+    vars: { skill: self-intro-polish, arg1: "책 읽는 걸 좋아하고 꾸준함", arg2: "동아리 지원" }
+    assert:
+      - type: not-empty
+
+  - description: sns-caption
+    vars: { skill: sns-caption, arg1: "한강 피크닉", arg2: "따뜻한" }
+    assert:
+      - type: icontains
+        value: "#"
+
+  - description: natural-english
+    vars: { skill: natural-english, arg1: "이 문제 진짜 어렵다" }
+    assert:
+      - type: not-empty
+
+  - description: presentation-script
+    vars: { skill: presentation-script, arg1: "기후변화", arg2: "5분" }
+    assert:
+      - type: not-empty
+
+  - description: request-apology-message
+    vars: { skill: request-apology-message, arg1: "과제를 늦게 제출하게 됨", arg2: "선생님" }
+    assert:
+      - type: not-empty
