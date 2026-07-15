@@ -6,6 +6,151 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>SoDam Prompt — Full Guide</title>
   <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -87,7 +232,6 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="" />
 </head>
 <body>
 <header id="title-block-header">
@@ -437,8 +581,9 @@ notifying absence for medical appointment)</p>
 긴글-3줄요약 (Long Text 3-Line Summary)</h3>
 <p><strong>When to use</strong>: When you want to condense a long text
 into 3 key points</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Full text to
-summarize</p>
+<p><strong>Required input</strong>: - <code>$ARGUMENTS</code>: Full text
+to summarize (single input — not <code>$1</code>/<code>$2</code>; all
+following text is captured at once)</p>
 <p><strong>Example</strong>:</p>
 <pre><code>/long-text-summary [paste full text here]</code></pre>
 <p><strong>Output</strong>: 3 key points (formatted with • bullets)</p>
@@ -493,8 +638,9 @@ fun)</p>
 영어-자연스럽게 (Natural English)</h3>
 <p><strong>When to use</strong>: When you want to translate Korean into
 natural English</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Korean
-sentence</p>
+<p><strong>Required input</strong>: - <code>$ARGUMENTS</code>: Korean
+sentence (single input — not <code>$1</code>/<code>$2</code>; all
+following text is captured at once)</p>
 <p><strong>Example</strong>:</p>
 <pre><code>/natural-english &quot;나는 오늘 학교에서 발표를 잘 했어&quot;</code></pre>
 <p><strong>Output</strong>: Natural English sentence + Korean
@@ -1066,6 +1212,12 @@ compatibility. There is no affiliation, sponsorship, or endorsement
 relationship with these companies (see the NOTICE file). Check each
 company’s official trademark guidelines separately for their name/logo
 usage policy.</li>
+<li><strong>Distribution scope (currently PRIVATE)</strong>: This GitHub
+repository is currently kept <strong>PRIVATE</strong> and was built for
+the creator’s personal use. Items 1 and 2 above must be resolved before
+this repository is ever made PUBLIC or separately
+redistributed/commercialized; within the current PRIVATE, personal-use
+scope, these open items do not create actual legal exposure.</li>
 </ol>
 <p><strong>If you plan large-scale commercial use, redistribution, or
 inclusion in a paid service, we strongly recommend obtaining independent

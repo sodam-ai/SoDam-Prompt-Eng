@@ -6,6 +6,151 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>SoDam Prompt — 전체 안내서</title>
   <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -87,7 +232,6 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="" />
 </head>
 <body>
 <header id="title-block-header">
@@ -410,7 +554,9 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href=
 <hr />
 <h3 id="스킬-3-긴글-3줄요약">스킬 3: 긴글-3줄요약</h3>
 <p><strong>언제 쓰나요?</strong> 긴 글을 핵심 3줄로 정리하고 싶을 때</p>
-<p><strong>필요한 정보</strong>: - <code>$1</code>: 요약할 글 전체</p>
+<p><strong>필요한 정보</strong>: - <code>$ARGUMENTS</code>: 요약할 글
+전체 (단일 입력 — <code>$1</code>/<code>$2</code>가 아니라 뒤에 오는
+텍스트 전체가 한 번에 들어갑니다)</p>
 <p><strong>예시</strong>:</p>
 <pre><code>/long-text-summary [긴 글 전체 붙여넣기]</code></pre>
 <p><strong>결과물</strong>: 핵심 내용 3줄 (• 기호로 정리)</p>
@@ -453,7 +599,9 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href=
 <h3 id="스킬-8-영어-자연스럽게">스킬 8: 영어-자연스럽게</h3>
 <p><strong>언제 쓰나요?</strong> 한국어를 자연스러운 영어로 바꾸고 싶을
 때</p>
-<p><strong>필요한 정보</strong>: - <code>$1</code>: 한국어 문장</p>
+<p><strong>필요한 정보</strong>: - <code>$ARGUMENTS</code>: 한국어 문장
+(단일 입력 — <code>$1</code>/<code>$2</code>가 아니라 뒤에 오는 텍스트
+전체가 한 번에 들어갑니다)</p>
 <p><strong>예시</strong>:</p>
 <pre><code>/natural-english &quot;나는 오늘 학교에서 발표를 잘 했어&quot;</code></pre>
 <p><strong>결과물</strong>: 자연스러운 영어 문장 + 왜 그렇게 표현하는지
@@ -990,6 +1138,12 @@ AI가 생성한 결과물의 정확성, 완전성, 적합성을 보장하지 않
 이 저장소는 호환성을 설명하기 위한 목적으로만 이들 명칭을 언급하며, 해당
 기업과 제휴·후원·보증 관계가 없습니다(NOTICE 파일 참조). 상표 사용
 정책은 각 기업의 공식 가이드라인을 별도로 확인하세요.</li>
+<li><strong>배포 범위(현재 PRIVATE)</strong>: 이 GitHub 저장소는 현재
+<strong>PRIVATE(비공개)</strong>로 유지되고 있으며 제작자 개인 용도로
+만들어졌습니다. 위 1·2번 항목은 이 저장소를 PUBLIC으로 전환하거나 별도로
+재배포·상업화할 때 반드시 먼저 해소해야 하는 조건이며, 현재의
+PRIVATE·개인용 범위에서는 위 미해결 사안이 실제 법적 노출로 이어지지
+않습니다.</li>
 </ol>
 <p><strong>대규모 상업적 사용, 재배포, 유료 서비스 포함을 계획
 중이시라면 반드시 별도로 법률 전문가의 확인을 받으시길 강력히
