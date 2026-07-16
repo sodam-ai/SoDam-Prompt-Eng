@@ -10,8 +10,16 @@ module.exports = function loadSkillPrompt({ vars }) {
   const raw = fs.readFileSync(skillPath, "utf-8");
   const body = raw.replace(/^---[\s\S]*?---\n/, ""); // frontmatter 제거
 
-  if (vars.arg2 !== undefined) {
-    return body.split("$1").join(vars.arg1).split("$2").join(vars.arg2);
+  const rendered = vars.arg2 !== undefined
+    ? body.split("$1").join(vars.arg1).split("$2").join(vars.arg2)
+    : body.split("$ARGUMENTS").join(vars.arg1);
+
+  // vars가 이 스킬의 실제 입력 방식($1/$2 vs $ARGUMENTS)과 안 맞으면 치환이 안 된 채
+  // 조용히 반환되던 결함을 막는다 — 깨진 프롬프트를 그대로 API에 보내는 대신 즉시 실패시킨다.
+  if (/\$1|\$2|\$ARGUMENTS/.test(rendered)) {
+    throw new Error(
+      `${vars.skill}: 변수 치환 실패 — vars(${JSON.stringify(vars)})가 이 스킬의 입력 방식과 맞지 않습니다.`
+    );
   }
-  return body.split("$ARGUMENTS").join(vars.arg1);
+  return rendered;
 };
