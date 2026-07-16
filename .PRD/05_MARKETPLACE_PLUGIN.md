@@ -104,8 +104,8 @@ argument-hint: [책 제목] [느낀 점]
 | Phase | 마켓플레이스·플러그인 범위 | 상태 |
 |---|---|---|
 | **P1 (현재 완료)** | GitHub 저장소 = 마켓. README 설치 안내(3경로). ZIP 무코드 설치(★1) 우선. | ✅ done |
-| **Phase 1.5** | promptfoo 작동률 자동 검증 (GitHub Actions) → 배지에 숫자 표시 가능 | pending |
-| **Phase 2** | Claude Code 마켓 등록(`.claude-plugin/marketplace.json`) → `/plugin install @sodam` + Codex 마켓 + 안전 배지 자동화 | 로컬 매니페스트 생성 ✅ 완료 · 공개 등록/실사용 검증·Codex 마켓·안전 배지 자동화는 pending |
+| **Phase 1.5** | promptfoo 작동률 검증 — **[2026-07-15 완료·로컬 전용으로 확정]** GitHub Actions 자동화는 NFR-비용1·NFR-키1과 충돌해 채택하지 않음. `promptfooconfig.yaml`+`promptfoo-skill-prompt.js`로 로컬에서 본인 API 키로만 수동 실행 | ✅ done (로컬 전용) |
+| **Phase 2** | Claude Code 마켓 등록(`.claude-plugin/marketplace.json`) → `/plugin install @sodam` + Codex 마켓 + 안전 배지 | 로컬 매니페스트 생성 ✅ 완료 · 공개 등록/실사용 검증·Codex 마켓은 pending · **안전 배지 자동화는 정의 미정(위 Phase 1.5가 로컬 전용으로 확정되며 "CI가 자동 계산" 전제가 무효화됨 — 수동 유지/로컬결과 수동반영/CI 재검토 중 택1은 사용자 결정 필요)** |
 | **Phase 3** | 커뮤니티 기여: 스킬 수 확장. 안전 심사 통과해야 마켓 노출. | pending |
 
 ---
