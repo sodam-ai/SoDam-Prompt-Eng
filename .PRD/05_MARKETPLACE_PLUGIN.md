@@ -130,5 +130,5 @@ Prompt (★1 지금 여기) → Context → Loop → Harness → Agentic
 - [x] 공개 마켓 repo = `sodam-ai/SoDam-Prompt-Eng` (P3 push 완료)
 - [x] 초보 1순위 = **ZIP 무코드 설치(★1)**
 - [x] 전체 스킬 = **순수 텍스트** (코드포함 없음)
-- [ ] Phase 1.5 promptfoo 자동화 = pending (P4 검수 완료 후)
+- [x] Phase 1.5 promptfoo 작동률 검증 = 완료(2026-07-15, 로컬 전용·CI 없음)
 - [x] Phase 2 마켓 등록 = 로컬 plugin.json/marketplace.json 생성 완료(라이브 재검증 대기)

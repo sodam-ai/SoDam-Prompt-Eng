@@ -12,7 +12,7 @@
 | P1 | SKILL.md 10개 생성 + README 설치 안내 | ✅ done |
 | P2 | 로컬 Next.js 잔재 정리(git 추적 해제) | ✅ done (2026-07-11, `git update-index --remove --force-remove`로 24개 파일 추적 해제) |
 | P3 | GitHub push | ✅ done (2026-07-11, `origin/main` 동기화 확인, 저장소 PRIVATE) |
-| P4 | 사람 검수 (10개 실작동) | pending |
+| P4 | 사람 검수 (10개 실작동) | ✅ done (2026-07-15, 개인 용도 실사용 검증 — 상세 CHECKPOINT.md) |
 
 ---
 
@@ -38,7 +38,7 @@ skills/request-apology-message/SKILL.md
 - [x] SKILL.md 10개 파일 생성
 - [x] README.md (Claude.ai ZIP / Claude Code / Codex 3경로 설치 안내)
 - [x] .gitignore (Next.js 잔재 GitHub 제외 처리)
-- [ ] Claude Haiku 4.5에서 실작동 확인 → P4
+- [x] Claude Haiku 4.5에서 실작동 확인 → P4 완료(2026-07-15)
 
 ---
 
@@ -97,14 +97,16 @@ git push -u origin main
 
 ---
 
-## P4 — 사람 검수 pending
+## P4 — 사람 검수 ✅ done (2026-07-15)
 
 **목표**: "거짓말하지 않기" — 실제로 작동하는 스킬만 공개.
 
-### 검수 방법 (Claude Haiku 4.5에서)
+**결과**: 사용자 본인이 개인 용도로 직접 사용하며 10개 실작동·자연어 자동매칭 확인 완료. 원래 상정했던 "50항목 형식 체크리스트" 대신 실사용 확인으로 대체(CHECKPOINT.md P4 섹션에 상세 근거 기록).
+
+### 검수 방법 (Claude Haiku 4.5에서, 참고용 — 아래는 애초 계획했던 절차)
 
 > **핵심**: Claude Code와 Claude.ai 앱 모두 자연어(description 매칭)로 테스트.
-> 슬래시 커맨드는 과거 한글 폴더명 스캔 한계로 배제했으나, 폴더명을 영문 슬러그로 전환(커밋 42cc622)했다. 단 이 전환이 실제로 자동매칭을 고쳤는지는 라이브 재검증 전이라, 지금도 자연어 호출을 정본으로 삼는다. (예: `/book-report-helper`)
+> 슬래시 커맨드는 과거 한글 폴더명 스캔 한계로 배제했으나, 폴더명을 영문 슬러그로 전환(커밋 42cc622)했다. **2026-07-15 라이브 재검증으로 이 전환이 자동매칭을 실제로 고쳤음을 확인함** — 자연어 호출·슬래시 커맨드 둘 다 정상 작동. (예: `/book-report-helper`)
 
 Claude Code 및 Claude.ai 앱에서 자연어 입력:
 ```
