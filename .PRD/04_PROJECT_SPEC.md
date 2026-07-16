@@ -19,7 +19,7 @@
 | DB | **없음** | 사용자 데이터 저장 없음 |
 | 인증 | **없음** | AI 도구 자체 인증 사용 |
 | AI 실행 | **사용자 AI 도구 담당** | Claude Code·Codex·Claude.ai 앱이 각자 모델 사용 |
-| (Phase 1.5) 검증 | **promptfoo** (GitHub Actions) | SKILL.md 작동률 자동 검증 |
+| (Phase 1.5) 검증 | **promptfoo** (로컬 전용, CI 없음 — **2026-07-15 완료**) | SKILL.md 작동률 검증, API 키는 사용자 본인 것만 사용(자동 실행 없음) |
 | (Phase 2) 마켓 | **Claude Code 마켓** (`.claude-plugin/marketplace.json`) | `/plugin install @sodam` 한 줄 설치 |
 
 ---

@@ -139,8 +139,8 @@ Claude Code 및 Claude.ai 앱에서 자연어 입력:
 
 | Phase | 내용 | 전제 |
 |-------|------|------|
-| Phase 1.5 | promptfoo 자동 작동률 검증 + GitHub Actions CI | P4 완료 |
-| Phase 2 | 마켓 등록(`.claude-plugin/plugin.json`+`marketplace.json` 생성 ✅ 완료, `/plugin install @sodam` 실사용은 라이브 재검증 대기) + 안전 배지 자동화(P4 완료 전제, 미착수) | 마켓 등록 완료 · 안전 배지는 P4 완료 |
+| Phase 1.5 | promptfoo 작동률 검증(**2026-07-15 완료·로컬 전용으로 확정** — GitHub Actions CI는 NFR-비용1·NFR-키1과 충돌해 채택 안 함, 본인 API 키로 로컬 수동 실행만) | P4 완료 ✅ |
+| Phase 2 | 마켓 등록(`.claude-plugin/plugin.json`+`marketplace.json` 생성 ✅ 완료, `/plugin install @sodam` 실사용은 라이브 재검증 대기) + 안전 배지(**방식 미정** — 위 CI 미채택으로 "자동 계산" 전제가 무효화됨, 수동 유지/로컬결과 수동반영/CI 재검토 중 사용자 결정 필요) | 마켓 등록 완료 · 안전 배지는 방식 미정 |
 | Phase 3 | 스킬 수 확장 (커뮤니티 기여 수용) + 다국어 | Phase 2 완료 |
 
 ---
