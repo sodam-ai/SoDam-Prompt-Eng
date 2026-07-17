@@ -179,6 +179,8 @@ Write an apology message to my teacher for turning in homework late.
 
 **"Do I need to memorize the commands?"** No. As explained in Section 6, just ask in natural language and the AI picks the right skill automatically. This table is just for browsing.
 
+> If you want the repository-name-prefixed form (`/sodam-prompt:book-report-helper`), the exact steps depend on how you installed it — see the "Claude Code — Official Plugin Install" section in README_EN.md for the exact commands.
+
 ---
 
 ## 9. Update History Summary

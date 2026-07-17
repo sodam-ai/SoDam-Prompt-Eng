@@ -243,6 +243,41 @@ claude
 /book-report-helper "책 제목" "느낀 점"
 ```
 
+> 이 방법(폴더 복사)은 스킬이 이름만으로(`/book-report-helper`) 등록됩니다. 다른 곳에서 받은 같은 이름의 스킬이 있으면 겹칠 수 있습니다.
+
+---
+
+### Claude Code — 플러그인 정식 설치 (`sodam-prompt:스킬명` 형식)
+
+`sodam-prompt:book-report-helper`처럼 **저장소 이름이 붙는 형식**으로 안정적으로 쓰고 싶다면, 폴더 복사 대신 Claude Code의 정식 플러그인 등록 기능을 쓰세요. 이 저장소는 `.claude-plugin/plugin.json`·`marketplace.json`에 더해 `commands/` 폴더(스킬 10개와 1:1 대응)를 갖추고 있어 바로 등록할 수 있습니다.
+
+> **왜 `commands/` 폴더가 따로 있나요?** Claude Code에는 알려진 제한(공식 이슈 [#41842](https://github.com/anthropics/claude-code/issues/41842))이 있어서, `skills/` 폴더만으로는 `sodam-prompt:` 접두사가 붙은 슬래시 명령어로 안정적으로 등록되지 않습니다. `commands/` 폴더가 이 접두사 형식을 보장하는 검증된 방법입니다(같은 SoDam 계열의 다른 플러그인에서 실사용 확인됨).
+
+**설치 — GitHub 저장소로 등록** (이 저장소는 PRIVATE이므로 접근 권한이 있는 계정 필요):
+```
+/plugin marketplace add sodam-ai/SoDam-Prompt-Eng
+/plugin install sodam-prompt@sodam-prompt-marketplace
+```
+
+**설치 — 다운로드한 로컬 폴더로 등록** (GitHub 접근 없이도 가능):
+```
+/plugin marketplace add "다운로드한 SoDam-Prompt-Eng 폴더의 전체 경로"
+/plugin install sodam-prompt@sodam-prompt-marketplace
+```
+
+설치 후에는 슬래시 명령어(`/sodam-prompt:book-report-helper`)와 자연어("독후감 써줘") 둘 다 됩니다.
+
+**제거(재설치 테스트용)**:
+```
+/plugin uninstall sodam-prompt@sodam-prompt-marketplace
+/plugin marketplace remove sodam-prompt-marketplace
+```
+터미널에서 직접 하려면: `claude plugin uninstall sodam-prompt --prune` (의존성까지 함께 정리)
+
+깨끗하게 다시 설치하려면 위 제거 명령 2줄을 실행한 뒤, 설치 명령을 처음부터 다시 실행하세요.
+
+> **정직한 안내**: 위 명령어는 이 저장소에 실제로 있는 `plugin.json`("name": "sodam-prompt")·`marketplace.json`("name": "sodam-prompt-marketplace") 값과, Claude Code 공식 문서(`/plugin uninstall`·`/plugin marketplace remove`)를 근거로 합니다. 다만 이 명령을 새 세션에서 직접 실행해 결과 화면을 눈으로 확인하는 것은 사람만 할 수 있는 검증입니다 — 이 문서의 "실사용 테스트" 방식대로 새 세션을 열어 직접 확인해 주세요.
+
 ---
 
 ### Codex
@@ -460,6 +495,8 @@ Cursor 예시:
 /presentation-script [주제] [발표 시간]
 /request-apology-message [상황] [상대 관계]
 ```
+
+> **플러그인 정식 설치**(위 "Claude Code — 플러그인 정식 설치" 방법)로 설치했다면, 위 명령어 앞에 `sodam-prompt:`를 붙입니다. 예: `/sodam-prompt:book-report-helper [책 제목] [느낀 점 한 줄]`
 
 ### Codex 달러 명령어
 

@@ -241,6 +241,41 @@ Then in chat:
 /book-report-helper "Book Title" "Impression"
 ```
 
+> This method (folder copy) registers skills by name only (`/book-report-helper`). It may collide with a same-named skill from another source.
+
+---
+
+### Claude Code — Official Plugin Install (`sodam-prompt:skill-name` format)
+
+If you want the **repository-name-prefixed format** (`sodam-prompt:book-report-helper`) reliably, use Claude Code's official plugin registration instead of a folder copy. This repository ships `.claude-plugin/plugin.json`, `marketplace.json`, and a `commands/` folder (one file per skill, 10 total) that can be registered directly.
+
+> **Why a separate `commands/` folder?** Claude Code has a known limitation (official issue [#41842](https://github.com/anthropics/claude-code/issues/41842)) where `skills/` alone does not reliably register as a `sodam-prompt:`-prefixed slash command. The `commands/` folder is the verified way to guarantee this prefix (confirmed working in another SoDam-family plugin).
+
+**Install — register from the GitHub repository** (requires an account with access, since this repo is PRIVATE):
+```
+/plugin marketplace add sodam-ai/SoDam-Prompt-Eng
+/plugin install sodam-prompt@sodam-prompt-marketplace
+```
+
+**Install — register from a downloaded local folder** (no GitHub access needed):
+```
+/plugin marketplace add "full path to your downloaded SoDam-Prompt-Eng folder"
+/plugin install sodam-prompt@sodam-prompt-marketplace
+```
+
+After installing this way, both slash commands (`/sodam-prompt:book-report-helper`) and natural-language calls ("write a book report") work.
+
+**Uninstall (for clean reinstall testing)**:
+```
+/plugin uninstall sodam-prompt@sodam-prompt-marketplace
+/plugin marketplace remove sodam-prompt-marketplace
+```
+From the terminal directly: `claude plugin uninstall sodam-prompt --prune` (also cleans up dependencies)
+
+To do a clean reinstall, run the two uninstall commands above, then run the install commands again from scratch.
+
+> **Honest note**: the commands above use the exact `name` values already present in this repo's `plugin.json` ("sodam-prompt") and `marketplace.json` ("sodam-prompt-marketplace"), plus Claude Code's official docs for `/plugin uninstall` and `/plugin marketplace remove`. However, actually running this in a fresh session and watching the result on screen is a human-only verification step — please confirm it yourself in a new session, the same way as the "real-usage test" described in this document.
+
 ---
 
 ### Codex

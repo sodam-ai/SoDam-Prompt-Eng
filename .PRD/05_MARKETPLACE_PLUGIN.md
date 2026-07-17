@@ -39,7 +39,7 @@
 | 2 | **Claude Code 수동 복사** | `cp -r skills/* ~/.claude/skills/` → `/이름 값` | ★2 | 터미널 | ✅ P1 완료 |
 | 3 | **Codex 수동 복사** | `cp -r skills/* ~/.codex/skills/` → `$이름` | ★2 | 터미널 | ✅ P1 완료 |
 | 4 | 수동 파일 복사 | 탐색기로 `skills/<이름>/SKILL.md` 복사 | ★3 | 파일탐색기 | ✅ P1 완료 |
-| **Phase 2** | **Claude Code 마켓 한 줄** | `/plugin install <이름>@sodam` | ★1 | 터미널 | ✅ plugin.json/marketplace.json 생성 완료 · 공개 등록·실사용 검증 대기 |
+| **Phase 2** | **Claude Code 마켓 등록** | `/plugin marketplace add sodam-ai/SoDam-Prompt-Eng` → `/plugin install sodam-prompt@sodam-prompt-marketplace` | ★1 | 터미널 | ✅ plugin.json/marketplace.json 생성 완료(2026-07-17 README에 정확한 명령어 반영) · 실사용 검증은 사람 전용 |
 | **Phase 2** | **Codex `$skill-installer`** | `$skill-installer <이름>` | ★2 | 터미널(Codex) | Phase 2 |
 
 > **현재(P1)**: README.md 경로 1~4가 모두 안내됨.

@@ -6,151 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>SoDam Prompt — Full Guide</title>
   <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -232,6 +87,7 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
+  <link rel="stylesheet" href="" />
 </head>
 <body>
 <header id="title-block-header">
@@ -534,11 +390,66 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href=
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
 <p>Then in chat:</p>
 <pre><code>/book-report-helper &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
+<blockquote>
+<p>This method (folder copy) registers skills by name only
+(<code>/book-report-helper</code>). It may collide with a same-named
+skill from another source.</p>
+</blockquote>
+<hr />
+<h3
+id="claude-code-official-plugin-install-sodam-promptskill-name-format">Claude
+Code — Official Plugin Install (<code>sodam-prompt:skill-name</code>
+format)</h3>
+<p>If you want the <strong>repository-name-prefixed format</strong>
+(<code>sodam-prompt:book-report-helper</code>) reliably, use Claude
+Code’s official plugin registration instead of a folder copy. This
+repository ships <code>.claude-plugin/plugin.json</code>,
+<code>marketplace.json</code>, and a <code>commands/</code> folder (one
+file per skill, 10 total) that can be registered directly.</p>
+<blockquote>
+<p><strong>Why a separate <code>commands/</code> folder?</strong> Claude
+Code has a known limitation (official issue <a
+href="https://github.com/anthropics/claude-code/issues/41842">#41842</a>)
+where <code>skills/</code> alone does not reliably register as a
+<code>sodam-prompt:</code>-prefixed slash command. The
+<code>commands/</code> folder is the verified way to guarantee this
+prefix (confirmed working in another SoDam-family plugin).</p>
+</blockquote>
+<p><strong>Install — register from the GitHub repository</strong>
+(requires an account with access, since this repo is PRIVATE):</p>
+<pre><code>/plugin marketplace add sodam-ai/SoDam-Prompt-Eng
+/plugin install sodam-prompt@sodam-prompt-marketplace</code></pre>
+<p><strong>Install — register from a downloaded local folder</strong>
+(no GitHub access needed):</p>
+<pre><code>/plugin marketplace add &quot;full path to your downloaded SoDam-Prompt-Eng folder&quot;
+/plugin install sodam-prompt@sodam-prompt-marketplace</code></pre>
+<p>After installing this way, both slash commands
+(<code>/sodam-prompt:book-report-helper</code>) and natural-language
+calls (“write a book report”) work.</p>
+<p><strong>Uninstall (for clean reinstall testing)</strong>:</p>
+<pre><code>/plugin uninstall sodam-prompt@sodam-prompt-marketplace
+/plugin marketplace remove sodam-prompt-marketplace</code></pre>
+<p>From the terminal directly:
+<code>claude plugin uninstall sodam-prompt --prune</code> (also cleans
+up dependencies)</p>
+<p>To do a clean reinstall, run the two uninstall commands above, then
+run the install commands again from scratch.</p>
+<blockquote>
+<p><strong>Honest note</strong>: the commands above use the exact
+<code>name</code> values already present in this repo’s
+<code>plugin.json</code> (“sodam-prompt”) and
+<code>marketplace.json</code> (“sodam-prompt-marketplace”), plus Claude
+Code’s official docs for <code>/plugin uninstall</code> and
+<code>/plugin marketplace remove</code>. However, actually running this
+in a fresh session and watching the result on screen is a human-only
+verification step — please confirm it yourself in a new session, the
+same way as the “real-usage test” described in this document.</p>
+</blockquote>
 <hr />
 <h3 id="codex">Codex</h3>
 <p><strong>Install</strong>:</p>
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.codex/skills/</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.codex/skills/</span></code></pre></div>
 <p><strong>Run</strong>:</p>
 <pre><code>$book-report-helper &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
 <hr />
@@ -952,11 +863,11 @@ Claude Code needs to be restarted</p>
 <code>book-report-helper</code> folder.</p>
 <ol start="2" type="1">
 <li><p>If missing, copy again:</p>
-<div class="sourceCode" id="cb32"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div></li>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div></li>
 <li><p>Close and restart Claude Code:</p>
-<div class="sourceCode" id="cb33"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
 </ol>
 <hr />
 <h3
@@ -990,20 +901,20 @@ context gives better results) 2. Ask: “Rewrite it” or “Make it simpler”
 <p><strong>Cause</strong>: Incorrect path or <code>.claude/skills</code>
 folder doesn’t exist</p>
 <p><strong>Solution</strong>:</p>
-<div class="sourceCode" id="cb36"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the folder first</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy again</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the folder first</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy again</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
 <hr />
 <h3 id="q6.-cp-command-doesnt-work-on-windows">Q6. <code>cp</code>
 command doesn’t work on Windows</h3>
 <p><strong>Cause</strong>: Windows (PowerShell/CMD) uses
 <code>Copy-Item</code> instead of <code>cp</code></p>
 <p><strong>Solution (PowerShell)</strong>:</p>
-<div class="sourceCode" id="cb37"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">.</span>\skills\<span class="op">*</span> <span class="va">$env</span><span class="op">:</span><span class="va">USERPROFILE</span>\<span class="op">.</span><span class="fu">claude</span>\skills\</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">.</span>\skills\<span class="op">*</span> <span class="va">$env</span><span class="op">:</span><span class="va">USERPROFILE</span>\<span class="op">.</span><span class="fu">claude</span>\skills\</span></code></pre></div>
 <p>Or copy directly in File Explorer: 1. Select all folders inside the
 <code>skills</code> folder → Ctrl+C 2. Open
 <code>C:\Users\YourName\.claude\skills\</code> → Ctrl+V</p>
@@ -1012,9 +923,9 @@ class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb37
 names appear corrupted</h3>
 <p><strong>Cause</strong>: Terminal encoding issue</p>
 <p><strong>Solution</strong>:</p>
-<div class="sourceCode" id="cb38"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set UTF-8 encoding</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set UTF-8 encoding</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD</span></span></code></pre></div>
 <p>Or use File Explorer to copy folders directly.</p>
 <hr />
 <h2 id="faq">14. FAQ</h2>
@@ -1033,9 +944,9 @@ convenient from a computer.</p>
 <hr />
 <p><strong>Q: Can I install only some of the 10 skills?</strong> A: Yes.
 Copy only the skill folders you want:</p>
-<div class="sourceCode" id="cb39"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/polite-message ~/.claude/skills/</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/polite-message ~/.claude/skills/</span></code></pre></div>
 <hr />
 <p><strong>Q: Can I create my own skills?</strong> A: Yes. Create a new
 folder inside <code>skills/</code> and write a <code>SKILL.md</code>
@@ -1058,8 +969,8 @@ Just use the appropriate installation command for your OS.</p>
 <hr />
 <p><strong>Q: How do I remove a skill?</strong> A: Delete the installed
 folder:</p>
-<div class="sourceCode" id="cb40"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
 <p>Claude.ai App: Customize → Skills → select skill → Delete</p>
 <hr />
 <p><strong>Q: How do I receive update notifications?</strong> A: Click
