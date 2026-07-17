@@ -327,6 +327,27 @@ Install” section in README_EN.md for the exact commands.</p>
 </blockquote>
 <hr />
 <h2 id="update-history-summary">9. Update History Summary</h2>
+<details open>
+<summary>
+<strong>2026-07-18 — Finished the repository-name-prefixed command
+format (<code>/sodam-prompt:name</code>) + fixed a verification-tool bug
+(click to expand)</strong>
+</summary>
+<ul>
+<li>Added a new folder called <code>commands</code> so that
+<code>/sodam-prompt:book-report-helper</code>-style commands (with the
+repository name attached) work reliably (the content is identical to the
+existing skills, just in a different format)</li>
+<li>Reinstalled everything from scratch in a brand-new session and
+confirmed all 10 commands show up correctly in the
+<code>/sodam-prompt:name</code> format — tested twice, both times
+successful</li>
+<li>Fixed a small bug in a developer-only verification tool (regular
+users never touch it) that only showed up in a very rare situation (when
+the text you typed happened to contain the characters “$1”) — this has
+no effect on how you actually use the skills</li>
+</ul>
+</details>
 <details>
 <summary>
 <strong>2026-07-14~15 — All 10 skills confirmed working + human

@@ -185,6 +185,15 @@ Write an apology message to my teacher for turning in homework late.
 
 ## 9. Update History Summary
 
+<details open>
+<summary><strong>2026-07-18 — Finished the repository-name-prefixed command format (`/sodam-prompt:name`) + fixed a verification-tool bug (click to expand)</strong></summary>
+
+- Added a new folder called `commands` so that `/sodam-prompt:book-report-helper`-style commands (with the repository name attached) work reliably (the content is identical to the existing skills, just in a different format)
+- Reinstalled everything from scratch in a brand-new session and confirmed all 10 commands show up correctly in the `/sodam-prompt:name` format — tested twice, both times successful
+- Fixed a small bug in a developer-only verification tool (regular users never touch it) that only showed up in a very rare situation (when the text you typed happened to contain the characters "$1") — this has no effect on how you actually use the skills
+
+</details>
+
 <details>
 <summary><strong>2026-07-14~15 — All 10 skills confirmed working + human verification passed (click to expand)</strong></summary>
 

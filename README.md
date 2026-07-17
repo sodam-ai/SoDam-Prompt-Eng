@@ -149,7 +149,7 @@ cd SoDam-Prompt-Eng
 
 ### 설치 전 확인 (안전 체크)
 
-- ✅ **무코드 (★ Safe)** — 이 저장소의 스킬 10개는 전부 순수 텍스트입니다. 셸 명령·프로그램 실행·외부 도구 호출이 전혀 없습니다.
+- ✅ **무코드 (★ Safe)** — 이 저장소의 스킬 10개(`skills/`)와 슬래시 명령어용 사본 10개(`commands/`) 전부 순수 텍스트입니다. 셸 명령·프로그램 실행·외부 도구 호출이 전혀 없습니다.
 - ✅ **출처 확인** — 반드시 공식 저장소(`sodam-ai/SoDam-Prompt-Eng`)에서만 받으세요. 다른 곳에서 받은 파일은 내용이 다를 수 있습니다.
 - ✅ **미리보기 가능** — 설치 전에 GitHub에서 `skills/<이름>/SKILL.md` 파일을 직접 클릭해 내용을 확인할 수 있습니다.
 
@@ -602,7 +602,7 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │
 ├── skills/                         ← 스킬 10개 폴더 (2026-07-13부터 영문 폴더명)
 │   ├── book-report-helper/         ← 독후감-도우미
-│   │   └── SKILL.md               ← 스킬 정의 파일
+│   │   └── SKILL.md               ← 스킬 정의 파일 (자연어 자동매칭용)
 │   ├── polite-message/             ← 정중한-메시지
 │   │   └── SKILL.md
 │   ├── long-text-summary/          ← 긴글-3줄요약
@@ -621,6 +621,18 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │   │   └── SKILL.md
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
+│
+├── commands/                       ← `/sodam-prompt:스킬명` 슬래시 명령어용 (2026-07-18 추가, skills/ 10개와 1:1 대응)
+│   ├── book-report-helper.md       ← description만 있는 frontmatter + skills/ 본문과 동일한 내용
+│   ├── polite-message.md
+│   ├── long-text-summary.md
+│   ├── explain-simply.md
+│   ├── study-planner.md
+│   ├── self-intro-polish.md
+│   ├── sns-caption.md
+│   ├── natural-english.md
+│   ├── presentation-script.md
+│   └── request-apology-message.md
 │
 ├── README.md / README.html         ← 이 문서 — 한국어 전체 안내서 (md·html 내용 동일)
 ├── README_EN.md / README_EN.html   ← 영문 전체 안내서
@@ -669,7 +681,8 @@ $2 = 두 번째 입력값 (느낀 점)
 
 | 파일 | 설명 |
 |------|------|
-| `skills/*/SKILL.md` | 스킬 정의 파일 (핵심) |
+| `skills/*/SKILL.md` | 스킬 정의 파일 (핵심, 자연어 자동매칭용) |
+| `commands/*.md` | `/sodam-prompt:스킬명` 슬래시 명령어 등록용(2026-07-18 추가, `skills/`와 내용 동일) |
 | `.claude-plugin/plugin.json` · `marketplace.json` | Claude Code 플러그인·마켓플레이스 등록 정보 |
 | `README.md` / `README.html` | 한국어 전체 가이드 (이 파일, md·html 내용 동일) |
 | `README_EN.md` / `README_EN.html` | 영문 전체 가이드 |
@@ -974,6 +987,16 @@ limitations under the License.
 ---
 
 ## 17. 업데이트 내역
+
+<details open>
+<summary><strong>2026-07-18 — commands/ 폴더 추가로 `sodam-prompt:` 슬래시 접두사 지원 + 로더 결함 수정 (클릭해서 펼치기)</strong></summary>
+
+- Claude Code 공식 제한([anthropics/claude-code#41842](https://github.com/anthropics/claude-code/issues/41842)) 때문에 `skills/` 폴더만으로는 `/sodam-prompt:책이름` 같은 저장소 이름이 붙는 형태로 슬래시 명령어가 등록되지 않는 문제를 확인, `commands/` 폴더(스킬 10개와 1:1 대응, `skills/`와 본문 동일)를 추가해 해결
+- 새 세션에서 두 차례(1차: `/plugin install` 직후, 2차: main 병합·push 이후 재설치) 실사용 재현으로 10개 스킬 전부 `/sodam-prompt:` 형식으로 정확히 표시됨을 화면 캡처로 확인
+- `promptfoo-skill-prompt.js`(로컬 검증 도구)에서 사용자 입력값에 우연히 "$1"·"$2" 글자가 포함되면 정상적으로 만들어진 결과를 오탐으로 실패 처리하던 결함을 발견·수정, 회귀 테스트 17건(정상 10·예외 2·잘못된 입력 2·경계값 3) 전부 통과 확인 — 이 도구는 로컬 개발자 검증용이라 일반 사용자가 실제로 스킬을 쓰는 경로에는 영향 없음
+- 이 README·GUIDE 문서들을 실제 파일 구조(`commands/` 폴더 반영)와 다시 대조해 누락 없이 갱신
+
+</details>
 
 <details>
 <summary><strong>2026-07-14~15 — 실행테스트 10/10 완료 + 사람 검수 통과 + Phase 1.5 로컬 검증 체계 구축 (클릭해서 펼치기)</strong></summary>

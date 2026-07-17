@@ -147,7 +147,7 @@ cd SoDam-Prompt-Eng
 
 ### Before You Install (Safety Check)
 
-- ✅ **No-code (★ Safe)** — All 10 skills in this repository are pure text. No shell commands, program execution, or external tool calls of any kind.
+- ✅ **No-code (★ Safe)** — All 10 skills in this repository (`skills/`) and their slash-command copies (`commands/`, 10 files) are pure text. No shell commands, program execution, or external tool calls of any kind.
 - ✅ **Verify the source** — Only download from the official repository (`sodam-ai/SoDam-Prompt-Eng`). Files from other sources may differ in content.
 - ✅ **Preview before installing** — Click any `skills/<name>/SKILL.md` file directly on GitHub to review its contents before you install.
 
@@ -598,7 +598,7 @@ SoDam-Prompt-Eng/                       ← Repository root
 │
 ├── skills/                         ← 10 skill folders (English slugs since 2026-07-13)
 │   ├── book-report-helper/         ← 독후감-도우미
-│   │   └── SKILL.md               ← Skill definition file
+│   │   └── SKILL.md               ← Skill definition file (used for natural-language auto-matching)
 │   ├── polite-message/             ← 정중한-메시지
 │   │   └── SKILL.md
 │   ├── long-text-summary/          ← 긴글-3줄요약
@@ -617,6 +617,18 @@ SoDam-Prompt-Eng/                       ← Repository root
 │   │   └── SKILL.md
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
+│
+├── commands/                       ← For `/sodam-prompt:skill-name` slash commands (added 2026-07-18, 1:1 with skills/)
+│   ├── book-report-helper.md       ← description-only frontmatter + same body content as skills/
+│   ├── polite-message.md
+│   ├── long-text-summary.md
+│   ├── explain-simply.md
+│   ├── study-planner.md
+│   ├── self-intro-polish.md
+│   ├── sns-caption.md
+│   ├── natural-english.md
+│   ├── presentation-script.md
+│   └── request-apology-message.md
 │
 ├── README.md / README.html         ← Korean full guide (md·html identical content)
 ├── README_EN.md / README_EN.html   ← English full guide (this file)
@@ -665,7 +677,8 @@ $2 = Second input value (impression)
 
 | File | Description |
 |------|-------------|
-| `skills/*/SKILL.md` | Skill definition files (core) |
+| `skills/*/SKILL.md` | Skill definition files (core, used for natural-language auto-matching) |
+| `commands/*.md` | Used to register `/sodam-prompt:skill-name` slash commands (added 2026-07-18, same content as `skills/`) |
 | `.claude-plugin/plugin.json` · `marketplace.json` | Claude Code plugin/marketplace registration |
 | `README.md` / `README.html` | Korean full guide (md·html identical content) |
 | `README_EN.md` / `README_EN.html` | English full guide (this file) |
@@ -975,6 +988,16 @@ limitations under the License.
 ---
 
 ## 17. Update History
+
+<details open>
+<summary><strong>2026-07-18 — Added commands/ folder for the `sodam-prompt:` slash prefix + fixed a verification-loader bug (click to expand)</strong></summary>
+
+- Confirmed a known Claude Code limitation ([anthropics/claude-code#41842](https://github.com/anthropics/claude-code/issues/41842)): `skills/` alone does not reliably register as a `sodam-prompt:`-prefixed slash command. Added a `commands/` folder (one file per skill, same body content as `skills/`) to fix this.
+- Verified in two separate fresh sessions (once right after `/plugin install`, once again after merging to `main` and reinstalling) that all 10 skills correctly appear with the `/sodam-prompt:` prefix, confirmed via screen captures.
+- Found and fixed a bug in `promptfoo-skill-prompt.js` (a local developer verification tool) where a correctly-rendered prompt could be falsely flagged as broken if the user's input happened to contain the literal characters "$1" or "$2." Fixed and re-verified with 17 regression tests (10 normal cases, 2 error cases, 2 invalid-input cases, 3 boundary cases) — all passing. This tool is developer-only and does not affect how end users actually use the skills.
+- Re-checked this README and the GUIDE documents against the actual file structure (including the new `commands/` folder) and updated them for completeness.
+
+</details>
 
 <details>
 <summary><strong>2026-07-14~15 — Live execution testing reached 10/10 + human verification passed + Phase 1.5 local verification setup (click to expand)</strong></summary>
