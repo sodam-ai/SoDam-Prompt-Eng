@@ -651,10 +651,8 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 ├── .github/                        ← GitHub PR 화면용 (2026-07-27 추가, CI 워크플로우는 의도적으로 없음)
 │   └── PULL_REQUEST_TEMPLATE.md    ← 기여 시 로컬 검증·안전 체크리스트를 화면에 강제 표시
 │
-├── README.md / README.html         ← 이 문서 — 한국어 전체 안내서 (md·html 내용 동일)
+├── README.md / README.html         ← 이 문서 — 한국어 전체 안내서(md·html 내용 동일), 왕초보 안내 포함
 ├── README_EN.md / README_EN.html   ← 영문 전체 안내서
-├── GUIDE.md / GUIDE.html           ← 한국어 왕초보 가이드
-├── GUIDE_EN.md / GUIDE_EN.html     ← 영문 왕초보 가이드
 ├── CONTRIBUTING.md                 ← 새 스킬 기여 절차·안전 기준 (2026-07-27 추가)
 ├── CHECKPOINT.md                   ← 개발 진행 상태 기록 (유지보수용, 최종 사용자에겐 불필요)
 ├── P4_검수_가이드.md               ← 사람 검수용 체크리스트
@@ -704,8 +702,6 @@ $2 = 두 번째 입력값 (느낀 점)
 | `.claude-plugin/plugin.json` · `marketplace.json` | Claude Code 플러그인·마켓플레이스 등록 정보 |
 | `README.md` / `README.html` | 한국어 전체 가이드 (이 파일, md·html 내용 동일) |
 | `README_EN.md` / `README_EN.html` | 영문 전체 가이드 |
-| `GUIDE.md` / `GUIDE.html` | 한국어 왕초보 가이드 |
-| `GUIDE_EN.md` / `GUIDE_EN.html` | 영문 왕초보 가이드 |
 | `CONTRIBUTING.md` | 새 스킬 기여 절차·안전 기준(2026-07-27 추가) |
 | `scripts/verify-skills.mjs` | 새 스킬 구조·안전 패턴 자동 검증(개발자용, 의존성 없음) |
 | `.github/PULL_REQUEST_TEMPLATE.md` | 기여 PR 작성 시 자동으로 뜨는 체크리스트 |
@@ -1014,6 +1010,13 @@ limitations under the License.
 ## 17. 업데이트 내역
 
 <details open>
+<summary><strong>2026-07-27 — GUIDE 문서 통합 정리 (클릭해서 펼치기)</strong></summary>
+
+- `GUIDE.md`/`GUIDE_EN.md`(+`.html`)를 제거하고, 왕초보 안내 내용을 이 README 한 곳으로 통합했습니다. 두 문서가 서로 다른 내용을 말하지 않는다는 원칙이었던 만큼, 안내 문서를 하나로 줄여도 정보 손실은 없습니다.
+
+</details>
+
+<details>
 <summary><strong>2026-07-27 — Phase 3 기여 인프라 + skill-maker(11번째 스킬) 추가 (클릭해서 펼치기)</strong></summary>
 
 - 새 스킬을 안전하게 추가할 수 있도록 `CONTRIBUTING.md`(기여 절차·안전 기준)와 `scripts/verify-skills.mjs`(frontmatter·변수·SEC-A1~A4 안전 패턴 자동 검증, 의존성 없음)를 추가
