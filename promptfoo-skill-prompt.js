@@ -6,7 +6,16 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = function loadSkillPrompt({ vars }) {
-  const skillPath = path.join(__dirname, "skills", vars.skill, "SKILL.md");
+  const skillsDir = path.join(__dirname, "skills");
+  const skillPath = path.join(skillsDir, vars.skill, "SKILL.md");
+
+  // vars.skill은 promptfooconfig.yaml(로컬 전용 설정)에서만 오지만, "../"로 skills/ 밖을
+  // 벗어나는 경로를 방어 없이 그대로 읽던 결함을 막는다 — skills/ 하위가 아니면 즉시 실패.
+  const relative = path.relative(skillsDir, skillPath);
+  if (relative.startsWith("..") || path.isAbsolute(relative)) {
+    throw new Error(`${vars.skill}: skills/ 폴더를 벗어나는 경로는 허용되지 않습니다.`);
+  }
+
   const raw = fs.readFileSync(skillPath, "utf-8");
   const body = raw.replace(/^---[\s\S]*?---\n/, ""); // frontmatter 제거
 
