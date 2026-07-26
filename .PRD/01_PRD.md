@@ -55,7 +55,7 @@
 | **Codex 설치** | `cp -r skills/* ~/.codex/skills/` → `$이름` 호출 | P1 ✅ |
 | **작동 검증 배지(사람 검수)** | Haiku 4.5에서 실제 작동 확인 "✅ 사람 검수" | ✅ done (2026-07-15, 개인 용도 실사용 검증 — CHECKPOINT.md P4 참조) |
 | **작동 검증 자동화** | promptfoo로 재테스트 → 작동률 숫자 표시 | P2 |
-| **Claude Code 마켓 등록** | `/plugin install <이름>@sodam` 한 줄 설치 | P2 ✅ 등록 완료(라이브 재검증 대기) |
+| **Claude Code 마켓 등록** | `/plugin install <이름>@sodam` 한 줄 설치 | P2 ✅ 등록 완료 + 실사용 라이브 재검증 완료(2026-07-18) |
 | **스킬 수 확장** | 10개 → 커뮤니티 기여 수용 | P3 |
 
 ---

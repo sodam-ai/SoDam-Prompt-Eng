@@ -39,11 +39,11 @@
 | 2 | **Claude Code 수동 복사** | `cp -r skills/* ~/.claude/skills/` → `/이름 값` | ★2 | 터미널 | ✅ P1 완료 |
 | 3 | **Codex 수동 복사** | `cp -r skills/* ~/.codex/skills/` → `$이름` | ★2 | 터미널 | ✅ P1 완료 |
 | 4 | 수동 파일 복사 | 탐색기로 `skills/<이름>/SKILL.md` 복사 | ★3 | 파일탐색기 | ✅ P1 완료 |
-| **Phase 2** | **Claude Code 마켓 등록** | `/plugin marketplace add sodam-ai/SoDam-Prompt-Eng` → `/plugin install sodam-prompt@sodam-prompt-marketplace` | ★1 | 터미널 | ✅ plugin.json/marketplace.json 생성 완료(2026-07-17 README에 정확한 명령어 반영) · 실사용 검증은 사람 전용 |
-| **Phase 2** | **Codex `$skill-installer`** | `$skill-installer <이름>` | ★2 | 터미널(Codex) | Phase 2 |
+| **Phase 2** | **Claude Code 마켓 등록** | `/plugin marketplace add sodam-ai/SoDam-Prompt-Eng` → `/plugin install sodam-prompt@sodam-prompt-marketplace` | ★1 | 터미널 | ✅ 완료 — 생성(2026-07-17)+실사용 라이브 재검증 2회(2026-07-18, CHECKPOINT.md B-1 참조). 단 `/plugin uninstall` 제거는 명령어만 존재, 실행 재확인은 안 됨 |
+| — | **Codex `$skill-installer`** | `$skill-installer <이름>` | ★2 | 터미널(Codex) | 대상 없음(2026-07-16 조사 완료 — B-2, 아래 각주) |
 
 > **현재(P1)**: README.md 경로 1~4가 모두 안내됨.
-> **Phase 2**: `.claude-plugin/plugin.json`·`marketplace.json` 로컬 생성은 완료. 단 `/plugin install` 원클릭 공개 마켓 등록(GitHub 마켓플레이스 소스 공개 등)과 실사용 검증은 아직 남음.
+> **Phase 2**: `.claude-plugin/plugin.json`·`marketplace.json` 로컬 생성 완료 + 실사용 라이브 재검증 완료(2026-07-18, 10개 스킬 전부 `/sodam-prompt:` 네임스페이스 정상 등록 화면 확인). 남은 좁은 빈틈: `/plugin uninstall` 제거는 미실측. 안전 배지 자동화(B-3)는 아래 6번 참조.
 
 ---
 
@@ -105,7 +105,7 @@ argument-hint: [책 제목] [느낀 점]
 |---|---|---|
 | **P1 (현재 완료)** | GitHub 저장소 = 마켓. README 설치 안내(3경로). ZIP 무코드 설치(★1) 우선. | ✅ done |
 | **Phase 1.5** | promptfoo 작동률 검증 — **[2026-07-15 완료·로컬 전용으로 확정]** GitHub Actions 자동화는 NFR-비용1·NFR-키1과 충돌해 채택하지 않음. `promptfooconfig.yaml`+`promptfoo-skill-prompt.js`로 로컬에서 본인 API 키로만 수동 실행 | ✅ done (로컬 전용) |
-| **Phase 2** | Claude Code 마켓 등록(`.claude-plugin/marketplace.json`) → `/plugin install @sodam` + Codex 지원 + 안전 배지 | 로컬 매니페스트 생성 ✅ 완료 · Claude Code 공개 등록/실사용 검증은 pending(사람 전용) · **Codex는 "마켓 등록" 자체가 대상 없음(2026-07-16 조사 완료 — 아래 각주)** · **안전 배지 자동화는 정의 미정(위 Phase 1.5가 로컬 전용으로 확정되며 "CI가 자동 계산" 전제가 무효화됨 — 수동 유지/로컬결과 수동반영/CI 재검토 중 택1은 사용자 결정 필요)** |
+| **Phase 2** | Claude Code 마켓 등록(`.claude-plugin/marketplace.json`) → `/plugin install @sodam` + Codex 지원 + 안전 배지 | 로컬 매니페스트 생성 ✅ 완료 · Claude Code 설치·네임스페이스 실사용 라이브 재검증 ✅ 완료(2026-07-18, 제거 `/plugin uninstall`은 명령어만 존재·미실측) · **Codex는 "마켓 등록" 자체가 대상 없음(2026-07-16 조사 완료 — 아래 각주)** · **안전 배지 자동화 = (b) 로컬 `promptfoo eval` 결과를 README 배지에 수동 반영하는 절차로 확정(2026-07-26, `PROMPTFOO_로컬_가이드.md` 참조 — CI 자동 계산은 도입하지 않음)** |
 | **Phase 3** | 커뮤니티 기여: 스킬 수 확장. 안전 심사 통과해야 마켓 노출. | pending |
 
 > **각주 (2026-07-16, Phase 2 "Codex 마켓" 조사 결과)**: 공식 문서(`learn.chatgpt.com/docs/build-skills`)와 제3자 실사용 가이드 다수를 교차 확인한 결과, **Codex에는 Claude Code의 `.claude-plugin/marketplace.json`에 대응하는 공식 마켓플레이스·플러그인 매니페스트 개념이 없다.** Codex의 스킬 배포는 `~/.codex/skills/`(개인)·`.codex/skills/`(프로젝트) 폴더에 SKILL.md를 두면 자동 탐지되는 방식뿐이며, 이는 이 저장소 README에 이미 안내된 방법과 정확히 일치한다(추가로 확인된 `.agents/skills` 계층 탐색은 별개 보조 경로로 보이며 기존 방법을 대체할 필요는 없음). **결론: "Codex 마켓 등록"이라는 별도 작업 자체가 존재하지 않으므로 이 항목은 추가 구현 불필요 — 이미 완료된 것으로 간주.** (확인 없이 임의 매니페스트를 만들었다면 존재하지 않는 표준을 따라가는 오류였을 것)
@@ -133,4 +133,5 @@ Prompt (★1 지금 여기) → Context → Loop → Harness → Agentic
 - [x] 초보 1순위 = **ZIP 무코드 설치(★1)**
 - [x] 전체 스킬 = **순수 텍스트** (코드포함 없음)
 - [x] Phase 1.5 promptfoo 작동률 검증 = 완료(2026-07-15, 로컬 전용·CI 없음)
-- [x] Phase 2 마켓 등록 = 로컬 plugin.json/marketplace.json 생성 완료(라이브 재검증 대기)
+- [x] Phase 2 마켓 등록 = 로컬 plugin.json/marketplace.json 생성 + 실사용 라이브 재검증 완료(2026-07-18)
+- [x] 안전 배지 자동화(B-3) = (b) 로컬 `promptfoo eval` 결과 수동 반영 절차로 확정(2026-07-26, CI 자동화는 도입하지 않음)
