@@ -647,10 +647,8 @@ SoDam-Prompt-Eng/                       ← Repository root
 ├── .github/                        ← For the GitHub PR screen (added 2026-07-27, no CI workflow by design)
 │   └── PULL_REQUEST_TEMPLATE.md    ← Forces the local-verification/safety checklist onto the PR screen
 │
-├── README.md / README.html         ← Korean full guide (md·html identical content)
+├── README.md / README.html         ← Korean full guide (md·html identical content), includes beginner guidance
 ├── README_EN.md / README_EN.html   ← English full guide (this file)
-├── GUIDE.md / GUIDE.html           ← Korean beginner guide
-├── GUIDE_EN.md / GUIDE_EN.html     ← English beginner guide
 ├── CONTRIBUTING.md                 ← New-skill contribution process and safety requirements (added 2026-07-27)
 ├── CHECKPOINT.md                   ← Development progress log (maintainer-facing, not needed by end users)
 ├── P4_검수_가이드.md               ← Human-verification checklist
@@ -700,8 +698,6 @@ $2 = Second input value (impression)
 | `.claude-plugin/plugin.json` · `marketplace.json` | Claude Code plugin/marketplace registration |
 | `README.md` / `README.html` | Korean full guide (md·html identical content) |
 | `README_EN.md` / `README_EN.html` | English full guide (this file) |
-| `GUIDE.md` / `GUIDE.html` | Korean beginner guide |
-| `GUIDE_EN.md` / `GUIDE_EN.html` | English beginner guide |
 | `CONTRIBUTING.md` | New-skill contribution process and safety requirements (added 2026-07-27) |
 | `scripts/verify-skills.mjs` | Automated structure/safety check for new skills (developer-facing, no dependencies) |
 | `.github/PULL_REQUEST_TEMPLATE.md` | Checklist that auto-populates the PR screen |
@@ -1015,6 +1011,13 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## 17. Update History
 
 <details open>
+<summary><strong>2026-07-27 — Consolidated the GUIDE documents (click to expand)</strong></summary>
+
+- Removed `GUIDE.md`/`GUIDE_EN.md` (+ `.html`) and folded the beginner-facing guidance into this README. Since the two documents always said the same thing, consolidating into one loses no information.
+
+</details>
+
+<details>
 <summary><strong>2026-07-27 — Phase 3 contribution infrastructure + skill-maker (11th skill) (click to expand)</strong></summary>
 
 - Added `CONTRIBUTING.md` (contribution process + safety requirements) and `scripts/verify-skills.mjs`
