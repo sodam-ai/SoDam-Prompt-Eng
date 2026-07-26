@@ -109,7 +109,7 @@
 ### 검수 후 추가 예정
 
 - [x] README에 "✅ 사람 검수 완료" 배지 (2026-07-15 추가 완료, README.md 상단 참조)
-- [ ] 작동률 숫자 배지 — Phase 1.5가 로컬 전용으로 확정되며 "CI가 자동 계산" 전제가 무효화됨, 방식 미정(사용자 결정 필요)
+- [x] 작동률 숫자 배지 — (b) 로컬 `promptfoo eval` 결과를 README 배지에 수동 반영하는 절차로 확정(2026-07-26, `PROMPTFOO_로컬_가이드.md` 참조 — CI 자동 계산은 도입하지 않음)
 
 ---
 
@@ -145,4 +145,4 @@ $book-report-helper "어린 왕자" "감동적이었어"
 - [x] SKILL.md 표준 — 40+ 도구 호환
 - [x] 운영 비용 $0
 - [x] P4 사람 검수 완료 → "✅ 사람 검수" 배지 추가 (2026-07-15, README.md에 반영됨)
-- [ ] Phase 1.5 promptfoo 자동화 → "작동률 XX%" 숫자 표시 — **전제 무효화**: Phase 1.5는 로컬 전용으로 확정돼 CI가 자동으로 숫자를 계산하지 않음. 숫자 배지 자체를 만들지 아직 미정(사용자 결정 필요, `05_MARKETPLACE_PLUGIN.md` STEP B-3 참조)
+- [x] Phase 1.5 promptfoo 자동화 → "작동률 XX%" 숫자 표시 — CI 자동 계산 대신 (b) 로컬 `promptfoo eval` 결과 수동 반영 절차로 확정(2026-07-26, `05_MARKETPLACE_PLUGIN.md` STEP B-3·`PROMPTFOO_로컬_가이드.md` 참조)
