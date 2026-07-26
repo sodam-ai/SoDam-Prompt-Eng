@@ -143,7 +143,7 @@ Claude Code 및 Claude.ai 앱에서 자연어 입력:
 |-------|------|------|
 | Phase 1.5 | promptfoo 작동률 검증(**2026-07-15 완료·로컬 전용으로 확정** — GitHub Actions CI는 NFR-비용1·NFR-키1과 충돌해 채택 안 함, 본인 API 키로 로컬 수동 실행만) | P4 완료 ✅ |
 | Phase 2 | 마켓 등록(`.claude-plugin/plugin.json`+`marketplace.json` 생성 ✅ 완료, `/plugin install @sodam` 실사용 라이브 재검증 완료(2026-07-18)) + 안전 배지(**(b) 로컬 promptfoo eval 결과 수동 반영으로 확정** — 2026-07-26, `PROMPTFOO_로컬_가이드.md` 참조, CI 자동 계산은 도입하지 않음) | 마켓 등록 완료 · 안전 배지 방식 확정 |
-| Phase 3 | 스킬 수 확장 (커뮤니티 기여 수용) + 다국어 | Phase 2 완료 |
+| Phase 3 | 스킬 수 확장 (커뮤니티 기여 수용) + 다국어 | Phase 2 완료 · **기여 인프라 + `skill-maker`(자가 생성 방식으로 확정) 완료(2026-07-27)** · 다국어 범위는 미정 |
 
 ---
 

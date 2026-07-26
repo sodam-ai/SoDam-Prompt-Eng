@@ -51,6 +51,10 @@ Each skill = one pre-designed prompt template. Fill in the blanks with your situ
 **Server**: None (operates only between your computer and the AI provider's server)
 **Code Execution**: None (pure text question and answer only)
 
+**Want a skill that's not here?** Use the `skill-maker` skill to design a new one together in conversation
+(e.g. say "I want to make a new skill for planning room cleanups"). See [CONTRIBUTING.md](./CONTRIBUTING.md)
+for the full process.
+
 ---
 
 ## 2. Prerequisites
@@ -147,7 +151,7 @@ cd SoDam-Prompt-Eng
 
 ### Before You Install (Safety Check)
 
-- ✅ **No-code (★ Safe)** — All 10 skills in this repository (`skills/`) and their slash-command copies (`commands/`, 10 files) are pure text. No shell commands, program execution, or external tool calls of any kind.
+- ✅ **No-code (★ Safe)** — Every skill in this repository (`skills/`) and its slash-command copy (`commands/`, kept 1:1) is pure text. No shell commands, program execution, or external tool calls of any kind.
 - ✅ **Verify the source** — Only download from the official repository (`sodam-ai/SoDam-Prompt-Eng`). Files from other sources may differ in content.
 - ✅ **Preview before installing** — Click any `skills/<name>/SKILL.md` file directly on GitHub to review its contents before you install.
 
@@ -618,7 +622,7 @@ SoDam-Prompt-Eng/                       ← Repository root
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
-├── commands/                       ← For `/sodam-prompt:skill-name` slash commands (added 2026-07-18, 1:1 with skills/)
+├── commands/                       ← For `/sodam-prompt:skill-name` slash commands (added 2026-07-18, 1:1 with all of skills/)
 │   ├── book-report-helper.md       ← description-only frontmatter + same body content as skills/
 │   ├── polite-message.md
 │   ├── long-text-summary.md
@@ -992,6 +996,22 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## 17. Update History
 
 <details open>
+<summary><strong>2026-07-27 — Phase 3 contribution infrastructure + skill-maker (11th skill) (click to expand)</strong></summary>
+
+- Added `CONTRIBUTING.md` (contribution process + safety requirements) and `scripts/verify-skills.mjs`
+  (dependency-free automated check for frontmatter, variables, and SEC-A1~A4 safety patterns) so new
+  skills can be added safely.
+- Added `.github/PULL_REQUEST_TEMPLATE.md` — forces the local-verification and safety checklist to show
+  up directly on the PR screen.
+- **Added the `skill-maker` skill (11th)** — instead of pre-picking specific topics, this meta-skill lets
+  a user design and generate a brand-new skill through conversation on demand. Trigger it by saying
+  something like "I want to make a new skill."
+- Deliberately did **not** add `.github/workflows/` — keeping $0 server/CI cost is a core principle of
+  this repository (NFR-비용1 / NFR-키1).
+
+</details>
+
+<details>
 <summary><strong>2026-07-18 — Added commands/ folder for the `sodam-prompt:` slash prefix + fixed a verification-loader bug (click to expand)</strong></summary>
 
 - Confirmed a known Claude Code limitation ([anthropics/claude-code#41842](https://github.com/anthropics/claude-code/issues/41842)): `skills/` alone does not reliably register as a `sodam-prompt:`-prefixed slash command. Added a `commands/` folder (one file per skill, same body content as `skills/`) to fix this.

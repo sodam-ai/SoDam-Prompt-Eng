@@ -51,6 +51,10 @@ SoDam Prompt는 학생·직장인·일반인이 AI에게 글쓰기를 요청할 
 **서버**: 없음 (내 컴퓨터 + AI 회사 서버 사이에서만 작동)
 **코드 실행**: 없음 (텍스트 질문·답변만 오갑니다)
 
+**여기 없는 스킬을 직접 만들고 싶다면?** `skill-maker` 스킬로 대화하면서 새 스킬을 함께 설계할 수 있습니다.
+(예: "새 스킬 만들고 싶어, 방 청소 계획 세워주는 스킬" 이라고 말해보세요.) 자세한 절차는
+[CONTRIBUTING.md](./CONTRIBUTING.md)를 참고하세요.
+
 ---
 
 ## 2. 사전 준비물
@@ -249,7 +253,7 @@ claude
 
 ### Claude Code — 플러그인 정식 설치 (`sodam-prompt:스킬명` 형식)
 
-`sodam-prompt:book-report-helper`처럼 **저장소 이름이 붙는 형식**으로 안정적으로 쓰고 싶다면, 폴더 복사 대신 Claude Code의 정식 플러그인 등록 기능을 쓰세요. 이 저장소는 `.claude-plugin/plugin.json`·`marketplace.json`에 더해 `commands/` 폴더(스킬 10개와 1:1 대응)를 갖추고 있어 바로 등록할 수 있습니다.
+`sodam-prompt:book-report-helper`처럼 **저장소 이름이 붙는 형식**으로 안정적으로 쓰고 싶다면, 폴더 복사 대신 Claude Code의 정식 플러그인 등록 기능을 쓰세요. 이 저장소는 `.claude-plugin/plugin.json`·`marketplace.json`에 더해 `commands/` 폴더(모든 스킬과 1:1 대응)를 갖추고 있어 바로 등록할 수 있습니다.
 
 > **왜 `commands/` 폴더가 따로 있나요?** Claude Code에는 알려진 제한(공식 이슈 [#41842](https://github.com/anthropics/claude-code/issues/41842))이 있어서, `skills/` 폴더만으로는 `sodam-prompt:` 접두사가 붙은 슬래시 명령어로 안정적으로 등록되지 않습니다. `commands/` 폴더가 이 접두사 형식을 보장하는 검증된 방법입니다(같은 SoDam 계열의 다른 플러그인에서 실사용 확인됨).
 
@@ -622,7 +626,7 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
-├── commands/                       ← `/sodam-prompt:스킬명` 슬래시 명령어용 (2026-07-18 추가, skills/ 10개와 1:1 대응)
+├── commands/                       ← `/sodam-prompt:스킬명` 슬래시 명령어용 (2026-07-18 추가, skills/ 전체와 1:1 대응)
 │   ├── book-report-helper.md       ← description만 있는 frontmatter + skills/ 본문과 동일한 내용
 │   ├── polite-message.md
 │   ├── long-text-summary.md
@@ -991,6 +995,16 @@ limitations under the License.
 ## 17. 업데이트 내역
 
 <details open>
+<summary><strong>2026-07-27 — Phase 3 기여 인프라 + skill-maker(11번째 스킬) 추가 (클릭해서 펼치기)</strong></summary>
+
+- 새 스킬을 안전하게 추가할 수 있도록 `CONTRIBUTING.md`(기여 절차·안전 기준)와 `scripts/verify-skills.mjs`(frontmatter·변수·SEC-A1~A4 안전 패턴 자동 검증, 의존성 없음)를 추가
+- `.github/PULL_REQUEST_TEMPLATE.md` 추가 — PR 작성 시 로컬 검증·안전 체크리스트를 화면에서 바로 확인하도록 강제
+- **`skill-maker` 스킬 신설(11번째)** — 특정 주제를 미리 정해두는 대신, 사용자가 원하는 스킬을 대화로 함께 설계해 즉석에서 만들 수 있는 메타 스킬. "새 스킬 만들고 싶어"라고 말하면 사용
+- `.github/workflows/`는 의도적으로 추가하지 않음 — 이 저장소는 서버·CI 비용 $0을 유지하는 것이 핵심 원칙(NFR-비용1·NFR-키1)
+
+</details>
+
+<details>
 <summary><strong>2026-07-18 — commands/ 폴더 추가로 `sodam-prompt:` 슬래시 접두사 지원 + 로더 결함 수정 (클릭해서 펼치기)</strong></summary>
 
 - Claude Code 공식 제한([anthropics/claude-code#41842](https://github.com/anthropics/claude-code/issues/41842)) 때문에 `skills/` 폴더만으로는 `/sodam-prompt:책이름` 같은 저장소 이름이 붙는 형태로 슬래시 명령어가 등록되지 않는 문제를 확인, `commands/` 폴더(스킬 10개와 1:1 대응, `skills/`와 본문 동일)를 추가해 해결
