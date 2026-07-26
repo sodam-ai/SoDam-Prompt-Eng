@@ -984,6 +984,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+새 스킬을 추가하고 싶다면 [CONTRIBUTING.md](./CONTRIBUTING.md)를 참고하세요.
+
 ---
 
 ## 17. 업데이트 내역

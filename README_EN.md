@@ -985,6 +985,8 @@ limitations under the License.
 **Bug reports / suggestions**: GitHub Issues (`sodam-ai/SoDam-Prompt-Eng`)
 **Email**: Please use the repository Issues tab as the primary contact
 
+Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ---
 
 ## 17. Update History
