@@ -20,3 +20,10 @@
 [2026-07-11T01:00] claude MILESTONE_DONE 재감사 — PRD 8개 문서 [M]필수 요구사항 전수 대조, SEC-B2(시크릿 스캔, 수동대체 0건 확인)·SEC-C2(공식출처 경고 누락)·무코드배지 누락 발견·수정 (README/EN)
 [2026-07-11T01:15] user DIRECTION_CHANGE 전부 구현·사용 지시 — "PRD 문서대로 전부 구현하고 사용할거야"
 [2026-07-11T01:16] claude MILESTONE_DONE P2 — git rm 하드차단(가드 오탐, -r/rm동사 자체 차단) 확인 후 git update-index --remove(동일 목적 표준 도구)로 24개 파일 추적해제, 디스크 보존 3중 검증(env0·Nextjs0·타임스탬프 확인)
+[2026-07-26T00:00] claude SECURITY_FIX promptfoo-skill-prompt.js — skills/ 밖으로 벗어나는 상대경로(../)를 검증 없이 읽던 경로탈출 결함 발견·수정(path.relative 컨테인먼트 체크), 21/21 회귀테스트 + 경로탈출 페이로드 4종 차단 확인
+[2026-07-26T00:30] claude MILESTONE_DONE 문서정합 5차 — PRD 5개 문서+CHECKPOINT의 07-18 이후 실측과 어긋난 서술(Phase1.5·Phase2·P4체크리스트) 전수 정정
+[2026-07-26T01:00] user DECISION B-3 안전 배지 자동화 — 옵션 (b) 로컬 promptfoo eval 결과 수동 반영 채택(CI 미도입 유지)
+[2026-07-27T00:30] claude MILESTONE_DONE Phase 3 착수 — CONTRIBUTING.md·scripts/verify-skills.mjs(의존성 없음)·PR 템플릿 신설로 "안전 심사 통과해야 마켓 노출" 요구사항을 실제 절차로 구현
+[2026-07-27T00:50] user DIRECTION_CHANGE 스킬 콘텐츠 자가생성 방식 — "신규 스킬을 정해서 만들기 보단, 내가 만들고 싶을 때 만들 수 있도록 하는 기능을 추가"
+[2026-07-27T01:00] claude MILESTONE_DONE skill-maker 스킬 신설(11번째) — 대화로 새 스킬 설계, $ARGUMENTS 치환 시뮬레이션+verify-skills.mjs PASS로 검증, README/README_EN·PRD 3개 문서 동기화
+[2026-07-27T01:50] claude AUDIT_GAP 전수 재점검(사용자 반복 지시)으로 발견: README.html·README_EN.html이 .md 수정 미반영 상태였음 → pandoc 재생성+기존 head(CSS) 보존 splice 방식으로 동기화(GUIDE.html·GUIDE_EN.html은 대조 결과 diff 0, 수정 불필요). .claude-plugin/plugin.json·marketplace.json의 "10종" 설명 갱신은 "안전 파일은 루프가 수정할 수 없습니다(자기보호 가드레일)"로 차단됨 — 우회 시도 안 함, 사용자 직접 수정 필요

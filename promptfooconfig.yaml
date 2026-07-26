@@ -85,3 +85,11 @@ tests:
     vars: { skill: request-apology-message, arg1: "과제를 늦게 제출하게 됨", arg2: "선생님" }
     assert:
       - type: not-empty
+
+  # skill-maker는 다른 9개와 달리 고정된 글쓰기 결과물이 아니라 "새 스킬 설계"를 대화로
+  # 안내하는 메타 스킬이라, 특정 키워드 포함 여부로는 검증하기 어렵다. 최소한 결과가
+  # 비어있지 않은지(모델이 실제로 응답을 만들어내는지)만 확인한다.
+  - description: skill-maker
+    vars: { skill: skill-maker, arg1: "방 청소 계획 세워주는 스킬 만들고 싶어" }
+    assert:
+      - type: not-empty

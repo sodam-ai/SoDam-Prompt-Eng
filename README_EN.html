@@ -219,6 +219,11 @@ situation, and AI writes the complete text.</p>
 plan) <strong>Server</strong>: None (operates only between your computer
 and the AI provider’s server) <strong>Code Execution</strong>: None
 (pure text question and answer only)</p>
+<p><strong>Want a skill that’s not here?</strong> Use the
+<code>skill-maker</code> skill to design a new one together in
+conversation (e.g. say “I want to make a new skill for planning room
+cleanups”). See <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a> for the
+full process.</p>
 <hr />
 <h2 id="prerequisites">2. Prerequisites</h2>
 <p>You only need <strong>one</strong> of the following — not all of
@@ -324,9 +329,9 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
 <h3 id="before-you-install-safety-check">Before You Install (Safety
 Check)</h3>
 <ul>
-<li>✅ <strong>No-code (★ Safe)</strong> — All 10 skills in this
-repository (<code>skills/</code>) and their slash-command copies
-(<code>commands/</code>, 10 files) are pure text. No shell commands,
+<li>✅ <strong>No-code (★ Safe)</strong> — Every skill in this
+repository (<code>skills/</code>) and its slash-command copy
+(<code>commands/</code>, kept 1:1) is pure text. No shell commands,
 program execution, or external tool calls of any kind.</li>
 <li>✅ <strong>Verify the source</strong> — Only download from the
 official repository (<code>sodam-ai/SoDam-Prompt-Eng</code>). Files from
@@ -729,7 +734,7 @@ Structure</h2>
 │   └── request-apology-message/    ← 부탁-사과-메시지
 │       └── SKILL.md
 │
-├── commands/                       ← For `/sodam-prompt:skill-name` slash commands (added 2026-07-18, 1:1 with skills/)
+├── commands/                       ← For `/sodam-prompt:skill-name` slash commands (added 2026-07-18, 1:1 with all of skills/)
 │   ├── book-report-helper.md       ← description-only frontmatter + same body content as skills/
 │   ├── polite-message.md
 │   ├── long-text-summary.md
@@ -1189,9 +1194,33 @@ limitations under the License.</code></pre>
 <p><strong>Bug reports / suggestions</strong>: GitHub Issues
 (<code>sodam-ai/SoDam-Prompt-Eng</code>) <strong>Email</strong>: Please
 use the repository Issues tab as the primary contact</p>
+<p>Want to contribute a new skill? See <a
+href="./CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 <hr />
 <h2 id="update-history">17. Update History</h2>
 <details open>
+<summary>
+<strong>2026-07-27 — Phase 3 contribution infrastructure + skill-maker
+(11th skill) (click to expand)</strong>
+</summary>
+<ul>
+<li>Added <code>CONTRIBUTING.md</code> (contribution process + safety
+requirements) and <code>scripts/verify-skills.mjs</code>
+(dependency-free automated check for frontmatter, variables, and
+SEC-A1~A4 safety patterns) so new skills can be added safely.</li>
+<li>Added <code>.github/PULL_REQUEST_TEMPLATE.md</code> — forces the
+local-verification and safety checklist to show up directly on the PR
+screen.</li>
+<li><strong>Added the <code>skill-maker</code> skill (11th)</strong> —
+instead of pre-picking specific topics, this meta-skill lets a user
+design and generate a brand-new skill through conversation on demand.
+Trigger it by saying something like “I want to make a new skill.”</li>
+<li>Deliberately did <strong>not</strong> add
+<code>.github/workflows/</code> — keeping $0 server/CI cost is a core
+principle of this repository (NFR-비용1 / NFR-키1).</li>
+</ul>
+</details>
+<details>
 <summary>
 <strong>2026-07-18 — Added commands/ folder for the
 <code>sodam-prompt:</code> slash prefix + fixed a verification-loader
