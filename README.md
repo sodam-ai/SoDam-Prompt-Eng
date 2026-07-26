@@ -498,7 +498,10 @@ Cursor 예시:
 /natural-english [한국어 문장]
 /presentation-script [주제] [발표 시간]
 /request-apology-message [상황] [상대 관계]
+/skill-maker [어떤 스킬을 만들고 싶은지 한 줄 설명]
 ```
+
+> `skill-maker`는 위 10개와 달리 결과 글을 바로 안 만들고, 새 스킬 파일 자체를 만들어줍니다. 자세한 건 [CONTRIBUTING.md](./CONTRIBUTING.md) 참고.
 
 > **플러그인 정식 설치**(위 "Claude Code — 플러그인 정식 설치" 방법)로 설치했다면, 위 명령어 앞에 `sodam-prompt:`를 붙입니다. 예: `/sodam-prompt:book-report-helper [책 제목] [느낀 점 한 줄]`
 
@@ -515,6 +518,7 @@ $sns-caption [상황] [분위기]
 $natural-english [한국어]
 $presentation-script [주제] [시간]
 $request-apology-message [상황] [관계]
+$skill-maker [만들고 싶은 스킬 설명]
 ```
 
 ### 자연어 (명령어 없이도 됩니다)
@@ -623,7 +627,9 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │   │   └── SKILL.md
 │   ├── presentation-script/        ← 발표-대본
 │   │   └── SKILL.md
-│   └── request-apology-message/    ← 부탁-사과-메시지
+│   ├── request-apology-message/    ← 부탁-사과-메시지
+│   │   └── SKILL.md
+│   └── skill-maker/                ← 새 스킬을 대화로 만들어주는 메타 스킬 (2026-07-27 추가, 11번째)
 │       └── SKILL.md
 │
 ├── commands/                       ← `/sodam-prompt:스킬명` 슬래시 명령어용 (2026-07-18 추가, skills/ 전체와 1:1 대응)
@@ -636,16 +642,24 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │   ├── sns-caption.md
 │   ├── natural-english.md
 │   ├── presentation-script.md
-│   └── request-apology-message.md
+│   ├── request-apology-message.md
+│   └── skill-maker.md
+│
+├── scripts/                        ← 개발자용 검증 스크립트 (2026-07-27 추가, 의존성 없음)
+│   └── verify-skills.mjs           ← 새 스킬의 frontmatter·안전 패턴을 자동 확인
+│
+├── .github/                        ← GitHub PR 화면용 (2026-07-27 추가, CI 워크플로우는 의도적으로 없음)
+│   └── PULL_REQUEST_TEMPLATE.md    ← 기여 시 로컬 검증·안전 체크리스트를 화면에 강제 표시
 │
 ├── README.md / README.html         ← 이 문서 — 한국어 전체 안내서 (md·html 내용 동일)
 ├── README_EN.md / README_EN.html   ← 영문 전체 안내서
 ├── GUIDE.md / GUIDE.html           ← 한국어 왕초보 가이드
 ├── GUIDE_EN.md / GUIDE_EN.html     ← 영문 왕초보 가이드
+├── CONTRIBUTING.md                 ← 새 스킬 기여 절차·안전 기준 (2026-07-27 추가)
 ├── CHECKPOINT.md                   ← 개발 진행 상태 기록 (유지보수용, 최종 사용자에겐 불필요)
 ├── P4_검수_가이드.md               ← 사람 검수용 체크리스트
 ├── PROMPTFOO_로컬_가이드.md         ← 로컬 자동 검증 실행 안내 (개발자용, 선택사항)
-├── promptfooconfig.yaml            ← 10개 스킬 로컬 검증 설정 (CI 없음, $0 원칙 유지)
+├── promptfooconfig.yaml            ← 스킬별 로컬 검증 설정 (CI 없음, $0 원칙 유지)
 ├── promptfoo-skill-prompt.js       ← 검증용 SKILL.md 로더 (실제 파일을 그대로 읽음, 사본 없음)
 ├── LICENSE                         ← Apache-2.0 라이선스
 ├── NOTICE                          ← 저작권 고지
@@ -692,6 +706,9 @@ $2 = 두 번째 입력값 (느낀 점)
 | `README_EN.md` / `README_EN.html` | 영문 전체 가이드 |
 | `GUIDE.md` / `GUIDE.html` | 한국어 왕초보 가이드 |
 | `GUIDE_EN.md` / `GUIDE_EN.html` | 영문 왕초보 가이드 |
+| `CONTRIBUTING.md` | 새 스킬 기여 절차·안전 기준(2026-07-27 추가) |
+| `scripts/verify-skills.mjs` | 새 스킬 구조·안전 패턴 자동 검증(개발자용, 의존성 없음) |
+| `.github/PULL_REQUEST_TEMPLATE.md` | 기여 PR 작성 시 자동으로 뜨는 체크리스트 |
 | `CHECKPOINT.md` | 개발 진행 상태 기록 (유지보수용, 최종 사용자는 몰라도 됨) |
 | `P4_검수_가이드.md` | 사람 검수용 체크리스트 |
 | `PROMPTFOO_로컬_가이드.md` | 로컬 자동 검증 실행 안내 (개발자용, 선택사항) |
@@ -950,6 +967,7 @@ AI가 생성한 결과물의 정확성, 완전성, 적합성을 보장하지 않
 1. **AI 생성물의 저작권 귀속**: 스킬 실행으로 나온 결과물(독후감, 메시지 등)의 저작권이 누구에게 귀속되는지는 국가·서비스 약관마다 다르며 법적으로 아직 불확실한 영역입니다.
 2. **"Claude"·"Anthropic"·"Codex"·"OpenAI" 등 명칭 언급**: 이 저장소는 호환성을 설명하기 위한 목적으로만 이들 명칭을 언급하며, 해당 기업과 제휴·후원·보증 관계가 없습니다(NOTICE 파일 참조). 상표 사용 정책은 각 기업의 공식 가이드라인을 별도로 확인하세요.
 3. **배포 범위(현재 PRIVATE)**: 이 GitHub 저장소는 현재 **PRIVATE(비공개)**로 유지되고 있으며 제작자 개인 용도로 만들어졌습니다. 위 1·2번 항목은 이 저장소를 PUBLIC으로 전환하거나 별도로 재배포·상업화할 때 반드시 먼저 해소해야 하는 조건이며, 현재의 PRIVATE·개인용 범위에서는 위 미해결 사안이 실제 법적 노출로 이어지지 않습니다.
+4. **`skill-maker`로 만든 새 스킬의 저작권**: `skill-maker`(2026-07-27 추가)로 직접 만든 새 스킬 파일의 저작권 귀속, 그리고 그걸 `CONTRIBUTING.md` 절차로 이 저장소에 기여했을 때 어떤 라이선스가 적용되는지는 아직 별도로 명시되어 있지 않은 미해결 사안입니다. 현재는 저장소가 PRIVATE라 실제 기여 사례가 없어 노출로 이어지지 않지만, 공개 전환·외부 기여를 받기 전에 반드시 먼저 정리해야 합니다.
 
 **대규모 상업적 사용, 재배포, 유료 서비스 포함을 계획 중이시라면 반드시 별도로 법률 전문가의 확인을 받으시길 강력히 권장합니다.** 이 문서와 LICENSE/NOTICE 파일은 일반 정보 제공 목적이며 법적 자문을 대체하지 않습니다. (참고용·법적 효력 보장 안 함, 사용자 책임·변호사 확인 권장)
 

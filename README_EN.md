@@ -496,7 +496,10 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 /natural-english [Korean Sentence]
 /presentation-script [Topic] [Presentation Duration]
 /request-apology-message [Situation] [Relationship]
+/skill-maker [One-line description of the skill you want]
 ```
+
+> Unlike the 10 above, `skill-maker` doesn't produce a finished piece of writing — it designs a brand-new skill file for you. See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
 ### Codex Dollar Commands
 
@@ -511,6 +514,7 @@ $sns-caption [Situation] [Mood]
 $natural-english [Korean text]
 $presentation-script [Topic] [Duration]
 $request-apology-message [Situation] [Relationship]
+$skill-maker [description of the skill you want]
 ```
 
 ### Natural Language (No commands needed)
@@ -619,7 +623,9 @@ SoDam-Prompt-Eng/                       ← Repository root
 │   │   └── SKILL.md
 │   ├── presentation-script/        ← 발표-대본
 │   │   └── SKILL.md
-│   └── request-apology-message/    ← 부탁-사과-메시지
+│   ├── request-apology-message/    ← 부탁-사과-메시지
+│   │   └── SKILL.md
+│   └── skill-maker/                ← Meta-skill that designs new skills with you (added 2026-07-27, 11th)
 │       └── SKILL.md
 │
 ├── commands/                       ← For `/sodam-prompt:skill-name` slash commands (added 2026-07-18, 1:1 with all of skills/)
@@ -632,16 +638,24 @@ SoDam-Prompt-Eng/                       ← Repository root
 │   ├── sns-caption.md
 │   ├── natural-english.md
 │   ├── presentation-script.md
-│   └── request-apology-message.md
+│   ├── request-apology-message.md
+│   └── skill-maker.md
+│
+├── scripts/                        ← Developer verification scripts (added 2026-07-27, no dependencies)
+│   └── verify-skills.mjs           ← Automatically checks new skills' frontmatter and safety patterns
+│
+├── .github/                        ← For the GitHub PR screen (added 2026-07-27, no CI workflow by design)
+│   └── PULL_REQUEST_TEMPLATE.md    ← Forces the local-verification/safety checklist onto the PR screen
 │
 ├── README.md / README.html         ← Korean full guide (md·html identical content)
 ├── README_EN.md / README_EN.html   ← English full guide (this file)
 ├── GUIDE.md / GUIDE.html           ← Korean beginner guide
 ├── GUIDE_EN.md / GUIDE_EN.html     ← English beginner guide
+├── CONTRIBUTING.md                 ← New-skill contribution process and safety requirements (added 2026-07-27)
 ├── CHECKPOINT.md                   ← Development progress log (maintainer-facing, not needed by end users)
 ├── P4_검수_가이드.md               ← Human-verification checklist
 ├── PROMPTFOO_로컬_가이드.md         ← Local automated-verification instructions (developer-facing, optional)
-├── promptfooconfig.yaml            ← Local verification config for all 10 skills (no CI, keeps $0 principle)
+├── promptfooconfig.yaml            ← Local verification config for all skills (no CI, keeps $0 principle)
 ├── promptfoo-skill-prompt.js       ← Verification loader (reads the real SKILL.md files directly, no copy)
 ├── LICENSE                         ← Apache-2.0 full text
 ├── NOTICE                          ← Copyright notice
@@ -688,6 +702,9 @@ $2 = Second input value (impression)
 | `README_EN.md` / `README_EN.html` | English full guide (this file) |
 | `GUIDE.md` / `GUIDE.html` | Korean beginner guide |
 | `GUIDE_EN.md` / `GUIDE_EN.html` | English beginner guide |
+| `CONTRIBUTING.md` | New-skill contribution process and safety requirements (added 2026-07-27) |
+| `scripts/verify-skills.mjs` | Automated structure/safety check for new skills (developer-facing, no dependencies) |
+| `.github/PULL_REQUEST_TEMPLATE.md` | Checklist that auto-populates the PR screen |
 | `CHECKPOINT.md` | Development progress log (maintainer-facing, not needed by end users) |
 | `P4_검수_가이드.md` | Human-verification checklist |
 | `PROMPTFOO_로컬_가이드.md` | Local automated-verification instructions (developer-facing, optional) |
@@ -948,6 +965,7 @@ This project **has not yet undergone formal legal review (attorney review).** Tw
 1. **Copyright ownership of AI-generated output**: Who owns the copyright to text produced by running a skill (book reports, messages, etc.) varies by jurisdiction and by each AI service's terms, and remains a legally uncertain area.
 2. **References to "Claude," "Anthropic," "Codex," "OpenAI," etc.**: This repository mentions these names solely to describe compatibility. There is no affiliation, sponsorship, or endorsement relationship with these companies (see the NOTICE file). Check each company's official trademark guidelines separately for their name/logo usage policy.
 3. **Distribution scope (currently PRIVATE)**: This GitHub repository is currently kept **PRIVATE** and was built for the creator's personal use. Items 1 and 2 above must be resolved before this repository is ever made PUBLIC or separately redistributed/commercialized; within the current PRIVATE, personal-use scope, these open items do not create actual legal exposure.
+4. **Copyright of skills created with `skill-maker`**: Who owns a new skill file created with `skill-maker` (added 2026-07-27), and what license would apply if it were contributed back to this repository via the `CONTRIBUTING.md` process, is not yet explicitly defined. Since the repository is currently PRIVATE with no actual external contributions, this creates no exposure today — but it must be resolved before the repository goes public or accepts outside contributions.
 
 **If you plan large-scale commercial use, redistribution, or inclusion in a paid service, we strongly recommend obtaining independent legal counsel.** This document and the LICENSE/NOTICE files are provided for general informational purposes and do not substitute for legal advice. (For reference only — no legal guarantee is made; you are responsible for verifying with an attorney.)
 

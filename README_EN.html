@@ -598,7 +598,13 @@ Claude.ai App Slash Commands</h3>
 /sns-caption [Situation] [Mood]
 /natural-english [Korean Sentence]
 /presentation-script [Topic] [Presentation Duration]
-/request-apology-message [Situation] [Relationship]</code></pre>
+/request-apology-message [Situation] [Relationship]
+/skill-maker [One-line description of the skill you want]</code></pre>
+<blockquote>
+<p>Unlike the 10 above, <code>skill-maker</code> doesn’t produce a
+finished piece of writing — it designs a brand-new skill file for you.
+See <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a> for details.</p>
+</blockquote>
 <h3 id="codex-dollar-commands">Codex Dollar Commands</h3>
 <pre><code>$book-report-helper [Book Title] [Impression]
 $polite-message [Recipient] [Purpose]
@@ -609,7 +615,8 @@ $self-intro-polish [Notes] [Purpose]
 $sns-caption [Situation] [Mood]
 $natural-english [Korean text]
 $presentation-script [Topic] [Duration]
-$request-apology-message [Situation] [Relationship]</code></pre>
+$request-apology-message [Situation] [Relationship]
+$skill-maker [description of the skill you want]</code></pre>
 <h3 id="natural-language-no-commands-needed">Natural Language (No
 commands needed)</h3>
 <p>Once installed, AI automatically selects the right skill based on
@@ -731,7 +738,9 @@ Structure</h2>
 │   │   └── SKILL.md
 │   ├── presentation-script/        ← 발표-대본
 │   │   └── SKILL.md
-│   └── request-apology-message/    ← 부탁-사과-메시지
+│   ├── request-apology-message/    ← 부탁-사과-메시지
+│   │   └── SKILL.md
+│   └── skill-maker/                ← Meta-skill that designs new skills with you (added 2026-07-27, 11th)
 │       └── SKILL.md
 │
 ├── commands/                       ← For `/sodam-prompt:skill-name` slash commands (added 2026-07-18, 1:1 with all of skills/)
@@ -744,16 +753,24 @@ Structure</h2>
 │   ├── sns-caption.md
 │   ├── natural-english.md
 │   ├── presentation-script.md
-│   └── request-apology-message.md
+│   ├── request-apology-message.md
+│   └── skill-maker.md
+│
+├── scripts/                        ← Developer verification scripts (added 2026-07-27, no dependencies)
+│   └── verify-skills.mjs           ← Automatically checks new skills&#39; frontmatter and safety patterns
+│
+├── .github/                        ← For the GitHub PR screen (added 2026-07-27, no CI workflow by design)
+│   └── PULL_REQUEST_TEMPLATE.md    ← Forces the local-verification/safety checklist onto the PR screen
 │
 ├── README.md / README.html         ← Korean full guide (md·html identical content)
 ├── README_EN.md / README_EN.html   ← English full guide (this file)
 ├── GUIDE.md / GUIDE.html           ← Korean beginner guide
 ├── GUIDE_EN.md / GUIDE_EN.html     ← English beginner guide
+├── CONTRIBUTING.md                 ← New-skill contribution process and safety requirements (added 2026-07-27)
 ├── CHECKPOINT.md                   ← Development progress log (maintainer-facing, not needed by end users)
 ├── P4_검수_가이드.md               ← Human-verification checklist
 ├── PROMPTFOO_로컬_가이드.md         ← Local automated-verification instructions (developer-facing, optional)
-├── promptfooconfig.yaml            ← Local verification config for all 10 skills (no CI, keeps $0 principle)
+├── promptfooconfig.yaml            ← Local verification config for all skills (no CI, keeps $0 principle)
 ├── promptfoo-skill-prompt.js       ← Verification loader (reads the real SKILL.md files directly, no copy)
 ├── LICENSE                         ← Apache-2.0 full text
 ├── NOTICE                          ← Copyright notice
@@ -846,6 +863,20 @@ commands (added 2026-07-18, same content as <code>skills/</code>)</td>
 <tr>
 <td><code>GUIDE_EN.md</code> / <code>GUIDE_EN.html</code></td>
 <td>English beginner guide</td>
+</tr>
+<tr>
+<td><code>CONTRIBUTING.md</code></td>
+<td>New-skill contribution process and safety requirements (added
+2026-07-27)</td>
+</tr>
+<tr>
+<td><code>scripts/verify-skills.mjs</code></td>
+<td>Automated structure/safety check for new skills (developer-facing,
+no dependencies)</td>
+</tr>
+<tr>
+<td><code>.github/PULL_REQUEST_TEMPLATE.md</code></td>
+<td>Checklist that auto-populates the PR screen</td>
 </tr>
 <tr>
 <td><code>CHECKPOINT.md</code></td>
@@ -1153,6 +1184,14 @@ the creator’s personal use. Items 1 and 2 above must be resolved before
 this repository is ever made PUBLIC or separately
 redistributed/commercialized; within the current PRIVATE, personal-use
 scope, these open items do not create actual legal exposure.</li>
+<li><strong>Copyright of skills created with
+<code>skill-maker</code></strong>: Who owns a new skill file created
+with <code>skill-maker</code> (added 2026-07-27), and what license would
+apply if it were contributed back to this repository via the
+<code>CONTRIBUTING.md</code> process, is not yet explicitly defined.
+Since the repository is currently PRIVATE with no actual external
+contributions, this creates no exposure today — but it must be resolved
+before the repository goes public or accepts outside contributions.</li>
 </ol>
 <p><strong>If you plan large-scale commercial use, redistribution, or
 inclusion in a paid service, we strongly recommend obtaining independent
