@@ -160,6 +160,9 @@ Write a 5-minute presentation script about climate change.
 Write an apology message to my teacher for turning in homework late.
 ```
 
+**Want a skill that's not here?** Say "I want to make a new skill for (describe it)" and `skill-maker`
+will help design one with you. More on this in Section 8.
+
 ---
 
 ## 8. Full List of 10 Commands (Skills)
@@ -179,6 +182,8 @@ Write an apology message to my teacher for turning in homework late.
 
 **"Do I need to memorize the commands?"** No. As explained in Section 6, just ask in natural language and the AI picks the right skill automatically. This table is just for browsing.
 
+**#11, `skill-maker`**: the 10 above are ready-made result skills. `skill-maker` is different — say "I want to make a skill like this" and it designs a brand-new one with you in conversation. It's not for filling in blanks; it's for building a new tool itself.
+
 > If you want the repository-name-prefixed form (`/sodam-prompt:book-report-helper`), the exact steps depend on how you installed it — see the "Claude Code — Official Plugin Install" section in README_EN.md for the exact commands.
 
 ---
@@ -186,6 +191,17 @@ Write an apology message to my teacher for turning in homework late.
 ## 9. Update History Summary
 
 <details open>
+<summary><strong>2026-07-27 — Added `skill-maker` so you can build new skills yourself (click to expand)</strong></summary>
+
+- Added an 11th skill, `skill-maker`, on top of the 10 ready-made ones. Instead of picking from a
+  fixed list, it designs a brand-new skill together with you in conversation. Say "I want to make a
+  new skill" to use it.
+- Added a contribution guide (`CONTRIBUTING.md`) and an automated check that verifies new skills follow
+  the safety rules (developer-facing, no effect on everyday usage).
+
+</details>
+
+<details>
 <summary><strong>2026-07-18 — Finished the repository-name-prefixed command format (`/sodam-prompt:name`) + fixed a verification-tool bug (click to expand)</strong></summary>
 
 - Added a new folder called `commands` so that `/sodam-prompt:book-report-helper`-style commands (with the repository name attached) work reliably (the content is identical to the existing skills, just in a different format)
@@ -272,7 +288,7 @@ Write an apology message to my teacher for turning in homework late.
 **Yes, it's safe.** Here's why, in 3 points:
 
 1. **These skill files are pure "question templates."** They contain no code that runs programs, deletes files, or secretly connects anywhere.
-2. **They never ask for personal information** (name, phone number, address). All 10 skills were checked for this.
+2. **They never ask for personal information** (name, phone number, address). All 10 skills were checked for this (`skill-maker`, added as the 11th, was built with the same rule).
 3. **They are designed to avoid risky or sensitive topics** (medical, legal, financial, self-harm, adult content).
 
 **But please keep these rules in mind:**
@@ -300,7 +316,7 @@ Write an apology message to my teacher for turning in homework late.
 ## 14. Frequently Asked Questions (FAQ)
 
 **Q: Is this completely free?**
-A: The 10 skill files themselves are completely free. However, the AI service's own pricing (free/paid tiers) is set by the AI company (e.g., Anthropic), not by this project.
+A: The skill files in this repository are completely free. However, the AI service's own pricing (free/paid tiers) is set by the AI company (e.g., Anthropic), not by this project.
 
 **Q: Do I need to sign up for anything?**
 A: This project itself requires no sign-up. But to use an AI (like Claude), you'll need an account with that service.

@@ -235,6 +235,9 @@ Write an SNS caption for a picnic photo by the river, upbeat mood.
 Rewrite this sentence in natural English: I&#39;m so tired today.
 Write a 5-minute presentation script about climate change.
 Write an apology message to my teacher for turning in homework late.</code></pre>
+<p><strong>Want a skill that’s not here?</strong> Say “I want to make a
+new skill for (describe it)” and <code>skill-maker</code> will help
+design one with you. More on this in Section 8.</p>
 <hr />
 <h2 id="full-list-of-10-commands-skills">8. Full List of 10 Commands
 (Skills)</h2>
@@ -319,6 +322,11 @@ Write an apology message to my teacher for turning in homework late.</code></pre
 <p><strong>“Do I need to memorize the commands?”</strong> No. As
 explained in Section 6, just ask in natural language and the AI picks
 the right skill automatically. This table is just for browsing.</p>
+<p><strong>#11, <code>skill-maker</code></strong>: the 10 above are
+ready-made result skills. <code>skill-maker</code> is different — say “I
+want to make a skill like this” and it designs a brand-new one with you
+in conversation. It’s not for filling in blanks; it’s for building a new
+tool itself.</p>
 <blockquote>
 <p>If you want the repository-name-prefixed form
 (<code>/sodam-prompt:book-report-helper</code>), the exact steps depend
@@ -328,6 +336,21 @@ Install” section in README_EN.md for the exact commands.</p>
 <hr />
 <h2 id="update-history-summary">9. Update History Summary</h2>
 <details open>
+<summary>
+<strong>2026-07-27 — Added <code>skill-maker</code> so you can build new
+skills yourself (click to expand)</strong>
+</summary>
+<ul>
+<li>Added an 11th skill, <code>skill-maker</code>, on top of the 10
+ready-made ones. Instead of picking from a fixed list, it designs a
+brand-new skill together with you in conversation. Say “I want to make a
+new skill” to use it.</li>
+<li>Added a contribution guide (<code>CONTRIBUTING.md</code>) and an
+automated check that verifies new skills follow the safety rules
+(developer-facing, no effect on everyday usage).</li>
+</ul>
+</details>
+<details>
 <summary>
 <strong>2026-07-18 — Finished the repository-name-prefixed command
 format (<code>/sodam-prompt:name</code>) + fixed a verification-tool bug
@@ -460,7 +483,9 @@ Sections 9 and 11</a>.</p>
 They contain no code that runs programs, deletes files, or secretly
 connects anywhere.</li>
 <li><strong>They never ask for personal information</strong> (name,
-phone number, address). All 10 skills were checked for this.</li>
+phone number, address). All 10 skills were checked for this
+(<code>skill-maker</code>, added as the 11th, was built with the same
+rule).</li>
 <li><strong>They are designed to avoid risky or sensitive
 topics</strong> (medical, legal, financial, self-harm, adult
 content).</li>
@@ -523,10 +548,10 @@ Goes Wrong</h2>
 <hr />
 <h2 id="frequently-asked-questions-faq">14. Frequently Asked Questions
 (FAQ)</h2>
-<p><strong>Q: Is this completely free?</strong> A: The 10 skill files
-themselves are completely free. However, the AI service’s own pricing
-(free/paid tiers) is set by the AI company (e.g., Anthropic), not by
-this project.</p>
+<p><strong>Q: Is this completely free?</strong> A: The skill files in
+this repository are completely free. However, the AI service’s own
+pricing (free/paid tiers) is set by the AI company (e.g., Anthropic),
+not by this project.</p>
 <p><strong>Q: Do I need to sign up for anything?</strong> A: This
 project itself requires no sign-up. But to use an AI (like Claude),
 you’ll need an account with that service.</p>
