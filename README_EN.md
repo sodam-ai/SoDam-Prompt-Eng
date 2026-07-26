@@ -940,6 +940,7 @@ All skill files and documentation in this repository are distributed under **Apa
 - Anthropic (Claude) Terms of Use: `anthropic.com/legal/consumer-usage-policy`
 - OpenAI (Codex) Terms of Use: `openai.com/terms`
 - Check each service's terms for ownership and commercial use of AI output
+- **Risk of resembling existing works**: This project cannot control or guarantee that AI output won't accidentally resemble an existing copyrighted work (a book, song, article, etc.). Before commercial use, check for yourself whether the output actually overlaps with someone else's work and whether it needs attribution.
 
 ---
 
