@@ -7,6 +7,8 @@
 
 ---
 
+> 🌸 [SoDam Family](https://github.com/sodam-ai/SoDam-Family) 7형제 중 하나입니다.
+
 ## 목차
 
 1. [한눈에 보기](#1-한눈에-보기)

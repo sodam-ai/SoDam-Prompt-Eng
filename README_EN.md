@@ -7,6 +7,8 @@ License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean Output | V
 
 ---
 
+> 🌸 One of the seven siblings of [SoDam Family](https://github.com/sodam-ai/SoDam-Family).
+
 ## Table of Contents
 
 1. [Overview](#1-overview)
