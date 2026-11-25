@@ -253,11 +253,11 @@ Then in chat:
 
 ### Claude Code — Official Plugin Install (`sodam-prompt:skill-name` format)
 
-If you want the **repository-name-prefixed format** (`sodam-prompt:book-report-helper`) reliably, use Claude Code's official plugin registration instead of a folder copy. This repository ships `.claude-plugin/plugin.json`, `marketplace.json`, and a `commands/` folder (one file per skill, 10 total) that can be registered directly.
+If you want the **repository-name-prefixed format** (`sodam-prompt:book-report-helper`) reliably, use Claude Code's official plugin registration instead of a folder copy. This repository ships `.claude-plugin/plugin.json`, `marketplace.json`, and a `commands/` folder (one file per skill) that can be registered directly.
 
 > **Why a separate `commands/` folder?** Claude Code has a known limitation (official issue [#41842](https://github.com/anthropics/claude-code/issues/41842)) where `skills/` alone does not reliably register as a `sodam-prompt:`-prefixed slash command. The `commands/` folder is the verified way to guarantee this prefix (confirmed working in another SoDam-family plugin).
 
-**Install — register from the GitHub repository** (requires an account with access, since this repo is PRIVATE):
+**Install — register from the GitHub repository** (this repository is PUBLIC, so anyone can register it):
 ```
 /plugin marketplace add sodam-ai/SoDam-Prompt-Eng
 /plugin install sodam-prompt@sodam-prompt-marketplace
@@ -668,7 +668,7 @@ SoDam-Prompt-Eng/                       ← Repository root
 ---
 name: book-report-helper            ← Skill name (must match folder name)
 description: When and how to use   ← Read by AI for auto-selection
-argument-hint: [Book Title] [Impression]  ← Input hint
+argument-hint: "[Book Title] [Impression]"  ← Input hint (wrap the whole value in double quotes)
 ---
 
 [AI instruction body]              ← What AI will execute
@@ -963,8 +963,8 @@ This project **has not yet undergone formal legal review (attorney review).** Tw
 
 1. **Copyright ownership of AI-generated output**: Who owns the copyright to text produced by running a skill (book reports, messages, etc.) varies by jurisdiction and by each AI service's terms, and remains a legally uncertain area.
 2. **References to "Claude," "Anthropic," "Codex," "OpenAI," etc.**: This repository mentions these names solely to describe compatibility. There is no affiliation, sponsorship, or endorsement relationship with these companies (see the NOTICE file). Check each company's official trademark guidelines separately for their name/logo usage policy.
-3. **Distribution scope (currently PRIVATE)**: This GitHub repository is currently kept **PRIVATE** and was built for the creator's personal use. Items 1 and 2 above must be resolved before this repository is ever made PUBLIC or separately redistributed/commercialized; within the current PRIVATE, personal-use scope, these open items do not create actual legal exposure.
-4. **Copyright of skills created with `skill-maker`**: Who owns a new skill file created with `skill-maker` (added 2026-07-27), and what license would apply if it were contributed back to this repository via the `CONTRIBUTING.md` process, is not yet explicitly defined. Since the repository is currently PRIVATE with no actual external contributions, this creates no exposure today — but it must be resolved before the repository goes public or accepts outside contributions.
+3. **Distribution scope (currently PUBLIC)**: This GitHub repository is currently **PUBLIC** (confirmed via GitHub on 2026-11-26; the creator decided to keep it public). Items 1 and 2 above are therefore no longer "conditions to resolve before going public" — they are **open issues in a repository that is already public**. The name-related part is only mitigated by the non-affiliation notice in NOTICE; it does not replace an attorney's review, and no attorney review has been obtained yet. Anyone planning redistribution or commercial use needs to check separately, as described below.
+4. **Copyright of skills created with `skill-maker`**: Who owns a new skill file created with `skill-maker` (added 2026-07-27), and what license would apply if it were contributed back to this repository via the `CONTRIBUTING.md` process, is not yet explicitly defined. Because the repository is public and can receive outside contributions, this must be resolved before any contribution is actually accepted.
 
 **If you plan large-scale commercial use, redistribution, or inclusion in a paid service, we strongly recommend obtaining independent legal counsel.** This document and the LICENSE/NOTICE files are provided for general informational purposes and do not substitute for legal advice. (For reference only — no legal guarantee is made; you are responsible for verifying with an attorney.)
 
@@ -1013,6 +1013,15 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## 17. Update History
 
 <details open>
+<summary><strong>2026-11-26 — Corrected the PUBLIC status + fixed a skill-file format error (click to expand)</strong></summary>
+
+- Corrected the places that still said "PRIVATE" to match what GitHub actually reports (PUBLIC) — this README and `CONTRIBUTING.md`. The legal disclosure (section 15) now describes the open items as "unresolved while already public."
+- Wrapped the `argument-hint` value of all 11 skills in double quotes so the frontmatter is valid YAML. Before the fix, `sns-caption` and others failed to parse as YAML, and `skill-maker`'s hint was read as a list instead of a string (measured with js-yaml). The `skill-maker` instructions and the doc examples now use the same form, and `scripts/verify-skills.mjs` gained a quoting check so the same error fails verification if it comes back.
+- Added `skill-maker` to the plugin description and bumped the version `0.1.0` → `0.2.0` (with an unchanged version, an installed copy may not recognize the update).
+
+</details>
+
+<details>
 <summary><strong>2026-07-27 — Consolidated the GUIDE documents (click to expand)</strong></summary>
 
 - Removed `GUIDE.md`/`GUIDE_EN.md` (+ `.html`) and folded the beginner-facing guidance into this README. Since the two documents always said the same thing, consolidating into one loses no information.

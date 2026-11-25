@@ -36,10 +36,10 @@ SoDam-Prompt-Eng/
 ├── LICENSE                          ← Apache-2.0
 ├── NOTICE                           ← Apache-2.0 의무 공지
 ├── .gitignore                       ← .env* + Next.js 잔재 제외
-├── CHECKPOINT.md                    ← 마일스톤 추적
 ├── AUDIT.log                        ← 의사결정 이벤트 스트림
 └── .PRD/                            ← 설계 문서 (참고용)
     ├── README.md
+    ├── CHECKPOINT.md                ← 마일스톤 추적 (정본, 루트에서 이동)
     ├── 01_PRD.md
     ├── 02_DATA_MODEL.md             ← 이 파일
     ├── 03_PHASES.md
@@ -69,7 +69,7 @@ SoDam-Prompt-Eng/
 ---
 name: 스킬-이름
 description: 설명. "트리거 표현" 일 때 사용.
-argument-hint: [빈칸1] [빈칸2]
+argument-hint: "[빈칸1] [빈칸2]"
 ---
 
 당신은 [역할]입니다.

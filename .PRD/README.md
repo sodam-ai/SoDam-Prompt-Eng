@@ -30,7 +30,7 @@
 ---
 
 ## 다음 단계
-현재 상태·다음 단계는 [03_PHASES.md](./03_PHASES.md)와 루트 `CHECKPOINT.md`를 참조하세요.
+현재 상태·다음 단계는 [03_PHASES.md](./03_PHASES.md)와 같은 폴더의 [CHECKPOINT.md](./CHECKPOINT.md)를 참조하세요.
 
 ---
 
