@@ -64,7 +64,7 @@
 ---
 name: book-report-helper
 description: 책 제목과 느낀 점을 주면 3문단 독후감을 써준다. "독후감 써줘", "독서감상문 도와줘" 일 때 사용.
-argument-hint: [책 제목] [느낀 점]
+argument-hint: "[책 제목] [느낀 점]"
 ---
 
 당신은 친절한 국어 선생님입니다.

@@ -48,7 +48,8 @@ for (const d of skillDirs) {
 
   const nameOk = name === d;
   const descOk = Boolean(desc);
-  const hintOk = Boolean(hint);
+  // 따옴표 없는 `[a] [b]`는 올바른 YAML이 아님(2026-11-26 js-yaml 실측: 한 줄에 대괄호 2묶음이면 오류) → 따옴표 필수
+  const hintOk = Boolean(hint) && /^(["']).*\1$/.test(hint);
   const varsOk = vars.length > 0;
   // 로컬 체크아웃에서 commands/*.md만 CRLF로 정규화되는 경우가 있어(git index는 둘 다 LF —
   // `git ls-files --eol`로 확인됨) 줄바꿈 차이를 무시하고 실제 내용만 비교한다.
@@ -62,7 +63,7 @@ for (const d of skillDirs) {
     skill: d,
     "name==폴더": nameOk ? "OK" : `X(${name})`,
     description: descOk ? "OK" : "MISSING",
-    "argument-hint": hintOk ? "OK" : "MISSING",
+    "argument-hint": hintOk ? "OK" : (hint ? "따옴표없음(YAML오류)" : "MISSING"),
     변수: vars || "MISSING",
     "commands/*.md": cExists ? "OK" : "MISSING",
     본문일치: cExists ? (bodySame ? "OK" : "DIFF") : "-",

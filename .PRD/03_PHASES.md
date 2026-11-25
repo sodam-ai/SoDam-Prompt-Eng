@@ -11,7 +11,7 @@
 |-------|------|------|
 | P1 | SKILL.md 10개 생성 + README 설치 안내 | ✅ done |
 | P2 | 로컬 Next.js 잔재 정리(git 추적 해제) | ✅ done (2026-07-11, `git update-index --remove --force-remove`로 24개 파일 추적 해제) |
-| P3 | GitHub push | ✅ done (2026-07-11, `origin/main` 동기화 확인, 저장소 PRIVATE) |
+| P3 | GitHub push | ✅ done (2026-07-11, `origin/main` 동기화 확인, 저장소 PRIVATE — 이후 PUBLIC 전환됨, 2026-11-26 GitHub 실측) |
 | P4 | 사람 검수 (10개 실작동) | ✅ done (2026-07-15, 개인 용도 실사용 검증 — 상세 CHECKPOINT.md) |
 
 ---
@@ -79,7 +79,7 @@ skills/request-apology-message/SKILL.md
 
 ### 실행 이력 (참고용 — 이미 완료됨)
 
-7개 커밋(`ada58e3`~`9500a3b`)을 `origin/main`에 push 완료. 저장소는 **PRIVATE**(GitHub 확인)로 외부 노출 없음.
+7개 커밋(`ada58e3`~`9500a3b`)을 `origin/main`에 push 완료. 저장소는 당시 **PRIVATE**(GitHub 확인)였음 — ⚠ 이후 PUBLIC으로 전환됨(2026-11-26 GitHub 실측, 사용자 결정으로 공개 유지).
 
 ```bash
 # 최초 실행 시 사용한 명령 (기록용, 재실행 불필요)

@@ -31,3 +31,6 @@
 [2026-07-27T05:00] user VALIDATION skill-maker 실사용 검증 성공 — 완전히 새로운 AI 세션에서 D:\Test_Dev\test5 복사본(원본 무수정)에 "오늘 기분에 어울리는 음악 장르 추천" 스킬 생성 요청, 결과물 2파일 정상 생성 + 강화된 안전규칙 실제 포함 확인. AI가 원본 저장소 git 상태·파일 내용·verify-skills.mjs 재실행으로 독립 재검증(전부 일치) — skill-maker 실사용 미검증 위험 해소
 [2026-07-27T05:50] user VALIDATION skill-maker 2차 실사용 검증(빈칸 2개, $1/$2 방식) 성공 — 같은 테스트 복사본에서 또 다른 새 세션이 "생일 축하 메시지"(이름+관계) 스킬 요청, birthday-message 정상 생성. 원본 무변경·파일 내용 대조·verify-skills.mjs 재실행(13개 전부 PASS)·$1/$2 치환 시뮬레이션까지 독립 재검증 완료 — skill-maker의 두 입력 방식(빈칸 1개/2개) 모두 실사용 검증 완료
 [2026-07-27T06:20] user DECISION 다국어 범위 확정 — "지금처럼 유지, 필요하면 나중에 다국어 버전으로". 스킬 본문은 한국어 전용 유지(README/GUIDE만 한/영 병행), skill-maker로 새 스킬 확장 해소 확인과 함께 Phase 3 두 항목 모두 닫힘 — Phase 3 완료
+[2026-11-26T06:08] claude DECISION 사용자 "공개 유지로 진행" — 저장소가 GitHub 실측 PUBLIC임을 확인하고 README/README_EN/CONTRIBUTING/.PRD 문구를 PUBLIC 기준으로 정정, 법률 미해결 사안은 "공개 중 미해결"로 고지 갱신
+[2026-11-26T06:08] claude BUG_FIX 11개 SKILL.md argument-hint 따옴표 변경을 js-yaml 실측(커밋본 sns-caption YAML 오류, skill-maker 목록으로 오인)으로 정당성 확인 후 커밋, skill-maker 안내문·문서 예시 5곳 통일, verify-skills.mjs에 따옴표 검사 추가(음성 테스트 통과)
+[2026-11-26T06:08] claude MILESTONE_DONE CHECKPOINT를 .PRD/로 확정·참조 정리, plugin.json/marketplace.json 설명에 skill-maker 반영 + 버전 0.2.0, README.html/README_EN.html 본문 재생성(head 보존)

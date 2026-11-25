@@ -103,6 +103,10 @@ Gemini CLI.</p>
 <p>License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean
 Output | Verified: ✅ Confirmed via personal use (2026-07-15)</p>
 <hr />
+<blockquote>
+<p>🌸 One of the seven siblings of <a
+href="https://github.com/sodam-ai/SoDam-Family">SoDam Family</a>.</p>
+</blockquote>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol type="1">
 <li><a href="#1-overview">Overview</a></li>
@@ -411,7 +415,7 @@ format)</h3>
 Code’s official plugin registration instead of a folder copy. This
 repository ships <code>.claude-plugin/plugin.json</code>,
 <code>marketplace.json</code>, and a <code>commands/</code> folder (one
-file per skill, 10 total) that can be registered directly.</p>
+file per skill) that can be registered directly.</p>
 <blockquote>
 <p><strong>Why a separate <code>commands/</code> folder?</strong> Claude
 Code has a known limitation (official issue <a
@@ -421,8 +425,8 @@ where <code>skills/</code> alone does not reliably register as a
 <code>commands/</code> folder is the verified way to guarantee this
 prefix (confirmed working in another SoDam-family plugin).</p>
 </blockquote>
-<p><strong>Install — register from the GitHub repository</strong>
-(requires an account with access, since this repo is PRIVATE):</p>
+<p><strong>Install — register from the GitHub repository</strong> (this
+repository is PUBLIC, so anyone can register it):</p>
 <pre><code>/plugin marketplace add sodam-ai/SoDam-Prompt-Eng
 /plugin install sodam-prompt@sodam-prompt-marketplace</code></pre>
 <p><strong>Install — register from a downloaded local folder</strong>
@@ -777,7 +781,7 @@ Structure</h2>
 <pre><code>---
 name: book-report-helper            ← Skill name (must match folder name)
 description: When and how to use   ← Read by AI for auto-selection
-argument-hint: [Book Title] [Impression]  ← Input hint
+argument-hint: &quot;[Book Title] [Impression]&quot;  ← Input hint (wrap the whole value in double quotes)
 ---
 
 [AI instruction body]              ← What AI will execute
@@ -1173,20 +1177,23 @@ compatibility. There is no affiliation, sponsorship, or endorsement
 relationship with these companies (see the NOTICE file). Check each
 company’s official trademark guidelines separately for their name/logo
 usage policy.</li>
-<li><strong>Distribution scope (currently PRIVATE)</strong>: This GitHub
-repository is currently kept <strong>PRIVATE</strong> and was built for
-the creator’s personal use. Items 1 and 2 above must be resolved before
-this repository is ever made PUBLIC or separately
-redistributed/commercialized; within the current PRIVATE, personal-use
-scope, these open items do not create actual legal exposure.</li>
+<li><strong>Distribution scope (currently PUBLIC)</strong>: This GitHub
+repository is currently <strong>PUBLIC</strong> (confirmed via GitHub on
+2026-11-26; the creator decided to keep it public). Items 1 and 2 above
+are therefore no longer “conditions to resolve before going public” —
+they are <strong>open issues in a repository that is already
+public</strong>. The name-related part is only mitigated by the
+non-affiliation notice in NOTICE; it does not replace an attorney’s
+review, and no attorney review has been obtained yet. Anyone planning
+redistribution or commercial use needs to check separately, as described
+below.</li>
 <li><strong>Copyright of skills created with
 <code>skill-maker</code></strong>: Who owns a new skill file created
 with <code>skill-maker</code> (added 2026-07-27), and what license would
 apply if it were contributed back to this repository via the
 <code>CONTRIBUTING.md</code> process, is not yet explicitly defined.
-Since the repository is currently PRIVATE with no actual external
-contributions, this creates no exposure today — but it must be resolved
-before the repository goes public or accepts outside contributions.</li>
+Because the repository is public and can receive outside contributions,
+this must be resolved before any contribution is actually accepted.</li>
 </ol>
 <p><strong>If you plan large-scale commercial use, redistribution, or
 inclusion in a paid service, we strongly recommend obtaining independent
@@ -1233,6 +1240,29 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 <hr />
 <h2 id="update-history">17. Update History</h2>
 <details open>
+<summary>
+<strong>2026-11-26 — Corrected the PUBLIC status + fixed a skill-file
+format error (click to expand)</strong>
+</summary>
+<ul>
+<li>Corrected the places that still said “PRIVATE” to match what GitHub
+actually reports (PUBLIC) — this README and
+<code>CONTRIBUTING.md</code>. The legal disclosure (section 15) now
+describes the open items as “unresolved while already public.”</li>
+<li>Wrapped the <code>argument-hint</code> value of all 11 skills in
+double quotes so the frontmatter is valid YAML. Before the fix,
+<code>sns-caption</code> and others failed to parse as YAML, and
+<code>skill-maker</code>’s hint was read as a list instead of a string
+(measured with js-yaml). The <code>skill-maker</code> instructions and
+the doc examples now use the same form, and
+<code>scripts/verify-skills.mjs</code> gained a quoting check so the
+same error fails verification if it comes back.</li>
+<li>Added <code>skill-maker</code> to the plugin description and bumped
+the version <code>0.1.0</code> → <code>0.2.0</code> (with an unchanged
+version, an installed copy may not recognize the update).</li>
+</ul>
+</details>
+<details>
 <summary>
 <strong>2026-07-27 — Consolidated the GUIDE documents (click to
 expand)</strong>
