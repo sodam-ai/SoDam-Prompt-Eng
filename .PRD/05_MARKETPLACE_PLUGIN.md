@@ -37,7 +37,7 @@
 |---|---|---|---|---|---|
 | **1** | **Claude.ai 앱 GUI 업로드** | Code → Download ZIP → 압축 풀기 → 스킬 폴더 하나를 ZIP으로 압축(README 5장) → Claude.ai 앱 → Customize → Skills → + Create skill → ZIP 업로드 → 토글 ON | **★1** | 불필요 | 안내 작성 ✅ · **업로드 실행 미확인** (2026-11-26 정정) |
 | 2 | **Claude Code 수동 복사** | 폴더 생성 후 복사(PowerShell·bash, README 5장) → `/이름 값` | ★2 | 터미널 | 폴더 생성 명령 추가(2026-11-26) · Windows 임시 폴더 시험 통과 · **Mac/Linux 실행·복사 후 인식은 미확인** |
-| 3 | **Codex 수동 복사** | 폴더 생성 후 `$HOME/.agents/skills/`에 복사(README 6장) → `$이름` | ★2 | 터미널 | 안내 작성 ✅(위치 정정 2026-11-26, 공식 문서 기준) · **실행 미확인** |
+| 3 | **Codex 수동 복사** | 폴더 생성 후 `$HOME/.agents/skills/`에 복사(README 6장) → `$이름` | ★2 | 터미널 | 안내 작성 ✅(위치 정정 2026-11-26, 공식 문서 기준) · **새 복사 후 인식은 미확인** (기존 설치본 1개 직접 호출 1회 확인, 2026-11-27) |
 | 4 | 수동 파일 복사 | 탐색기로 `skills/<이름>/SKILL.md` 복사 | ★3 | 파일탐색기 | 안내 작성 ✅ · **실행 기록 없음** (2026-11-26 정정) |
 | **Phase 2** | **Claude Code 마켓 등록** | `/plugin marketplace add sodam-ai/SoDam-Prompt-Eng` → `/plugin install sodam-prompt@sodam-prompt-marketplace` | ★1 | 터미널 | ✅ 완료 — 생성(2026-07-17)+실사용 라이브 재검증 2회(2026-07-18, CHECKPOINT.md B-1 참조). 단 `/plugin uninstall` 제거는 명령어만 존재, 실행 재확인은 안 됨 |
 | — | **Codex `$skill-installer`** | `$skill-installer <이름>` | ★2 | 터미널(Codex) | 대상 없음(2026-07-16 조사 완료 — B-2, 아래 각주) |
@@ -54,7 +54,7 @@
 |---|---|---|
 | Claude.ai 앱 | "독후감 써줘" 같은 자연어 → description 매칭으로 자동 사용 | ✅ (description 기반) |
 | Claude Code | "독후감 써줘" 자연어 → description 매칭 자동 사용 | ✅ (description 기반) |
-| Codex | `$book-report-helper` 뒤에 내용을 문장으로 (직접 확인 전) | 공식 문서상 자동 선택 방식 있음(이 스킬로는 미확인) |
+| Codex | `$book-report-helper` 뒤에 내용을 문장으로 (2026-11-27 1회 확인) | 공식 문서상 자동 선택 방식 있음(이 스킬로는 미확인) |
 | Cursor·Gemini CLI | `skills/<이름>/SKILL.md` 복사 후 도구별 방식 | 도구마다 다름 |
 
 ---
