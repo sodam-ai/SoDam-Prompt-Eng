@@ -1,7 +1,7 @@
 # SoDam Prompt — Complete Guide to 10 AI Writing Skills
 
 > A collection of Korean writing tools — just fill in the blanks and AI does the rest.
-> Built on the shared `SKILL.md` format so it can be used on Claude Code · Claude.ai App · Codex · Cursor · Gemini CLI. However, **Claude Code is the only tool with a detailed verification record** — see [2. Prerequisites](#2-prerequisites) for per-tool status.
+> Built on the shared `SKILL.md` format so it can be used on Claude Code · Claude.ai App · Codex · Cursor · Gemini CLI. However, **the detailed verification record is mainly for Claude Code**; for Codex there is only a single direct call of one skill — see [2. Prerequisites](#2-prerequisites) for per-tool status.
 
 License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean Output | Verified: ✅ Confirmed via personal use (2026-07-15)
 
@@ -76,7 +76,8 @@ You only need **one** of the following — not all of them.
 |------|--------|-------|
 | Claude Code | ✅ Verified | 2026-07-17: natural-language auto-trigger in a fresh session; 2026-07-18: `/sodam-prompt:` slash commands registered after `/plugin install`, confirmed on screen |
 | Claude.ai App | △ Owner confirmed once (no detailed record) | Recorded as confirmed by the owner's own use on 2026-07-15 (natural-language auto-trigger works), but there is no screen record, and the ZIP install procedure was not separately run |
-| Codex · Cursor · Gemini CLI | ⚠️ Not verified | Designed to work since the format is shared, but not run directly. Check each tool's official docs for the skills folder location |
+| Codex | △ One direct call of one skill | 2026-11-27, Codex CLI 0.172.0 on Windows: calling the **already installed** `book-report-helper` with `$name` plus a sentence produced output that followed the 3-paragraph rules, and the session log shows the file under `$HOME/.agents/skills` was loaded automatically. Not verified: recognition after a fresh copy with the README commands, automatic selection from natural language, other skills |
+| Cursor · Gemini CLI | ⚠️ Not verified | Designed to work since the format is shared, but not run directly. Check each tool's official docs for the skills folder location |
 
 If you try one and it works (or doesn't), let us know and this table will be updated.
 
@@ -342,14 +343,15 @@ mkdir -p ~/.agents/skills
 cp -r ./skills/* ~/.agents/skills/
 ```
 
-> **The install location follows the [official OpenAI documentation](https://learn.chatgpt.com/docs/build-skills) (checked 2026-11-26): `$HOME/.agents/skills`.** We have not verified installing or running these skills in Codex ourselves. If a new skill does not appear, restart Codex.
-> You **do not need to delete** files you copied to `~/.codex/skills` using our earlier instructions. We could not confirm whether Codex still reads that location. If skills with the same name are read from two places, both may appear in the list.
+> **The install location follows the [official OpenAI documentation](https://learn.chatgpt.com/docs/build-skills) (checked 2026-11-26): `$HOME/.agents/skills`.** We have not verified recognition after a fresh install with the commands above (only a direct call of one already installed skill, see the [table in Section 2](#2-prerequisites)). If a new skill does not appear, restart Codex.
+> On our test PC, which has hundreds of skills installed, these skills were **not** in the list Codex received at session start, yet calling one with `$name` worked. If a skill is not listed or not picked automatically, try naming it with `$name`.
+> You **do not need to delete** files you copied to `~/.codex/skills` using our earlier instructions. On our test PC (Codex CLI 0.172.0), skills from that location also appeared in the list Codex received; we have not checked whether that is default behavior or due to that PC's settings. If skills with the same name are read from two places, both may appear in the list.
 
 **Run**: in Codex, use `/skills` to see the list or type `$` to pick a skill, then describe what you need **in a sentence**.
 ```
 $book-report-helper The book is "The Little Prince" and my impression is "Adults need a child's heart too." Write the book report.
 ```
-> We did not find a way to pass quoted values in order in the official documentation. We have not run the sentence form above ourselves either.
+> We did not find a way to pass quoted values in order in the official documentation. On 2026-11-27 we tried the sentence form once with `book-report-helper` (with a Korean test sentence, not the exact example above). Other skills were not tried.
 
 ---
 
@@ -560,7 +562,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 ### Codex Dollar Commands
 
-> The `[ ]` items below are **the information to provide**. In Codex, write it as a sentence after `$skill-name` (not verified by us — see [Codex in Section 6](#codex)).
+> The `[ ]` items below are **the information to provide**. In Codex, write it as a sentence after `$skill-name` (tried once with `book-report-helper` only — see [Codex in Section 6](#codex)).
 
 ```
 $book-report-helper The book is [Book Title] and my impression is [Impression].
@@ -1085,6 +1087,7 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 <details open>
 <summary><strong>2026-11-26 — Corrected the PUBLIC status + fixed a skill-file format error (click to expand)</strong></summary>
 
+- **One direct Codex call verified (2026-11-27)**: we called one already installed skill, `book-report-helper`, with `$name` plus a sentence and updated the Section 2 table and Section 6 notes to that scope only.
 - **Codex location and ZIP guidance updated**: following the official documentation, the Codex install location is now `$HOME/.agents/skills` and values are given in a sentence. For the Claude app, zip **one skill folder**. Neither was verified by running it in the tool.
 - **Install commands fixed**: on a PC without the target folder, the old copy commands failed or copied to the wrong place without an error (reproduced with temporary folders). They now create the folder first (PowerShell and bash), say where to open the terminal, and warn about overwriting and deleting. Not run on Mac or Linux.
 - Corrected the places that still said "PRIVATE" to match what GitHub actually reports (PUBLIC) — this README and `CONTRIBUTING.md`. The legal disclosure (section 15) now describes the open items as "unresolved while already public."

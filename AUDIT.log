@@ -42,3 +42,4 @@
 [2026-11-26T22:10] claude MILESTONE_DONE README(한/영·HTML) 설치 명령 결함 수정(임시 폴더 18/18 통과, Mac·실제 인식 미확인), HTML 내부 링크 37개 복구, PRD 낡은 표기 정정, promptfoo 검사 오판 17/17 재현→한계 명시·배지 보류, CHECKPOINT 12차 갱신 — skills/·commands/ 변경 없음, 커밋·푸시 안 함
 [2026-11-26T22:50] claude MILESTONE_DONE Codex 2차 검토 9건 반영(설치 확인을 원본 내용 비교로 교체 등), 설치 블록 18/18·확인 명령 4/4 통과. 사용자의 "추천한 순서대로 전부 진행" 지시에 따라 커밋·PR 진행
 [2026-11-27T07:15] claude MILESTONE_DONE Codex 설치 위치·ZIP 안내를 공식 문서 기준으로 정정, Codex 3차 검토 10건과 별도 Claude 검토의 데이터 흐름 설명 지적 반영, 설치 블록 18/18·확인 명령 통과. 도구에서의 실제 인식·업로드는 미확인. 사용자의 "추천한 순서대로 전부 진행" 지시에 따라 커밋·PR 진행
+[2026-11-27T08:10] claude MILESTONE_DONE Codex CLI 0.172.0에서 기존 설치본 book-report-helper 직접 호출 1회 확인(세션 기록으로 .agents/skills 자동 주입 대조). 목록 NOT LISTED는 목록 잘림 가능성으로 판정 근거에서 제외. README·PRD·CHECKPOINT 14차 기록, SEC-B2 미충족 표시. skills/·commands/ 변경 없음, 설치·삭제 없음

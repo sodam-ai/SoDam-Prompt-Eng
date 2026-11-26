@@ -99,9 +99,10 @@ Prompt — Complete Guide to 10 AI Writing Skills</h1>
 <p>A collection of Korean writing tools — just fill in the blanks and AI
 does the rest. Built on the shared <code>SKILL.md</code> format so it
 can be used on Claude Code · Claude.ai App · Codex · Cursor · Gemini
-CLI. However, <strong>Claude Code is the only tool with a detailed
-verification record</strong> — see <a href="#2-prerequisites">2.
-Prerequisites</a> for per-tool status.</p>
+CLI. However, <strong>the detailed verification record is mainly for
+Claude Code</strong>; for Codex there is only a single direct call of
+one skill — see <a href="#2-prerequisites">2. Prerequisites</a> for
+per-tool status.</p>
 </blockquote>
 <p>License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean
 Output | Verified: ✅ Confirmed via personal use (2026-07-15)</p>
@@ -297,7 +298,18 @@ what was actually run is marked “verified”)</p>
 and the ZIP install procedure was not separately run</td>
 </tr>
 <tr>
-<td>Codex · Cursor · Gemini CLI</td>
+<td>Codex</td>
+<td>△ One direct call of one skill</td>
+<td>2026-11-27, Codex CLI 0.172.0 on Windows: calling the
+<strong>already installed</strong> <code>book-report-helper</code> with
+<code>$name</code> plus a sentence produced output that followed the
+3-paragraph rules, and the session log shows the file under
+<code>$HOME/.agents/skills</code> was loaded automatically. Not
+verified: recognition after a fresh copy with the README commands,
+automatic selection from natural language, other skills</td>
+</tr>
+<tr>
+<td>Cursor · Gemini CLI</td>
 <td>⚠️ Not verified</td>
 <td>Designed to work since the format is shared, but not run directly.
 Check each tool’s official docs for the skills folder location</td>
@@ -608,12 +620,20 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href=
 href="https://learn.chatgpt.com/docs/build-skills">official OpenAI
 documentation</a> (checked 2026-11-26):
 <code>$HOME/.agents/skills</code>.</strong> We have not verified
-installing or running these skills in Codex ourselves. If a new skill
-does not appear, restart Codex. You <strong>do not need to
-delete</strong> files you copied to <code>~/.codex/skills</code> using
-our earlier instructions. We could not confirm whether Codex still reads
-that location. If skills with the same name are read from two places,
-both may appear in the list.</p>
+recognition after a fresh install with the commands above (only a direct
+call of one already installed skill, see the <a
+href="#2-prerequisites">table in Section 2</a>). If a new skill does not
+appear, restart Codex. On our test PC, which has hundreds of skills
+installed, these skills were <strong>not</strong> in the list Codex
+received at session start, yet calling one with <code>$name</code>
+worked. If a skill is not listed or not picked automatically, try naming
+it with <code>$name</code>. You <strong>do not need to delete</strong>
+files you copied to <code>~/.codex/skills</code> using our earlier
+instructions. On our test PC (Codex CLI 0.172.0), skills from that
+location also appeared in the list Codex received; we have not checked
+whether that is default behavior or due to that PC’s settings. If skills
+with the same name are read from two places, both may appear in the
+list.</p>
 </blockquote>
 <p><strong>Run</strong>: in Codex, use <code>/skills</code> to see the
 list or type <code>$</code> to pick a skill, then describe what you need
@@ -621,8 +641,9 @@ list or type <code>$</code> to pick a skill, then describe what you need
 <pre><code>$book-report-helper The book is &quot;The Little Prince&quot; and my impression is &quot;Adults need a child&#39;s heart too.&quot; Write the book report.</code></pre>
 <blockquote>
 <p>We did not find a way to pass quoted values in order in the official
-documentation. We have not run the sentence form above ourselves
-either.</p>
+documentation. On 2026-11-27 we tried the sentence form once with
+<code>book-report-helper</code> (with a Korean test sentence, not the
+exact example above). Other skills were not tried.</p>
 </blockquote>
 <hr />
 <h3 id="cursor--gemini-cli--other-ai-tools">Cursor · Gemini CLI · Other
@@ -807,8 +828,9 @@ See <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a> for details.</p>
 <blockquote>
 <p>The <code>[ ]</code> items below are <strong>the information to
 provide</strong>. In Codex, write it as a sentence after
-<code>$skill-name</code> (not verified by us — see <a
-href="#codex">Codex in Section 6</a>).</p>
+<code>$skill-name</code> (tried once with
+<code>book-report-helper</code> only — see <a href="#codex">Codex in
+Section 6</a>).</p>
 </blockquote>
 <pre><code>$book-report-helper The book is [Book Title] and my impression is [Impression].
 $polite-message The recipient is [Recipient] and the purpose is [Purpose].
@@ -1515,6 +1537,10 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 format error (click to expand)</strong>
 </summary>
 <ul>
+<li><strong>One direct Codex call verified (2026-11-27)</strong>: we
+called one already installed skill, <code>book-report-helper</code>,
+with <code>$name</code> plus a sentence and updated the Section 2 table
+and Section 6 notes to that scope only.</li>
 <li><strong>Codex location and ZIP guidance updated</strong>: following
 the official documentation, the Codex install location is now
 <code>$HOME/.agents/skills</code> and values are given in a sentence.

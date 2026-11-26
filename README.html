@@ -99,8 +99,9 @@
 <p>AI를 처음 쓰는 분도 빈칸만 채우면 바로 되는 한국어 글쓰기 도구
 모음입니다. 같은 <code>SKILL.md</code> 형식이라 Claude Code · Claude.ai
 앱 · Codex · Cursor · Gemini CLI 에서 쓸 수 있게 만들었습니다. 다만
-<strong>세부 기록이 남은 확인은 Claude Code뿐</strong>입니다 — 도구별
-확인 현황은 <a href="#2-사전-준비물">2장 사전 준비물</a>을 보세요.</p>
+<strong>세부 기록이 남은 확인은 주로 Claude Code</strong>이고, Codex는
+스킬 1개를 한 번 직접 호출한 기록만 있습니다 — 도구별 확인 현황은 <a
+href="#2-사전-준비물">2장 사전 준비물</a>을 보세요.</p>
 </blockquote>
 <p>라이선스: Apache-2.0 | 단계: SoDam Prompt (1단계) | 언어: 한국어 |
 검수: ✅ 실사용 확인 완료 (2026-07-15)</p>
@@ -285,7 +286,17 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 보지 않음</td>
 </tr>
 <tr>
-<td>Codex · Cursor · Gemini CLI</td>
+<td>Codex</td>
+<td>△ 스킬 1개 직접 호출 1회만 확인</td>
+<td>2026-11-27 Windows의 Codex CLI 0.172.0에서, <strong>이미 설치돼
+있던</strong> <code>book-report-helper</code>를 <code>$이름</code> +
+문장으로 호출해 3문단 규칙대로 결과가 나오고
+<code>$HOME/.agents/skills</code>의 파일이 자동으로 불려온 것을 세션
+기록으로 확인. README 명령으로 새로 복사한 뒤의 인식, 자연어 자동 선택,
+다른 스킬은 미확인</td>
+</tr>
+<tr>
+<td>Cursor · Gemini CLI</td>
 <td>⚠️ 미확인</td>
 <td>같은 형식이라 동작하도록 설계했지만 직접 실행해 보지 않음. 폴더
 위치는 각 도구 공식 문서를 확인하세요</td>
@@ -578,11 +589,17 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href=
 <p><strong>설치 위치는 <a
 href="https://learn.chatgpt.com/docs/build-skills">OpenAI 공식
 문서</a>(2026-11-26 확인) 기준
-<code>$HOME/.agents/skills</code>입니다.</strong> Codex에서의 설치와
-실행은 직접 확인하지 않았습니다. 새 스킬이 안 보이면 Codex를 다시 시작해
-보세요. 이전 안내대로 <code>~/.codex/skills</code>에 복사한 파일은
-<strong>지우지 않아도 됩니다.</strong> 그 위치를 Codex가 계속 읽는지는
-확인하지 못했습니다. 같은 이름의 스킬이 두 곳에서 읽히면 목록에 둘 다
+<code>$HOME/.agents/skills</code>입니다.</strong> 위 설치 명령으로 새로
+설치한 뒤의 인식은 확인하지 않았습니다(이미 설치돼 있던 스킬 1개의 직접
+호출만 확인, <a href="#2-사전-준비물">2장 표</a>). 새 스킬이 안 보이면
+Codex를 다시 시작해 보세요. 스킬이 수백 개 설치된 시험 PC에서는 Codex가
+처음에 받은 목록에 이 스킬들이 <strong>없었지만</strong>
+<code>$이름</code> 직접 호출은 됐습니다. 목록에 없거나 자동으로 안
+쓰이면 <code>$이름</code>으로 직접 지정해 보세요. 이전 안내대로
+<code>~/.codex/skills</code>에 복사한 파일은 <strong>지우지 않아도
+됩니다.</strong> 시험 PC(Codex CLI 0.172.0)에서는 그 위치의 스킬도
+Codex가 받은 목록에 있었지만, 기본 동작인지 그 PC의 설정 때문인지는
+확인하지 않았습니다. 같은 이름의 스킬이 두 곳에서 읽히면 목록에 둘 다
 보일 수 있습니다.</p>
 </blockquote>
 <p><strong>실행</strong>: Codex에서 <code>/skills</code>로 목록을 보거나
@@ -591,7 +608,9 @@ href="https://learn.chatgpt.com/docs/build-skills">OpenAI 공식
 <pre><code>$book-report-helper 책 제목은 &quot;어린 왕자&quot;, 느낀 점은 &quot;어른도 아이 마음이 필요하다&quot; 야. 독후감 써줘.</code></pre>
 <blockquote>
 <p>공식 문서에서 값을 따옴표로 순서대로 넘기는 방법은 찾지 못했습니다.
-위 문장 방식도 직접 실행해 확인하지는 않았습니다.</p>
+위 문장 방식은 2026-11-27에 <code>book-report-helper</code>로 한 번
+확인했습니다(책 제목·느낀 점은 시험용으로 위 예시와 조금 다른 문장을
+썼습니다). 다른 스킬은 확인하지 않았습니다.</p>
 </blockquote>
 <hr />
 <h3 id="cursor--gemini-cli--기타-ai-도구">Cursor · Gemini CLI · 기타 AI
@@ -758,7 +777,8 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a> 참고.</p>
 <blockquote>
 <p>아래 <code>[ ]</code>는 <strong>함께 알려 줘야 하는 정보</strong>를
 뜻합니다. Codex에서는 <code>$스킬이름</code> 뒤에 그 정보를 문장으로
-적으세요(직접 확인 전 — <a href="#codex">6장 Codex</a> 참고).</p>
+적으세요(<code>book-report-helper</code> 1회만 확인 — <a
+href="#codex">6장 Codex</a> 참고).</p>
 </blockquote>
 <pre><code>$book-report-helper 책 제목은 [책 제목], 느낀 점은 [느낀 점]이야.
 $polite-message 받는 사람은 [받는 사람], 용건은 [용건]이야.
@@ -1419,6 +1439,10 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 (클릭해서 펼치기)</strong>
 </summary>
 <ul>
+<li><strong>Codex 직접 호출 1회 확인(2026-11-27)</strong>: 이미 설치돼
+있던 <code>book-report-helper</code> 하나를 <code>$이름</code> +
+문장으로 호출해 작동을 확인하고, 2장 표와 6장 안내를 그 범위만큼
+고쳤습니다.</li>
 <li><strong>Codex 설치 위치·ZIP 안내 수정</strong>: 공식 문서에 맞춰
 Codex 설치 위치를 <code>$HOME/.agents/skills</code>로 바꾸고, 값 전달은
 문장 방식으로 안내합니다. Claude 앱 ZIP은 <strong>스킬 폴더
