@@ -1,7 +1,7 @@
 # SoDam Prompt — AI 글쓰기 스킬 10종 완전 가이드
 
 > AI를 처음 쓰는 분도 빈칸만 채우면 바로 되는 한국어 글쓰기 도구 모음입니다.
-> Claude Code · Claude.ai 앱 · Codex · Cursor · Gemini CLI 에서 동일하게 작동합니다.
+> 같은 `SKILL.md` 형식이라 Claude Code · Claude.ai 앱 · Codex · Cursor · Gemini CLI 에서 쓸 수 있게 만들었습니다. 다만 **세부 기록이 남은 확인은 Claude Code뿐**입니다 — 도구별 확인 현황은 [2장 사전 준비물](#2-사전-준비물)을 보세요.
 
 라이선스: Apache-2.0 | 단계: SoDam Prompt (1단계) | 언어: 한국어 | 검수: ✅ 실사용 확인 완료 (2026-07-15)
 
@@ -69,6 +69,16 @@ SoDam Prompt는 학생·직장인·일반인이 AI에게 글쓰기를 요청할 
 | Claude Code | Node.js 18+ · Claude Code CLI | ★★☆ |
 | Codex | Codex 계정 · Codex CLI | ★★☆ |
 | Cursor · Gemini CLI 등 | 해당 도구 설치 | ★★☆ |
+
+**도구별 확인 현황** (거짓 없이 적습니다 — 직접 실행해 본 것만 "확인"으로 표시)
+
+| 도구 | 상태 | 근거 |
+|------|------|------|
+| Claude Code | ✅ 확인됨 | 2026-07-17 새 세션에서 자연어 자동 호출, 2026-07-18 `/plugin install` 후 `/sodam-prompt:` 슬래시 명령 등록을 화면으로 확인 |
+| Claude.ai 앱 | △ 본인 사용 1회 확인 (세부 기록 없음) | 2026-07-15 사용자가 직접 써 보고 자연어 자동 호출이 되는 것을 확인했다고 기록되어 있으나, 화면 기록은 없고 ZIP 설치 절차는 따로 실행해 보지 않음 |
+| Codex · Cursor · Gemini CLI | ⚠️ 미확인 | 같은 형식이라 동작하도록 설계했지만 직접 실행해 보지 않음. 폴더 위치는 각 도구 공식 문서를 확인하세요 |
+
+직접 써 보고 되거나 안 되는 도구를 알려 주시면 이 표에 반영합니다.
 
 ### 계정 만들기 (Claude.ai 방법 기준)
 
@@ -1017,6 +1027,7 @@ limitations under the License.
 - 문서 곳곳에 "PRIVATE"로 적혀 있던 안내를 GitHub 실측 결과(PUBLIC)에 맞게 정정했습니다(이 README·`CONTRIBUTING.md`). 법률 미해결 사안(15번)도 "공개 중인 미해결 사안"으로 고지를 갱신했습니다.
 - 스킬 11개의 `argument-hint`를 큰따옴표로 감싸 올바른 YAML로 고쳤습니다. 고치기 전에는 `sns-caption` 등이 YAML 오류로 읽혔고, `skill-maker`는 문자열이 아닌 목록으로 읽혔습니다(js-yaml로 실측). `skill-maker` 안내문·문서 예시도 같은 형태로 통일했고, `scripts/verify-skills.mjs`에 따옴표 검사를 추가해 같은 오류가 다시 들어오면 검증에서 실패하도록 했습니다.
 - 플러그인 설명에 `skill-maker`를 반영하고 버전을 `0.1.0` → `0.2.0`으로 올렸습니다(버전이 같으면 설치된 쪽에서 업데이트로 인식되지 않을 수 있습니다).
+- 맨 위의 "모든 도구에서 동일하게 작동" 문구를 사실에 맞게 고쳤습니다. 세부 기록이 남은 확인은 Claude Code뿐이라, 2장에 도구별 확인 현황 표를 추가했습니다(나머지 도구는 "미확인"으로 표시).
 
 </details>
 

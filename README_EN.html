@@ -97,8 +97,11 @@
 Prompt — Complete Guide to 10 AI Writing Skills</h1>
 <blockquote>
 <p>A collection of Korean writing tools — just fill in the blanks and AI
-does the rest. Works on Claude Code · Claude.ai App · Codex · Cursor ·
-Gemini CLI.</p>
+does the rest. Built on the shared <code>SKILL.md</code> format so it
+can be used on Claude Code · Claude.ai App · Codex · Cursor · Gemini
+CLI. However, <strong>Claude Code is the only tool with a detailed
+verification record</strong> — see <a href="#2-prerequisites">2.
+Prerequisites</a> for per-tool status.</p>
 </blockquote>
 <p>License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean
 Output | Verified: ✅ Confirmed via personal use (2026-07-15)</p>
@@ -263,6 +266,46 @@ them.</p>
 </tr>
 </tbody>
 </table>
+<p><strong>Per-tool verification status</strong> (stated honestly — only
+what was actually run is marked “verified”)</p>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 38%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Status</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td>✅ Verified</td>
+<td>2026-07-17: natural-language auto-trigger in a fresh session;
+2026-07-18: <code>/sodam-prompt:</code> slash commands registered after
+<code>/plugin install</code>, confirmed on screen</td>
+</tr>
+<tr>
+<td>Claude.ai App</td>
+<td>△ Owner confirmed once (no detailed record)</td>
+<td>Recorded as confirmed by the owner’s own use on 2026-07-15
+(natural-language auto-trigger works), but there is no screen record,
+and the ZIP install procedure was not separately run</td>
+</tr>
+<tr>
+<td>Codex · Cursor · Gemini CLI</td>
+<td>⚠️ Not verified</td>
+<td>Designed to work since the format is shared, but not run directly.
+Check each tool’s official docs for the skills folder location</td>
+</tr>
+</tbody>
+</table>
+<p>If you try one and it works (or doesn’t), let us know and this table
+will be updated.</p>
 <h3 id="creating-an-account-claude.ai-method">Creating an Account
 (Claude.ai method)</h3>
 <ol type="1">
@@ -1260,6 +1303,10 @@ same error fails verification if it comes back.</li>
 <li>Added <code>skill-maker</code> to the plugin description and bumped
 the version <code>0.1.0</code> → <code>0.2.0</code> (with an unchanged
 version, an installed copy may not recognize the update).</li>
+<li>Corrected the top-of-page claim that it “works the same on every
+tool”. Only Claude Code has a detailed verification record, so section 2
+now has a per-tool status table (other tools are marked “not
+verified”).</li>
 </ul>
 </details>
 <details>
