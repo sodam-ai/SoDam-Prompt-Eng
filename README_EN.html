@@ -331,10 +331,15 @@ need.</strong> → Skip to Step 4 (Download).</p>
 <h3 id="method-b--claude-code-developers--power-users">Method B — Claude
 Code (Developers / Power Users)</h3>
 <p><strong>Check if Node.js is already installed</strong></p>
-<p>Windows: 1. Press <code>Windows key</code> + <code>R</code> → type
-<code>cmd</code> → Enter (a black window opens) 2. Type the following
-and press Enter: <code>node --version</code> 3. If <code>v18.0.0</code>
-or higher appears, you’re good. If nothing shows, install it.</p>
+<p>Windows:</p>
+<ol type="1">
+<li><p>Press <code>Windows key</code> + <code>R</code> → type
+<code>cmd</code> → Enter (a black window opens)</p></li>
+<li><p>Type the following and press Enter:</p>
+<pre><code>node --version</code></pre></li>
+<li><p>If <code>v18.0.0</code> or higher appears, you’re good. If
+nothing shows, install it.</p></li>
+</ol>
 <p><strong>Install Node.js (if not present)</strong></p>
 <ol type="1">
 <li>Go to <code>nodejs.org</code> in your browser</li>
@@ -344,11 +349,11 @@ Finish</li>
 </ol>
 <p><strong>Install Claude Code</strong></p>
 <p>In your terminal:</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span></code></pre></div>
-<p>Verify installation:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> <span class="at">--version</span></span></code></pre></div>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span></code></pre></div>
+<p>Verify installation:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> <span class="at">--version</span></span></code></pre></div>
 <p>If a version number appears, installation succeeded.</p>
 <hr />
 <h3 id="method-c--codex-openai-codex-users">Method C — Codex (OpenAI
@@ -368,23 +373,31 @@ button</li>
 created</li>
 </ol>
 <blockquote>
+<p><strong>Claude app users:</strong> <strong>do not upload the ZIP you
+just downloaded.</strong> Extract it, then zip one skill folder as in <a
+href="#5-quick-start">Section 5, Step 3</a>.</p>
+</blockquote>
+<blockquote>
 <p><strong>Installing into Claude Code or Codex? Where you open the
 terminal matters.</strong> Run the install commands from the
 <strong>folder where you can see <code>skills</code> directly</strong>.
 (After extracting, <code>SoDam-Prompt-Eng-main</code> may contain
-another folder with the same name.) - <strong>Windows</strong>: open
-that folder in File Explorer, type <code>powershell</code> in the
-address bar and press Enter (PowerShell, not <code>cmd</code>) -
-<strong>Mac · Linux</strong>: type <code>cd</code> (with a trailing
+another folder with the same name.)</p>
+<ul>
+<li><strong>Windows</strong>: open that folder in File Explorer, type
+<code>powershell</code> in the address bar and press Enter (PowerShell,
+not <code>cmd</code>)</li>
+<li><strong>Mac · Linux</strong>: type <code>cd</code> (with a trailing
 space) in the terminal, drag the folder onto it, press Enter. If
 dragging does not work, type the path in quotes, for example
-<code>cd "/Users/name/Downloads/SoDam-Prompt-Eng-main"</code></p>
+<code>cd "/Users/name/Downloads/SoDam-Prompt-Eng-main"</code></li>
+</ul>
 </blockquote>
 <p><strong>Method 2: git clone (if git is installed)</strong></p>
 <p>In your terminal:</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sodam-ai/SoDam-Prompt-Eng.git</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> SoDam-Prompt-Eng</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sodam-ai/SoDam-Prompt-Eng.git</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> SoDam-Prompt-Eng</span></code></pre></div>
 <hr />
 <h3 id="before-you-install-safety-check">Before You Install (Safety
 Check)</h3>
@@ -402,23 +415,32 @@ review its contents before you install.</li>
 </ul>
 <hr />
 <h2 id="5-quick-start">5. Quick Start</h2>
-<h3 id="start-in-5-minutes-with-the-claudeai-app">Start in 5 Minutes
-with the Claude.ai App</h3>
+<h3 id="start-with-the-claudeai-app">Start with the Claude.ai App</h3>
 <p><strong>Step 1</strong>: Log in to <code>claude.ai</code> → click
 your profile icon (top right) → <strong>Customize</strong></p>
 <p><strong>Step 2</strong>: Click the <strong>Skills</strong> tab →
 <strong>+ Create skill</strong> or <strong>+ Add skill</strong></p>
-<p><strong>Step 3</strong>: Compress the extracted folder or just the
-<code>skills</code> folder as a ZIP → upload it</p>
+<p><strong>Step 3</strong>: In the extracted folder, open
+<code>skills</code>, compress <strong>one skill folder</strong> you want
+(for example <code>book-report-helper</code>) into a ZIP and upload
+it.</p>
+<ul>
+<li>Windows: right-click the folder → <strong>Compress to ZIP
+file</strong> (Windows 10: <strong>Send to → Compressed (zipped)
+folder</strong>)</li>
+<li>Mac: right-click the folder → <strong>Compress</strong></li>
+<li>When you open the ZIP, <strong>that skill folder must be at the top
+level</strong>. Do not rename the folder. Repeat for each additional
+skill.</li>
+</ul>
 <blockquote>
-<p>⚠️ <strong>ZIP installation is still being checked
-(2026-11-26)</strong>: we have not run this ZIP upload ourselves.
-Anthropic’s official help article describes a ZIP with <strong>one skill
-folder</strong> at its top level. If the upload fails, try compressing a
-single folder inside <code>skills</code> (for example
-<code>book-report-helper</code>) — we have not verified this either. The
-same help article says <strong>Code execution</strong> must be enabled
-in your Claude settings.</p>
+<p>⚠️ <strong>We have not tested the ZIP upload ourselves
+(2026-11-26)</strong>: this ZIP shape follows <a
+href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills">Anthropic’s
+official help article</a>. The same article says <strong>Code
+execution</strong> must be enabled in your Claude settings. We have not
+checked zipping the whole <code>skills</code> folder or the whole
+repository, so we do not recommend it.</p>
 </blockquote>
 <p><strong>Step 4</strong>: Toggle the skill to <strong>ON</strong>
 (blue)</p>
@@ -437,13 +459,13 @@ the block for your terminal</strong>.</p>
 edited an installed skill, copy it somewhere else first.</p>
 </blockquote>
 <p><strong>Windows (PowerShell)</strong></p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
-<p><strong>Mac · Linux · Git Bash</strong></p>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
 <p><strong>Check the copy</strong> — first make sure the copy showed no
 error, then run this <strong>from the same folder (where
 <code>skills</code> is visible)</strong>. PowerShell prints
@@ -451,10 +473,10 @@ error, then run this <strong>from the same folder (where
 installed file matches the source. (It compares one sample skill.)
 Whether your AI tool detects the skill is checked separately in Steps 2
 and 3.</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">(</span><span class="fu">Test-Path</span> <span class="op">.</span>\skills\book-report-helper\SKILL<span class="op">.</span><span class="fu">md</span><span class="op">)</span> <span class="op">-and</span> <span class="op">(</span><span class="fu">Test-Path</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper\SKILL.md&quot;</span><span class="op">)</span> <span class="op">-and</span> <span class="op">((</span>Get-FileHash <span class="op">.</span>\skills\book-report-helper\SKILL<span class="op">.</span><span class="fu">md</span><span class="op">).</span><span class="fu">Hash</span> <span class="op">-eq</span> <span class="op">(</span>Get-FileHash <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper\SKILL.md&quot;</span><span class="op">).</span><span class="fu">Hash</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> ./skills/book-report-helper/SKILL.md ~/.claude/skills/book-report-helper/SKILL.md <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> OK</span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">(</span><span class="fu">Test-Path</span> <span class="op">.</span>\skills\book-report-helper\SKILL<span class="op">.</span><span class="fu">md</span><span class="op">)</span> <span class="op">-and</span> <span class="op">(</span><span class="fu">Test-Path</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper\SKILL.md&quot;</span><span class="op">)</span> <span class="op">-and</span> <span class="op">((</span>Get-FileHash <span class="op">.</span>\skills\book-report-helper\SKILL<span class="op">.</span><span class="fu">md</span><span class="op">).</span><span class="fu">Hash</span> <span class="op">-eq</span> <span class="op">(</span>Get-FileHash <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper\SKILL.md&quot;</span><span class="op">).</span><span class="fu">Hash</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> ./skills/book-report-helper/SKILL.md ~/.claude/skills/book-report-helper/SKILL.md <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> OK</span></code></pre></div>
 <blockquote>
 <p><strong>What was checked (2026-11-26)</strong>: these copy commands
 were run on Windows (PowerShell 5.1 and Git Bash) <strong>against
@@ -463,8 +485,8 @@ were not run on Mac or Linux, and we did not re-check that Claude Code
 detects skills copied this way.</p>
 </blockquote>
 <p><strong>Step 2</strong>: Launch Claude Code</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
 <p><strong>Step 3</strong>: Use a slash command</p>
 <pre><code>/book-report-helper &quot;The Little Prince&quot; &quot;Adults need a child&#39;s heart too&quot;</code></pre>
 <p>Or in natural language:</p>
@@ -473,33 +495,42 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="
 <h2 id="6-running-the-skills--per-platform">6. Running the Skills — Per
 Platform</h2>
 <h3 id="claudeai-app-webapp">Claude.ai App (Web/App)</h3>
-<p><strong>Install</strong>: 1. Log in → Customize → Skills → + Create
-skill 2. Upload ZIP file → Toggle ON</p>
-<p><strong>Run</strong>: - Natural language:
-<code>Write a book report. "The Little Prince", impression: "growth"</code>
-- Slash command:
-<code>/book-report-helper "Book Title" "Impression"</code></p>
+<p><strong>Install</strong>:</p>
+<ol type="1">
+<li>Log in → Customize → Skills → + Create skill</li>
+<li>Upload a ZIP of <strong>one</strong> skill folder (<a
+href="#5-quick-start">Section 5, Step 3</a>) → Toggle ON</li>
+</ol>
+<p><strong>Run</strong>:</p>
+<ul>
+<li>Natural language:
+<code>Write a book report. "The Little Prince", impression: "growth"</code></li>
+<li>Slash command:
+<code>/book-report-helper "Book Title" "Impression"</code> (we have no
+record of testing slash calls in the Claude app; if it does not work,
+use natural language)</li>
+</ul>
 <hr />
 <h3 id="claude-code-terminal">Claude Code (Terminal)</h3>
 <p><strong>Install</strong> (from where <code>skills</code> is visible;
 run only the block for your terminal; same-named skills are
 overwritten):</p>
 <p><strong>Windows (PowerShell)</strong></p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
-<p><strong>Mac · Linux · Git Bash</strong></p>
 <div class="sourceCode" id="cb13"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
 <p>To install a single skill, replace <code>*</code> in the last line
 with the folder name (for example <code>book-report-helper</code>).
 <strong>Do not skip the first line that creates the folder.</strong>
 Copying into a missing folder can finish without an error and still put
 the file in the wrong place (<code>skills\SKILL.md</code>).</p>
 <p><strong>Run</strong>:</p>
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
 <p>Then in chat:</p>
 <pre><code>/book-report-helper &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
 <blockquote>
@@ -565,28 +596,45 @@ same way as the “real-usage test” described in this document.</p>
 run only the block for your terminal; same-named skills are
 overwritten):</p>
 <p><strong>Windows (PowerShell)</strong></p>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.codex\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.codex\skills\&quot;</span></span></code></pre></div>
-<p><strong>Mac · Linux · Git Bash</strong></p>
 <div class="sourceCode" id="cb20"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.codex/skills</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.codex/skills/</span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.agents\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.agents\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.agents/skills</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.agents/skills/</span></code></pre></div>
 <blockquote>
-<p>We have not verified installing or running these skills in Codex
-ourselves.</p>
+<p><strong>The install location follows the <a
+href="https://learn.chatgpt.com/docs/build-skills">official OpenAI
+documentation</a> (checked 2026-11-26):
+<code>$HOME/.agents/skills</code>.</strong> We have not verified
+installing or running these skills in Codex ourselves. If a new skill
+does not appear, restart Codex. You <strong>do not need to
+delete</strong> files you copied to <code>~/.codex/skills</code> using
+our earlier instructions. We could not confirm whether Codex still reads
+that location. If skills with the same name are read from two places,
+both may appear in the list.</p>
 </blockquote>
-<p><strong>Run</strong>:</p>
-<pre><code>$book-report-helper &quot;Book Title&quot; &quot;Impression&quot;</code></pre>
+<p><strong>Run</strong>: in Codex, use <code>/skills</code> to see the
+list or type <code>$</code> to pick a skill, then describe what you need
+<strong>in a sentence</strong>.</p>
+<pre><code>$book-report-helper The book is &quot;The Little Prince&quot; and my impression is &quot;Adults need a child&#39;s heart too.&quot; Write the book report.</code></pre>
+<blockquote>
+<p>We did not find a way to pass quoted values in order in the official
+documentation. We have not run the sentence form above ourselves
+either.</p>
+</blockquote>
 <hr />
 <h3 id="cursor--gemini-cli--other-ai-tools">Cursor · Gemini CLI · Other
 AI Tools</h3>
 <p>Copy the desired skill’s <code>SKILL.md</code> file into the skills
 folder (or instructions folder) of your respective tool.</p>
-<p>Cursor example: 1. Copy
-<code>skills/book-report-helper/SKILL.md</code> to Cursor’s
-<code>.cursor/skills/</code> folder 2. In Cursor chat:
-<code>Write a book report</code></p>
+<p>Cursor example:</p>
+<ol type="1">
+<li>Copy <code>skills/book-report-helper/SKILL.md</code> to Cursor’s
+<code>.cursor/skills/</code> folder</li>
+<li>In Cursor chat: <code>Write a book report</code></li>
+</ol>
 <hr />
 <h2 id="7-how-to-use-each-skill-all-10">7. How to Use Each Skill (All
 10)</h2>
@@ -594,8 +642,11 @@ folder (or instructions folder) of your respective tool.</p>
 (Book Report Helper)</h3>
 <p><strong>When to use</strong>: After reading a book and needing to
 write a book report</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Book title -
-<code>$2</code>: One-line impression</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Book title</li>
+<li><code>$2</code>: One-line impression</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/book-report-helper &quot;The Little Prince&quot; &quot;Adults need a child&#39;s heart too&quot;</code></pre>
 <p><strong>Natural language also works</strong>:</p>
@@ -607,9 +658,12 @@ expectations ② Key content ③ What I felt and learned)</p>
 (Formal Message)</h3>
 <p><strong>When to use</strong>: When sending a message to a teacher,
 supervisor, or elder</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Recipient (e.g.,
-homeroom teacher) - <code>$2</code>: Purpose in one line (e.g.,
-notifying absence for medical appointment)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Recipient (e.g., homeroom teacher)</li>
+<li><code>$2</code>: Purpose in one line (e.g., notifying absence for
+medical appointment)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/polite-message &quot;Homeroom Teacher&quot; &quot;I will be absent tomorrow due to a medical appointment&quot;</code></pre>
 <p><strong>Output</strong>: Subject line + formal message body</p>
@@ -618,9 +672,12 @@ notifying absence for medical appointment)</p>
 긴글-3줄요약 (Long Text 3-Line Summary)</h3>
 <p><strong>When to use</strong>: When you want to condense a long text
 into 3 key points</p>
-<p><strong>Required input</strong>: - <code>$ARGUMENTS</code>: Full text
-to summarize (single input — not <code>$1</code>/<code>$2</code>; all
-following text is captured at once)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$ARGUMENTS</code>: Full text to summarize (single input — not
+<code>$1</code>/<code>$2</code>; all following text is captured at
+once)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/long-text-summary [paste full text here]</code></pre>
 <p><strong>Output</strong>: 3 key points (formatted with • bullets)</p>
@@ -629,9 +686,11 @@ following text is captured at once)</p>
 (Explain Simply)</h3>
 <p><strong>When to use</strong>: When you need to explain a difficult
 concept in simple terms</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Concept to
-explain (e.g., photosynthesis) - <code>$2</code>: Listener’s age (e.g.,
-10 years old)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Concept to explain (e.g., photosynthesis)</li>
+<li><code>$2</code>: Listener’s age (e.g., 10 years old)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/explain-simply &quot;photosynthesis&quot; &quot;10 years old&quot;</code></pre>
 <p><strong>Output</strong>: 1 analogy + 3-sentence plain explanation</p>
@@ -640,9 +699,12 @@ explain (e.g., photosynthesis) - <code>$2</code>: Listener’s age (e.g.,
 Schedule)</h3>
 <p><strong>When to use</strong>: When preparing for an exam or planning
 study sessions</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Subject and goal
-(e.g., Math midterm — score 80) - <code>$2</code>: Duration (e.g., 2
-weeks)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Subject and goal (e.g., Math midterm — score
+80)</li>
+<li><code>$2</code>: Duration (e.g., 2 weeks)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/study-planner &quot;Math midterm 80 points&quot; &quot;2 weeks&quot;</code></pre>
 <p><strong>Output</strong>: Day-by-day study schedule (with daily study
@@ -652,9 +714,12 @@ amounts)</p>
 자기소개-다듬기 (Self-Introduction Polish)</h3>
 <p><strong>When to use</strong>: When you need to write a
 self-introduction but don’t know how</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Personal notes
-(brief is fine) - <code>$2</code>: Where it will be used (e.g., club
-application form)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Personal notes (brief is fine)</li>
+<li><code>$2</code>: Where it will be used (e.g., club application
+form)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/self-intro-polish &quot;Name Kim Minjun, likes soccer, diligent&quot; &quot;Club application&quot;</code></pre>
 <p><strong>Output</strong>: Polished self-introduction tailored to the
@@ -664,9 +729,12 @@ context</p>
 Caption)</h3>
 <p><strong>When to use</strong>: When posting on Instagram, Facebook, or
 other social media</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Situation (e.g.,
-studying at a café with friends) - <code>$2</code>: Mood (e.g., warm and
-fun)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Situation (e.g., studying at a café with
+friends)</li>
+<li><code>$2</code>: Mood (e.g., warm and fun)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/sns-caption &quot;studying at a café with friends&quot; &quot;warm and fun&quot;</code></pre>
 <p><strong>Output</strong>: 2 caption versions + 5 hashtags</p>
@@ -675,9 +743,12 @@ fun)</p>
 영어-자연스럽게 (Natural English)</h3>
 <p><strong>When to use</strong>: When you want to translate Korean into
 natural English</p>
-<p><strong>Required input</strong>: - <code>$ARGUMENTS</code>: Korean
-sentence (single input — not <code>$1</code>/<code>$2</code>; all
-following text is captured at once)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$ARGUMENTS</code>: Korean sentence (single input — not
+<code>$1</code>/<code>$2</code>; all following text is captured at
+once)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/natural-english &quot;나는 오늘 학교에서 발표를 잘 했어&quot;</code></pre>
 <p><strong>Output</strong>: Natural English sentence + Korean
@@ -687,9 +758,12 @@ explanation of why it’s phrased that way</p>
 (Presentation Script)</h3>
 <p><strong>When to use</strong>: When you need to prepare a script for a
 presentation</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Presentation
-topic (e.g., importance of environmental protection) - <code>$2</code>:
-Presentation duration (e.g., 5 minutes)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Presentation topic (e.g., importance of
+environmental protection)</li>
+<li><code>$2</code>: Presentation duration (e.g., 5 minutes)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/presentation-script &quot;importance of environmental protection&quot; &quot;5 minutes&quot;</code></pre>
 <p><strong>Output</strong>: Introduction–body–conclusion script
@@ -699,9 +773,13 @@ Presentation duration (e.g., 5 minutes)</p>
 부탁-사과-메시지 (Request/Apology Message)</h3>
 <p><strong>When to use</strong>: When you need to write a message asking
 a favor or apologizing</p>
-<p><strong>Required input</strong>: - <code>$1</code>: Situation (e.g.,
-submitted homework one day late) - <code>$2</code>: Relationship with
-the recipient (e.g., teacher)</p>
+<p><strong>Required input</strong>:</p>
+<ul>
+<li><code>$1</code>: Situation (e.g., submitted homework one day
+late)</li>
+<li><code>$2</code>: Relationship with the recipient (e.g.,
+teacher)</li>
+</ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/request-apology-message &quot;submitted homework one day late&quot; &quot;teacher&quot;</code></pre>
 <p><strong>Output</strong>: 2 versions — formal + casual</p>
@@ -726,17 +804,23 @@ finished piece of writing — it designs a brand-new skill file for you.
 See <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a> for details.</p>
 </blockquote>
 <h3 id="codex-dollar-commands">Codex Dollar Commands</h3>
-<pre><code>$book-report-helper [Book Title] [Impression]
-$polite-message [Recipient] [Purpose]
-$long-text-summary [Full text]
-$explain-simply [Concept] [Age]
-$study-planner [Goal] [Duration]
-$self-intro-polish [Notes] [Purpose]
-$sns-caption [Situation] [Mood]
-$natural-english [Korean text]
-$presentation-script [Topic] [Duration]
-$request-apology-message [Situation] [Relationship]
-$skill-maker [description of the skill you want]</code></pre>
+<blockquote>
+<p>The <code>[ ]</code> items below are <strong>the information to
+provide</strong>. In Codex, write it as a sentence after
+<code>$skill-name</code> (not verified by us — see <a
+href="#codex">Codex in Section 6</a>).</p>
+</blockquote>
+<pre><code>$book-report-helper The book is [Book Title] and my impression is [Impression].
+$polite-message The recipient is [Recipient] and the purpose is [Purpose].
+$long-text-summary Summarize this text: [Full text]
+$explain-simply Explain [Concept] to someone aged [Age].
+$study-planner My goal is [Goal] and I have [Duration].
+$self-intro-polish My notes are [Notes] and the purpose is [Purpose].
+$sns-caption The situation is [Situation] and the mood is [Mood].
+$natural-english Put this into natural English: [Korean text]
+$presentation-script The topic is [Topic] and the talk lasts [Duration].
+$request-apology-message The situation is [Situation] and it is for [Relationship].
+$skill-maker I want a skill that does this: [description]</code></pre>
 <h3 id="natural-language-no-commands-needed">Natural Language (No
 commands needed)</h3>
 <p>Once installed, AI automatically selects the right skill based on
@@ -773,10 +857,14 @@ AI Tool (Claude / Codex / etc.)
                                                    │
                                                    ▼
                                     Display in chat window</code></pre>
-<p><strong>Key points</strong>: - <code>SKILL.md</code> files remain on
-your computer only (not sent as separate files) - AI model processing
-happens on Claude/OpenAI servers - Output appears in the chat window
-only (no automatic saving)</p>
+<p><strong>Key points</strong>:</p>
+<ul>
+<li>When you use a skill, <strong>the content of <code>SKILL.md</code>
+is sent to the AI provider’s server as instructions</strong>. In the
+Claude app, the ZIP you upload is stored with your account (cloud)</li>
+<li>AI model processing happens on Claude/OpenAI servers</li>
+<li>Output appears in the chat window only (no automatic saving)</li>
+</ul>
 <hr />
 <h2 id="10-security--data-flow">10. Security &amp; Data Flow</h2>
 <h3 id="what-gets-sent-to-the-ai-server">What gets sent to the AI
@@ -789,24 +877,29 @@ server?</h3>
 <thead>
 <tr>
 <th>Sent</th>
-<th>Not Sent</th>
+<th>Not requested by these skills</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Text you typed (book title, impression, etc.)</td>
-<td>SKILL.md file itself</td>
+<td>Reading other files on your computer</td>
 </tr>
 <tr>
 <td>AI model instructions (SKILL.md content)</td>
-<td>Other files on your computer</td>
+<td>Passwords · account info</td>
 </tr>
 <tr>
+<td>Claude app install: the skill files inside the ZIP you upload</td>
 <td>—</td>
-<td>Passwords · account info</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>This table describes <strong>what the skill instructions ask
+for</strong>. What the AI tool itself reads and stores depends on that
+tool’s settings and privacy policy.</p>
+</blockquote>
 <h3 id="personal-information-safety-principles">Personal Information
 Safety Principles</h3>
 <ul>
@@ -828,7 +921,9 @@ retained in AI server logs</li>
 <li>No server, no database, no authentication required</li>
 <li>Network communication: handled entirely by the AI tool (this skill
 does not make separate network calls)</li>
-<li>Skill files are stored locally on your computer only</li>
+<li>Where skill files are stored: for Claude Code and Codex, the folder
+on your computer where you installed them; for the Claude app, your
+account (cloud) after upload</li>
 </ul>
 <hr />
 <h2 id="11-architecture--file-structure">11. Architecture — File
@@ -931,7 +1026,7 @@ After Installation</h3>
 </tr>
 <tr>
 <td>Codex</td>
-<td><code>~/.codex/skills/</code></td>
+<td><code>~/.agents/skills/</code></td>
 </tr>
 <tr>
 <td>Claude.ai App</td>
@@ -1024,18 +1119,20 @@ optional)</td>
 slash command <code>/book-report-helper</code> doesn’t appear</h3>
 <p><strong>Cause</strong>: Skill file is not in the correct location, or
 Claude Code needs to be restarted</p>
-<p><strong>Solution</strong>: 1. Check skill file location:
-<code>bash    ls ~/.claude/skills/</code> You should see a
-<code>book-report-helper</code> folder.</p>
-<ol start="2" type="1">
+<p><strong>Solution</strong>:</p>
+<ol type="1">
+<li><p>Check skill file location:</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/.claude/skills/</span></code></pre></div>
+<p>You should see a <code>book-report-helper</code> folder.</p></li>
 <li><p>If only one skill is missing, use the
 <strong>single-skill</strong> commands in the <a href="#14-faq">FAQ</a>;
 if all are missing, use <a href="#quick-start-with-claude-code">Section
 5, Step 1</a> (include the line that creates the folder). A full copy
 overwrites every same-named skill.</p></li>
 <li><p>Close and restart Claude Code:</p>
-<div class="sourceCode" id="cb39"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
 </ol>
 <hr />
 <h3
@@ -1051,20 +1148,30 @@ judgment. Try being more specific.</p>
 <h3 id="q3-zip-upload-doesnt-work-in-the-claudeai-app">Q3. ZIP upload
 doesn’t work in the Claude.ai App</h3>
 <p><strong>Cause</strong>: File format or size issue</p>
-<p><strong>Solution</strong>: 1. Confirm the ZIP was compressed
-correctly 2. Try compressing <strong>one</strong> skill folder inside
-<code>skills</code> (for example <code>book-report-helper</code>) and
-upload it — this is the shape described in the official help article
-(not yet verified by us; see the note in Section 5) 3. Refresh your
-browser and try again 4. Try a different browser (Chrome → Edge)</p>
+<p><strong>Solution</strong>:</p>
+<ol type="1">
+<li>Open the ZIP and confirm that <strong>one skill folder</strong> (for
+example <code>book-report-helper</code>) is at the top level with
+<code>SKILL.md</code> inside (<a href="#5-quick-start">Section 5, Step
+3</a> — based on the official help article; we have not tested the
+upload)</li>
+<li>Confirm that <strong>Code execution</strong> is enabled in your
+Claude settings</li>
+<li>Refresh your browser and try again</li>
+<li>Try a different browser (Chrome → Edge)</li>
+</ol>
 <hr />
 <h3 id="q4-the-output-is-strange--not-what-i-expected">Q4. The output is
 strange / not what I expected</h3>
 <p><strong>Cause</strong>: AI outputs vary slightly each time — this is
 normal.</p>
-<p><strong>Solution</strong>: 1. Provide more specific input (detailed
-context gives better results) 2. Ask: “Rewrite it” or “Make it simpler”
-3. Running the same skill again produces a different version</p>
+<p><strong>Solution</strong>:</p>
+<ol type="1">
+<li>Provide more specific input (detailed context gives better
+results)</li>
+<li>Ask: “Rewrite it” or “Make it simpler”</li>
+<li>Running the same skill again produces a different version</li>
+</ol>
 <hr />
 <h3
 id="q5-i-get-cp-no-such-file-or-is-not-a-directory-or-i-copied-but-the-skill-is-missing">Q5.
@@ -1094,21 +1201,24 @@ commands don’t work on Windows</h3>
 <code>C:\...</code> into a bash command breaks it, because bash removes
 the <code>\</code>.</p>
 <p><strong>Solution</strong>: use <strong>PowerShell</strong>.</p>
-<div class="sourceCode" id="cb42"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
-<p>Or copy directly in File Explorer: 1. Select all folders inside the
-<code>skills</code> folder → Ctrl+C 2. Open
-<code>C:\Users\YourName\.claude\skills\</code> (create the
-<code>skills</code> folder if it is missing) → Ctrl+V</p>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<p>Or copy directly in File Explorer:</p>
+<ol type="1">
+<li>Select all folders inside the <code>skills</code> folder →
+Ctrl+C</li>
+<li>Open <code>C:\Users\YourName\.claude\skills\</code> (create the
+<code>skills</code> folder if it is missing) → Ctrl+V</li>
+</ol>
 <hr />
 <h3 id="q7-korean-folder-names-appear-corrupted">Q7. Korean folder names
 appear corrupted</h3>
 <p><strong>Cause</strong>: Terminal encoding issue</p>
 <p><strong>Solution</strong>:</p>
-<div class="sourceCode" id="cb43"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set UTF-8 encoding</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set UTF-8 encoding</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD</span></span></code></pre></div>
 <p>Or use File Explorer to copy folders directly.</p>
 <hr />
 <h2 id="14-faq">14. FAQ</h2>
@@ -1134,13 +1244,13 @@ href="#4-download-instructions">Section 4</a>).</p>
 edited somewhere else first.</p>
 </blockquote>
 <p><strong>Windows (PowerShell)</strong></p>
-<div class="sourceCode" id="cb44"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\book-report-helper <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\book-report-helper <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
 <p><strong>Mac · Linux · Git Bash</strong></p>
-<div class="sourceCode" id="cb45"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span></code></pre></div>
 <p>For another skill, change <code>book-report-helper</code> to its
 folder name and run the last line again.</p>
 <hr />
@@ -1167,16 +1277,19 @@ folders</strong>; they have not been checked on Mac or Linux.</p>
 <hr />
 <p><strong>Q: How do I remove a skill?</strong> A: Delete <strong>only
 that skill’s folder</strong>. Your own edits are deleted too and do not
-go to the recycle bin, so check the folder name and contents first. The
-commands below are for <strong>Claude Code</strong>; for Codex, change
-<code>.claude</code> to <code>.codex</code>. If the folder does not
-exist, you will see an error.</p>
+go to the recycle bin, so check the folder name and contents first.
+<strong>If you installed into Codex using our earlier instructions, the
+copy may be in <code>~/.codex/skills</code>, so find where it actually
+is before deleting.</strong> The commands below are for <strong>Claude
+Code</strong>; for Codex, change <code>.claude</code> to
+<code>.agents</code>. If the folder does not exist, you will see an
+error.</p>
 <p>Windows (PowerShell):</p>
-<div class="sourceCode" id="cb46"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Remove-Item</span> <span class="op">-</span>Recurse <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Remove-Item</span> <span class="op">-</span>Recurse <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper&quot;</span></span></code></pre></div>
 <p>Mac · Linux · Git Bash:</p>
-<div class="sourceCode" id="cb47"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
 <p>Claude.ai App: Customize → Skills → select skill → Delete</p>
 <hr />
 <p><strong>Q: How do I receive update notifications?</strong> A: Click
@@ -1402,6 +1515,11 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 format error (click to expand)</strong>
 </summary>
 <ul>
+<li><strong>Codex location and ZIP guidance updated</strong>: following
+the official documentation, the Codex install location is now
+<code>$HOME/.agents/skills</code> and values are given in a sentence.
+For the Claude app, zip <strong>one skill folder</strong>. Neither was
+verified by running it in the tool.</li>
 <li><strong>Install commands fixed</strong>: on a PC without the target
 folder, the old copy commands failed or copied to the wrong place
 without an error (reproduced with temporary folders). They now create

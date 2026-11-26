@@ -24,7 +24,7 @@
 4. **순수 텍스트, 코드 실행 없음** — 셸 명령·MCP 훅·개인정보 수집 없음. 초보 안전.
 
 > **배포 채널**: GitHub 저장소가 곧 마켓플레이스다.
-> 발견 → ZIP 다운로드 → GUI 업로드 → 자연어("독후감 써줘") 또는 `/book-report-helper "어린 왕자" "감동적이었어"` 호출.
+> 발견 → ZIP 다운로드 → 압축 풀기 → 스킬 폴더 하나를 다시 ZIP으로 압축 → GUI 업로드 → 자연어("독후감 써줘") 또는 `/book-report-helper "어린 왕자" "감동적이었어"` 호출.
 > (2026-11-26 정정: 폴더명이 영문으로 바뀌어 호출 예시 갱신. **ZIP 업로드 단계는 실행 확인 기록이 없다** — §3 표 참조)
 > 상세 설계 → [05_MARKETPLACE_PLUGIN.md](./05_MARKETPLACE_PLUGIN.md)
 
@@ -39,7 +39,7 @@
 
 ### 사용자 시나리오 (대표)
 1. 민지(15세)가 GitHub에서 README.md를 보고 "독후감-도우미"를 발견한다.
-2. ZIP 다운로드 → Claude.ai 앱 Customize → Skills → ZIP 업로드 → 토글 ON.
+2. ZIP 다운로드·압축 풀기 → `skills` 안의 스킬 폴더 하나를 ZIP으로 압축 → Claude.ai 앱 Customize → Skills → 업로드 → 토글 ON.
 3. "독후감 써줘"라고 말하면 자동으로 스킬이 작동해 결과가 나온다.
 4. Claude Code 사용자는 `/book-report-helper "어린 왕자" "감동적이었어"`(직접 복사 설치) 또는 `/sodam-prompt:book-report-helper`(플러그인 설치)로 호출.
 
@@ -53,7 +53,7 @@
 | **README 설치 안내** | 3가지 경로(Claude.ai ZIP / Claude Code / Codex) + 왕초보용 | P1 ✅ done |
 | **Claude.ai ZIP 무코드 설치** | ZIP 업로드 → 토글 ON → 자연어로 자동 호출 | P1 안내 작성 ✅ · **ZIP 업로드 실행 미확인** (2026-11-26 정정) |
 | **Claude Code 설치** | 대상 폴더 생성 후 `skills/*`를 `~/.claude/skills/`에 복사 → `/이름 값` 호출 | P1 안내 작성 ✅ · 명령 수정(2026-11-26, Windows 임시 폴더 시험) · Mac/Linux·복사 후 인식 미확인 |
-| **Codex 설치** | `cp -r skills/* ~/.codex/skills/` → `$이름` 호출 | P1 안내 작성 ✅ · **실행 미확인** (2026-11-26 정정) |
+| **Codex 설치** | 대상 폴더 생성 후 `skills/*`를 `$HOME/.agents/skills/`(공식 문서 기준)에 복사 → `$이름` 뒤에 내용을 문장으로 | P1 안내 작성 ✅ · 위치 정정(2026-11-26, `.agents/skills` 대상 임시 폴더 복사 시험) · **Codex 인식·실행 미확인** |
 | **작동 검증 배지(사람 검수)** | Haiku 4.5에서 실제 작동 확인 "✅ 사람 검수" | ✅ done (2026-07-15, 개인 용도 실사용 검증 — CHECKPOINT.md P4 참조) |
 | **작동 검증 자동화** | promptfoo로 재테스트 → 결과 숫자 표시 | P2 설정·절차 작성 ✅ · **평가 실행 0회, 숫자 없음** (2026-11-26 정정) |
 | **Claude Code 마켓 등록** | `/plugin install <이름>@sodam` 한 줄 설치 | P2 ✅ 등록 완료 + 실사용 라이브 재검증 완료(2026-07-18) |
@@ -65,15 +65,15 @@
 
 ```
 [GitHub README 발견]
-  → [ZIP 다운로드]
-  → [설치: Claude.ai 앱 ZIP(★1) / Claude Code cp(★2) / Codex cp(★2)]
+  → [ZIP 다운로드 → 압축 풀기]
+  → [설치: Claude.ai 앱(★1, 스킬 폴더 하나를 새로 ZIP) / Claude Code cp(★2) / Codex cp(★2)]
   → [스킬 사용: 자연어 자동 / /이름 값1 값2 / $이름]
   → [결과 확인 → 복사 → 반복 사용]
 ```
 
 초보 최단 경로(★1):
-1. GitHub → Code → Download ZIP
-2. Claude.ai 앱 → Customize → Skills → + Create skill → ZIP 업로드 → 토글 ON
+1. GitHub → Code → Download ZIP → 압축 풀기 → `skills` 안의 **스킬 폴더 하나**를 ZIP으로 압축 (2026-11-26 정정: 저장소 ZIP을 그대로 올리지 않는다. 공식 도움말 기준, 업로드 미확인)
+2. Claude.ai 앱 → Customize → Skills → + Create skill → 그 ZIP 업로드 → 토글 ON
 3. "독후감 써줘" → 결과
 
 ---
@@ -104,7 +104,7 @@
 | # | 결정 | 근거 |
 |---|------|------|
 | D1 | **플러그인 전용** — 웹앱 폐기 | "Supabase 같은 서버가 왜 필요하지?" — 플러그인만으로 목적 달성 가능(확인됨). 비용 $0, 인증 불필요 |
-| D2 | **배포 채널 = GitHub 저장소** | GitHub ZIP → Claude.ai 앱 GUI 업로드(터미널 불필요). 초보 최단 경로(★1). (2026-11-26 정정: 이전의 "(확인됨)" 표기 철회 — ZIP 업로드 실행 기록 없음) |
+| D2 | **배포 채널 = GitHub 저장소** | GitHub ZIP 다운로드 → 압축 풀기 → 스킬 폴더 하나를 ZIP으로 압축 → Claude.ai 앱 GUI 업로드(터미널 불필요). 초보 최단 경로(★1). (2026-11-26 정정: 이전의 "(확인됨)" 표기 철회 — ZIP 업로드 실행 기록 없음) |
 | D3 | **포맷 = SKILL.md 표준** | 40+ 도구가 같은 SKILL.md를 읽는다는 외부 자료 기준. (2026-11-26 정정: "모든 도구에서 작동(확인됨)" 철회 — 이 저장소의 상세 실행 기록은 Claude Code뿐, README 2장 확인 현황 표 참조) |
 | D4 | **입력 = argument-hint 빈칸** | 빈 입력창이 초보 최대 공포(Mad Libs 패턴). 빈칸 전용은 프롬프트 인젝션 1차 방어 |
 | D5 | **순수 텍스트 무코드** | 셸 명령·MCP 훅 없음 → 설치 안전 심사 통과 + 초보 신뢰 |

@@ -153,6 +153,8 @@ Codex 공식 사이트에서 CLI를 설치하세요. (Codex 계정 필요)
 3. 내 컴퓨터의 원하는 폴더에 압축 풀기
 4. `SoDam-Prompt-Eng-main` 폴더가 생깁니다
 
+> **Claude 앱 사용자:** 방금 내려받은 ZIP은 **그대로 올리지 마세요.** 압축을 푼 뒤 [5장 Step 3](#5-빠른-시작)처럼 스킬 폴더 하나를 다시 압축합니다.
+
 > **Claude Code · Codex에 설치한다면 — 터미널을 여는 위치가 중요합니다.** 아래 설치 명령은 **`skills` 폴더가 바로 보이는 폴더**에서 실행해야 합니다. (압축을 풀면 `SoDam-Prompt-Eng-main` 안에 같은 이름의 폴더가 한 번 더 있을 수 있습니다.)
 > - **Windows**: 파일 탐색기에서 그 폴더를 열고, 위쪽 주소창에 `powershell` 입력 후 Enter (명령 프롬프트 `cmd`가 아니라 PowerShell)
 > - **Mac · Linux**: 터미널에 `cd `를 입력(뒤에 한 칸)하고 그 폴더를 끌어다 놓은 뒤 Enter. 끌어다 놓기가 안 되면 경로를 따옴표로 감싸 직접 입력합니다. 예: `cd "/Users/이름/Downloads/SoDam-Prompt-Eng-main"`
@@ -177,15 +179,18 @@ cd SoDam-Prompt-Eng
 
 ## 5. 빠른 시작
 
-### Claude.ai 앱에서 5분 안에 시작하기
+### Claude.ai 앱에서 시작하기
 
 **Step 1**: `claude.ai` 로그인 → 우측 상단 프로필 → **Customize** 클릭
 
 **Step 2**: 왼쪽 메뉴 **Skills** 탭 클릭 → **+ Create skill** 또는 **+ Add skill**
 
-**Step 3**: 압축 푼 폴더 전체를 ZIP으로 다시 압축하거나, `skills` 폴더를 ZIP으로 압축 → 업로드
+**Step 3**: 압축을 푼 폴더의 `skills` 안에서 **쓰고 싶은 스킬 폴더 하나**(예: `book-report-helper`)를 ZIP으로 압축해 업로드합니다.
+- Windows: 그 폴더를 마우스 오른쪽 클릭 → **ZIP 파일로 압축** (Windows 10은 **보내기 → 압축(ZIP) 폴더**)
+- Mac: 그 폴더를 마우스 오른쪽 클릭 → **압축**
+- ZIP을 열었을 때 **맨 위에 그 스킬 폴더가 보여야** 합니다. 폴더 이름은 바꾸지 마세요. 여러 스킬을 쓰려면 하나씩 같은 방법으로 올립니다.
 
-> ⚠️ **ZIP 설치 방법은 확인 중입니다 (2026-11-26)**: 위 ZIP 업로드는 아직 직접 실행해 확인하지 않았습니다. Anthropic 공식 도움말은 ZIP 안 맨 위에 **스킬 폴더 하나**만 두는 형태를 안내합니다. 업로드가 안 되면 `skills` 안의 폴더 하나(예: `book-report-helper`)만 압축해 올려 보세요(이 방법도 아직 확인 전입니다). 공식 도움말에 따르면 Claude 설정에서 **코드 실행(Code execution)** 기능도 켜져 있어야 합니다.
+> ⚠️ **ZIP 업로드는 직접 시험하지 않았습니다 (2026-11-26)**: 위 압축 형태는 [Anthropic 공식 도움말](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills)을 기준으로 안내합니다. 같은 도움말에 따르면 Claude 설정에서 **코드 실행(Code execution)** 기능이 켜져 있어야 합니다. `skills` 폴더 전체나 저장소 전체를 압축하는 방법은 확인하지 않아 안내하지 않습니다.
 
 **Step 4**: 토글을 **ON** (파란색)으로 변경
 
@@ -251,11 +256,11 @@ claude
 
 **설치**:
 1. 로그인 → Customize → Skills → + Create skill
-2. ZIP 파일 업로드 → 토글 ON
+2. 스킬 폴더 **하나**를 압축한 ZIP 업로드([5장 Step 3](#5-빠른-시작)) → 토글 ON
 
 **실행**:
 - 자연어: `독후감 써줘. "어린 왕자", 느낀 점은 "성장"`
-- 슬래시: `/book-report-helper "책제목" "느낀점"`
+- 슬래시: `/book-report-helper "책제목" "느낀점"` (Claude 앱에서의 슬래시 호출은 확인 기록이 없습니다. 안 되면 자연어를 쓰세요.)
 
 ---
 
@@ -329,22 +334,24 @@ claude
 
 **Windows (PowerShell)**
 ```powershell
-New-Item -ItemType Directory -Force "$HOME\.codex\skills" | Out-Null
-Copy-Item -Recurse -Force .\skills\* "$HOME\.codex\skills\"
+New-Item -ItemType Directory -Force "$HOME\.agents\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.agents\skills\"
 ```
 
 **Mac · Linux · Git Bash**
 ```bash
-mkdir -p ~/.codex/skills
-cp -r ./skills/* ~/.codex/skills/
+mkdir -p ~/.agents/skills
+cp -r ./skills/* ~/.agents/skills/
 ```
 
-> Codex에서의 설치와 실행은 아직 직접 확인하지 않았습니다.
+> **설치 위치는 [OpenAI 공식 문서](https://learn.chatgpt.com/docs/build-skills)(2026-11-26 확인) 기준 `$HOME/.agents/skills`입니다.** Codex에서의 설치와 실행은 직접 확인하지 않았습니다. 새 스킬이 안 보이면 Codex를 다시 시작해 보세요.
+> 이전 안내대로 `~/.codex/skills`에 복사한 파일은 **지우지 않아도 됩니다.** 그 위치를 Codex가 계속 읽는지는 확인하지 못했습니다. 같은 이름의 스킬이 두 곳에서 읽히면 목록에 둘 다 보일 수 있습니다.
 
-**실행**:
+**실행**: Codex에서 `/skills`로 목록을 보거나 `$`를 입력해 스킬을 지정하고, 필요한 내용은 **문장으로** 적습니다.
 ```
-$book-report-helper "책 제목" "느낀 점"
+$book-report-helper 책 제목은 "어린 왕자", 느낀 점은 "어른도 아이 마음이 필요하다" 야. 독후감 써줘.
 ```
+> 공식 문서에서 값을 따옴표로 순서대로 넘기는 방법은 찾지 못했습니다. 위 문장 방식도 직접 실행해 확인하지는 않았습니다.
 
 ---
 
@@ -557,18 +564,20 @@ Cursor 예시:
 
 ### Codex 달러 명령어
 
+> 아래 `[ ]`는 **함께 알려 줘야 하는 정보**를 뜻합니다. Codex에서는 `$스킬이름` 뒤에 그 정보를 문장으로 적으세요(직접 확인 전 — [6장 Codex](#codex) 참고).
+
 ```
-$book-report-helper [책 제목] [느낀 점]
-$polite-message [받는 사람] [용건]
-$long-text-summary [글 전체]
-$explain-simply [개념] [나이]
-$study-planner [목표] [기간]
-$self-intro-polish [메모] [용도]
-$sns-caption [상황] [분위기]
-$natural-english [한국어]
-$presentation-script [주제] [시간]
-$request-apology-message [상황] [관계]
-$skill-maker [만들고 싶은 스킬 설명]
+$book-report-helper 책 제목은 [책 제목], 느낀 점은 [느낀 점]이야.
+$polite-message 받는 사람은 [받는 사람], 용건은 [용건]이야.
+$long-text-summary 이 글을 요약해줘: [글 전체]
+$explain-simply [개념]을 [나이]살에게 설명해줘.
+$study-planner 목표는 [목표], 기간은 [기간]이야.
+$self-intro-polish 소개 메모는 [메모], 용도는 [용도]야.
+$sns-caption 상황은 [상황], 분위기는 [분위기]야.
+$natural-english 이 문장을 자연스러운 영어로: [한국어]
+$presentation-script 주제는 [주제], 발표 시간은 [시간]이야.
+$request-apology-message 상황은 [상황], 상대는 [관계]야.
+$skill-maker 이런 스킬을 만들고 싶어: [만들고 싶은 스킬 설명]
 ```
 
 ### 자연어 (명령어 없이도 됩니다)
@@ -614,7 +623,7 @@ AI 도구 (Claude / Codex 등)
 ```
 
 **핵심 포인트**:
-- `SKILL.md` 파일은 내 컴퓨터에만 있습니다 (서버 전송 없음)
+- 스킬을 쓰면 `SKILL.md`의 **내용이 AI 지시문으로 AI 회사 서버에 전송**됩니다. Claude 앱은 올린 ZIP이 계정(클라우드)에 저장됩니다
 - AI 모델 처리는 Claude/OpenAI 서버에서 이루어집니다
 - 결과물은 채팅창에만 나타납니다 (자동 저장 없음)
 
@@ -624,11 +633,13 @@ AI 도구 (Claude / Codex 등)
 
 ### 무엇이 AI 서버로 전송되나요?
 
-| 전송되는 것 | 전송 안 되는 것 |
+| 전송되는 것 | 이 스킬이 요구하지 않는 것 |
 |------------|---------------|
-| 내가 입력한 텍스트 (책 제목, 느낀 점 등) | SKILL.md 파일 자체 |
-| AI 모델 지시사항 (SKILL.md 내용) | 내 컴퓨터 다른 파일 |
-| — | 비밀번호·계정 정보 |
+| 내가 입력한 텍스트 (책 제목, 느낀 점 등) | 내 컴퓨터의 다른 파일 읽기 |
+| AI 모델 지시사항 (SKILL.md 내용) | 비밀번호·계정 정보 |
+| Claude 앱에 설치하는 경우: 업로드한 ZIP 속 스킬 파일 | — |
+
+> 위 표는 **이 스킬의 지시 내용**을 설명합니다. AI 도구 자체가 무엇을 읽고 저장하는지는 각 도구의 설정과 개인정보 처리방침을 따릅니다.
 
 ### 개인정보 안전 원칙
 
@@ -645,7 +656,7 @@ AI 도구 (Claude / Codex 등)
 
 - 서버 없음, DB 없음, 인증 없음
 - 네트워크 통신: AI 도구가 직접 처리 (이 스킬이 별도 통신 없음)
-- 스킬 파일은 내 컴퓨터 로컬에만 저장
+- 스킬 파일의 저장 위치: Claude Code·Codex는 설치한 내 컴퓨터 폴더, Claude 앱은 업로드한 계정(클라우드)
 
 ---
 
@@ -740,7 +751,7 @@ $2 = 두 번째 입력값 (느낀 점)
 | Claude Code (Windows) | `C:\Users\사용자명\.claude\skills\` |
 | Claude Code (Mac) | `~/.claude/skills/` |
 | Claude Code (Linux) | `~/.claude/skills/` |
-| Codex | `~/.codex/skills/` |
+| Codex | `~/.agents/skills/` |
 | Claude.ai 앱 | 클라우드 저장 (로컬 없음) |
 
 ### 이 저장소 파일 위치
@@ -807,8 +818,8 @@ $2 = 두 번째 입력값 (느낀 점)
 **원인**: 파일 형식 또는 크기 문제
 
 **해결**:
-1. ZIP 파일이 올바르게 압축되었는지 확인
-2. `skills` 안의 스킬 폴더 **하나**(예: `book-report-helper`)만 압축해 업로드 시도 — 공식 도움말이 안내하는 형태입니다(직접 확인 전, [5장](#5-빠른-시작)의 안내 참고)
+1. ZIP을 열었을 때 맨 위에 **스킬 폴더 하나**(예: `book-report-helper`)가 있고 그 안에 `SKILL.md`가 있는지 확인 ([5장 Step 3](#5-빠른-시작) — 공식 도움말 기준이며 업로드는 직접 시험하지 않음)
+2. Claude 설정에서 **코드 실행(Code execution)** 기능이 켜져 있는지 확인
 3. 브라우저 새로고침 후 재시도
 4. 다른 브라우저(크롬→엣지) 시도
 
@@ -923,7 +934,7 @@ A: SKILL.md는 텍스트 파일이라 파일 자체는 운영체제와 상관없
 ---
 
 **Q: 스킬을 삭제하고 싶어요**
-A: 설치한 **그 스킬 폴더만** 지우면 됩니다. 직접 고친 내용도 함께 지워지고 휴지통으로 가지 않으니, 폴더 이름과 내용을 먼저 확인하세요. 아래는 **Claude Code** 기준이며, Codex에 설치했다면 `.claude`를 `.codex`로 바꿉니다. 대상 폴더가 없으면 오류가 표시됩니다.
+A: 설치한 **그 스킬 폴더만** 지우면 됩니다. 직접 고친 내용도 함께 지워지고 휴지통으로 가지 않으니, 폴더 이름과 내용을 먼저 확인하세요. **이전 안내로 Codex에 설치했다면 `~/.codex/skills`에 있을 수 있으니, 지우기 전에 실제 위치를 먼저 확인하세요.** 아래는 **Claude Code** 기준이며, Codex에 설치했다면 `.claude`를 `.agents`로 바꿉니다. 대상 폴더가 없으면 오류가 표시됩니다.
 
 Windows (PowerShell):
 ```powershell
@@ -1073,6 +1084,7 @@ limitations under the License.
 <details open>
 <summary><strong>2026-11-26 — 공개(PUBLIC) 상태 정정 + 스킬 파일 형식 오류 수정 (클릭해서 펼치기)</strong></summary>
 
+- **Codex 설치 위치·ZIP 안내 수정**: 공식 문서에 맞춰 Codex 설치 위치를 `$HOME/.agents/skills`로 바꾸고, 값 전달은 문장 방식으로 안내합니다. Claude 앱 ZIP은 **스킬 폴더 하나**를 압축하도록 바꿨습니다. 두 가지 모두 도구에서 직접 실행해 확인하지는 않았습니다.
 - **설치 명령 수정**: 대상 폴더가 없는 PC에서 기존 복사 명령이 실패하거나, 오류 없이 엉뚱한 위치에 복사되는 문제를 임시 폴더 시험으로 확인해, 폴더를 먼저 만드는 PowerShell·bash 명령으로 바꾸고 터미널을 여는 위치 안내와 덮어쓰기·삭제 주의를 추가했습니다. Mac·Linux 실행은 확인하지 않았습니다.
 - 문서 곳곳에 "PRIVATE"로 적혀 있던 안내를 GitHub 실측 결과(PUBLIC)에 맞게 정정했습니다(이 README·`CONTRIBUTING.md`). 법률 미해결 사안(15번)도 "공개 중인 미해결 사안"으로 고지를 갱신했습니다.
 - 스킬 11개의 `argument-hint`를 큰따옴표로 감싸 올바른 YAML로 고쳤습니다. 고치기 전에는 `sns-caption` 등이 YAML 오류로 읽혔고, `skill-maker`는 문자열이 아닌 목록으로 읽혔습니다(js-yaml로 실측). `skill-maker` 안내문·문서 예시도 같은 형태로 통일했고, `scripts/verify-skills.mjs`에 따옴표 검사를 추가해 같은 오류가 다시 들어오면 검증에서 실패하도록 했습니다.
