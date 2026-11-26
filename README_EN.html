@@ -625,15 +625,16 @@ call of one already installed skill, see the <a
 href="#2-prerequisites">table in Section 2</a>). If a new skill does not
 appear, restart Codex. On our test PC, which has hundreds of skills
 installed, these skills were <strong>not</strong> in the list Codex
-received at session start, yet calling one with <code>$name</code>
-worked. If a skill is not listed or not picked automatically, try naming
-it with <code>$name</code>. You <strong>do not need to delete</strong>
-files you copied to <code>~/.codex/skills</code> using our earlier
-instructions. On our test PC (Codex CLI 0.172.0), skills from that
-location also appeared in the list Codex received; we have not checked
-whether that is default behavior or due to that PC’s settings. If skills
-with the same name are read from two places, both may appear in the
-list.</p>
+received at session start, yet calling <strong>one</strong> of them,
+<code>book-report-helper</code>, with <code>$name</code> worked. We did
+not try the others. If a skill is not listed or not picked
+automatically, try naming it with <code>$name</code>. You <strong>do not
+need to delete</strong> files you copied to <code>~/.codex/skills</code>
+using our earlier instructions. On our test PC (Codex CLI 0.172.0),
+skills from that location also appeared in the list Codex received; we
+have not checked whether that is default behavior or due to that PC’s
+settings. If skills with the same name are read from two places, both
+may appear in the list.</p>
 </blockquote>
 <p><strong>Run</strong>: in Codex, use <code>/skills</code> to see the
 list or type <code>$</code> to pick a skill, then describe what you need
@@ -1544,8 +1545,11 @@ and Section 6 notes to that scope only.</li>
 <li><strong>Codex location and ZIP guidance updated</strong>: following
 the official documentation, the Codex install location is now
 <code>$HOME/.agents/skills</code> and values are given in a sentence.
-For the Claude app, zip <strong>one skill folder</strong>. Neither was
-verified by running it in the tool.</li>
+For the Claude app, zip <strong>one skill folder</strong>. At the time
+of writing, neither was verified by running it in the tool. Since then
+the Codex sentence form was tried once (see the 11-27 item above);
+recognition after a fresh install and the ZIP upload are still not
+verified.</li>
 <li><strong>Install commands fixed</strong>: on a PC without the target
 folder, the old copy commands failed or copied to the wrong place
 without an error (reproduced with temporary folders). They now create
@@ -1568,8 +1572,9 @@ the version <code>0.1.0</code> → <code>0.2.0</code> (with an unchanged
 version, an installed copy may not recognize the update).</li>
 <li>Corrected the top-of-page claim that it “works the same on every
 tool”. Only Claude Code has a detailed verification record, so section 2
-now has a per-tool status table (other tools are marked “not
-verified”).</li>
+now has a per-tool status table (other tools are marked “not verified”).
+This describes the state at the time of writing; see the Section 2 table
+for the current status.</li>
 <li>Marked the ZIP installation steps (section 5 and Q3) as still being
 checked. We have never run the ZIP upload ourselves, and the official
 help article describes a ZIP with one skill folder at its top
