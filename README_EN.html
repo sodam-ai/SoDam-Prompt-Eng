@@ -397,6 +397,16 @@ your profile icon (top right) → <strong>Customize</strong></p>
 <strong>+ Create skill</strong> or <strong>+ Add skill</strong></p>
 <p><strong>Step 3</strong>: Compress the extracted folder or just the
 <code>skills</code> folder as a ZIP → upload it</p>
+<blockquote>
+<p>⚠️ <strong>ZIP installation is still being checked
+(2026-11-26)</strong>: we have not run this ZIP upload ourselves.
+Anthropic’s official help article describes a ZIP with <strong>one skill
+folder</strong> at its top level. If the upload fails, try compressing a
+single folder inside <code>skills</code> (for example
+<code>book-report-helper</code>) — we have not verified this either. The
+same help article says <strong>Code execution</strong> must be enabled
+in your Claude settings.</p>
+</blockquote>
 <p><strong>Step 4</strong>: Toggle the skill to <strong>ON</strong>
 (blue)</p>
 <p><strong>Step 5</strong>: In the chat window, type naturally:</p>
@@ -976,9 +986,11 @@ judgment. Try being more specific.</p>
 doesn’t work in the Claude.ai App</h3>
 <p><strong>Cause</strong>: File format or size issue</p>
 <p><strong>Solution</strong>: 1. Confirm the ZIP was compressed
-correctly 2. Try compressing only the <code>skills</code> folder, or
-download the full repository ZIP and upload 3. Refresh your browser and
-try again 4. Try a different browser (Chrome → Edge)</p>
+correctly 2. Try compressing <strong>one</strong> skill folder inside
+<code>skills</code> (for example <code>book-report-helper</code>) and
+upload it — this is the shape described in the official help article
+(not yet verified by us; see the note in Section 5) 3. Refresh your
+browser and try again 4. Try a different browser (Chrome → Edge)</p>
 <hr />
 <h3 id="q4.-the-output-is-strange-not-what-i-expected">Q4. The output is
 strange / not what I expected</h3>
@@ -1307,6 +1319,16 @@ version, an installed copy may not recognize the update).</li>
 tool”. Only Claude Code has a detailed verification record, so section 2
 now has a per-tool status table (other tools are marked “not
 verified”).</li>
+<li>Marked the ZIP installation steps (section 5 and Q3) as still being
+checked. We have never run the ZIP upload ourselves, and the official
+help article describes a ZIP with one skill folder at its top
+level.</li>
+<li>Tightened the local <code>promptfoo</code> checks. With the previous
+config, a sample refusal answer passed 7 of 11 tests; the new config
+rejects it in all 11 (only the check expressions were exercised, with no
+API calls — <strong>no real evaluation has been run yet</strong>). The
+guide now includes PowerShell steps and a hidden-input way to enter the
+key.</li>
 </ul>
 </details>
 <details>

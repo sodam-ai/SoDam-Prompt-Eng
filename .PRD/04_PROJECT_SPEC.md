@@ -19,7 +19,7 @@
 | DB | **없음** | 사용자 데이터 저장 없음 |
 | 인증 | **없음** | AI 도구 자체 인증 사용 |
 | AI 실행 | **사용자 AI 도구 담당** | Claude Code·Codex·Claude.ai 앱이 각자 모델 사용 |
-| (Phase 1.5) 검증 | **promptfoo** (로컬 전용, CI 없음 — **2026-07-15 완료**) | SKILL.md 작동률 검증, API 키는 사용자 본인 것만 사용(자동 실행 없음) |
+| (Phase 1.5) 검증 | **promptfoo** (로컬 전용, CI 없음 — **2026-07-15 설정 작성 완료, 평가 실행 0회** (2026-11-26 정정)) | SKILL.md 작동률 검증, API 키는 사용자 본인 것만 사용(자동 실행 없음) |
 | (Phase 2) 마켓 | **Claude Code 마켓** (`.claude-plugin/marketplace.json`) | `/plugin install @sodam` 한 줄 설치 |
 
 ---
@@ -109,7 +109,7 @@
 ### 검수 후 추가 예정
 
 - [x] README에 "✅ 사람 검수 완료" 배지 (2026-07-15 추가 완료, README.md 상단 참조)
-- [x] 작동률 숫자 배지 — (b) 로컬 `promptfoo eval` 결과를 README 배지에 수동 반영하는 절차로 확정(2026-07-26, `PROMPTFOO_로컬_가이드.md` 참조 — CI 자동 계산은 도입하지 않음)
+- [x] 작동률 숫자 배지의 **반영 절차 확정**(배지 자체는 아직 없음 — 평가 실행 0회, 2026-11-26 정정) — (b) 로컬 `promptfoo eval` 결과를 README 배지에 수동 반영하는 절차로 확정(2026-07-26, `PROMPTFOO_로컬_가이드.md` 참조 — CI 자동 계산은 도입하지 않음)
 
 ---
 
@@ -145,4 +145,4 @@ $book-report-helper "어린 왕자" "감동적이었어"
 - [x] SKILL.md 표준 — 40+ 도구 호환 (※ 이는 외부 자료(RESEARCH_SOURCES)가 말하는 "표준의 호환 범위"이며, 이 저장소 스킬을 각 도구에서 직접 실행해 확인했다는 뜻이 아님 — 확인된 곳은 Claude Code 중심, README 2장 "도구별 확인 현황" 참조)
 - [x] 운영 비용 $0
 - [x] P4 사람 검수 완료 → "✅ 사람 검수" 배지 추가 (2026-07-15, README.md에 반영됨)
-- [x] Phase 1.5 promptfoo 자동화 → "작동률 XX%" 숫자 표시 — CI 자동 계산 대신 (b) 로컬 `promptfoo eval` 결과 수동 반영 절차로 확정(2026-07-26, `05_MARKETPLACE_PLUGIN.md` STEP B-3·`PROMPTFOO_로컬_가이드.md` 참조)
+- [x] Phase 1.5 promptfoo 자동화의 **방식 결정**(숫자 표시는 아직 없음, 2026-11-26 정정) — CI 자동 계산 대신 (b) 로컬 `promptfoo eval` 결과 수동 반영 절차로 확정(2026-07-26, `05_MARKETPLACE_PLUGIN.md` STEP B-3·`PROMPTFOO_로컬_가이드.md` 참조)
