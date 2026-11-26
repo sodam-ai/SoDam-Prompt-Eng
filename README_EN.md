@@ -151,6 +151,8 @@ Install the Codex CLI from the official Codex site. (Codex account required)
 3. Extract the ZIP to any folder on your computer
 4. A folder named `SoDam-Prompt-Eng-main` will be created
 
+> **Claude app users:** **do not upload the ZIP you just downloaded.** Extract it, then zip one skill folder as in [Section 5, Step 3](#5-quick-start).
+
 > **Installing into Claude Code or Codex? Where you open the terminal matters.** Run the install commands from the **folder where you can see `skills` directly**. (After extracting, `SoDam-Prompt-Eng-main` may contain another folder with the same name.)
 > - **Windows**: open that folder in File Explorer, type `powershell` in the address bar and press Enter (PowerShell, not `cmd`)
 > - **Mac · Linux**: type `cd ` (with a trailing space) in the terminal, drag the folder onto it, press Enter. If dragging does not work, type the path in quotes, for example `cd "/Users/name/Downloads/SoDam-Prompt-Eng-main"`
@@ -175,15 +177,18 @@ cd SoDam-Prompt-Eng
 
 ## 5. Quick Start
 
-### Start in 5 Minutes with the Claude.ai App
+### Start with the Claude.ai App
 
 **Step 1**: Log in to `claude.ai` → click your profile icon (top right) → **Customize**
 
 **Step 2**: Click the **Skills** tab → **+ Create skill** or **+ Add skill**
 
-**Step 3**: Compress the extracted folder or just the `skills` folder as a ZIP → upload it
+**Step 3**: In the extracted folder, open `skills`, compress **one skill folder** you want (for example `book-report-helper`) into a ZIP and upload it.
+- Windows: right-click the folder → **Compress to ZIP file** (Windows 10: **Send to → Compressed (zipped) folder**)
+- Mac: right-click the folder → **Compress**
+- When you open the ZIP, **that skill folder must be at the top level**. Do not rename the folder. Repeat for each additional skill.
 
-> ⚠️ **ZIP installation is still being checked (2026-11-26)**: we have not run this ZIP upload ourselves. Anthropic's official help article describes a ZIP with **one skill folder** at its top level. If the upload fails, try compressing a single folder inside `skills` (for example `book-report-helper`) — we have not verified this either. The same help article says **Code execution** must be enabled in your Claude settings.
+> ⚠️ **We have not tested the ZIP upload ourselves (2026-11-26)**: this ZIP shape follows [Anthropic's official help article](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills). The same article says **Code execution** must be enabled in your Claude settings. We have not checked zipping the whole `skills` folder or the whole repository, so we do not recommend it.
 
 **Step 4**: Toggle the skill to **ON** (blue)
 
@@ -249,11 +254,11 @@ Help me write a book report. The book is "Harry Potter" and I felt that courage 
 
 **Install**:
 1. Log in → Customize → Skills → + Create skill
-2. Upload ZIP file → Toggle ON
+2. Upload a ZIP of **one** skill folder ([Section 5, Step 3](#5-quick-start)) → Toggle ON
 
 **Run**:
 - Natural language: `Write a book report. "The Little Prince", impression: "growth"`
-- Slash command: `/book-report-helper "Book Title" "Impression"`
+- Slash command: `/book-report-helper "Book Title" "Impression"` (we have no record of testing slash calls in the Claude app; if it does not work, use natural language)
 
 ---
 
@@ -327,22 +332,24 @@ To do a clean reinstall, run the two uninstall commands above, then run the inst
 
 **Windows (PowerShell)**
 ```powershell
-New-Item -ItemType Directory -Force "$HOME\.codex\skills" | Out-Null
-Copy-Item -Recurse -Force .\skills\* "$HOME\.codex\skills\"
+New-Item -ItemType Directory -Force "$HOME\.agents\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.agents\skills\"
 ```
 
 **Mac · Linux · Git Bash**
 ```bash
-mkdir -p ~/.codex/skills
-cp -r ./skills/* ~/.codex/skills/
+mkdir -p ~/.agents/skills
+cp -r ./skills/* ~/.agents/skills/
 ```
 
-> We have not verified installing or running these skills in Codex ourselves.
+> **The install location follows the [official OpenAI documentation](https://learn.chatgpt.com/docs/build-skills) (checked 2026-11-26): `$HOME/.agents/skills`.** We have not verified installing or running these skills in Codex ourselves. If a new skill does not appear, restart Codex.
+> You **do not need to delete** files you copied to `~/.codex/skills` using our earlier instructions. We could not confirm whether Codex still reads that location. If skills with the same name are read from two places, both may appear in the list.
 
-**Run**:
+**Run**: in Codex, use `/skills` to see the list or type `$` to pick a skill, then describe what you need **in a sentence**.
 ```
-$book-report-helper "Book Title" "Impression"
+$book-report-helper The book is "The Little Prince" and my impression is "Adults need a child's heart too." Write the book report.
 ```
+> We did not find a way to pass quoted values in order in the official documentation. We have not run the sentence form above ourselves either.
 
 ---
 
@@ -553,18 +560,20 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 
 ### Codex Dollar Commands
 
+> The `[ ]` items below are **the information to provide**. In Codex, write it as a sentence after `$skill-name` (not verified by us — see [Codex in Section 6](#codex)).
+
 ```
-$book-report-helper [Book Title] [Impression]
-$polite-message [Recipient] [Purpose]
-$long-text-summary [Full text]
-$explain-simply [Concept] [Age]
-$study-planner [Goal] [Duration]
-$self-intro-polish [Notes] [Purpose]
-$sns-caption [Situation] [Mood]
-$natural-english [Korean text]
-$presentation-script [Topic] [Duration]
-$request-apology-message [Situation] [Relationship]
-$skill-maker [description of the skill you want]
+$book-report-helper The book is [Book Title] and my impression is [Impression].
+$polite-message The recipient is [Recipient] and the purpose is [Purpose].
+$long-text-summary Summarize this text: [Full text]
+$explain-simply Explain [Concept] to someone aged [Age].
+$study-planner My goal is [Goal] and I have [Duration].
+$self-intro-polish My notes are [Notes] and the purpose is [Purpose].
+$sns-caption The situation is [Situation] and the mood is [Mood].
+$natural-english Put this into natural English: [Korean text]
+$presentation-script The topic is [Topic] and the talk lasts [Duration].
+$request-apology-message The situation is [Situation] and it is for [Relationship].
+$skill-maker I want a skill that does this: [description]
 ```
 
 ### Natural Language (No commands needed)
@@ -610,7 +619,7 @@ AI Tool (Claude / Codex / etc.)
 ```
 
 **Key points**:
-- `SKILL.md` files remain on your computer only (not sent as separate files)
+- When you use a skill, **the content of `SKILL.md` is sent to the AI provider's server as instructions**. In the Claude app, the ZIP you upload is stored with your account (cloud)
 - AI model processing happens on Claude/OpenAI servers
 - Output appears in the chat window only (no automatic saving)
 
@@ -620,11 +629,13 @@ AI Tool (Claude / Codex / etc.)
 
 ### What gets sent to the AI server?
 
-| Sent | Not Sent |
+| Sent | Not requested by these skills |
 |------|----------|
-| Text you typed (book title, impression, etc.) | SKILL.md file itself |
-| AI model instructions (SKILL.md content) | Other files on your computer |
-| — | Passwords · account info |
+| Text you typed (book title, impression, etc.) | Reading other files on your computer |
+| AI model instructions (SKILL.md content) | Passwords · account info |
+| Claude app install: the skill files inside the ZIP you upload | — |
+
+> This table describes **what the skill instructions ask for**. What the AI tool itself reads and stores depends on that tool's settings and privacy policy.
 
 ### Personal Information Safety Principles
 
@@ -641,7 +652,7 @@ AI Tool (Claude / Codex / etc.)
 
 - No server, no database, no authentication required
 - Network communication: handled entirely by the AI tool (this skill does not make separate network calls)
-- Skill files are stored locally on your computer only
+- Where skill files are stored: for Claude Code and Codex, the folder on your computer where you installed them; for the Claude app, your account (cloud) after upload
 
 ---
 
@@ -736,7 +747,7 @@ $2 = Second input value (impression)
 | Claude Code (Windows) | `C:\Users\YourName\.claude\skills\` |
 | Claude Code (Mac) | `~/.claude/skills/` |
 | Claude Code (Linux) | `~/.claude/skills/` |
-| Codex | `~/.codex/skills/` |
+| Codex | `~/.agents/skills/` |
 | Claude.ai App | Cloud storage (no local copy) |
 
 ### Repository File Locations
@@ -803,8 +814,8 @@ Or use the slash command directly:
 **Cause**: File format or size issue
 
 **Solution**:
-1. Confirm the ZIP was compressed correctly
-2. Try compressing **one** skill folder inside `skills` (for example `book-report-helper`) and upload it — this is the shape described in the official help article (not yet verified by us; see the note in Section 5)
+1. Open the ZIP and confirm that **one skill folder** (for example `book-report-helper`) is at the top level with `SKILL.md` inside ([Section 5, Step 3](#5-quick-start) — based on the official help article; we have not tested the upload)
+2. Confirm that **Code execution** is enabled in your Claude settings
 3. Refresh your browser and try again
 4. Try a different browser (Chrome → Edge)
 
@@ -919,7 +930,7 @@ A: SKILL.md files are plain text, so the files themselves do not depend on the o
 ---
 
 **Q: How do I remove a skill?**
-A: Delete **only that skill's folder**. Your own edits are deleted too and do not go to the recycle bin, so check the folder name and contents first. The commands below are for **Claude Code**; for Codex, change `.claude` to `.codex`. If the folder does not exist, you will see an error.
+A: Delete **only that skill's folder**. Your own edits are deleted too and do not go to the recycle bin, so check the folder name and contents first. **If you installed into Codex using our earlier instructions, the copy may be in `~/.codex/skills`, so find where it actually is before deleting.** The commands below are for **Claude Code**; for Codex, change `.claude` to `.agents`. If the folder does not exist, you will see an error.
 
 Windows (PowerShell):
 ```powershell
@@ -1074,6 +1085,7 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 <details open>
 <summary><strong>2026-11-26 — Corrected the PUBLIC status + fixed a skill-file format error (click to expand)</strong></summary>
 
+- **Codex location and ZIP guidance updated**: following the official documentation, the Codex install location is now `$HOME/.agents/skills` and values are given in a sentence. For the Claude app, zip **one skill folder**. Neither was verified by running it in the tool.
 - **Install commands fixed**: on a PC without the target folder, the old copy commands failed or copied to the wrong place without an error (reproduced with temporary folders). They now create the folder first (PowerShell and bash), say where to open the terminal, and warn about overwriting and deleting. Not run on Mac or Linux.
 - Corrected the places that still said "PRIVATE" to match what GitHub actually reports (PUBLIC) — this README and `CONTRIBUTING.md`. The legal disclosure (section 15) now describes the open items as "unresolved while already public."
 - Wrapped the `argument-hint` value of all 11 skills in double quotes so the frontmatter is valid YAML. Before the fix, `sns-caption` and others failed to parse as YAML, and `skill-maker`'s hint was read as a list instead of a string (measured with js-yaml). The `skill-maker` instructions and the doc examples now use the same form, and `scripts/verify-skills.mjs` gained a quoting check so the same error fails verification if it comes back.

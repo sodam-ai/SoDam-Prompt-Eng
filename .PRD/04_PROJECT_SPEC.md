@@ -12,7 +12,7 @@
 | 영역 | 선택 | 이유 |
 |------|------|------|
 | 배포 포맷 | **SKILL.md** (Agent Skills 오픈표준) | 40+ 도구(Claude Code·Codex·Claude.ai 앱·Cursor·Gemini CLI) 공통 포맷 |
-| 배포 채널 | **GitHub 저장소** (`sodam-ai/SoDam-Prompt-Eng`) | ZIP 다운로드 → GUI 업로드(★1), 터미널 없음 |
+| 배포 채널 | **GitHub 저장소** (`sodam-ai/SoDam-Prompt-Eng`) | ZIP 다운로드 → 스킬 폴더 하나를 다시 압축 → GUI 업로드(★1, README 5장), 터미널 없음 |
 | 라이선스 | **Apache-2.0** | 무료 보급·특허 보호·NOTICE |
 | 언어 | 마크다운 (순수 텍스트) | 서버·컴파일·빌드 없음 |
 | 서버 | **없음** | 비용 $0, 인증 불필요 |
@@ -123,9 +123,9 @@
 # Claude Code에서 (자연어 — description 자동 매칭)
 "어린 왕자 독후감 써줘"
 
-# Codex에서 (자연어 또는 슬래시)
+# Codex에서 (자연어, 또는 $스킬이름 뒤에 문장 — 직접 확인 전)
 "어린 왕자 독후감 써줘"
-$book-report-helper "어린 왕자" "감동적이었어"
+$book-report-helper 책 제목은 어린 왕자, 느낀 점은 감동적이었어. 독후감 써줘
 
 # Claude.ai 앱에서 (자연어)
 "어린 왕자 독후감 써줘"

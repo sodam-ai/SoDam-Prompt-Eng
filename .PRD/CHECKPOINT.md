@@ -1,6 +1,6 @@
 # SoDam Prompt — CHECKPOINT (플러그인 전용)
 
-> 최초 작성: 2026-06-29 | 최종 갱신: 2026-11-26 (맨 아래 "9차·10차·11차 갱신" 절 — 공개 상태·현재 버전은 아래 표 마지막 3행) | 방향 전환: B) 플러그인 전용 (Next.js+Supabase 웹앱 폐기)
+> 최초 작성: 2026-06-29 | 최종 갱신: 2026-11-26 (맨 아래 "9차~13차 갱신" 절. 공개 상태·플러그인 버전은 아래 표, 이후 변화는 각 갱신 절) | 방향 전환: B) 플러그인 전용 (Next.js+Supabase 웹앱 폐기)
 > 배포 형태: GitHub 저장소 → Claude Code / Codex / Claude.ai 앱 직접 설치
 > 서버 없음 · DB 없음 · 인증 없음 · 비용 $0
 
@@ -594,3 +594,18 @@ Loop `loop-rules.json`의 `protected_self_paths`에 **일반 단어 `"hooks"`** 
 1. `promptfoo` 검사식 재설계 — 실제 모델 답을 받아 본 뒤(사용자 키) 조정.
 2. 사용자 확인: ZIP 설치 시험(11차의 3가지)과 "5분" 시간 측정, 수정한 복사 설치 후 스킬 인식, `/plugin uninstall`, Codex·Mac 실행.
 3. 변호사 검토(PRD C-4) 미실시 — 참고용·법적 효력 보장 안 함, 변호사 확인 권장.
+
+---
+
+## 2026-11-26 13차 갱신 — PR #5 병합 기록 + Codex 설치 위치·ZIP 안내 정정
+
+**PR #5 병합 기록(12차에서 누락)**: 12차의 변경은 PR #5로 병합됐다(병합 커밋 `f51a50a`).
+
+| # | 확인한 것 (2026-11-26) | 처리 |
+|---|---|---|
+| V | [Codex 공식 문서](https://learn.chatgpt.com/docs/build-skills) 원문을 직접 받아 검색: `.agents/skills` 있음, `.codex/skills` 0건, 사용자 위치 `$HOME/.agents/skills`, 명시 호출은 `/skills` 또는 `$`. 값을 순서대로 넘기는 설명은 검색되지 않음 | README 한/영·PRD 01·04·05의 위치와 사용 예시 정정. **PR #5에서 폴더 생성만 고치고 위치는 다시 확인하지 않았고, 01의 Codex 행은 낡은 명령으로 남겼다** |
+| W | [Claude 도움말](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) 원문: ZIP 맨 위는 스킬 폴더, 폴더 이름은 스킬 이름과 일치, 코드 실행 필요. 이 저장소 11개는 폴더 이름과 `name`이 일치 | README 5장·6장·Q3를 "스킬 폴더 하나 압축"으로 교체, `skills` 통째·저장소 통째 압축 안내 제거 |
+| X | Codex 3차 검토(대화창 답변): major 2(PRD 흐름도·D2가 저장소 ZIP을 그대로 올리라고 안내), minor 8. 대조 결과 모두 반영. HTML 변환 옵션이 빠져 빈 줄 없는 목록이 문단으로 뭉치던 것도 확인(목록 항목 93→138) | PRD 01·04·05 흐름을 "압축 풀기 → 스킬 폴더 하나 압축"으로 정정, 05의 낡은 각주 표시, README의 "5분" 제목·Claude 앱 슬래시 표기·삭제 위치·`$` 예시 정정, HTML을 `lists_without_preceding_blankline` 옵션으로 재생성 |
+| Y | Codex 연결이 끊겨(`Reconnecting`) major 2건의 재확인은 대화를 모르는 별도 Claude 검토 담당(읽기 전용)이 수행: 저장소 ZIP을 그대로 올리라는 문구 없음. 새 지적: README 보안 설명의 "스킬 파일은 내 컴퓨터에만·서버 전송 없음"이 Claude 앱 업로드·지시문 전송과 모순(이번 수정 전부터 있던 문구) | 데이터 흐름 설명 3곳(한/영) 정정, 흐름도 2곳 명확화, README 4장에 "받은 ZIP을 그대로 올리지 말 것" 추가 |
+
+**확인하지 않은 것**: Claude 앱 ZIP 업로드, Codex의 스킬 인식·실행, 문장 방식 호출, `~/.codex/skills`의 현재 동작, Mac·Linux. 문서 기준 정정이며 작동 증명이 아니다.

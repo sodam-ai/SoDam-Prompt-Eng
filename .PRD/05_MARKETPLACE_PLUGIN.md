@@ -22,8 +22,8 @@
 
 ```
 [GitHub README 발견]
-  → [ZIP 다운로드]
-  → [설치 방법 선택: Claude.ai ZIP(★1) / Claude Code cp(★2) / Codex cp(★2)]
+  → [ZIP 다운로드 → 압축 풀기]
+  → [설치 방법 선택: Claude.ai 앱(★1, 스킬 폴더 하나를 새로 ZIP) / Claude Code cp(★2) / Codex cp(★2)]
   → [스킬 작동: 자연어 자동 / /이름 값 / $이름]
 ```
 
@@ -35,9 +35,9 @@
 
 | 순위 | 경로 | 절차 | 난이도 | 터미널 | 상태 |
 |---|---|---|---|---|---|
-| **1** | **Claude.ai 앱 GUI 업로드** | Code → Download ZIP → Claude.ai 앱 → Customize → Skills → + Create skill → ZIP 업로드 → 토글 ON | **★1** | 불필요 | 안내 작성 ✅ · **업로드 실행 미확인** (2026-11-26 정정) |
+| **1** | **Claude.ai 앱 GUI 업로드** | Code → Download ZIP → 압축 풀기 → 스킬 폴더 하나를 ZIP으로 압축(README 5장) → Claude.ai 앱 → Customize → Skills → + Create skill → ZIP 업로드 → 토글 ON | **★1** | 불필요 | 안내 작성 ✅ · **업로드 실행 미확인** (2026-11-26 정정) |
 | 2 | **Claude Code 수동 복사** | 폴더 생성 후 복사(PowerShell·bash, README 5장) → `/이름 값` | ★2 | 터미널 | 폴더 생성 명령 추가(2026-11-26) · Windows 임시 폴더 시험 통과 · **Mac/Linux 실행·복사 후 인식은 미확인** |
-| 3 | **Codex 수동 복사** | 폴더 생성 후 `~/.codex/skills/`에 복사(README 6장) → `$이름` | ★2 | 터미널 | 안내 작성 ✅(명령 수정 2026-11-26) · **실행 미확인** |
+| 3 | **Codex 수동 복사** | 폴더 생성 후 `$HOME/.agents/skills/`에 복사(README 6장) → `$이름` | ★2 | 터미널 | 안내 작성 ✅(위치 정정 2026-11-26, 공식 문서 기준) · **실행 미확인** |
 | 4 | 수동 파일 복사 | 탐색기로 `skills/<이름>/SKILL.md` 복사 | ★3 | 파일탐색기 | 안내 작성 ✅ · **실행 기록 없음** (2026-11-26 정정) |
 | **Phase 2** | **Claude Code 마켓 등록** | `/plugin marketplace add sodam-ai/SoDam-Prompt-Eng` → `/plugin install sodam-prompt@sodam-prompt-marketplace` | ★1 | 터미널 | ✅ 완료 — 생성(2026-07-17)+실사용 라이브 재검증 2회(2026-07-18, CHECKPOINT.md B-1 참조). 단 `/plugin uninstall` 제거는 명령어만 존재, 실행 재확인은 안 됨 |
 | — | **Codex `$skill-installer`** | `$skill-installer <이름>` | ★2 | 터미널(Codex) | 대상 없음(2026-07-16 조사 완료 — B-2, 아래 각주) |
@@ -54,7 +54,7 @@
 |---|---|---|
 | Claude.ai 앱 | "독후감 써줘" 같은 자연어 → description 매칭으로 자동 사용 | ✅ (description 기반) |
 | Claude Code | "독후감 써줘" 자연어 → description 매칭 자동 사용 | ✅ (description 기반) |
-| Codex | `$book-report-helper "어린 왕자" "감동적"` | 자동 선택 가능 |
+| Codex | `$book-report-helper` 뒤에 내용을 문장으로 (직접 확인 전) | 공식 문서상 자동 선택 방식 있음(이 스킬로는 미확인) |
 | Cursor·Gemini CLI | `skills/<이름>/SKILL.md` 복사 후 도구별 방식 | 도구마다 다름 |
 
 ---
@@ -109,7 +109,9 @@ argument-hint: "[책 제목] [느낀 점]"
 | **Phase 2** | Claude Code 마켓 등록(`.claude-plugin/marketplace.json`) → `/plugin install @sodam` + Codex 지원 + 안전 배지 | 로컬 매니페스트 생성 ✅ 완료 · Claude Code 설치·네임스페이스 실사용 라이브 재검증 ✅ 완료(2026-07-18, 제거 `/plugin uninstall`은 명령어만 존재·미실측) · **Codex는 "마켓 등록" 자체가 대상 없음(2026-07-16 조사 완료 — 아래 각주)** · **안전 배지 자동화 = (b) 로컬 `promptfoo eval` 결과를 README 배지에 수동 반영하는 절차로 확정(2026-07-26, `PROMPTFOO_로컬_가이드.md` 참조 — CI 자동 계산은 도입하지 않음)** |
 | **Phase 3** | 커뮤니티 기여: 스킬 수 확장. 안전 심사 통과해야 마켓 노출. | 기여 인프라(`CONTRIBUTING.md`·`scripts/verify-skills.mjs`·PR 템플릿) + `skill-maker`(11번째 스킬, 자가 생성 방식) 완료(2026-07-27). **다국어: 사용자 결정으로 현재 범위 밖 확정(2026-07-27)** — 스킬 본문 한국어 전용 유지, 필요 시 재검토 |
 
-> **각주 (2026-07-16, Phase 2 "Codex 마켓" 조사 결과)**: 공식 문서(`learn.chatgpt.com/docs/build-skills`)와 제3자 실사용 가이드 다수를 교차 확인한 결과, **Codex에는 Claude Code의 `.claude-plugin/marketplace.json`에 대응하는 공식 마켓플레이스·플러그인 매니페스트 개념이 없다.** Codex의 스킬 배포는 `~/.codex/skills/`(개인)·`.codex/skills/`(프로젝트) 폴더에 SKILL.md를 두면 자동 탐지되는 방식뿐이며, 이는 이 저장소 README에 이미 안내된 방법과 정확히 일치한다(추가로 확인된 `.agents/skills` 계층 탐색은 별개 보조 경로로 보이며 기존 방법을 대체할 필요는 없음). **결론: "Codex 마켓 등록"이라는 별도 작업 자체가 존재하지 않으므로 이 항목은 추가 구현 불필요 — 이미 완료된 것으로 간주.** (확인 없이 임의 매니페스트를 만들었다면 존재하지 않는 표준을 따라가는 오류였을 것)
+> ~~낡음~~ **[아래 2026-11-26 정정으로 대체 — 경로 설명을 따르지 말 것]** **각주 (2026-07-16, Phase 2 "Codex 마켓" 조사 결과)**: 공식 문서(`learn.chatgpt.com/docs/build-skills`)와 제3자 실사용 가이드 다수를 교차 확인한 결과, **Codex에는 Claude Code의 `.claude-plugin/marketplace.json`에 대응하는 공식 마켓플레이스·플러그인 매니페스트 개념이 없다.** Codex의 스킬 배포는 `~/.codex/skills/`(개인)·`.codex/skills/`(프로젝트) 폴더에 SKILL.md를 두면 자동 탐지되는 방식뿐이며, 이는 이 저장소 README에 이미 안내된 방법과 정확히 일치한다(추가로 확인된 `.agents/skills` 계층 탐색은 별개 보조 경로로 보이며 기존 방법을 대체할 필요는 없음). **결론: "Codex 마켓 등록"이라는 별도 작업 자체가 존재하지 않으므로 이 항목은 추가 구현 불필요 — 이미 완료된 것으로 간주.** (확인 없이 임의 매니페스트를 만들었다면 존재하지 않는 표준을 따라가는 오류였을 것)
+>
+> **[2026-11-26 정정]** 위 각주의 경로 설명은 낡았다. [공식 문서](https://learn.chatgpt.com/docs/build-skills)의 이날 원문은 사용자 위치로 `$HOME/.agents/skills`, 저장소 위치로 `.agents/skills`를 안내하며 `.codex/skills`는 원문에서 검색되지 않았다(그 위치가 더는 작동하지 않는지는 미확인). "마켓 매니페스트 대상 없음" 결론은 이번에 다시 조사하지 않았다.
 
 ---
 
