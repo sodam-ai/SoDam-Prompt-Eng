@@ -1,7 +1,7 @@
 # SoDam Prompt — Complete Guide to 10 AI Writing Skills
 
 > A collection of Korean writing tools — just fill in the blanks and AI does the rest.
-> Works on Claude Code · Claude.ai App · Codex · Cursor · Gemini CLI.
+> Built on the shared `SKILL.md` format so it can be used on Claude Code · Claude.ai App · Codex · Cursor · Gemini CLI. However, **Claude Code is the only tool with a detailed verification record** — see [2. Prerequisites](#2-prerequisites) for per-tool status.
 
 License: Apache-2.0 | Level: SoDam Prompt (Step 1) | Language: Korean Output | Verified: ✅ Confirmed via personal use (2026-07-15)
 
@@ -69,6 +69,16 @@ You only need **one** of the following — not all of them.
 | Claude Code | Node.js 18+ · Claude Code CLI | ★★☆ |
 | Codex | Codex account · Codex CLI | ★★☆ |
 | Cursor · Gemini CLI, etc. | Respective tool installed | ★★☆ |
+
+**Per-tool verification status** (stated honestly — only what was actually run is marked "verified")
+
+| Tool | Status | Basis |
+|------|--------|-------|
+| Claude Code | ✅ Verified | 2026-07-17: natural-language auto-trigger in a fresh session; 2026-07-18: `/sodam-prompt:` slash commands registered after `/plugin install`, confirmed on screen |
+| Claude.ai App | △ Owner confirmed once (no detailed record) | Recorded as confirmed by the owner's own use on 2026-07-15 (natural-language auto-trigger works), but there is no screen record, and the ZIP install procedure was not separately run |
+| Codex · Cursor · Gemini CLI | ⚠️ Not verified | Designed to work since the format is shared, but not run directly. Check each tool's official docs for the skills folder location |
+
+If you try one and it works (or doesn't), let us know and this table will be updated.
 
 ### Creating an Account (Claude.ai method)
 
@@ -1018,6 +1028,7 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 - Corrected the places that still said "PRIVATE" to match what GitHub actually reports (PUBLIC) — this README and `CONTRIBUTING.md`. The legal disclosure (section 15) now describes the open items as "unresolved while already public."
 - Wrapped the `argument-hint` value of all 11 skills in double quotes so the frontmatter is valid YAML. Before the fix, `sns-caption` and others failed to parse as YAML, and `skill-maker`'s hint was read as a list instead of a string (measured with js-yaml). The `skill-maker` instructions and the doc examples now use the same form, and `scripts/verify-skills.mjs` gained a quoting check so the same error fails verification if it comes back.
 - Added `skill-maker` to the plugin description and bumped the version `0.1.0` → `0.2.0` (with an unchanged version, an installed copy may not recognize the update).
+- Corrected the top-of-page claim that it "works the same on every tool". Only Claude Code has a detailed verification record, so section 2 now has a per-tool status table (other tools are marked "not verified").
 
 </details>
 

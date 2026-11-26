@@ -30,9 +30,24 @@ SoDam-Prompt-Eng/
 │   │   └── SKILL.md
 │   ├── presentation-script/
 │   │   └── SKILL.md
-│   └── request-apology-message/
+│   ├── request-apology-message/
+│   │   └── SKILL.md
+│   └── skill-maker/                 ← 11번째: 새 스킬을 대화로 만드는 메타 스킬 (시드 10개와 별개)
 │       └── SKILL.md
-├── README.md                        ← 설치 안내 (왕초보용)
+├── commands/                        ← 스킬 11개와 1:1 복사본 (/sodam-prompt:<스킬> 슬래시 형식용, description만 있는 frontmatter)
+├── .claude-plugin/
+│   ├── plugin.json                  ← 플러그인 정보 (현재 v0.2.0)
+│   └── marketplace.json             ← 마켓 등록 정보
+├── scripts/
+│   └── verify-skills.mjs            ← 스킬 형식 자동 점검 (11 스킬 = 11 명령 일치, 위험 패턴, argument-hint 따옴표)
+├── promptfooconfig.yaml             ← 로컬 전용 품질 평가 설정 (한 번도 실행 안 됨 — CHECKPOINT 9차 갱신 참조)
+├── promptfoo-skill-prompt.js        ← 위 설정이 SKILL.md를 읽는 로더
+├── README.md · README_EN.md         ← 설치 안내 (한/영, 왕초보용)
+├── README.html · README_EN.html     ← 위 두 문서를 브라우저용으로 변환한 것 (직접 수정 금지, README.md에서 재생성)
+├── CONTRIBUTING.md                  ← 기여 안내 (새 스킬 형식·점검 방법)
+├── AGENTS.md · CLAUDE.md            ← AI 작업 지침
+├── P4_검수_가이드.md · PROMPTFOO_로컬_가이드.md  ← 사람 검수 절차 · 로컬 평가 절차
+├── .github/PULL_REQUEST_TEMPLATE.md ← PR 양식
 ├── LICENSE                          ← Apache-2.0
 ├── NOTICE                           ← Apache-2.0 의무 공지
 ├── .gitignore                       ← .env* + Next.js 잔재 제외
@@ -91,7 +106,7 @@ argument-hint: "[빈칸1] [빈칸2]"
 
 ---
 
-## 스킬 목록 (10개 · MVP 시드)
+## 스킬 목록 (MVP 시드 10개 + 메타 스킬 1개 = 현재 11개)
 
 | # | 폴더명 | 빈칸 | 출력형식 |
 |---|--------|------|----------|
@@ -105,6 +120,7 @@ argument-hint: "[빈칸1] [빈칸2]"
 | 8 | natural-english (영어-자연스럽게) | 한국어 문장 | 영어 + 이유 설명 |
 | 9 | presentation-script (발표-대본) | 주제 · 발표 시간 | 도입-본론-마무리 |
 | 10 | request-apology-message (부탁-사과-메시지) | 상황 · 상대 | 정중/친근 2가지 버전 |
+| (11) | skill-maker (스킬-만들기, **시드 아님·메타 스킬**) | 만들고 싶은 스킬 한 줄 설명 | 완성된 SKILL.md 내용 (2026-07-27 추가, 사람 검수 대상 10개에는 미포함) |
 
 ---
 
@@ -125,7 +141,7 @@ argument-hint: "[빈칸1] [빈칸2]"
 - [x] 출력 형식이 명세(`06_SEED_PROMPTS.md`)와 일치 (10/10 확인)
 - [x] 개인정보 유도 없음 (10개 전부 문구 확인 + 공격 테스트 방어 성공)
 - [x] 위험·민감 주제 없음 (10개 전부 확인, 0건)
-- [x] `description` 자연어 트리거로 Claude.ai 앱 자동 매칭됨 (2026-07-15, 사용자 본인 개인 용도 실사용으로 확인 — AI가 대신 검증 불가능한 유일 항목이었음)
+- [x] `description` 자연어 트리거로 자동 매칭됨 — 2026-07-15 사용자 본인 사용으로 확인(Claude.ai 앱, 세부 기록 없음) + 2026-07-17 독립된 새 Claude Code 세션에서 10/10 실측(상세 기록 있음). Codex·Cursor·Gemini CLI는 미확인(README 2장 "도구별 확인 현황" 표 참조)
 
 ---
 
@@ -133,5 +149,5 @@ argument-hint: "[빈칸1] [빈칸2]"
 
 - [x] DB 없음 — 플러그인 전용, 사용자 AI 도구가 실행 담당
 - [x] 서버 없음 — 운영 비용 $0
-- [x] SKILL.md 표준 — Claude Code·Codex·Claude.ai 앱 공통 포맷
+- [x] SKILL.md 표준 — Claude Code·Codex·Claude.ai 앱 공통 포맷 (※ "공통 포맷으로 설계했다"는 뜻이며, 실제 작동 확인은 도구별로 다름 — 위 검증 체크 참조)
 - [x] P4 사람 검수 — 2026-07-15 완료, 10개 실작동 확인(개인 용도 실사용 검증)

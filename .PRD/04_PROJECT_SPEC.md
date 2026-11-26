@@ -142,7 +142,7 @@ $book-report-helper "어린 왕자" "감동적이었어"
 
 - [x] 서버·DB·인증 없음 — 플러그인 전용
 - [x] Apache-2.0 — 무료 보급 정합
-- [x] SKILL.md 표준 — 40+ 도구 호환
+- [x] SKILL.md 표준 — 40+ 도구 호환 (※ 이는 외부 자료(RESEARCH_SOURCES)가 말하는 "표준의 호환 범위"이며, 이 저장소 스킬을 각 도구에서 직접 실행해 확인했다는 뜻이 아님 — 확인된 곳은 Claude Code 중심, README 2장 "도구별 확인 현황" 참조)
 - [x] 운영 비용 $0
 - [x] P4 사람 검수 완료 → "✅ 사람 검수" 배지 추가 (2026-07-15, README.md에 반영됨)
 - [x] Phase 1.5 promptfoo 자동화 → "작동률 XX%" 숫자 표시 — CI 자동 계산 대신 (b) 로컬 `promptfoo eval` 결과 수동 반영 절차로 확정(2026-07-26, `05_MARKETPLACE_PLUGIN.md` STEP B-3·`PROMPTFOO_로컬_가이드.md` 참조)
