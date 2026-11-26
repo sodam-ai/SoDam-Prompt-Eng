@@ -38,3 +38,6 @@
 [2026-11-26T09:20] claude MILESTONE_DONE PRD 02(구조도·스킬 11개)·06(현재 상태 메모)·04(40+ 도구 호환 주석) 동기화, CHECKPOINT 10차 갱신(전체 이력 74커밋 수동 시크릿 스캔 0건, promptfoo 미실행, 설치본 0.2.0 정정) — 스킬·코드 변경 없음
 [2026-11-26T16:00] claude DECISION 사용자 위임("추천한 순서대로 진행") — Claude 앱 설정 화면은 AI 브라우저 자동화가 차단돼 ZIP 설치 시험은 미실행(우회 안 함), 결과와 무관한 문서 정정·평가 검사 보강을 진행
 [2026-11-26T16:00] claude MILESTONE_DONE PRD 01·03·04·05와 README(한/영)의 실행 기록 없는 '완료/확인됨' 정정, PROMPTFOO 가이드 갱신, promptfooconfig 형식 검사 보강(API 호출 0회, 검사식 모의 시험만), CHECKPOINT 11차 갱신 — skills/·commands/·.claude-plugin/ 변경 없음
+[2026-11-26T22:10] claude DECISION 사용자 위임("추천한 순서대로 진행") — Codex 검증(읽기 전용) 후 설치 명령 수정. 보고 파일은 Codex 가드가 차단해 우회 없이 대화창 답변으로 수령
+[2026-11-26T22:10] claude MILESTONE_DONE README(한/영·HTML) 설치 명령 결함 수정(임시 폴더 18/18 통과, Mac·실제 인식 미확인), HTML 내부 링크 37개 복구, PRD 낡은 표기 정정, promptfoo 검사 오판 17/17 재현→한계 명시·배지 보류, CHECKPOINT 12차 갱신 — skills/·commands/ 변경 없음, 커밋·푸시 안 함
+[2026-11-26T22:50] claude MILESTONE_DONE Codex 2차 검토 9건 반영(설치 확인을 원본 내용 비교로 교체 등), 설치 블록 18/18·확인 명령 4/4 통과. 사용자의 "추천한 순서대로 전부 진행" 지시에 따라 커밋·PR 진행

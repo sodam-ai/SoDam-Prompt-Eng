@@ -18,6 +18,7 @@
 - **알려 주지 않는 것**: 글의 품질, 말투, 내용의 정확성, Claude Haiku 4.5가 아닌 모델·도구에서의 작동.
   **11/11 통과는 "품질 검증"이 아니다.**
 - `skill-maker`는 "되묻기" 또는 "완성된 스킬 파일" 둘 중 하나인지만 본다.
+- ⚠️ **검사식에 오판이 확인돼 있다(2026-11-26).** 지어낸 표본 17개에서 규칙을 지킨 답을 떨어뜨리거나 어긴 답을 통과시켰다(`.PRD/CHECKPOINT.md` 12차 갱신). **통과·실패 숫자를 그대로 믿지 말고 11개 답을 직접 읽는다.**
 
 ## 준비물
 - 본인 Anthropic API 키 (콘솔에서 발급: https://console.anthropic.com/)
@@ -33,6 +34,8 @@ Windows PowerShell:
 $env:PROMPTFOO_DISABLE_TELEMETRY = "1"
 $secure = Read-Host "API key" -AsSecureString   # 여기까지 실행한 뒤 키를 붙여 넣고 Enter
 ```
+키 입력을 취소했거나 아무것도 넣지 않았다면 **다음 묶음을 실행하지 않는다.**
+
 ```powershell
 $env:ANTHROPIC_API_KEY = [System.Net.NetworkCredential]::new('', $secure).Password
 npx promptfoo@latest eval -c promptfooconfig.yaml
@@ -45,6 +48,9 @@ Remove-Item Env:ANTHROPIC_API_KEY; Remove-Variable secure
 Mac/Linux (bash·zsh):
 ```bash
 printf "API key: "; read -rs ANTHROPIC_API_KEY; export ANTHROPIC_API_KEY; echo
+```
+키가 비어 있으면 여기서 멈춘다. 입력했다면:
+```bash
 npx promptfoo@latest eval -c promptfooconfig.yaml
 npx promptfoo@latest view
 unset ANTHROPIC_API_KEY
@@ -78,6 +84,8 @@ unset ANTHROPIC_API_KEY
 > CI 도입 자체가 이 저장소 원칙(NFR-비용1 운영비 $0·NFR-키1 AI 키 관리 없음)과 충돌해 채택하지 않기로
 > 확정했다(위 첫 번째 인용문 참조). 그래서 "누가, 언제, 어떻게 배지를 갱신하나"를 대신 여기
 > 절차로 못 박는다. **자동화 스크립트는 만들지 않는다** — 아래는 전부 사람이 직접 하는 수동 절차다.
+
+> ⏸ **현재는 배지에 반영하지 않는다(2026-11-26).** 위의 확인된 오판을 고치기 전에는 `N/11` 숫자가 규칙 준수를 뜻하지 않는다. 아래 절차는 검사식을 고친 뒤에 쓴다.
 
 1. 본인이 원할 때 위 "실행 방법"대로 실행한다 (본인 API 키, 본인 계정 비용).
 2. 결과 화면에서 11개 테스트의 통과/실패 개수를 직접 확인한다.

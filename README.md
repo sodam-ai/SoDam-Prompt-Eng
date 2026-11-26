@@ -153,6 +153,10 @@ Codex 공식 사이트에서 CLI를 설치하세요. (Codex 계정 필요)
 3. 내 컴퓨터의 원하는 폴더에 압축 풀기
 4. `SoDam-Prompt-Eng-main` 폴더가 생깁니다
 
+> **Claude Code · Codex에 설치한다면 — 터미널을 여는 위치가 중요합니다.** 아래 설치 명령은 **`skills` 폴더가 바로 보이는 폴더**에서 실행해야 합니다. (압축을 풀면 `SoDam-Prompt-Eng-main` 안에 같은 이름의 폴더가 한 번 더 있을 수 있습니다.)
+> - **Windows**: 파일 탐색기에서 그 폴더를 열고, 위쪽 주소창에 `powershell` 입력 후 Enter (명령 프롬프트 `cmd`가 아니라 PowerShell)
+> - **Mac · Linux**: 터미널에 `cd `를 입력(뒤에 한 칸)하고 그 폴더를 끌어다 놓은 뒤 Enter. 끌어다 놓기가 안 되면 경로를 따옴표로 감싸 직접 입력합니다. 예: `cd "/Users/이름/Downloads/SoDam-Prompt-Eng-main"`
+
 **방법 2: git clone (git이 설치된 경우)**
 
 검은 창에서:
@@ -196,17 +200,31 @@ AI가 자동으로 `book-report-helper`(독후감-도우미) 스킬을 사용해
 
 ### Claude Code에서 시작하기
 
-**Step 1**: 스킬 파일 복사
+**Step 1**: 스킬 파일 복사 — [4장](#4-다운로드-방법)의 안내대로 `skills` 폴더가 보이는 위치에서 터미널을 연 뒤, **내 터미널에 맞는 한 묶음만** 실행합니다.
 
-```bash
-# 다운로드 폴더 기준 (Windows)
-cp -r C:\Users\내이름\Downloads\SoDam-Prompt-Eng\skills\* ~/.claude/skills/
+> ⚠️ **같은 이름의 스킬이 이미 있으면 덮어씁니다.** 직접 고친 스킬이 있다면 먼저 다른 곳에 복사해 두세요.
+
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.claude\skills\"
 ```
 
-Mac/Linux:
+**Mac · Linux · Git Bash**
 ```bash
-cp -r ~/Downloads/SoDam-Prompt-Eng/skills/* ~/.claude/skills/
+mkdir -p ~/.claude/skills
+cp -r ./skills/* ~/.claude/skills/
 ```
+
+**복사 확인** — 복사할 때 오류 문구가 없었는지 먼저 보고, **같은 위치(`skills`가 보이는 폴더)에서** 아래를 실행합니다. 설치된 파일이 원본과 같을 때만 PowerShell은 `True`, bash는 `OK`가 나옵니다. (대표 스킬 1개만 비교합니다.) AI 도구가 스킬을 인식하는지는 Step 2·3에서 따로 확인하세요.
+```powershell
+(Test-Path .\skills\book-report-helper\SKILL.md) -and (Test-Path "$HOME\.claude\skills\book-report-helper\SKILL.md") -and ((Get-FileHash .\skills\book-report-helper\SKILL.md).Hash -eq (Get-FileHash "$HOME\.claude\skills\book-report-helper\SKILL.md").Hash)
+```
+```bash
+cmp ./skills/book-report-helper/SKILL.md ~/.claude/skills/book-report-helper/SKILL.md && echo OK
+```
+
+> **확인 범위(2026-11-26)**: 위 복사 명령은 Windows의 PowerShell 5.1과 Git Bash에서 **임시 폴더를 대상으로** 실행해 파일 위치를 확인했습니다. Mac · Linux에서의 실행과, 이 방법으로 복사한 뒤 Claude Code가 인식하는지는 이때 다시 확인하지 않았습니다.
 
 **Step 2**: Claude Code 실행
 
@@ -243,14 +261,21 @@ claude
 
 ### Claude Code (터미널)
 
-**설치**:
-```bash
-# skills 폴더 전체 복사
-cp -r ./skills/* ~/.claude/skills/
+**설치** (`skills` 폴더가 보이는 위치에서, 내 터미널에 맞는 한 묶음만 · 같은 이름의 스킬은 덮어씁니다):
 
-# 개별 스킬만 설치하려면
-cp -r ./skills/book-report-helper ~/.claude/skills/
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.claude\skills\"
 ```
+
+**Mac · Linux · Git Bash**
+```bash
+mkdir -p ~/.claude/skills
+cp -r ./skills/* ~/.claude/skills/
+```
+
+개별 스킬만 설치하려면 마지막 줄의 `*`를 스킬 폴더 이름(예: `book-report-helper`)으로 바꿉니다. **폴더를 만드는 첫 줄은 빼지 마세요.** 폴더가 없는 상태에서 복사만 하면 오류 없이 엉뚱한 위치(`skills\SKILL.md`)에 복사될 수 있습니다.
 
 **실행**:
 ```bash
@@ -261,7 +286,7 @@ claude
 /book-report-helper "책 제목" "느낀 점"
 ```
 
-> 이 방법(폴더 복사)은 스킬이 이름만으로(`/book-report-helper`) 등록됩니다. 다른 곳에서 받은 같은 이름의 스킬이 있으면 겹칠 수 있습니다.
+> 이 방법(폴더 복사)은 스킬을 이름만으로(`/book-report-helper`) 쓰는 방식입니다. 복사한 뒤 새 대화에서 이 명령이 보이는지 확인하세요. 다른 곳에서 받은 같은 이름의 스킬이 있으면 겹칠 수 있습니다.
 
 ---
 
@@ -290,7 +315,7 @@ claude
 /plugin uninstall sodam-prompt@sodam-prompt-marketplace
 /plugin marketplace remove sodam-prompt-marketplace
 ```
-터미널에서 직접 하려면: `claude plugin uninstall sodam-prompt --prune` (의존성까지 함께 정리)
+터미널에서 직접 하려면: `claude plugin uninstall sodam-prompt@sodam-prompt-marketplace` (`--prune` 옵션은 더 이상 필요 없는 자동 설치 의존 항목까지 지우므로 여기서는 쓰지 않습니다)
 
 깨끗하게 다시 설치하려면 위 제거 명령 2줄을 실행한 뒤, 설치 명령을 처음부터 다시 실행하세요.
 
@@ -300,10 +325,21 @@ claude
 
 ### Codex
 
-**설치**:
+**설치** (`skills` 폴더가 보이는 위치에서, 내 터미널에 맞는 한 묶음만 · 같은 이름의 스킬은 덮어씁니다):
+
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.codex\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.codex\skills\"
+```
+
+**Mac · Linux · Git Bash**
 ```bash
+mkdir -p ~/.codex/skills
 cp -r ./skills/* ~/.codex/skills/
 ```
+
+> Codex에서의 설치와 실행은 아직 직접 확인하지 않았습니다.
 
 **실행**:
 ```
@@ -622,7 +658,7 @@ SoDam-Prompt-Eng/                       ← 저장소 루트
 │   ├── plugin.json                 ← 플러그인 메타데이터
 │   └── marketplace.json            ← 로컬 마켓플레이스 정의(본인 여러 기기 설치용)
 │
-├── skills/                         ← 스킬 10개 폴더 (2026-07-13부터 영문 폴더명)
+├── skills/                         ← 스킬 폴더 11개 (2026-07-13부터 영문 폴더명)
 │   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← 스킬 정의 파일 (자연어 자동매칭용)
 │   ├── polite-message/             ← 정중한-메시지
@@ -741,10 +777,7 @@ $2 = 두 번째 입력값 (느낀 점)
    ```
    `book-report-helper` 폴더가 보여야 합니다.
 
-2. 없으면 다시 복사:
-   ```bash
-   cp -r ./skills/* ~/.claude/skills/
-   ```
+2. 한 스킬만 없으면 [14장 FAQ](#14-faq--자주-묻는-질문)의 **스킬 1개 설치** 명령을, 전부 없으면 [5장 Step 1](#claude-code에서-시작하기)의 명령을 씁니다 (폴더를 만드는 첫 줄까지 함께). 전체 복사는 같은 이름의 스킬을 모두 덮어씁니다.
 
 3. Claude Code 종료 후 재시작:
    ```bash
@@ -792,33 +825,29 @@ $2 = 두 번째 입력값 (느낀 점)
 
 ---
 
-### Q5. `cp: no such file` 오류가 나요
+### Q5. `cp: no such file` · `is not a directory` 오류가 나거나, 복사했는데 스킬이 안 보여요
 
-**원인**: 경로가 틀렸거나 `.claude/skills` 폴더가 없음
+**원인**: ① `skills` 폴더가 보이지 않는 위치에서 명령을 실행했거나 ② 대상 폴더(`.claude/skills`)를 만들지 않고 복사한 경우입니다. ②는 **오류 없이 끝나도** 파일이 잘못된 위치에 놓일 수 있습니다.
 
-**해결**:
-```bash
-# 폴더 먼저 만들기
-mkdir -p ~/.claude/skills
+**해결**: [4장](#4-다운로드-방법)대로 터미널 위치를 맞춘 뒤, [5장 Step 1](#claude-code에서-시작하기)의 두 줄을 순서대로 다시 실행합니다.
 
-# 다시 복사
-cp -r ./skills/* ~/.claude/skills/
-```
+**잘못 복사된 흔적 확인**: 정상 위치는 `.claude/skills/스킬이름/SKILL.md`입니다. `.claude/skills` **바로 아래**에 `SKILL.md` 파일이 있다면 이전의 복사가 잘못된 것일 수 있습니다. 내용이 이 저장소의 스킬과 같아 보여도 그것만으로 잘못 복사된 파일이라고 단정할 수는 없습니다. **지우지 말고 `.claude` 밖의 다른 폴더로 옮겨 둔 뒤** 설치를 다시 확인하세요.
 
 ---
 
-### Q6. Windows에서 `cp` 명령어가 안 돼요
+### Q6. Windows에서 설치 명령이 안 돼요
 
-**원인**: Windows 기본 터미널(PowerShell/CMD)은 `cp` 대신 `Copy-Item` 사용
+**원인**: 명령 프롬프트(`cmd`)에서는 위 명령이 동작하지 않습니다. 또 bash용 명령에 `C:\...` 같은 Windows 경로를 넣으면 `\`가 사라져 경로가 깨집니다.
 
-**해결 (PowerShell)**:
+**해결**: **PowerShell**에서 실행합니다.
 ```powershell
-Copy-Item -Recurse .\skills\* $env:USERPROFILE\.claude\skills\
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.claude\skills\"
 ```
 
 또는 파일 탐색기에서 직접 복사:
 1. `skills` 폴더 안의 모든 폴더 선택 → Ctrl+C
-2. `C:\Users\사용자명\.claude\skills\` 폴더 열기 → Ctrl+V
+2. `C:\Users\사용자명\.claude\skills\` 폴더 열기(`skills` 폴더가 없으면 새로 만들기) → Ctrl+V
 
 ---
 
@@ -853,11 +882,23 @@ A: Claude.ai 앱(웹 버전)은 스마트폰 브라우저에서도 작동합니�
 ---
 
 **Q: 10개 중 일부만 설치할 수 있나요?**
-A: 네. 원하는 스킬 폴더만 골라서 복사하면 됩니다:
-```bash
-cp -r ./skills/book-report-helper ~/.claude/skills/
-cp -r ./skills/polite-message ~/.claude/skills/
+A: 네. 원하는 스킬 폴더만 골라서 복사하면 됩니다. **`skills` 폴더가 보이는 위치**([4장](#4-다운로드-방법))에서 실행하세요.
+
+> ⚠️ 같은 이름의 스킬이 이미 있으면 덮어씁니다. 직접 고친 스킬은 먼저 다른 곳에 복사해 두세요.
+
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\book-report-helper "$HOME\.claude\skills\"
 ```
+
+**Mac · Linux · Git Bash**
+```bash
+mkdir -p ~/.claude/skills
+cp -r ./skills/book-report-helper ~/.claude/skills/
+```
+
+다른 스킬은 `book-report-helper` 자리에 폴더 이름을 바꿔 마지막 줄만 한 번 더 실행합니다.
 
 ---
 
@@ -877,14 +918,20 @@ A: 이 스킬 파일 자체는 데이터를 수집하지 않습니다. AI 서비
 ---
 
 **Q: Windows · Mac · Linux 모두 되나요?**
-A: 네. SKILL.md 파일은 텍스트 파일이므로 운영체제 무관합니다. 설치 명령어만 OS에 맞게 쓰면 됩니다.
+A: SKILL.md는 텍스트 파일이라 파일 자체는 운영체제와 상관없습니다. 다만 **설치 복사 명령을 직접 시험한 환경은 Windows(PowerShell 5.1·Git Bash)의 임시 폴더뿐**이며, Mac·Linux에서는 확인하지 않았습니다.
 
 ---
 
 **Q: 스킬을 삭제하고 싶어요**
-A: 설치한 폴더를 지우면 됩니다:
+A: 설치한 **그 스킬 폴더만** 지우면 됩니다. 직접 고친 내용도 함께 지워지고 휴지통으로 가지 않으니, 폴더 이름과 내용을 먼저 확인하세요. 아래는 **Claude Code** 기준이며, Codex에 설치했다면 `.claude`를 `.codex`로 바꿉니다. 대상 폴더가 없으면 오류가 표시됩니다.
+
+Windows (PowerShell):
+```powershell
+Remove-Item -Recurse "$HOME\.claude\skills\book-report-helper"
+```
+Mac · Linux · Git Bash:
 ```bash
-rm -rf ~/.claude/skills/book-report-helper
+rm -r ~/.claude/skills/book-report-helper
 ```
 Claude.ai 앱: Customize → Skills → 해당 스킬 → 삭제
 
@@ -1026,6 +1073,7 @@ limitations under the License.
 <details open>
 <summary><strong>2026-11-26 — 공개(PUBLIC) 상태 정정 + 스킬 파일 형식 오류 수정 (클릭해서 펼치기)</strong></summary>
 
+- **설치 명령 수정**: 대상 폴더가 없는 PC에서 기존 복사 명령이 실패하거나, 오류 없이 엉뚱한 위치에 복사되는 문제를 임시 폴더 시험으로 확인해, 폴더를 먼저 만드는 PowerShell·bash 명령으로 바꾸고 터미널을 여는 위치 안내와 덮어쓰기·삭제 주의를 추가했습니다. Mac·Linux 실행은 확인하지 않았습니다.
 - 문서 곳곳에 "PRIVATE"로 적혀 있던 안내를 GitHub 실측 결과(PUBLIC)에 맞게 정정했습니다(이 README·`CONTRIBUTING.md`). 법률 미해결 사안(15번)도 "공개 중인 미해결 사안"으로 고지를 갱신했습니다.
 - 스킬 11개의 `argument-hint`를 큰따옴표로 감싸 올바른 YAML로 고쳤습니다. 고치기 전에는 `sns-caption` 등이 YAML 오류로 읽혔고, `skill-maker`는 문자열이 아닌 목록으로 읽혔습니다(js-yaml로 실측). `skill-maker` 안내문·문서 예시도 같은 형태로 통일했고, `scripts/verify-skills.mjs`에 따옴표 검사를 추가해 같은 오류가 다시 들어오면 검증에서 실패하도록 했습니다.
 - 플러그인 설명에 `skill-maker`를 반영하고 버전을 `0.1.0` → `0.2.0`으로 올렸습니다(버전이 같으면 설치된 쪽에서 업데이트로 인식되지 않을 수 있습니다).

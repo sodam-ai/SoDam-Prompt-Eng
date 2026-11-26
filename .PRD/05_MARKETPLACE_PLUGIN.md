@@ -14,7 +14,7 @@
 | 발견 경로 | 웹 갤러리 카드 | README.md 표 |
 | 미리보기 | 웹에서 샘플 결과 | README에 예시 결과 설명 |
 | 놀이터 실행 | 웹에서 1회 실행 (로그인 후) | 설치 후 사용자 AI 도구에서 |
-| 설치 방법 | Phase 2 계획 | **P1 완료 (3경로)** |
+| 설치 방법 | Phase 2 계획 | **P1: 3경로 안내 작성 완료** (실행 확인 정도는 경로마다 다름 — 2절 표) |
 
 ---
 
@@ -36,9 +36,9 @@
 | 순위 | 경로 | 절차 | 난이도 | 터미널 | 상태 |
 |---|---|---|---|---|---|
 | **1** | **Claude.ai 앱 GUI 업로드** | Code → Download ZIP → Claude.ai 앱 → Customize → Skills → + Create skill → ZIP 업로드 → 토글 ON | **★1** | 불필요 | 안내 작성 ✅ · **업로드 실행 미확인** (2026-11-26 정정) |
-| 2 | **Claude Code 수동 복사** | `cp -r skills/* ~/.claude/skills/` → `/이름 값` | ★2 | 터미널 | ✅ P1 완료 |
-| 3 | **Codex 수동 복사** | `cp -r skills/* ~/.codex/skills/` → `$이름` | ★2 | 터미널 | 안내 작성 ✅ · **실행 미확인** (2026-11-26 정정) |
-| 4 | 수동 파일 복사 | 탐색기로 `skills/<이름>/SKILL.md` 복사 | ★3 | 파일탐색기 | ✅ P1 완료 |
+| 2 | **Claude Code 수동 복사** | 폴더 생성 후 복사(PowerShell·bash, README 5장) → `/이름 값` | ★2 | 터미널 | 폴더 생성 명령 추가(2026-11-26) · Windows 임시 폴더 시험 통과 · **Mac/Linux 실행·복사 후 인식은 미확인** |
+| 3 | **Codex 수동 복사** | 폴더 생성 후 `~/.codex/skills/`에 복사(README 6장) → `$이름` | ★2 | 터미널 | 안내 작성 ✅(명령 수정 2026-11-26) · **실행 미확인** |
+| 4 | 수동 파일 복사 | 탐색기로 `skills/<이름>/SKILL.md` 복사 | ★3 | 파일탐색기 | 안내 작성 ✅ · **실행 기록 없음** (2026-11-26 정정) |
 | **Phase 2** | **Claude Code 마켓 등록** | `/plugin marketplace add sodam-ai/SoDam-Prompt-Eng` → `/plugin install sodam-prompt@sodam-prompt-marketplace` | ★1 | 터미널 | ✅ 완료 — 생성(2026-07-17)+실사용 라이브 재검증 2회(2026-07-18, CHECKPOINT.md B-1 참조). 단 `/plugin uninstall` 제거는 명령어만 존재, 실행 재확인은 안 됨 |
 | — | **Codex `$skill-installer`** | `$skill-installer <이름>` | ★2 | 터미널(Codex) | 대상 없음(2026-07-16 조사 완료 — B-2, 아래 각주) |
 

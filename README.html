@@ -93,7 +93,7 @@
 <header id="title-block-header">
 <h1 class="title">SoDam Prompt — 전체 안내서</h1>
 </header>
-<h1 id="sodam-prompt-ai-글쓰기-스킬-10종-완전-가이드">SoDam Prompt — AI
+<h1 id="sodam-prompt--ai-글쓰기-스킬-10종-완전-가이드">SoDam Prompt — AI
 글쓰기 스킬 10종 완전 가이드</h1>
 <blockquote>
 <p>AI를 처음 쓰는 분도 빈칸만 채우면 바로 되는 한국어 글쓰기 도구
@@ -134,7 +134,7 @@ Family</a> 7형제 중 하나입니다.</p>
 <li><a href="#17-업데이트-내역">업데이트 내역</a></li>
 </ol>
 <hr />
-<h2 id="한눈에-보기">1. 한눈에 보기</h2>
+<h2 id="1-한눈에-보기">1. 한눈에 보기</h2>
 <p>SoDam Prompt는 학생·직장인·일반인이 AI에게 글쓰기를 요청할 때 쓰는
 <strong>10종 스킬 모음</strong>입니다. 스킬 하나 = 미리 설계된 질문 틀
 하나. 빈칸에 내 상황을 채우면 AI가 완성글을 만들어 줍니다.</p>
@@ -220,7 +220,7 @@ Family</a> 7형제 중 하나입니다.</p>
 말해보세요.) 자세한 절차는 <a
 href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 <hr />
-<h2 id="사전-준비물">2. 사전 준비물</h2>
+<h2 id="2-사전-준비물">2. 사전 준비물</h2>
 <p>스킬을 사용하려면 아래 중 <strong>하나</strong>만 있으면 됩니다. 전부
 필요하지 않습니다.</p>
 <table>
@@ -294,7 +294,7 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 </table>
 <p>직접 써 보고 되거나 안 되는 도구를 알려 주시면 이 표에
 반영합니다.</p>
-<h3 id="계정-만들기-claude.ai-방법-기준">계정 만들기 (Claude.ai 방법
+<h3 id="계정-만들기-claudeai-방법-기준">계정 만들기 (Claude.ai 방법
 기준)</h3>
 <ol type="1">
 <li>인터넷 브라우저(크롬, 엣지 등)를 엽니다</li>
@@ -308,13 +308,13 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 <strong>대한민국 거주자를 대상으로 만든 도구입니다.</strong></p>
 </blockquote>
 <hr />
-<h2 id="필요-프로그램-설치">3. 필요 프로그램 설치</h2>
-<h3 id="방법-a-claude.ai-앱-터미널-불필요-가장-쉬움">방법 A — Claude.ai
+<h2 id="3-필요-프로그램-설치">3. 필요 프로그램 설치</h2>
+<h3 id="방법-a--claudeai-앱-터미널-불필요-가장-쉬움">방법 A — Claude.ai
 앱 (터미널 불필요, 가장 쉬움)</h3>
 <p>별도 프로그램 설치 없이 <strong>인터넷 브라우저만 있으면
 됩니다.</strong> → 4단계(다운로드)로 바로 이동하세요.</p>
 <hr />
-<h3 id="방법-b-claude-code-개발자고급-사용자">방법 B — Claude Code
+<h3 id="방법-b--claude-code-개발자고급-사용자">방법 B — Claude Code
 (개발자·고급 사용자)</h3>
 <p><strong>Node.js 설치 확인</strong></p>
 <p>Node.js가 이미 설치되어 있는지 확인합니다.</p>
@@ -337,11 +337,11 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="
 class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> <span class="at">--version</span></span></code></pre></div>
 <p>버전 번호가 나오면 성공.</p>
 <hr />
-<h3 id="방법-c-codex-openai-codex-사용자">방법 C — Codex (OpenAI Codex
+<h3 id="방법-c--codex-openai-codex-사용자">방법 C — Codex (OpenAI Codex
 사용자)</h3>
 <p>Codex 공식 사이트에서 CLI를 설치하세요. (Codex 계정 필요)</p>
 <hr />
-<h2 id="다운로드-방법">4. 다운로드 방법</h2>
+<h2 id="4-다운로드-방법">4. 다운로드 방법</h2>
 <h3 id="스킬-파일-다운로드">스킬 파일 다운로드</h3>
 <p><strong>방법 1: ZIP 다운로드 (가장 쉬움)</strong></p>
 <ol type="1">
@@ -350,6 +350,18 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="
 <li>내 컴퓨터의 원하는 폴더에 압축 풀기</li>
 <li><code>SoDam-Prompt-Eng-main</code> 폴더가 생깁니다</li>
 </ol>
+<blockquote>
+<p><strong>Claude Code · Codex에 설치한다면 — 터미널을 여는 위치가
+중요합니다.</strong> 아래 설치 명령은 <strong><code>skills</code> 폴더가
+바로 보이는 폴더</strong>에서 실행해야 합니다. (압축을 풀면
+<code>SoDam-Prompt-Eng-main</code> 안에 같은 이름의 폴더가 한 번 더 있을
+수 있습니다.) - <strong>Windows</strong>: 파일 탐색기에서 그 폴더를
+열고, 위쪽 주소창에 <code>powershell</code> 입력 후 Enter (명령 프롬프트
+<code>cmd</code>가 아니라 PowerShell) - <strong>Mac · Linux</strong>:
+터미널에 <code>cd</code>를 입력(뒤에 한 칸)하고 그 폴더를 끌어다 놓은 뒤
+Enter. 끌어다 놓기가 안 되면 경로를 따옴표로 감싸 직접 입력합니다. 예:
+<code>cd "/Users/이름/Downloads/SoDam-Prompt-Eng-main"</code></p>
+</blockquote>
 <p><strong>방법 2: git clone (git이 설치된 경우)</strong></p>
 <p>검은 창에서:</p>
 <div class="sourceCode" id="cb3"><pre
@@ -370,8 +382,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="
 확인할 수 있습니다.</li>
 </ul>
 <hr />
-<h2 id="빠른-시작">5. 빠른 시작</h2>
-<h3 id="claude.ai-앱에서-5분-안에-시작하기">Claude.ai 앱에서 5분 안에
+<h2 id="5-빠른-시작">5. 빠른 시작</h2>
+<h3 id="claudeai-앱에서-5분-안에-시작하기">Claude.ai 앱에서 5분 안에
 시작하기</h3>
 <p><strong>Step 1</strong>: <code>claude.ai</code> 로그인 → 우측 상단
 프로필 → <strong>Customize</strong> 클릭</p>
@@ -396,23 +408,48 @@ ZIP 업로드는 아직 직접 실행해 확인하지 않았습니다. Anthropic
 사용해 독후감을 만들어줍니다.</p>
 <hr />
 <h3 id="claude-code에서-시작하기">Claude Code에서 시작하기</h3>
-<p><strong>Step 1</strong>: 스킬 파일 복사</p>
+<p><strong>Step 1</strong>: 스킬 파일 복사 — <a
+href="#4-다운로드-방법">4장</a>의 안내대로 <code>skills</code> 폴더가
+보이는 위치에서 터미널을 연 뒤, <strong>내 터미널에 맞는 한
+묶음만</strong> 실행합니다.</p>
+<blockquote>
+<p>⚠️ <strong>같은 이름의 스킬이 이미 있으면 덮어씁니다.</strong> 직접
+고친 스킬이 있다면 먼저 다른 곳에 복사해 두세요.</p>
+</blockquote>
+<p><strong>Windows (PowerShell)</strong></p>
 <div class="sourceCode" id="cb5"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 다운로드 폴더 기준 (Windows)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> C:<span class="dt">\U</span>sers<span class="dt">\내</span>이름<span class="dt">\D</span>ownloads<span class="dt">\S</span>oDam-Prompt-Eng<span class="dt">\s</span>kills<span class="dt">\*</span> ~/.claude/skills/</span></code></pre></div>
-<p>Mac/Linux:</p>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
 <div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ~/Downloads/SoDam-Prompt-Eng/skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
-<p><strong>Step 2</strong>: Claude Code 실행</p>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+<p><strong>복사 확인</strong> — 복사할 때 오류 문구가 없었는지 먼저
+보고, <strong>같은 위치(<code>skills</code>가 보이는 폴더)에서</strong>
+아래를 실행합니다. 설치된 파일이 원본과 같을 때만 PowerShell은
+<code>True</code>, bash는 <code>OK</code>가 나옵니다. (대표 스킬 1개만
+비교합니다.) AI 도구가 스킬을 인식하는지는 Step 2·3에서 따로
+확인하세요.</p>
 <div class="sourceCode" id="cb7"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">(</span><span class="fu">Test-Path</span> <span class="op">.</span>\skills\book-report-helper\SKILL<span class="op">.</span><span class="fu">md</span><span class="op">)</span> <span class="op">-and</span> <span class="op">(</span><span class="fu">Test-Path</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper\SKILL.md&quot;</span><span class="op">)</span> <span class="op">-and</span> <span class="op">((</span>Get-FileHash <span class="op">.</span>\skills\book-report-helper\SKILL<span class="op">.</span><span class="fu">md</span><span class="op">).</span><span class="fu">Hash</span> <span class="op">-eq</span> <span class="op">(</span>Get-FileHash <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper\SKILL.md&quot;</span><span class="op">).</span><span class="fu">Hash</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmp</span> ./skills/book-report-helper/SKILL.md ~/.claude/skills/book-report-helper/SKILL.md <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> OK</span></code></pre></div>
+<blockquote>
+<p><strong>확인 범위(2026-11-26)</strong>: 위 복사 명령은 Windows의
+PowerShell 5.1과 Git Bash에서 <strong>임시 폴더를 대상으로</strong>
+실행해 파일 위치를 확인했습니다. Mac · Linux에서의 실행과, 이 방법으로
+복사한 뒤 Claude Code가 인식하는지는 이때 다시 확인하지 않았습니다.</p>
+</blockquote>
+<p><strong>Step 2</strong>: Claude Code 실행</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
 <p><strong>Step 3</strong>: 슬래시 명령어로 사용</p>
 <pre><code>/book-report-helper &quot;어린 왕자&quot; &quot;어른도 아이 마음이 필요하다&quot;</code></pre>
 <p>또는 자연어:</p>
 <pre><code>독후감 도와줘. 책은 &quot;해리 포터&quot;, 느낀 점은 &quot;용기가 중요해&quot;</code></pre>
 <hr />
-<h2 id="실행-방법-플랫폼별-상세">6. 실행 방법 — 플랫폼별 상세</h2>
-<h3 id="claude.ai-앱-웹앱">Claude.ai 앱 (웹/앱)</h3>
+<h2 id="6-실행-방법--플랫폼별-상세">6. 실행 방법 — 플랫폼별 상세</h2>
+<h3 id="claudeai-앱-웹앱">Claude.ai 앱 (웹/앱)</h3>
 <p><strong>설치</strong>: 1. 로그인 → Customize → Skills → + Create
 skill 2. ZIP 파일 업로드 → 토글 ON</p>
 <p><strong>실행</strong>: - 자연어:
@@ -420,25 +457,34 @@ skill 2. ZIP 파일 업로드 → 토글 ON</p>
 <code>/book-report-helper "책제목" "느낀점"</code></p>
 <hr />
 <h3 id="claude-code-터미널">Claude Code (터미널)</h3>
-<p><strong>설치</strong>:</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skills 폴더 전체 복사</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 개별 스킬만 설치하려면</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span></code></pre></div>
+<p><strong>설치</strong> (<code>skills</code> 폴더가 보이는 위치에서, 내
+터미널에 맞는 한 묶음만 · 같은 이름의 스킬은 덮어씁니다):</p>
+<p><strong>Windows (PowerShell)</strong></p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+<p>개별 스킬만 설치하려면 마지막 줄의 <code>*</code>를 스킬 폴더
+이름(예: <code>book-report-helper</code>)으로 바꿉니다. <strong>폴더를
+만드는 첫 줄은 빼지 마세요.</strong> 폴더가 없는 상태에서 복사만 하면
+오류 없이 엉뚱한 위치(<code>skills\SKILL.md</code>)에 복사될 수
+있습니다.</p>
 <p><strong>실행</strong>:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div>
 <p>그 후 채팅에서:</p>
 <pre><code>/book-report-helper &quot;책 제목&quot; &quot;느낀 점&quot;</code></pre>
 <blockquote>
-<p>이 방법(폴더 복사)은 스킬이
-이름만으로(<code>/book-report-helper</code>) 등록됩니다. 다른 곳에서
-받은 같은 이름의 스킬이 있으면 겹칠 수 있습니다.</p>
+<p>이 방법(폴더 복사)은 스킬을
+이름만으로(<code>/book-report-helper</code>) 쓰는 방식입니다. 복사한 뒤
+새 대화에서 이 명령이 보이는지 확인하세요. 다른 곳에서 받은 같은 이름의
+스킬이 있으면 겹칠 수 있습니다.</p>
 </blockquote>
 <hr />
-<h3 id="claude-code-플러그인-정식-설치-sodam-prompt스킬명-형식">Claude
+<h3 id="claude-code--플러그인-정식-설치-sodam-prompt스킬명-형식">Claude
 Code — 플러그인 정식 설치 (<code>sodam-prompt:스킬명</code> 형식)</h3>
 <p><code>sodam-prompt:book-report-helper</code>처럼 <strong>저장소
 이름이 붙는 형식</strong>으로 안정적으로 쓰고 싶다면, 폴더 복사 대신
@@ -470,8 +516,9 @@ href="https://github.com/anthropics/claude-code/issues/41842">#41842</a>)이
 <pre><code>/plugin uninstall sodam-prompt@sodam-prompt-marketplace
 /plugin marketplace remove sodam-prompt-marketplace</code></pre>
 <p>터미널에서 직접 하려면:
-<code>claude plugin uninstall sodam-prompt --prune</code> (의존성까지
-함께 정리)</p>
+<code>claude plugin uninstall sodam-prompt@sodam-prompt-marketplace</code>
+(<code>--prune</code> 옵션은 더 이상 필요 없는 자동 설치 의존 항목까지
+지우므로 여기서는 쓰지 않습니다)</p>
 <p>깨끗하게 다시 설치하려면 위 제거 명령 2줄을 실행한 뒤, 설치 명령을
 처음부터 다시 실행하세요.</p>
 <blockquote>
@@ -486,13 +533,23 @@ href="https://github.com/anthropics/claude-code/issues/41842">#41842</a>)이
 </blockquote>
 <hr />
 <h3 id="codex">Codex</h3>
-<p><strong>설치</strong>:</p>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.codex/skills/</span></code></pre></div>
+<p><strong>설치</strong> (<code>skills</code> 폴더가 보이는 위치에서, 내
+터미널에 맞는 한 묶음만 · 같은 이름의 스킬은 덮어씁니다):</p>
+<p><strong>Windows (PowerShell)</strong></p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.codex\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.codex\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.codex/skills</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.codex/skills/</span></code></pre></div>
+<blockquote>
+<p>Codex에서의 설치와 실행은 아직 직접 확인하지 않았습니다.</p>
+</blockquote>
 <p><strong>실행</strong>:</p>
 <pre><code>$book-report-helper &quot;책 제목&quot; &quot;느낀 점&quot;</code></pre>
 <hr />
-<h3 id="cursor-gemini-cli-기타-ai-도구">Cursor · Gemini CLI · 기타 AI
+<h3 id="cursor--gemini-cli--기타-ai-도구">Cursor · Gemini CLI · 기타 AI
 도구</h3>
 <p>각 도구의 skills 폴더(또는 지시사항 폴더)에 원하는 스킬의
 <code>SKILL.md</code> 파일을 복사하세요.</p>
@@ -500,7 +557,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href=
 파일을 Cursor의 <code>.cursor/skills/</code> 폴더에 복사 2. Cursor
 채팅에서: <code>독후감 써줘</code></p>
 <hr />
-<h2 id="스킬별-사용-방법-10종-전부">7. 스킬별 사용 방법 (10종 전부)</h2>
+<h2 id="7-스킬별-사용-방법-10종-전부">7. 스킬별 사용 방법 (10종
+전부)</h2>
 <h3 id="스킬-1-독후감-도우미">스킬 1: 독후감-도우미</h3>
 <p><strong>언제 쓰나요?</strong> 책을 읽고 독후감을 써야 할 때</p>
 <p><strong>필요한 정보</strong>: - <code>$1</code>: 책 제목 -
@@ -593,8 +651,8 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href=
 <pre><code>/request-apology-message &quot;숙제 제출이 하루 늦었음&quot; &quot;선생님&quot;</code></pre>
 <p><strong>결과물</strong>: 정중한 버전 + 친근한 버전 2가지</p>
 <hr />
-<h2 id="명령어-전체-목록">8. 명령어 전체 목록</h2>
-<h3 id="claude-code-claude.ai-앱-슬래시-명령어">Claude Code / Claude.ai
+<h2 id="8-명령어-전체-목록">8. 명령어 전체 목록</h2>
+<h3 id="claude-code--claudeai-앱-슬래시-명령어">Claude Code / Claude.ai
 앱 슬래시 명령어</h3>
 <pre><code>/book-report-helper [책 제목] [느낀 점 한 줄]
 /polite-message [받는 사람] [용건 한 줄]
@@ -636,7 +694,8 @@ $skill-maker [만들고 싶은 스킬 설명]</code></pre>
 선생님께 결석 사유 메시지 써줘.
 이 긴 글 3줄로 요약해줘: [글 붙여넣기]</code></pre>
 <hr />
-<h2 id="워크플로우-내부-작동-흐름">9. 워크플로우 — 내부 작동 흐름</h2>
+<h2 id="9-워크플로우--내부-작동-흐름">9. 워크플로우 — 내부 작동
+흐름</h2>
 <pre><code>사용자 입력
     │
     ▼
@@ -668,7 +727,7 @@ AI 도구 (Claude / Codex 등)
 서버에서 이루어집니다 - 결과물은 채팅창에만 나타납니다 (자동 저장
 없음)</p>
 <hr />
-<h2 id="보안-데이터-흐름">10. 보안 · 데이터 흐름</h2>
+<h2 id="10-보안--데이터-흐름">10. 보안 · 데이터 흐름</h2>
 <h3 id="무엇이-ai-서버로-전송되나요">무엇이 AI 서버로 전송되나요?</h3>
 <table>
 <thead>
@@ -714,14 +773,14 @@ AI 도구 (Claude / Codex 등)
 <li>스킬 파일은 내 컴퓨터 로컬에만 저장</li>
 </ul>
 <hr />
-<h2 id="아키텍처-파일-구조">11. 아키텍처 — 파일 구조</h2>
+<h2 id="11-아키텍처--파일-구조">11. 아키텍처 — 파일 구조</h2>
 <pre><code>SoDam-Prompt-Eng/                       ← 저장소 루트
 │
 ├── .claude-plugin/                 ← Claude Code 플러그인 정식 등록(2026-07-13)
 │   ├── plugin.json                 ← 플러그인 메타데이터
 │   └── marketplace.json            ← 로컬 마켓플레이스 정의(본인 여러 기기 설치용)
 │
-├── skills/                         ← 스킬 10개 폴더 (2026-07-13부터 영문 폴더명)
+├── skills/                         ← 스킬 폴더 11개 (2026-07-13부터 영문 폴더명)
 │   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← 스킬 정의 파일 (자연어 자동매칭용)
 │   ├── polite-message/             ← 정중한-메시지
@@ -775,7 +834,7 @@ AI 도구 (Claude / Codex 등)
 ├── LICENSE                         ← Apache-2.0 라이선스
 ├── NOTICE                          ← 저작권 고지
 └── .gitignore                      ← git 제외 목록</code></pre>
-<h3 id="skill.md-파일-구조">SKILL.md 파일 구조</h3>
+<h3 id="skillmd-파일-구조">SKILL.md 파일 구조</h3>
 <pre><code>---
 name: book-report-helper            ← 스킬 이름(폴더명과 동일해야 함)
 description: 언제 사용하는지 설명     ← AI가 자동 선택할 때 읽는 부분
@@ -787,7 +846,7 @@ argument-hint: &quot;[책 제목] [느낀 점]&quot;   ← 입력 힌트 (값 �
 $1 = 첫 번째 입력값 (책 제목)
 $2 = 두 번째 입력값 (느낀 점)</code></pre>
 <hr />
-<h2 id="파일-문서-위치">12. 파일 · 문서 위치</h2>
+<h2 id="12-파일--문서-위치">12. 파일 · 문서 위치</h2>
 <h3 id="설치-후-스킬-파일-위치">설치 후 스킬 파일 위치</h3>
 <table>
 <thead>
@@ -894,8 +953,8 @@ $2 = 두 번째 입력값 (느낀 점)</code></pre>
 </tbody>
 </table>
 <hr />
-<h2 id="문제-오류-대처-방법">13. 문제 · 오류 대처 방법</h2>
-<h3 id="q1.-슬래시-명령어-book-report-helper-가-나타나지-않아요">Q1.
+<h2 id="13-문제--오류-대처-방법">13. 문제 · 오류 대처 방법</h2>
+<h3 id="q1-슬래시-명령어-book-report-helper-가-나타나지-않아요">Q1.
 슬래시 명령어 <code>/book-report-helper</code> 가 나타나지 않아요</h3>
 <p><strong>원인</strong>: 스킬 파일이 올바른 위치에 없거나 Claude Code를
 재시작해야 함</p>
@@ -903,15 +962,17 @@ $2 = 두 번째 입력값 (느낀 점)</code></pre>
 <code>bash    ls ~/.claude/skills/</code>
 <code>book-report-helper</code> 폴더가 보여야 합니다.</p>
 <ol start="2" type="1">
-<li><p>없으면 다시 복사:</p>
-<div class="sourceCode" id="cb35"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div></li>
+<li><p>한 스킬만 없으면 <a href="#14-faq--자주-묻는-질문">14장 FAQ</a>의
+<strong>스킬 1개 설치</strong> 명령을, 전부 없으면 <a
+href="#claude-code에서-시작하기">5장 Step 1</a>의 명령을 씁니다 (폴더를
+만드는 첫 줄까지 함께). 전체 복사는 같은 이름의 스킬을 모두
+덮어씁니다.</p></li>
 <li><p>Claude Code 종료 후 재시작:</p>
-<div class="sourceCode" id="cb36"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
 </ol>
 <hr />
-<h3 id="q2.-자연어로-말했는데-스킬을-안-쓰고-일반-답변만-해요">Q2.
+<h3 id="q2-자연어로-말했는데-스킬을-안-쓰고-일반-답변만-해요">Q2.
 자연어로 말했는데 스킬을 안 쓰고 일반 답변만 해요</h3>
 <p><strong>원인</strong>: 자연어 매칭은 AI가 상황을 판단합니다. 더
 구체적으로 말하면 됩니다.</p>
@@ -920,7 +981,7 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href=
 <p>또는 슬래시 명령어를 직접 쓰세요:</p>
 <pre><code>/book-report-helper &quot;어린 왕자&quot; &quot;어른도 아이 마음이 필요해&quot;</code></pre>
 <hr />
-<h3 id="q3.-claude.ai-앱에서-zip-업로드가-안-돼요">Q3. Claude.ai 앱에서
+<h3 id="q3-claudeai-앱에서-zip-업로드가-안-돼요">Q3. Claude.ai 앱에서
 ZIP 업로드가 안 돼요</h3>
 <p><strong>원인</strong>: 파일 형식 또는 크기 문제</p>
 <p><strong>해결</strong>: 1. ZIP 파일이 올바르게 압축되었는지 확인 2.
@@ -930,7 +991,7 @@ ZIP 업로드가 안 돼요</h3>
 참고) 3. 브라우저 새로고침 후 재시도 4. 다른 브라우저(크롬→엣지)
 시도</p>
 <hr />
-<h3 id="q4.-결과가-이상해요-기대와-달라요">Q4. 결과가 이상해요 / 기대와
+<h3 id="q4-결과가-이상해요--기대와-달라요">Q4. 결과가 이상해요 / 기대와
 달라요</h3>
 <p><strong>원인</strong>: AI 결과물은 매번 조금씩 달라질 수
 있습니다.</p>
@@ -939,38 +1000,49 @@ ZIP 업로드가 안 돼요</h3>
 쉽게 써줘” 요청 3. 같은 스킬을 다시 실행하면 다른 버전이 나올 수
 있습니다</p>
 <hr />
-<h3 id="q5.-cp-no-such-file-오류가-나요">Q5.
-<code>cp: no such file</code> 오류가 나요</h3>
-<p><strong>원인</strong>: 경로가 틀렸거나 <code>.claude/skills</code>
-폴더가 없음</p>
-<p><strong>해결</strong>:</p>
-<div class="sourceCode" id="cb39"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 폴더 먼저 만들기</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 다시 복사</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.claude/skills/</span></code></pre></div>
+<h3
+id="q5-cp-no-such-file--is-not-a-directory-오류가-나거나-복사했는데-스킬이-안-보여요">Q5.
+<code>cp: no such file</code> · <code>is not a directory</code> 오류가
+나거나, 복사했는데 스킬이 안 보여요</h3>
+<p><strong>원인</strong>: ① <code>skills</code> 폴더가 보이지 않는
+위치에서 명령을 실행했거나 ② 대상 폴더(<code>.claude/skills</code>)를
+만들지 않고 복사한 경우입니다. ②는 <strong>오류 없이 끝나도</strong>
+파일이 잘못된 위치에 놓일 수 있습니다.</p>
+<p><strong>해결</strong>: <a href="#4-다운로드-방법">4장</a>대로 터미널
+위치를 맞춘 뒤, <a href="#claude-code에서-시작하기">5장 Step 1</a>의 두
+줄을 순서대로 다시 실행합니다.</p>
+<p><strong>잘못 복사된 흔적 확인</strong>: 정상 위치는
+<code>.claude/skills/스킬이름/SKILL.md</code>입니다.
+<code>.claude/skills</code> <strong>바로 아래</strong>에
+<code>SKILL.md</code> 파일이 있다면 이전의 복사가 잘못된 것일 수
+있습니다. 내용이 이 저장소의 스킬과 같아 보여도 그것만으로 잘못 복사된
+파일이라고 단정할 수는 없습니다. <strong>지우지 말고
+<code>.claude</code> 밖의 다른 폴더로 옮겨 둔 뒤</strong> 설치를 다시
+확인하세요.</p>
 <hr />
-<h3 id="q6.-windows에서-cp-명령어가-안-돼요">Q6. Windows에서
-<code>cp</code> 명령어가 안 돼요</h3>
-<p><strong>원인</strong>: Windows 기본 터미널(PowerShell/CMD)은
-<code>cp</code> 대신 <code>Copy-Item</code> 사용</p>
-<p><strong>해결 (PowerShell)</strong>:</p>
-<div class="sourceCode" id="cb40"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">.</span>\skills\<span class="op">*</span> <span class="va">$env</span><span class="op">:</span><span class="va">USERPROFILE</span>\<span class="op">.</span><span class="fu">claude</span>\skills\</span></code></pre></div>
+<h3 id="q6-windows에서-설치-명령이-안-돼요">Q6. Windows에서 설치 명령이
+안 돼요</h3>
+<p><strong>원인</strong>: 명령 프롬프트(<code>cmd</code>)에서는 위
+명령이 동작하지 않습니다. 또 bash용 명령에 <code>C:\...</code> 같은
+Windows 경로를 넣으면 <code>\</code>가 사라져 경로가 깨집니다.</p>
+<p><strong>해결</strong>: <strong>PowerShell</strong>에서
+실행합니다.</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
 <p>또는 파일 탐색기에서 직접 복사: 1. <code>skills</code> 폴더 안의 모든
 폴더 선택 → Ctrl+C 2. <code>C:\Users\사용자명\.claude\skills\</code>
-폴더 열기 → Ctrl+V</p>
+폴더 열기(<code>skills</code> 폴더가 없으면 새로 만들기) → Ctrl+V</p>
 <hr />
-<h3 id="q7.-한글-폴더명이-깨져요">Q7. 한글 폴더명이 깨져요</h3>
+<h3 id="q7-한글-폴더명이-깨져요">Q7. 한글 폴더명이 깨져요</h3>
 <p><strong>원인</strong>: 터미널 인코딩 문제</p>
 <p><strong>해결</strong>:</p>
-<div class="sourceCode" id="cb41"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UTF-8 설정 확인</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD 기준</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># UTF-8 설정 확인</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD 기준</span></span></code></pre></div>
 <p>또는 파일 탐색기를 사용해 직접 폴더를 복사하세요.</p>
 <hr />
-<h2 id="faq-자주-묻는-질문">14. FAQ — 자주 묻는 질문</h2>
+<h2 id="14-faq--자주-묻는-질문">14. FAQ — 자주 묻는 질문</h2>
 <p><strong>Q: 무료로 쓸 수 있나요?</strong> A: 이 스킬 파일 자체는
 무료(Apache-2.0)입니다. AI 사용 요금은 Claude·OpenAI 등 가입한 서비스의
 요금제를 따릅니다. Claude 무료 플랜으로도 사용 가능합니다.</p>
@@ -984,10 +1056,23 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href=
 컴퓨터에서 하는 것이 편합니다.</p>
 <hr />
 <p><strong>Q: 10개 중 일부만 설치할 수 있나요?</strong> A: 네. 원하는
-스킬 폴더만 골라서 복사하면 됩니다:</p>
-<div class="sourceCode" id="cb42"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/polite-message ~/.claude/skills/</span></code></pre></div>
+스킬 폴더만 골라서 복사하면 됩니다. <strong><code>skills</code> 폴더가
+보이는 위치</strong>(<a href="#4-다운로드-방법">4장</a>)에서
+실행하세요.</p>
+<blockquote>
+<p>⚠️ 같은 이름의 스킬이 이미 있으면 덮어씁니다. 직접 고친 스킬은 먼저
+다른 곳에 복사해 두세요.</p>
+</blockquote>
+<p><strong>Windows (PowerShell)</strong></p>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\book-report-helper <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span></code></pre></div>
+<p>다른 스킬은 <code>book-report-helper</code> 자리에 폴더 이름을 바꿔
+마지막 줄만 한 번 더 실행합니다.</p>
 <hr />
 <p><strong>Q: 새 스킬을 직접 만들 수 있나요?</strong> A: 네.
 <code>skills/</code> 폴더에 새 폴더를 만들고 <code>SKILL.md</code>
@@ -1002,14 +1087,23 @@ class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href=
 이 스킬 파일 자체는 데이터를 수집하지 않습니다. AI 서비스의 학습 데이터
 사용 정책은 각 서비스(Anthropic, OpenAI 등)의 정책에 따릅니다.</p>
 <hr />
-<p><strong>Q: Windows · Mac · Linux 모두 되나요?</strong> A: 네.
-SKILL.md 파일은 텍스트 파일이므로 운영체제 무관합니다. 설치 명령어만
-OS에 맞게 쓰면 됩니다.</p>
+<p><strong>Q: Windows · Mac · Linux 모두 되나요?</strong> A: SKILL.md는
+텍스트 파일이라 파일 자체는 운영체제와 상관없습니다. 다만 <strong>설치
+복사 명령을 직접 시험한 환경은 Windows(PowerShell 5.1·Git Bash)의 임시
+폴더뿐</strong>이며, Mac·Linux에서는 확인하지 않았습니다.</p>
 <hr />
-<p><strong>Q: 스킬을 삭제하고 싶어요</strong> A: 설치한 폴더를 지우면
-됩니다:</p>
-<div class="sourceCode" id="cb43"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
+<p><strong>Q: 스킬을 삭제하고 싶어요</strong> A: 설치한 <strong>그 스킬
+폴더만</strong> 지우면 됩니다. 직접 고친 내용도 함께 지워지고 휴지통으로
+가지 않으니, 폴더 이름과 내용을 먼저 확인하세요. 아래는 <strong>Claude
+Code</strong> 기준이며, Codex에 설치했다면 <code>.claude</code>를
+<code>.codex</code>로 바꿉니다. 대상 폴더가 없으면 오류가
+표시됩니다.</p>
+<p>Windows (PowerShell):</p>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Remove-Item</span> <span class="op">-</span>Recurse <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper&quot;</span></span></code></pre></div>
+<p>Mac · Linux · Git Bash:</p>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
 <p>Claude.ai 앱: Customize → Skills → 해당 스킬 → 삭제</p>
 <hr />
 <p><strong>Q: 업데이트가 있으면 어떻게 알아요?</strong> A: GitHub
@@ -1025,8 +1119,8 @@ Issues 탭에서 새 이슈를 열어주세요. 한국어로 작성해도 됩니
 결과는 한국어로 나올 수 있습니다. 다국어 버전은 별도 스킬로 만들어야
 합니다.</p>
 <hr />
-<h2 id="법률-저작권-라이선스-상업적-용도">15. 법률 · 저작권 · 라이선스 ·
-상업적 용도</h2>
+<h2 id="15-법률--저작권--라이선스--상업적-용도">15. 법률 · 저작권 ·
+라이선스 · 상업적 용도</h2>
 <h3 id="라이선스-요약">라이선스 요약</h3>
 <p>이 저장소의 모든 스킬 파일 및 문서는 <strong>Apache License
 2.0</strong> 으로 배포됩니다.</p>
@@ -1189,7 +1283,7 @@ AI 서비스(Claude, Codex 등)에 입력한 데이터는 해당 서비스의 �
 <li>실제 출력 모더레이션은 AI 서비스(Claude, Codex)가 처리</li>
 </ul>
 <hr />
-<h2 id="연락처-저작권-고지">16. 연락처 · 저작권 고지</h2>
+<h2 id="16-연락처--저작권-고지">16. 연락처 · 저작권 고지</h2>
 <pre><code>Copyright 2026 SoDam AI Studio
 
 Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -1206,13 +1300,18 @@ limitations under the License.</code></pre>
 <p>새 스킬을 추가하고 싶다면 <a
 href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 <hr />
-<h2 id="업데이트-내역">17. 업데이트 내역</h2>
+<h2 id="17-업데이트-내역">17. 업데이트 내역</h2>
 <details open>
 <summary>
 <strong>2026-11-26 — 공개(PUBLIC) 상태 정정 + 스킬 파일 형식 오류 수정
 (클릭해서 펼치기)</strong>
 </summary>
 <ul>
+<li><strong>설치 명령 수정</strong>: 대상 폴더가 없는 PC에서 기존 복사
+명령이 실패하거나, 오류 없이 엉뚱한 위치에 복사되는 문제를 임시 폴더
+시험으로 확인해, 폴더를 먼저 만드는 PowerShell·bash 명령으로 바꾸고
+터미널을 여는 위치 안내와 덮어쓰기·삭제 주의를 추가했습니다. Mac·Linux
+실행은 확인하지 않았습니다.</li>
 <li>문서 곳곳에 “PRIVATE”로 적혀 있던 안내를 GitHub 실측 결과(PUBLIC)에
 맞게 정정했습니다(이 README·<code>CONTRIBUTING.md</code>). 법률 미해결
 사안(15번)도 “공개 중인 미해결 사안”으로 고지를 갱신했습니다.</li>
