@@ -36,3 +36,5 @@
 [2026-11-26T06:08] claude MILESTONE_DONE CHECKPOINT를 .PRD/로 확정·참조 정리, plugin.json/marketplace.json 설명에 skill-maker 반영 + 버전 0.2.0, README.html/README_EN.html 본문 재생성(head 보존)
 [2026-11-26T09:20] claude DECISION 사용자 위임("추천한 작업 순서대로 진행") — README 상단 "동일하게 작동" 단정을 실측 기록(Claude Code 07-17·07-18, Claude.ai 앱 07-15 본인 1회, 나머지 미확인)에 맞게 정정하고 2장에 도구별 확인 현황 표 추가
 [2026-11-26T09:20] claude MILESTONE_DONE PRD 02(구조도·스킬 11개)·06(현재 상태 메모)·04(40+ 도구 호환 주석) 동기화, CHECKPOINT 10차 갱신(전체 이력 74커밋 수동 시크릿 스캔 0건, promptfoo 미실행, 설치본 0.2.0 정정) — 스킬·코드 변경 없음
+[2026-11-26T16:00] claude DECISION 사용자 위임("추천한 순서대로 진행") — Claude 앱 설정 화면은 AI 브라우저 자동화가 차단돼 ZIP 설치 시험은 미실행(우회 안 함), 결과와 무관한 문서 정정·평가 검사 보강을 진행
+[2026-11-26T16:00] claude MILESTONE_DONE PRD 01·03·04·05와 README(한/영)의 실행 기록 없는 '완료/확인됨' 정정, PROMPTFOO 가이드 갱신, promptfooconfig 형식 검사 보강(API 호출 0회, 검사식 모의 시험만), CHECKPOINT 11차 갱신 — skills/·commands/·.claude-plugin/ 변경 없음

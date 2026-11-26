@@ -2,12 +2,17 @@
 # 2026-07-15 사용자 결정: "CI 자동화는 보류, 로컬에서만 수동 실행" — 04_PROJECT_SPEC.md의
 # NFR-비용1(운영 비용 $0)·NFR-키1(AI 키 관리 없음) 원칙을 지키기 위함.
 #
-# 실행 방법(로컬에서 본인 키로만):
+# 실행 방법(로컬에서 본인 키로만) — 키 입력 방법은 PROMPTFOO_로컬_가이드.md 참조:
 #   1) ANTHROPIC_API_KEY 환경변수를 본인 셸에만 설정(절대 이 저장소에 커밋하지 않음)
 #   2) npx promptfoo eval
 #   3) npx promptfoo view   (결과를 브라우저로 확인)
 #
 # 이 파일은 CI 워크플로우(.github/workflows/)를 포함하지 않는다 — 의도적.
+#
+# 검사 범위(2026-11-26 보강): 각 SKILL.md "## 규칙"에 적힌 것 중 기계로 분명히 판별되는
+# 출력 "형식"만 본다. 글의 품질·말투·사실 여부는 판별하지 못한다 — 전부 통과해도
+# 품질이 검증된 것은 아니다. 띄어쓰기·굵은 글씨 같은 차이로는 실패하지 않게 느슨하게 둔다.
+# javascript 값은 한 줄 식(결과 true/false)만 쓴다 — 여러 줄이면 return이 필요하다.
 
 prompts:
   - file://promptfoo-skill-prompt.js
@@ -26,18 +31,27 @@ defaultTest:
       value: "주민등록번호"
 
 tests:
+  # 규칙: 3문단, 책 제목은 「」 표기, 이모지 없음. (40자 미만 줄은 제목 줄로 보고 문단에서 제외)
   - description: book-report-helper
     vars: { skill: book-report-helper, arg1: "어린 왕자", arg2: "감동적이었어" }
     assert:
-      - type: icontains
-        value: "어린 왕자"
+      - type: contains
+        value: "「어린 왕자」"
+      - type: javascript
+        value: 'output.split(/\n+/).filter(l => l.trim().length >= 40).length === 3'
+      - type: javascript
+        value: '!/\p{Extended_Pictographic}/u.test(output)'
 
+  # 규칙: 이모지 없음.
   - description: polite-message
     vars: { skill: polite-message, arg1: "팀장님", arg2: "다음 주 월차 신청" }
     assert:
       - type: icontains
         value: "월차"
+      - type: javascript
+        value: '!/\p{Extended_Pictographic}/u.test(output)'
 
+  # 규칙: 각 줄 •로 시작, 3줄(핵심이 모자라면 1~2줄 허용). •가 0줄이면 실패.
   - description: long-text-summary
     vars:
       skill: long-text-summary
@@ -47,49 +61,76 @@ tests:
         다양한 분야에 활용되고 있으며, 앞으로도 그 영향력은 계속 커질 것으로 보인다.
     assert:
       - type: javascript
-        value: "output.split('\\n').filter(l => l.trim().startsWith('•')).length <= 3"
+        value: '[1, 2, 3].includes(output.split("\n").filter(l => l.trim().startsWith("•")).length)'
 
+  # 규칙: 일상 비유로 시작.
   - description: explain-simply
     vars: { skill: explain-simply, arg1: "인공지능", arg2: "초등학생" }
     assert:
-      - type: not-empty
+      - type: javascript
+        value: '/(마치|처럼|같아|같은|비슷)/.test(output)'
 
+  # 규칙: 표(요일 | 할 일 | 예상 시간), 주 1회 이상 복습.
   - description: study-planner
     vars: { skill: study-planner, arg1: "수학 중간고사", arg2: "2주" }
     assert:
       - type: icontains
         value: "수학"
+      - type: icontains
+        value: "복습"
+      - type: javascript
+        value: 'output.split("\n").filter(l => l.trim().startsWith("|")).length >= 3'
+      - type: javascript
+        value: '/요일/.test(output) && /할\s*일/.test(output) && /예상\s*시간/.test(output)'
 
+  # 규칙: 3~4문장. (문장 수 세기의 오차를 고려해 5까지 허용)
   - description: self-intro-polish
     vars: { skill: self-intro-polish, arg1: "책 읽는 걸 좋아하고 꾸준함", arg2: "동아리 지원" }
     assert:
-      - type: not-empty
+      - type: javascript
+        value: '[3, 4, 5].includes(output.trim().split(/[.!?]+(?:\s+|$)/).filter(s => s.trim()).length)'
 
+  # 규칙: 짧은 버전 + 긴 버전, 해시태그 5개. (버전마다 따로 달 수 있어 서로 다른 태그 5~10개 허용)
   - description: sns-caption
     vars: { skill: sns-caption, arg1: "한강 피크닉", arg2: "따뜻한" }
     assert:
-      - type: icontains
-        value: "#"
+      - type: javascript
+        value: '/짧은\s*버전/.test(output) && /긴\s*버전/.test(output)'
+      - type: javascript
+        value: '(n => n >= 5 && n <= 10)(new Set(output.match(/#[^\s#*]+/g) || []).size)'
 
+  # 규칙: 영어 문장 + 한국어 설명.
   - description: natural-english
     vars: { skill: natural-english, arg1: "이 문제 진짜 어렵다" }
     assert:
-      - type: not-empty
+      - type: javascript
+        value: '/[A-Za-z]+(?:[\x27’-][A-Za-z]+)?(?:[ ,]+[A-Za-z]+(?:[\x27’-][A-Za-z]+)?){2,}/.test(output)'
+      - type: javascript
+        value: '/[가-힣]/.test(output)'
 
+  # 규칙: 도입-본론-마무리, [ ] 안에 행동 힌트.
   - description: presentation-script
     vars: { skill: presentation-script, arg1: "기후변화", arg2: "5분" }
     assert:
-      - type: not-empty
+      - type: contains-all
+        value:
+          - "도입"
+          - "본론"
+          - "마무리"
+      - type: javascript
+        value: '(output.match(/\[[^\]\n]+\]/g) || []).some(h => !/도입|본론|마무리/.test(h))'
 
+  # 규칙: 정중한 버전 + 친근한 버전.
   - description: request-apology-message
     vars: { skill: request-apology-message, arg1: "과제를 늦게 제출하게 됨", arg2: "선생님" }
     assert:
-      - type: not-empty
+      - type: javascript
+        value: '/정중한\s*버전/.test(output) && /친근한\s*버전/.test(output)'
 
-  # skill-maker는 다른 9개와 달리 고정된 글쓰기 결과물이 아니라 "새 스킬 설계"를 대화로
-  # 안내하는 메타 스킬이라, 특정 키워드 포함 여부로는 검증하기 어렵다. 최소한 결과가
-  # 비어있지 않은지(모델이 실제로 응답을 만들어내는지)만 확인한다.
+  # skill-maker는 다른 10개와 달리 "새 스킬 설계"를 대화로 안내하는 메타 스킬이다.
+  # 규칙상 정상 응답은 두 가지뿐: 되묻기(질문) 또는 완성된 스킬 파일(frontmatter 포함).
   - description: skill-maker
     vars: { skill: skill-maker, arg1: "방 청소 계획 세워주는 스킬 만들고 싶어" }
     assert:
-      - type: not-empty
+      - type: javascript
+        value: '(/description\s*:/.test(output) && /argument-hint\s*:/.test(output)) || /\?/.test(output)'

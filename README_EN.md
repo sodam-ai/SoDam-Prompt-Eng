@@ -179,6 +179,8 @@ cd SoDam-Prompt-Eng
 
 **Step 3**: Compress the extracted folder or just the `skills` folder as a ZIP → upload it
 
+> ⚠️ **ZIP installation is still being checked (2026-11-26)**: we have not run this ZIP upload ourselves. Anthropic's official help article describes a ZIP with **one skill folder** at its top level. If the upload fails, try compressing a single folder inside `skills` (for example `book-report-helper`) — we have not verified this either. The same help article says **Code execution** must be enabled in your Claude settings.
+
 **Step 4**: Toggle the skill to **ON** (blue)
 
 **Step 5**: In the chat window, type naturally:
@@ -769,7 +771,7 @@ Or use the slash command directly:
 
 **Solution**:
 1. Confirm the ZIP was compressed correctly
-2. Try compressing only the `skills` folder, or download the full repository ZIP and upload
+2. Try compressing **one** skill folder inside `skills` (for example `book-report-helper`) and upload it — this is the shape described in the official help article (not yet verified by us; see the note in Section 5)
 3. Refresh your browser and try again
 4. Try a different browser (Chrome → Edge)
 
@@ -1029,6 +1031,8 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 - Wrapped the `argument-hint` value of all 11 skills in double quotes so the frontmatter is valid YAML. Before the fix, `sns-caption` and others failed to parse as YAML, and `skill-maker`'s hint was read as a list instead of a string (measured with js-yaml). The `skill-maker` instructions and the doc examples now use the same form, and `scripts/verify-skills.mjs` gained a quoting check so the same error fails verification if it comes back.
 - Added `skill-maker` to the plugin description and bumped the version `0.1.0` → `0.2.0` (with an unchanged version, an installed copy may not recognize the update).
 - Corrected the top-of-page claim that it "works the same on every tool". Only Claude Code has a detailed verification record, so section 2 now has a per-tool status table (other tools are marked "not verified").
+- Marked the ZIP installation steps (section 5 and Q3) as still being checked. We have never run the ZIP upload ourselves, and the official help article describes a ZIP with one skill folder at its top level.
+- Tightened the local `promptfoo` checks. With the previous config, a sample refusal answer passed 7 of 11 tests; the new config rejects it in all 11 (only the check expressions were exercised, with no API calls — **no real evaluation has been run yet**). The guide now includes PowerShell steps and a hidden-input way to enter the key.
 
 </details>
 
