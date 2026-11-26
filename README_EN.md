@@ -151,6 +151,10 @@ Install the Codex CLI from the official Codex site. (Codex account required)
 3. Extract the ZIP to any folder on your computer
 4. A folder named `SoDam-Prompt-Eng-main` will be created
 
+> **Installing into Claude Code or Codex? Where you open the terminal matters.** Run the install commands from the **folder where you can see `skills` directly**. (After extracting, `SoDam-Prompt-Eng-main` may contain another folder with the same name.)
+> - **Windows**: open that folder in File Explorer, type `powershell` in the address bar and press Enter (PowerShell, not `cmd`)
+> - **Mac · Linux**: type `cd ` (with a trailing space) in the terminal, drag the folder onto it, press Enter. If dragging does not work, type the path in quotes, for example `cd "/Users/name/Downloads/SoDam-Prompt-Eng-main"`
+
 **Method 2: git clone (if git is installed)**
 
 In your terminal:
@@ -194,17 +198,31 @@ AI will automatically use the `book-report-helper` (독후감-도우미) skill a
 
 ### Quick Start with Claude Code
 
-**Step 1**: Copy skill files
+**Step 1**: Copy skill files — open a terminal where the `skills` folder is visible (see [Section 4](#4-download-instructions)), then run **only the block for your terminal**.
 
-```bash
-# Windows (from your Downloads folder)
-cp -r C:\Users\YourName\Downloads\SoDam-Prompt-Eng\skills\* ~/.claude/skills/
+> ⚠️ **Skills with the same name are overwritten.** If you edited an installed skill, copy it somewhere else first.
+
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.claude\skills\"
 ```
 
-Mac/Linux:
+**Mac · Linux · Git Bash**
 ```bash
-cp -r ~/Downloads/SoDam-Prompt-Eng/skills/* ~/.claude/skills/
+mkdir -p ~/.claude/skills
+cp -r ./skills/* ~/.claude/skills/
 ```
+
+**Check the copy** — first make sure the copy showed no error, then run this **from the same folder (where `skills` is visible)**. PowerShell prints `True` and bash prints `OK` only when the installed file matches the source. (It compares one sample skill.) Whether your AI tool detects the skill is checked separately in Steps 2 and 3.
+```powershell
+(Test-Path .\skills\book-report-helper\SKILL.md) -and (Test-Path "$HOME\.claude\skills\book-report-helper\SKILL.md") -and ((Get-FileHash .\skills\book-report-helper\SKILL.md).Hash -eq (Get-FileHash "$HOME\.claude\skills\book-report-helper\SKILL.md").Hash)
+```
+```bash
+cmp ./skills/book-report-helper/SKILL.md ~/.claude/skills/book-report-helper/SKILL.md && echo OK
+```
+
+> **What was checked (2026-11-26)**: these copy commands were run on Windows (PowerShell 5.1 and Git Bash) **against temporary folders**, and the file locations were checked. They were not run on Mac or Linux, and we did not re-check that Claude Code detects skills copied this way.
 
 **Step 2**: Launch Claude Code
 
@@ -241,14 +259,21 @@ Help me write a book report. The book is "Harry Potter" and I felt that courage 
 
 ### Claude Code (Terminal)
 
-**Install**:
-```bash
-# Copy entire skills folder
-cp -r ./skills/* ~/.claude/skills/
+**Install** (from where `skills` is visible; run only the block for your terminal; same-named skills are overwritten):
 
-# To install individual skills only
-cp -r ./skills/book-report-helper ~/.claude/skills/
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.claude\skills\"
 ```
+
+**Mac · Linux · Git Bash**
+```bash
+mkdir -p ~/.claude/skills
+cp -r ./skills/* ~/.claude/skills/
+```
+
+To install a single skill, replace `*` in the last line with the folder name (for example `book-report-helper`). **Do not skip the first line that creates the folder.** Copying into a missing folder can finish without an error and still put the file in the wrong place (`skills\SKILL.md`).
 
 **Run**:
 ```bash
@@ -259,7 +284,7 @@ Then in chat:
 /book-report-helper "Book Title" "Impression"
 ```
 
-> This method (folder copy) registers skills by name only (`/book-report-helper`). It may collide with a same-named skill from another source.
+> With this method (folder copy) skills are used by name only (`/book-report-helper`). After copying, check in a new session that the command appears. It may collide with a same-named skill from another source.
 
 ---
 
@@ -288,7 +313,7 @@ After installing this way, both slash commands (`/sodam-prompt:book-report-helpe
 /plugin uninstall sodam-prompt@sodam-prompt-marketplace
 /plugin marketplace remove sodam-prompt-marketplace
 ```
-From the terminal directly: `claude plugin uninstall sodam-prompt --prune` (also cleans up dependencies)
+From the terminal directly: `claude plugin uninstall sodam-prompt@sodam-prompt-marketplace` (we leave out `--prune`, which also removes auto-installed dependencies that are no longer needed)
 
 To do a clean reinstall, run the two uninstall commands above, then run the install commands again from scratch.
 
@@ -298,10 +323,21 @@ To do a clean reinstall, run the two uninstall commands above, then run the inst
 
 ### Codex
 
-**Install**:
+**Install** (from where `skills` is visible; run only the block for your terminal; same-named skills are overwritten):
+
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.codex\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.codex\skills\"
+```
+
+**Mac · Linux · Git Bash**
 ```bash
+mkdir -p ~/.codex/skills
 cp -r ./skills/* ~/.codex/skills/
 ```
+
+> We have not verified installing or running these skills in Codex ourselves.
 
 **Run**:
 ```
@@ -618,7 +654,7 @@ SoDam-Prompt-Eng/                       ← Repository root
 │   ├── plugin.json                 ← Plugin metadata
 │   └── marketplace.json            ← Local marketplace definition (for installing on your own devices)
 │
-├── skills/                         ← 10 skill folders (English slugs since 2026-07-13)
+├── skills/                         ← 11 skill folders (English slugs since 2026-07-13)
 │   ├── book-report-helper/         ← 독후감-도우미
 │   │   └── SKILL.md               ← Skill definition file (used for natural-language auto-matching)
 │   ├── polite-message/             ← 정중한-메시지
@@ -737,10 +773,7 @@ $2 = Second input value (impression)
    ```
    You should see a `book-report-helper` folder.
 
-2. If missing, copy again:
-   ```bash
-   cp -r ./skills/* ~/.claude/skills/
-   ```
+2. If only one skill is missing, use the **single-skill** commands in the [FAQ](#14-faq); if all are missing, use [Section 5, Step 1](#quick-start-with-claude-code) (include the line that creates the folder). A full copy overwrites every same-named skill.
 
 3. Close and restart Claude Code:
    ```bash
@@ -788,33 +821,29 @@ Or use the slash command directly:
 
 ---
 
-### Q5. I get a `cp: no such file` error
+### Q5. I get `cp: no such file` or `is not a directory`, or I copied but the skill is missing
 
-**Cause**: Incorrect path or `.claude/skills` folder doesn't exist
+**Cause**: (1) the command ran from a place where `skills` is not visible, or (2) the target folder (`.claude/skills`) was not created before copying. Case (2) can finish **without any error** and still put files in the wrong place.
 
-**Solution**:
-```bash
-# Create the folder first
-mkdir -p ~/.claude/skills
+**Solution**: open the terminal in the right folder ([Section 4](#4-download-instructions)), then run both lines in [Section 5, Step 1](#quick-start-with-claude-code) in order.
 
-# Copy again
-cp -r ./skills/* ~/.claude/skills/
-```
+**Look for a bad copy**: the correct location is `.claude/skills/skill-name/SKILL.md`. A `SKILL.md` file **directly inside** `.claude/skills` may be left over from a bad copy. Even if its content matches a skill from this repository, that alone does not prove it was misplaced. **Do not delete it; move it to a folder outside `.claude`** and check the installation again.
 
 ---
 
-### Q6. `cp` command doesn't work on Windows
+### Q6. The install commands don't work on Windows
 
-**Cause**: Windows (PowerShell/CMD) uses `Copy-Item` instead of `cp`
+**Cause**: they do not work in Command Prompt (`cmd`). Also, putting a Windows path such as `C:\...` into a bash command breaks it, because bash removes the `\`.
 
-**Solution (PowerShell)**:
+**Solution**: use **PowerShell**.
 ```powershell
-Copy-Item -Recurse .\skills\* $env:USERPROFILE\.claude\skills\
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\* "$HOME\.claude\skills\"
 ```
 
 Or copy directly in File Explorer:
 1. Select all folders inside the `skills` folder → Ctrl+C
-2. Open `C:\Users\YourName\.claude\skills\` → Ctrl+V
+2. Open `C:\Users\YourName\.claude\skills\` (create the `skills` folder if it is missing) → Ctrl+V
 
 ---
 
@@ -849,11 +878,23 @@ A: The Claude.ai web app works on smartphone browsers. However, uploading skills
 ---
 
 **Q: Can I install only some of the 10 skills?**
-A: Yes. Copy only the skill folders you want:
-```bash
-cp -r ./skills/book-report-helper ~/.claude/skills/
-cp -r ./skills/polite-message ~/.claude/skills/
+A: Yes. Copy only the skill folders you want, from **where the `skills` folder is visible** ([Section 4](#4-download-instructions)).
+
+> ⚠️ A skill with the same name is overwritten. Copy any skill you edited somewhere else first.
+
+**Windows (PowerShell)**
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force .\skills\book-report-helper "$HOME\.claude\skills\"
 ```
+
+**Mac · Linux · Git Bash**
+```bash
+mkdir -p ~/.claude/skills
+cp -r ./skills/book-report-helper ~/.claude/skills/
+```
+
+For another skill, change `book-report-helper` to its folder name and run the last line again.
 
 ---
 
@@ -873,14 +914,20 @@ A: The skill files themselves do not collect any data. AI training data usage po
 ---
 
 **Q: Does it work on Windows, Mac, and Linux?**
-A: Yes. SKILL.md files are plain text, so they work on any operating system. Just use the appropriate installation command for your OS.
+A: SKILL.md files are plain text, so the files themselves do not depend on the operating system. However, **the install copy commands were only tested on Windows (PowerShell 5.1 and Git Bash) with temporary folders**; they have not been checked on Mac or Linux.
 
 ---
 
 **Q: How do I remove a skill?**
-A: Delete the installed folder:
+A: Delete **only that skill's folder**. Your own edits are deleted too and do not go to the recycle bin, so check the folder name and contents first. The commands below are for **Claude Code**; for Codex, change `.claude` to `.codex`. If the folder does not exist, you will see an error.
+
+Windows (PowerShell):
+```powershell
+Remove-Item -Recurse "$HOME\.claude\skills\book-report-helper"
+```
+Mac · Linux · Git Bash:
 ```bash
-rm -rf ~/.claude/skills/book-report-helper
+rm -r ~/.claude/skills/book-report-helper
 ```
 Claude.ai App: Customize → Skills → select skill → Delete
 
@@ -1027,6 +1074,7 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 <details open>
 <summary><strong>2026-11-26 — Corrected the PUBLIC status + fixed a skill-file format error (click to expand)</strong></summary>
 
+- **Install commands fixed**: on a PC without the target folder, the old copy commands failed or copied to the wrong place without an error (reproduced with temporary folders). They now create the folder first (PowerShell and bash), say where to open the terminal, and warn about overwriting and deleting. Not run on Mac or Linux.
 - Corrected the places that still said "PRIVATE" to match what GitHub actually reports (PUBLIC) — this README and `CONTRIBUTING.md`. The legal disclosure (section 15) now describes the open items as "unresolved while already public."
 - Wrapped the `argument-hint` value of all 11 skills in double quotes so the frontmatter is valid YAML. Before the fix, `sns-caption` and others failed to parse as YAML, and `skill-maker`'s hint was read as a list instead of a string (measured with js-yaml). The `skill-maker` instructions and the doc examples now use the same form, and `scripts/verify-skills.mjs` gained a quoting check so the same error fails verification if it comes back.
 - Added `skill-maker` to the plugin description and bumped the version `0.1.0` → `0.2.0` (with an unchanged version, an installed copy may not recognize the update).
