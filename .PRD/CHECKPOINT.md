@@ -1,6 +1,6 @@
 # SoDam Prompt — CHECKPOINT (플러그인 전용)
 
-> 최초 작성: 2026-06-29 | 최종 갱신: 2026-11-27 (맨 아래 "9차~14차 갱신" 절. 공개 상태·플러그인 버전은 아래 표, 이후 변화는 각 갱신 절) | 방향 전환: B) 플러그인 전용 (Next.js+Supabase 웹앱 폐기)
+> 최초 작성: 2026-06-29 | 최종 갱신: 2026-11-27 (맨 아래 "9차~15차 갱신" 절. 공개 상태·플러그인 버전은 아래 표, 이후 변화는 각 갱신 절) | 방향 전환: B) 플러그인 전용 (Next.js+Supabase 웹앱 폐기)
 > 배포 형태: GitHub 저장소 → Claude Code / Codex / Claude.ai 앱 직접 설치
 > 서버 없음 · DB 없음 · 인증 없음 · 비용 $0
 
@@ -24,7 +24,7 @@
 | 사람 검수 (10개 실제 동작·자연어 자동매칭) | ✅ done (2026-07-15, 사용자가 개인 용도로 직접 사용하며 확인 — 상세 P4 섹션) |
 | Phase 3 (기여 인프라 + skill-maker 11번째 스킬, 다국어는 범위 밖 확정) | ✅ done (2026-07-27 — 6·7차 갱신 절) |
 | 저장소 공개 상태 | ✅ **PUBLIC** (2026-11-26 GitHub 실측, 사용자 결정 "공개 유지") — 아래 옛 "PRIVATE 유지" 서술은 전부 과거 기록 |
-| 플러그인 버전 / 스킬 | `0.2.0` / 스킬 11개 = commands 11개, `verify-skills.mjs` PASS (2026-11-26 실측) |
+| 플러그인 버전 / 스킬 | `0.3.0` / 스킬 11개 = commands 11개, `verify-skills.mjs` PASS (2026-11-27 실측, 병합·시험 결과는 15차) |
 
 ---
 
@@ -633,3 +633,117 @@ Loop `loop-rules.json`의 `protected_self_paths`에 **일반 단어 `"hooks"`** 
 3. PR #6 병합 기록 누락 → 이 절에서 해소.
 
 **남은 것**: 위 1·2의 결정, Claude 앱 ZIP 업로드(사용자만 가능), `promptfoo` 실행 후 검사식 재설계(사용자 키), Mac·Linux, `/plugin uninstall`, 08-23절 P-G1~P-P4, "5분" KPI 2건, 변호사 검토(PRD C-4) — 참고용·법적 효력 보장 안 함, 변호사 확인 권장.
+
+---
+
+## 2026-11-27 15차 갱신 — 입력 방식 결함 2건 수정(0.3.0) + 검사 장치 보강
+
+**배경**: PRD 대조 중 입력 번호 결함과 업로드 형식 문제를 확인했고, 사용자가 두 가지 모두 수정(D4 변경 포함)을 승인했다.
+
+| # | 확인한 것 (2026-11-27) | 처리 |
+|---|---|---|
+| AC | Claude Code 공식 문서: `$N`은 0부터. 플러그인 스킬을 값 2개로 불러 책 제목 칸에 두 번째 값, 느낀 점 칸에 글자 `$2`가 남는 것을 재현. **첫 값이 지시문에서는 사라졌지만 시험 모델(Haiku)은 입력한 명령을 보고 추측해 바로잡기도 했으므로 결과가 항상 틀리지는 않았다.** 평가 로더는 1부터 치환해 이 결함을 숨겼다 → **07-27 "치환 시뮬레이션 정상" 기록은 근거로 쓰지 않는다** | 값 2개 스킬 8개를 `$ARGUMENTS` 한 자리 + 항목 이름으로 교체, 값이 없으면 묻도록 지시 |
+| AD | 앱 업로드 형식의 허용 머리말 항목에 `argument-hint`가 없음. Anthropic 로컬 검사: 원본 0/11, 제거본 11/11 통과 | 11개에서 제거. 실제 앱 업로드는 미시험 |
+| AE | 첫 수정 커밋(`718cb22`)에 빈틈: `promptfooconfig.yaml`의 `skill-maker` 검사가 `argument-hint`를 계속 요구, `AGENTS.md`가 번호 방식을 계속 지시. 당시 "평가 로더 12개 사례 실패 0건"은 **입력값 삽입만** 본 시험이었다 | Codex 읽기 전용 검토가 지적했고, 핵심 항목을 임시 사본과 표본으로 재현 |
+| AF | 검사기가 깨진 머리말·따옴표 붙은 `argument-hint`·짝 없는 명령 파일의 셸 줄·`$ARGUMENTS_EXTRA`를 PASS. 평가 로더는 CRLF 체크아웃에서 머리말을 지우지 못함(`main`에도 있던 결함) | 검사기·로더·판정식 수정. Codex 2·3차 지적까지 반영한 임시 사본·표본 시험이 전부 기대대로(정상 통과 + 위반 거부, 건수는 아래 시험 표). 검사기는 YAML 전체 해석이 아니라 "한 줄 `이름: 값`" 좁은 규칙이다 |
+| AG | `skill-maker`의 앱 안내에 폴더 ZIP 단계 없음 | 안내 추가 |
+| AH | PRD 모순: 03의 7-17 Claude Code 재검증을 Claude.ai 근거로 적음, 01·03·04·05의 `@sodam`이 마켓 이름과 다름, 05 예시가 실제 파일과 다름, 06 출처 표기 체크가 근거 없이 완료 | 정정. 출처 표기는 미완료로 되돌림 |
+
+**열린 항목**: SEC-B2는 아래 "gitleaks 첫 실행" 참조(커밋마다 필요, 자동 장치 없음), 출처 표기 위치, Claude 앱 ZIP 업로드(사용자), "5분" KPI 2건, `promptfoo` 실행 0회와 검사식 한계(12차 R), Mac·Linux, `/plugin uninstall`, 08-23절 P-G1~P-P4, 변호사 검토(PRD C-4) — 참고용·법적 효력 보장 안 함, 변호사 확인 권장.
+
+### 15차 시험 기록 (2026-11-27, Windows, Claude Code 헤드리스, Haiku, 저장소를 `--plugin-dir`로 읽음)
+
+| 시험 | 결과와 한계 |
+|---|---|
+| 11개 스킬 + 값(`promptfooconfig.yaml`의 입력), 사용자 설정 제외(`--setting-sources project,local`), 도구 끔 | 지시문이 파일+입력과 일치(10개는 문자열 일치, `long-text-summary`는 설정 입력 끝 줄바꿈 1글자만 다름, 별도 확인). 설정의 검사식을 흉내 낸 확인 10/11 — 실패 1건(`natural-english`)은 설명이 영어로 나온 것(본문은 `main`과 같았으므로 전부터 있던 빈틈) → "설명은 한국어로" 추가 후 5/5. **`promptfoo` 런타임 실행이 아니다** |
+| 되묻기에서 개인정보 요청 | 중간본의 `self-intro-polish`가 "이름(또는 닉네임)"을 요청(NFR-안전2 위반) → 8개 스킬에 요청 금지 문장 추가. 이후 값 없이 12회(`self-intro-polish` 5회 + 7개 각 1회): 개인정보 요청 0건 |
+| 입력 해석 설명 덧붙임 | 공통 안내 때문으로 보이는 "입력 해석: …" 설명 발생 → 금지 문장 추가. `self-intro-polish`는 "글만 보여주기" 규칙 추가 후 5/5 글만, 그 뒤 전체 실행 1회에서 한 줄 머리말이 붙음 → **항상 지켜진다고 할 수 없다** |
+| 자연어 자동 호출("독후감 써줘 …") | 1회 통과(`book-report-helper` 지시문에 값이 채워짐, 3문단). 직전 시도 1회는 답 없이 비정상 종료(코드 3221226505), 원인 미확인 |
+| `skill-maker`가 만든 파일 | 당시 시점의 검사기·업로드 형식 검사·판정식 통과(1회 생성분) |
+| 검사 장치 음성·양성 시험(임시 사본·표본, API 없음) | 아래 AUDIT.log의 최종 건수 참조 |
+| 확인하지 않은 것 | 대화형 화면의 `/` 입력, Codex에서의 0.3.0 파일, Claude 앱 ZIP 업로드, Mac·Linux, 설명 내용의 정확성, 다른 모델 |
+
+**Codex 검증(읽기 전용)**: 코드 `e40f5b76`·`ecbfafb6`·`c0c0be75`. 마지막 검토의 병합 차단 1건은 SEC-B2(gitleaks)였다. 검토 전후 저장소 지문은 같았다.
+
+### 15차 gitleaks 첫 실행 (2026-11-27, SEC-B2)
+
+- 도구: gitleaks v8.30.1 `windows_x64.zip`(8,438,883바이트), 공식 저장소 Release에서 받아 같은 Release의 `checksums.txt`와 SHA-256 일치 확인. 설치하지 않고 임시 폴더에서 실행, 값 가림(`--redact`). 10차의 "설치하지 않음" 결정과 달리 **1회 실행**은 사용자 승인으로 진행했고 CI는 도입하지 않았다.
+- 대조 시험: 가짜 토큰 1개를 넣은 임시 파일에서 1건 발견(도구가 실제로 잡는지 확인).
+- 결과: 이력(`--log-opts=--all`) 발견 0건(도구 집계 75 commits, 저장소 전체 88개 중 병합 8개는 자체 변경 없음, 글이 추가된 커밋 74개) · 커밋 전 변경분 발견 0건.
+- 한계: "0건"은 **이 도구의 규칙 범위**에서의 결과다. 과거 이력의 PDF 등 바이너리 파일 내용은 검사되지 않는다.
+
+#### 검사 명령과 검사한 시점 (재현용)
+
+- 커밋 전 검사(각 커밋 직전, `git add -u` 뒤): `gitleaks git <저장소> --pre-commit --staged --redact --no-banner`. **대상은 스테이징한 변경분**이다. 이 검사를 거친 커밋은 `6e58853`과 그 이후 커밋이며, `718cb22`·`6c3324c`·`cb2a458`은 커밋 당시에는 검사하지 않았고 아래 이력 검사에 포함됐다.
+- 이력 검사: `gitleaks git <저장소> --log-opts="--all" --redact --no-banner`. 대상 코드 커밋 `49c43215b67534153547df7e57642d6705ad0896` 시점의 로컬 모든 ref: 발견 0건(도구 집계 77 commits, 당시 `rev-list --all` 90개 중 병합 8개).
+- 이 기록을 담는 커밋은 문서만 바꾼다. 그 변경분은 커밋 전 검사를 거치고, 푸시 직전에 이력 검사를 한 번 더 한다(그 결과는 PR 설명에 적는다).
+
+#### 검사 장치 시험 61건 (대상 `49c4321`, 작업 트리 변경 0, API 호출 없음)
+
+임시 폴더에 `skills/`·`commands/`·`scripts/`·로더를 복사해 파일을 일부러 바꾼 뒤 `verify-skills.mjs`와 로더를 실행하고, `promptfooconfig.yaml`의 `skill-maker` 판정식은 지어낸 표본으로 평가했다. 시험 스크립트는 저장소에 넣지 않았으므로 아래 사례 이름이 기록의 전부다. 전부 기대한 결과였다(`promptfoo` 런타임 실행 아님).
+
+```
+checker accepts the untouched copy
+checker accepts an LF-only copy
+checker rejects: broken YAML value
+checker rejects: unclosed quoted value
+checker rejects: colon+space inside plain value
+checker rejects: indented extra line
+checker rejects: quoted argument-hint key
+checker rejects: plain argument-hint key
+checker rejects: empty quoted description
+checker rejects: null description
+checker rejects: invalid escape in quoted value
+checker rejects: shell line inside a hidden folder of a skill
+checker rejects: whitespace-only quoted description
+checker accepts a valid unicode escape
+checker rejects: non-text description true
+checker rejects: non-text description No
+checker rejects: non-text description 123
+checker rejects: non-text description 1.5
+checker rejects: duplicate key
+checker rejects: command front matter with name
+checker rejects: orphan command with a shell line
+checker rejects: orphan command with harmless text
+checker rejects: extra file in a skill folder with a shell line
+checker rejects: misspelled $ARGUMENTS_EXTRA
+checker rejects: two $ARGUMENTS
+checker rejects: no $ARGUMENTS
+checker rejects: numbered placeholder
+checker rejects: indexed placeholder
+loader output equals body-only with input, CRLF: 11/11
+loader output equals body-only with input, LF: 11/11
+loader rejects a null arg2
+loader rejects a missing arg1
+loader keeps special characters as typed
+loader rejects $ARGUMENTS_EXTRA
+loader rejects a file without front matter
+assertion correct two-block answer: want True
+assertion correct answer with CRLF: want True
+assertion clarifying question only: want True
+assertion old form with argument-hint: want False
+assertion only one block: want False
+assertion numbered placeholder: want False
+assertion no input slot: want False
+assertion second block keeps name: want False
+assertion broken file that happens to ask: want False
+assertion broken description value: want False
+assertion unclosed quote in description: want False
+assertion empty quoted description: want False
+assertion null description: want False
+assertion colon-space inside plain description: want False
+assertion extra key: want False
+assertion quoted description is fine: want True
+assertion plain description with quotes inside: want True
+assertion duplicate description key: want False
+assertion boolean description: want False
+assertion numeric description: want False
+assertion missing closing delimiter: want False
+assertion bodies differ: want False
+assertion slot only in front matter: want False
+assertion fence labelled with a capital word: want True
+assertion unrelated question: want False
+assertion plain refusal without a question: want False
+```
+
+**이 시험이 보장하지 않는 것**: 머리말의 YAML 전체 해석, 개인정보를 요구하는 문장 판별(SEC-A3, 사람이 확인), 위 목록 밖의 우회 방법.

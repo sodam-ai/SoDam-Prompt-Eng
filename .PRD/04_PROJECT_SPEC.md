@@ -20,7 +20,7 @@
 | 인증 | **없음** | AI 도구 자체 인증 사용 |
 | AI 실행 | **사용자 AI 도구 담당** | Claude Code·Codex·Claude.ai 앱이 각자 모델 사용 |
 | (Phase 1.5) 검증 | **promptfoo** (로컬 전용, CI 없음 — **2026-07-15 설정 작성 완료, 평가 실행 0회** (2026-11-26 정정)) | SKILL.md 작동률 검증, API 키는 사용자 본인 것만 사용(자동 실행 없음) |
-| (Phase 2) 마켓 | **Claude Code 마켓** (`.claude-plugin/marketplace.json`) | `/plugin install @sodam` 한 줄 설치 |
+| (Phase 2) 마켓 | **Claude Code 마켓** (`.claude-plugin/marketplace.json`) | `/plugin install sodam-prompt@sodam-prompt-marketplace` 설치 |
 
 ---
 
@@ -49,7 +49,7 @@
 ### 저장소
 
 - **SEC-B1 [M]** `.env*` .gitignore 등록 — 실수로 커밋 방지
-- **SEC-B2 [M]** 커밋 전 gitleaks 스캔 (시크릿 누출 0건) — ⚠ **미충족**(2026-11-27: gitleaks 미설치. 기록된 수동 패턴 검색은 같은 검사가 아님. 도구를 실행할지 요구사항을 바꿀지는 사용자 결정 대기)
+- **SEC-B2 [M]** 커밋 전 gitleaks 스캔 (시크릿 누출 0건) — 2026-11-27 **첫 실행**: v8.30.1 공식 배포본(해시 대조)을 설치 없이 임시 폴더에서 실행, 이력 전체(`--all`)와 커밋 전 변경분 모두 발견 0건(CHECKPOINT 15차). 그 전의 커밋·병합은 이 검사 없이 진행됐다. 앞으로도 **커밋할 때마다** 필요한 요구이며 자동으로 실행되는 장치는 없다
 - **SEC-B3 [M]** SKILL.md에 개발자 토큰·API 키·비밀값 없음
 - **SEC-B4 [S]** 의존성 없음 (npm/pip 패키지 없음) → `npm audit` 불필요
 
@@ -90,8 +90,8 @@
 ### 항상 해 (ALWAYS DO)
 
 - `description`에 "언제 사용하는지" 포함 → Claude.ai 앱 자동 트리거
-- `argument-hint`에 빈칸 설명 → 초보 안내
-- 변수는 `$1`, `$2`, `$ARGUMENTS` 표준 사용
+- `description`과 본문의 항목 이름으로 무엇을 알려 주면 되는지 안내 (`argument-hint`는 넣지 않음, 2026-11-27)
+- 입력 자리는 `$ARGUMENTS` 하나를 정확히 한 번. 번호 자리표시는 금지. 값을 2개 받는 스킬은 빠진 값을 지어내지 말고 묻도록 지시(값 1개 스킬 `long-text-summary`·`natural-english`에는 이 지시 줄이 없음)
 - 출력 형식 명확히 지정 (길이·형식·구조)
 - 쉬운 한국어 — 전문용어 최소화
 

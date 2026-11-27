@@ -74,7 +74,7 @@ You only need **one** of the following — not all of them.
 
 | Tool | Status | Basis |
 |------|--------|-------|
-| Claude Code | ✅ Verified | 2026-07-17: natural-language auto-trigger in a fresh session; 2026-07-18: `/sodam-prompt:` slash commands registered after `/plugin install`, confirmed on screen |
+| Claude Code | ✅ Verified | 2026-07-17: natural-language auto-trigger in a fresh session; 2026-07-18: `/sodam-prompt:` slash commands registered after `/plugin install`, confirmed on screen (pre-0.3.0 files). The 0.3.0 files were run on 2026-11-27 in headless mode (Haiku) for all 11 skills; natural-language auto-trigger was checked once with one skill. Not yet checked in the interactive UI |
 | Claude.ai App | △ Owner confirmed once (no detailed record) | Recorded as confirmed by the owner's own use on 2026-07-15 (natural-language auto-trigger works), but there is no screen record, and the ZIP install procedure was not separately run |
 | Codex | △ One direct call of one skill | 2026-11-27, Codex CLI 0.172.0 on Windows: calling the **already installed** `book-report-helper` with `$name` plus a sentence produced output that followed the 3-paragraph rules, and the session log shows the file under `$HOME/.agents/skills` was loaded automatically. Not verified: recognition after a fresh copy with the README commands, automatic selection from natural language, other skills |
 | Cursor · Gemini CLI | ⚠️ Not verified | Designed to work since the format is shared, but not run directly. Check each tool's official docs for the skills folder location |
@@ -198,7 +198,7 @@ cd SoDam-Prompt-Eng
 Please write a book report. The book is "The Little Prince" and my impression is "Adults need a child's heart too."
 ```
 
-AI will automatically use the `book-report-helper` (독후감-도우미) skill and produce the book report.
+The skill is designed so that the AI picks `book-report-helper` (독후감-도우미) automatically when your request matches its `description`. **We have not yet checked this in the Claude app with the 0.3.0 files.**
 
 ---
 
@@ -314,6 +314,15 @@ If you want the **repository-name-prefixed format** (`sodam-prompt:book-report-h
 
 After installing this way, both slash commands (`/sodam-prompt:book-report-helper`) and natural-language calls ("write a book report") work.
 
+**Update (if you installed earlier)** — run these two lines in a terminal, then restart Claude Code:
+```
+claude plugin marketplace update sodam-prompt-marketplace
+claude plugin update sodam-prompt@sodam-prompt-marketplace
+```
+**If you registered a downloaded local folder**, replace that folder's contents with the new files first, then run the two lines above.
+
+If you installed by copying folders, download the new files and run the copy commands above again (same-named skills are overwritten).
+
 **Uninstall (for clean reinstall testing)**:
 ```
 /plugin uninstall sodam-prompt@sodam-prompt-marketplace
@@ -367,13 +376,16 @@ Cursor example:
 
 ## 7. How to Use Each Skill (All 10)
 
+> For skills with two values, type them in the order listed below. Quotes show where each value starts and ends. If a value is missing, the skill tells the AI to ask instead of making one up.
+> **This input style starts with 0.3.0.** In earlier versions, calling `/name "value1" "value2"` shifted the values by one slot in the instructions. If you installed an older copy, see the update steps in Section 6.
+
 ### Skill 1: 독후감-도우미 (Book Report Helper)
 
 **When to use**: After reading a book and needing to write a book report
 
 **Required input**:
-- `$1`: Book title
-- `$2`: One-line impression
+- First: Book title
+- Then: One-line impression
 
 **Example**:
 ```
@@ -394,8 +406,8 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When sending a message to a teacher, supervisor, or elder
 
 **Required input**:
-- `$1`: Recipient (e.g., homeroom teacher)
-- `$2`: Purpose in one line (e.g., notifying absence for medical appointment)
+- First: Recipient (e.g., homeroom teacher)
+- Then: Purpose in one line (e.g., notifying absence for medical appointment)
 
 **Example**:
 ```
@@ -411,7 +423,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you want to condense a long text into 3 key points
 
 **Required input**:
-- `$ARGUMENTS`: Full text to summarize (single input — not `$1`/`$2`; all following text is captured at once)
+- Full text to summarize (everything you type after the command is passed as is)
 
 **Example**:
 ```
@@ -427,8 +439,8 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you need to explain a difficult concept in simple terms
 
 **Required input**:
-- `$1`: Concept to explain (e.g., photosynthesis)
-- `$2`: Listener's age (e.g., 10 years old)
+- First: Concept to explain (e.g., photosynthesis)
+- Then: Listener's age (e.g., 10 years old)
 
 **Example**:
 ```
@@ -444,8 +456,8 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When preparing for an exam or planning study sessions
 
 **Required input**:
-- `$1`: Subject and goal (e.g., Math midterm — score 80)
-- `$2`: Duration (e.g., 2 weeks)
+- First: Subject and goal (e.g., Math midterm — score 80)
+- Then: Duration (e.g., 2 weeks)
 
 **Example**:
 ```
@@ -461,8 +473,8 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you need to write a self-introduction but don't know how
 
 **Required input**:
-- `$1`: Personal notes (brief is fine)
-- `$2`: Where it will be used (e.g., club application form)
+- First: Personal notes (brief is fine)
+- Then: Where it will be used (e.g., club application form)
 
 **Example**:
 ```
@@ -478,8 +490,8 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When posting on Instagram, Facebook, or other social media
 
 **Required input**:
-- `$1`: Situation (e.g., studying at a café with friends)
-- `$2`: Mood (e.g., warm and fun)
+- First: Situation (e.g., studying at a café with friends)
+- Then: Mood (e.g., warm and fun)
 
 **Example**:
 ```
@@ -495,7 +507,7 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you want to translate Korean into natural English
 
 **Required input**:
-- `$ARGUMENTS`: Korean sentence (single input — not `$1`/`$2`; all following text is captured at once)
+- Korean sentence (everything you type after the command is passed as is)
 
 **Example**:
 ```
@@ -511,8 +523,8 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you need to prepare a script for a presentation
 
 **Required input**:
-- `$1`: Presentation topic (e.g., importance of environmental protection)
-- `$2`: Presentation duration (e.g., 5 minutes)
+- First: Presentation topic (e.g., importance of environmental protection)
+- Then: Presentation duration (e.g., 5 minutes)
 
 **Example**:
 ```
@@ -528,8 +540,8 @@ Help me with a book report. I read "Harry Potter" and felt that courage is impor
 **When to use**: When you need to write a message asking a favor or apologizing
 
 **Required input**:
-- `$1`: Situation (e.g., submitted homework one day late)
-- `$2`: Relationship with the recipient (e.g., teacher)
+- First: Situation (e.g., submitted homework one day late)
+- Then: Relationship with the recipient (e.g., teacher)
 
 **Example**:
 ```
@@ -607,7 +619,7 @@ AI Tool (Claude / Codex / etc.)
                              (skills/book-report-helper/SKILL.md)
                                                    │
                                                    ▼
-                              Fill variables ($1=title, $2=impression)
+                              Put your input into the $ARGUMENTS slot
                                                    │
                                                    ▼
                             AI model reads instructions and generates text
@@ -729,14 +741,15 @@ SoDam-Prompt-Eng/                       ← Repository root
 ---
 name: book-report-helper            ← Skill name (must match folder name)
 description: When and how to use   ← Read by AI for auto-selection
-argument-hint: "[Book Title] [Impression]"  ← Input hint (wrap the whole value in double quotes)
 ---
 
 [AI instruction body]              ← What AI will execute
 
-$1 = First input value (book title)
-$2 = Second input value (impression)
+$ARGUMENTS = everything you typed (exactly once in the body)
+             List the items to find below it, e.g. "book title · impression"
 ```
+
+> Numbered placeholders such as `$1` and `$2` are not used: Claude Code counts from 0, so `$1` is the second value. Do not add an `argument-hint` line either; the Claude app upload format does not allow it.
 
 ---
 
@@ -1085,6 +1098,18 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## 17. Update History
 
 <details open>
+<summary><strong>2026-11-27 — 0.3.0: input fix + upload readiness + stricter checks (click to expand)</strong></summary>
+
+- **Fixed shifted input values**: the 8 two-value skills used `$1` and `$2`, but Claude Code counts from 0, so `/name "value1" "value2"` put the second value in the first slot and left `$2` as literal text (reproduced). The test model (Haiku) sometimes recovered the values from the typed command, so results were not always wrong. Skills now take the whole input in one `$ARGUMENTS` slot and look for the items in it. If a value is missing, they are told to look in the conversation or ask. The 2026-07-27 note that substitution simulated fine is not valid evidence, because that loader counted from 1.
+- **Removed `argument-hint`**: it is not among the front-matter keys the Claude app upload format allows (checked against the official docs and Anthropic's local validator; an actual app upload has not been tried).
+- **Stricter checks**: `verify-skills.mjs` used to pass malformed front matter such as an unclosed quote, an empty `description`, a quoted `argument-hint`, command files with no matching skill, and a misspelled `$ARGUMENTS`; it now rejects them. It does not parse all of YAML: front matter must follow a narrow one-`key: value`-per-line rule. We also fixed the evaluation loader leaving front matter in the prompt on Windows, and the `skill-maker` check that only passed the old format (still **no real `promptfoo` run**).
+- Added the "zip one skill folder" step to the Claude app guidance in `skill-maker`.
+- Also fixed what testing surfaced: skills are now told not to ask for personal data such as names when asking for a missing value, not to narrate how they read the input, and to explain English translations in Korean. Model answers vary, so we do not guarantee these instructions are always followed.
+- Plugin version `0.2.0` → `0.3.0`. Mentions of `argument-hint` in older entries below are history.
+
+</details>
+
+<details>
 <summary><strong>2026-11-26 — Corrected the PUBLIC status + fixed a skill-file format error (click to expand)</strong></summary>
 
 - **One direct Codex call verified (2026-11-27)**: we called one already installed skill, `book-report-helper`, with `$name` plus a sentence and updated the Section 2 table and Section 6 notes to that scope only.

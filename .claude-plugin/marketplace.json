@@ -10,7 +10,7 @@
       "name": "sodam-prompt",
       "source": "./",
       "description": "AI 처음 쓰는 초보자를 위한 한국어 글쓰기 스킬 10종 (독후감·정중한 메시지·3줄요약·쉽게 설명·공부 계획표·자기소개·SNS 캡션·영어 변환·발표 대본·부탁·사과) + 새 스킬을 대화로 만드는 skill-maker",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "SoDam AI Studio"
       },

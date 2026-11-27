@@ -1,5 +1,5 @@
 // Phase 1.5 로컬 전용 promptfoo 프롬프트 로더.
-// skills/<name>/SKILL.md 원본을 그대로 읽어 frontmatter만 벗기고 $1/$2/$ARGUMENTS를 치환한다.
+// skills/<name>/SKILL.md 원본을 그대로 읽어 frontmatter만 벗기고 $ARGUMENTS를 치환한다.
 // 별도 사본을 유지하지 않는 이유: SKILL.md가 수정돼도 이 파일을 따로 손댈 필요가 없어야
 // CHECKPOINT.md에서 이미 겪은 문서-실제 드리프트(수치 모순)와 같은 문제가 재발하지 않는다.
 const fs = require("fs");
@@ -16,21 +16,32 @@ module.exports = function loadSkillPrompt({ vars }) {
     throw new Error(`${vars.skill}: skills/ 폴더를 벗어나는 경로는 허용되지 않습니다.`);
   }
 
-  const raw = fs.readFileSync(skillPath, "utf-8");
-  const body = raw.replace(/^---[\s\S]*?---\n/, ""); // frontmatter 제거
+  // Windows 체크아웃은 줄바꿈이 CRLF라서 먼저 LF로 맞춘다(2026-11-27: 맞추지 않아 머리말이
+  // 지우기 규칙에 걸리지 않고 지시문에 섞여 있었다).
+  const raw = fs.readFileSync(skillPath, "utf-8").replace(/\r\n/g, "\n");
+  const frontmatter = raw.match(/^---\n[\s\S]*?\n---\n/);
+  if (!frontmatter) {
+    throw new Error(`${vars.skill}: 머리말(frontmatter)을 찾지 못했습니다.`);
+  }
+  const body = raw.slice(frontmatter[0].length);
 
-  // vars가 이 스킬의 실제 입력 방식($1/$2 vs $ARGUMENTS)과 안 맞으면 치환이 안 된 채
-  // 조용히 반환되던 결함을 막는다 — 깨진 프롬프트를 그대로 API에 보내는 대신 즉시 실패시킨다.
-  // 치환 "결과물"이 아니라 원본 body에 기대 플레이스홀더가 있는지로 판정한다 — 그래야
-  // 사용자 입력값(arg1/arg2)에 우연히 "$1"/"$2" 문자열이 들어있어도 오탐하지 않는다.
-  const expectedPlaceholder = vars.arg2 !== undefined ? /\$1|\$2/ : /\$ARGUMENTS/;
-  if (!expectedPlaceholder.test(body)) {
-    throw new Error(
-      `${vars.skill}: 변수 치환 실패 — vars(${JSON.stringify(vars)})가 이 스킬의 입력 방식과 맞지 않습니다.`
-    );
+  if (vars.arg1 == null) {
+    throw new Error(`${vars.skill}: arg1 값이 없습니다.`);
+  }
+  if (vars.arg2 === null) {
+    throw new Error(`${vars.skill}: arg2가 비어 있습니다(값이 하나면 arg2 항목을 빼세요).`);
   }
 
-  return vars.arg2 !== undefined
-    ? body.split("$1").join(vars.arg1).split("$2").join(vars.arg2)
-    : body.split("$ARGUMENTS").join(vars.arg1);
+  // 스킬 본문은 $ARGUMENTS 하나만 쓴다. 도구마다 번호 인자($0, $1 …)의 시작이 달라서
+  // 번호 자리표시는 금지한다(2026-11-27: Claude Code는 0부터라 $1이 두 번째 값이었고,
+  // 이 로더는 1부터로 치환해 결함을 숨겼다).
+  if (/\$\d|\$ARGUMENTS[A-Za-z0-9_\[]/.test(body) || body.split("$ARGUMENTS").length !== 2) {
+    throw new Error(`${vars.skill}: 본문에는 $ARGUMENTS가 정확히 한 번 있어야 하고 번호 자리표시는 쓸 수 없습니다.`);
+  }
+
+  // 슬래시 호출에서 사람이 입력한 모양을 흉내 낸다: 값이 둘이면 각각 따옴표로 묶어 이어 붙인다.
+  const input = vars.arg2 !== undefined ? `"${vars.arg1}" "${vars.arg2}"` : String(vars.arg1);
+
+  // 함수형 치환: 입력값 안의 "$&" 같은 문자가 특수하게 해석되지 않게 한다.
+  return body.replace("$ARGUMENTS", () => input);
 };
