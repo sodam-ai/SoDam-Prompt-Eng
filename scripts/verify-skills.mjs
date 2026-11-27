@@ -20,6 +20,8 @@ function splitFrontmatter(md) {
 // 빈 값·공백뿐인 값·null도 거부한다. 큰따옴표 안의 이스케이프는 \" \\ \n \t \uXXXX 만 허용한다.
 function simpleScalarOk(v) {
   if (/^(~|null|Null|NULL)$/.test(v) || /^(["'])\s*\1$/.test(v)) return false;
+  // 따옴표 없는 참/거짓·숫자는 YAML에서 글이 아닌 값으로 읽힌다.
+  if (/^(true|false|yes|no|on|off|[-+]?(\d[\d_]*)(\.\d*)?(e[-+]?\d+)?)$/i.test(v)) return false;
   if (v.startsWith('"')) {
     if (!/^"(?:[^"\\]|\\["\\nt]|\\u[0-9A-Fa-f]{4})*"$/.test(v)) return false;
     return JSON.parse(v.replace(/\t/g, " ")).trim().length > 0;
@@ -126,7 +128,7 @@ if (orphans.length) {
 }
 console.log(`\nfrontmatter 이슈: ${fmIssues}건 / commands 누락·불일치: ${bodyMismatch}건`);
 
-console.log("\n=== 안전 스캔 (SEC-A1~A4: 셸/코드실행/훅/인젝션/시크릿) ===");
+console.log("\n=== 안전 스캔 (기계 패턴: 셸/코드실행/훅/도구호출/인젝션/비밀값) ===");
 const danger = [
   [/^\s*!/m, "shell(!cmd)"],
   [/\bexec\s*\(|\bspawn\s*\(|child_process/, "exec/spawn"],
@@ -148,7 +150,8 @@ for (const f of scanTargets) {
     }
   }
 }
-console.log(hits === 0 ? "  위험 패턴 0건 (SEC-A1~A4 통과)" : `  총 ${hits}건 — 위 항목 수정 후 재검사 필요`);
+console.log(hits === 0 ? "  위험 패턴 0건 (SEC-A1·A2·A4와 비밀값 패턴 기준)" : `  총 ${hits}건 — 위 항목 수정 후 재검사 필요`);
+console.log("  ※ SEC-A3(개인정보 유도)는 이 검사가 판별하지 못합니다. 사람이 본문을 읽고 확인하세요.");
 
 console.log(`\n=== 최종 판정: ${ok ? "✅ PASS — 병합 가능" : "❌ FAIL — 병합 전 수정 필요"} ===`);
 process.exit(ok ? 0 : 1);

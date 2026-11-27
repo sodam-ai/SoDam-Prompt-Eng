@@ -198,7 +198,7 @@ cd SoDam-Prompt-Eng
 Please write a book report. The book is "The Little Prince" and my impression is "Adults need a child's heart too."
 ```
 
-AI will automatically use the `book-report-helper` (독후감-도우미) skill and produce the book report.
+The skill is designed so that the AI picks `book-report-helper` (독후감-도우미) automatically when your request matches its `description`. **We have not yet checked this in the Claude app with the 0.3.0 files.**
 
 ---
 
