@@ -44,3 +44,4 @@
 [2026-11-27T07:15] claude MILESTONE_DONE Codex 설치 위치·ZIP 안내를 공식 문서 기준으로 정정, Codex 3차 검토 10건과 별도 Claude 검토의 데이터 흐름 설명 지적 반영, 설치 블록 18/18·확인 명령 통과. 도구에서의 실제 인식·업로드는 미확인. 사용자의 "추천한 순서대로 전부 진행" 지시에 따라 커밋·PR 진행
 [2026-11-27T08:10] claude MILESTONE_DONE Codex CLI 0.172.0에서 기존 설치본 book-report-helper 직접 호출 1회 확인(세션 기록으로 .agents/skills 자동 주입 대조). 목록 NOT LISTED는 목록 잘림 가능성으로 판정 근거에서 제외. README·PRD·CHECKPOINT 14차 기록, SEC-B2 미충족 표시. skills/·commands/ 변경 없음, 설치·삭제 없음
 [2026-11-27T16:16] claude MILESTONE_DONE 0.3.0: 번호 자리표시·argument-hint 제거, 검사기·로더·skill-maker 판정식 보강(Codex 읽기 전용 검토 3회 반영), README·PRD 정합. 검사 장치 음성·양성 시험 54/54(API 없음), 업로드 형식 로컬 검사 11/11, Claude Code 헤드리스 Haiku 시험 범위는 CHECKPOINT 15차. 미확인: Claude 앱 ZIP 업로드, 대화형 화면, Codex의 0.3.0 파일, Mac·Linux, promptfoo 실제 평가. 사용자의 "추천한 순서대로 전부 진행" 지시에 따라 진행
+[2026-11-27T18:42] claude MILESTONE_DONE 병합 전 4차 Codex 검토 반영(코드 커밋 49c4321). 검사 장치 시험 61/61(사례 목록·검사 명령·대상 커밋은 CHECKPOINT 15차). 앞 줄의 54/54는 그 이전 시점의 건수

@@ -671,3 +671,79 @@ Loop `loop-rules.json`의 `protected_self_paths`에 **일반 단어 `"hooks"`** 
 - 대조 시험: 가짜 토큰 1개를 넣은 임시 파일에서 1건 발견(도구가 실제로 잡는지 확인).
 - 결과: 이력(`--log-opts=--all`) 발견 0건(도구 집계 75 commits, 저장소 전체 88개 중 병합 8개는 자체 변경 없음, 글이 추가된 커밋 74개) · 커밋 전 변경분 발견 0건.
 - 한계: "0건"은 **이 도구의 규칙 범위**에서의 결과다. 과거 이력의 PDF 등 바이너리 파일 내용은 검사되지 않는다.
+
+#### 검사 명령과 검사한 시점 (재현용)
+
+- 커밋 전 검사(각 커밋 직전, `git add -u` 뒤): `gitleaks git <저장소> --pre-commit --staged --redact --no-banner`. **대상은 스테이징한 변경분**이다. 이 검사를 거친 커밋은 `6e58853`과 그 이후 커밋이며, `718cb22`·`6c3324c`·`cb2a458`은 커밋 당시에는 검사하지 않았고 아래 이력 검사에 포함됐다.
+- 이력 검사: `gitleaks git <저장소> --log-opts="--all" --redact --no-banner`. 대상 코드 커밋 `49c43215b67534153547df7e57642d6705ad0896` 시점의 로컬 모든 ref: 발견 0건(도구 집계 77 commits, 당시 `rev-list --all` 90개 중 병합 8개).
+- 이 기록을 담는 커밋은 문서만 바꾼다. 그 변경분은 커밋 전 검사를 거치고, 푸시 직전에 이력 검사를 한 번 더 한다(그 결과는 PR 설명에 적는다).
+
+#### 검사 장치 시험 61건 (대상 `49c4321`, 작업 트리 변경 0, API 호출 없음)
+
+임시 폴더에 `skills/`·`commands/`·`scripts/`·로더를 복사해 파일을 일부러 바꾼 뒤 `verify-skills.mjs`와 로더를 실행하고, `promptfooconfig.yaml`의 `skill-maker` 판정식은 지어낸 표본으로 평가했다. 시험 스크립트는 저장소에 넣지 않았으므로 아래 사례 이름이 기록의 전부다. 전부 기대한 결과였다(`promptfoo` 런타임 실행 아님).
+
+```
+checker accepts the untouched copy
+checker accepts an LF-only copy
+checker rejects: broken YAML value
+checker rejects: unclosed quoted value
+checker rejects: colon+space inside plain value
+checker rejects: indented extra line
+checker rejects: quoted argument-hint key
+checker rejects: plain argument-hint key
+checker rejects: empty quoted description
+checker rejects: null description
+checker rejects: invalid escape in quoted value
+checker rejects: shell line inside a hidden folder of a skill
+checker rejects: whitespace-only quoted description
+checker accepts a valid unicode escape
+checker rejects: non-text description true
+checker rejects: non-text description No
+checker rejects: non-text description 123
+checker rejects: non-text description 1.5
+checker rejects: duplicate key
+checker rejects: command front matter with name
+checker rejects: orphan command with a shell line
+checker rejects: orphan command with harmless text
+checker rejects: extra file in a skill folder with a shell line
+checker rejects: misspelled $ARGUMENTS_EXTRA
+checker rejects: two $ARGUMENTS
+checker rejects: no $ARGUMENTS
+checker rejects: numbered placeholder
+checker rejects: indexed placeholder
+loader output equals body-only with input, CRLF: 11/11
+loader output equals body-only with input, LF: 11/11
+loader rejects a null arg2
+loader rejects a missing arg1
+loader keeps special characters as typed
+loader rejects $ARGUMENTS_EXTRA
+loader rejects a file without front matter
+assertion correct two-block answer: want True
+assertion correct answer with CRLF: want True
+assertion clarifying question only: want True
+assertion old form with argument-hint: want False
+assertion only one block: want False
+assertion numbered placeholder: want False
+assertion no input slot: want False
+assertion second block keeps name: want False
+assertion broken file that happens to ask: want False
+assertion broken description value: want False
+assertion unclosed quote in description: want False
+assertion empty quoted description: want False
+assertion null description: want False
+assertion colon-space inside plain description: want False
+assertion extra key: want False
+assertion quoted description is fine: want True
+assertion plain description with quotes inside: want True
+assertion duplicate description key: want False
+assertion boolean description: want False
+assertion numeric description: want False
+assertion missing closing delimiter: want False
+assertion bodies differ: want False
+assertion slot only in front matter: want False
+assertion fence labelled with a capital word: want True
+assertion unrelated question: want False
+assertion plain refusal without a question: want False
+```
+
+**이 시험이 보장하지 않는 것**: 머리말의 YAML 전체 해석, 개인정보를 요구하는 문장 판별(SEC-A3, 사람이 확인), 위 목록 밖의 우회 방법.
