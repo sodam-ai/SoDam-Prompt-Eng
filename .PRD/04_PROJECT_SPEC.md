@@ -20,7 +20,7 @@
 | 인증 | **없음** | AI 도구 자체 인증 사용 |
 | AI 실행 | **사용자 AI 도구 담당** | Claude Code·Codex·Claude.ai 앱이 각자 모델 사용 |
 | (Phase 1.5) 검증 | **promptfoo** (로컬 전용, CI 없음 — **2026-07-15 설정 작성 완료, 평가 실행 0회** (2026-11-26 정정)) | SKILL.md 작동률 검증, API 키는 사용자 본인 것만 사용(자동 실행 없음) |
-| (Phase 2) 마켓 | **Claude Code 마켓** (`.claude-plugin/marketplace.json`) | `/plugin install @sodam` 한 줄 설치 |
+| (Phase 2) 마켓 | **Claude Code 마켓** (`.claude-plugin/marketplace.json`) | `/plugin install sodam-prompt@sodam-prompt-marketplace` 설치 |
 
 ---
 
@@ -90,8 +90,8 @@
 ### 항상 해 (ALWAYS DO)
 
 - `description`에 "언제 사용하는지" 포함 → Claude.ai 앱 자동 트리거
-- `argument-hint`에 빈칸 설명 → 초보 안내
-- 변수는 `$1`, `$2`, `$ARGUMENTS` 표준 사용
+- `description`과 본문의 항목 이름으로 무엇을 알려 주면 되는지 안내 (`argument-hint`는 넣지 않음, 2026-11-27)
+- 입력 자리는 `$ARGUMENTS` 하나를 정확히 한 번. 번호 자리표시는 금지. 값이 없으면 지어내지 말고 묻도록 지시
 - 출력 형식 명확히 지정 (길이·형식·구조)
 - 쉬운 한국어 — 전문용어 최소화
 

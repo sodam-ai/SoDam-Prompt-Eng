@@ -36,10 +36,10 @@ SoDam-Prompt-Eng/
 │       └── SKILL.md
 ├── commands/                        ← 스킬 11개와 1:1 복사본 (/sodam-prompt:<스킬> 슬래시 형식용, description만 있는 frontmatter)
 ├── .claude-plugin/
-│   ├── plugin.json                  ← 플러그인 정보 (현재 v0.2.0)
+│   ├── plugin.json                  ← 플러그인 정보 (현재 v0.3.0)
 │   └── marketplace.json             ← 마켓 등록 정보
 ├── scripts/
-│   └── verify-skills.mjs            ← 스킬 형식 자동 점검 (11 스킬 = 11 명령 일치, 위험 패턴, argument-hint 따옴표)
+│   └── verify-skills.mjs            ← 스킬 형식 자동 점검 (스킬·명령 1:1, 짝 없는 명령, 머리말 한 줄 형식, 업로드 허용 항목, $ARGUMENTS 1회, 위험 패턴)
 ├── promptfooconfig.yaml             ← 로컬 전용 품질 평가 설정 (한 번도 실행 안 됨 — CHECKPOINT 9차 갱신 참조)
 ├── promptfoo-skill-prompt.js        ← 위 설정이 SKILL.md를 읽는 로더
 ├── README.md · README_EN.md         ← 설치 안내 (한/영, 왕초보용)
@@ -76,7 +76,8 @@ SoDam-Prompt-Eng/
 |------|------|------|------|
 | `name` | 권장 | 도구 식별자 (kebab-case) | `book-report-helper` |
 | `description` | 필수 | 한 줄 설명 + 언제 사용하는지 | "책 제목·느낀 점을 주면 독후감을 써준다. '독후감 써줘' 일 때." |
-| `argument-hint` | 권장 | 빈칸 설명 (초보 안내용) | `[책 제목] [느낀 점]` |
+
+> 머리말은 한 줄에 `이름: 값` 하나만 쓴다. `argument-hint`는 넣지 않는다(2026-11-27, 01_PRD D4). 명령 파일(`commands/`)의 머리말은 `description`만 둔다.
 
 ### 본문 구조
 
@@ -84,12 +85,16 @@ SoDam-Prompt-Eng/
 ---
 name: 스킬-이름
 description: 설명. "트리거 표현" 일 때 사용.
-argument-hint: "[빈칸1] [빈칸2]"
 ---
 
 당신은 [역할]입니다.
 
-[할 일 + $1, $2 변수]
+[할 일]
+
+## 입력
+$ARGUMENTS
+
+[입력에서 찾을 항목 이름을 순서대로 적고, 없으면 대화에서 찾거나 물어보라고 지시]
 
 ## 규칙
 - 규칙 1
@@ -100,9 +105,8 @@ argument-hint: "[빈칸1] [빈칸2]"
 
 | 변수 | 의미 | 사용법 |
 |------|------|--------|
-| `$1` | 첫 번째 인자 (argument-hint의 첫 빈칸) | 본문 어디서나 |
-| `$2` | 두 번째 인자 | 본문 어디서나 |
-| `$ARGUMENTS` | 인자 전체 (한 덩어리) | 단순 1개 입력 시 |
+| `$ARGUMENTS` | 명령 뒤에 적은 입력 전체(적은 모양 그대로) | 본문에 **정확히 한 번** |
+| `$1`·`$2`·`$ARGUMENTS[N]` | **쓰지 않음** — Claude Code 공식 문서상 번호는 0부터라 `$1`은 두 번째 값이다. 2026-11-27 이전의 이 표("`$1`은 첫 번째 인자")는 틀렸다 | 검사에서 실패 |
 
 ---
 
@@ -135,7 +139,7 @@ argument-hint: "[빈칸1] [빈칸2]"
 
 ## 검증 체크 (P4 사람 검수 기준)
 
-각 SKILL.md에 대해 Claude Haiku 4.5에서 직접 실행:
+각 SKILL.md에 대해 Claude Haiku 4.5에서 직접 실행 (아래 체크는 **0.3.0 이전 파일** 기준, 0.3.0 시험 범위는 CHECKPOINT 15차):
 
 - [x] `/이름 값1 값2` 호출 시 결과 생성됨 (2026-07-13~14, 10/10 실행테스트 완료)
 - [x] 출력 형식이 명세(`06_SEED_PROMPTS.md`)와 일치 (10/10 확인)

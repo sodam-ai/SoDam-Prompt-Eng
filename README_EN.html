@@ -582,6 +582,12 @@ repository is PUBLIC, so anyone can register it):</p>
 <p>After installing this way, both slash commands
 (<code>/sodam-prompt:book-report-helper</code>) and natural-language
 calls (“write a book report”) work.</p>
+<p><strong>Update (if you installed earlier)</strong> — run these two
+lines in a terminal, then restart Claude Code:</p>
+<pre><code>claude plugin marketplace update sodam-prompt-marketplace
+claude plugin update sodam-prompt@sodam-prompt-marketplace</code></pre>
+<p>If you installed by copying folders, download the new files and run
+the copy commands above again (same-named skills are overwritten).</p>
 <p><strong>Uninstall (for clean reinstall testing)</strong>:</p>
 <pre><code>/plugin uninstall sodam-prompt@sodam-prompt-marketplace
 /plugin marketplace remove sodam-prompt-marketplace</code></pre>
@@ -608,13 +614,13 @@ same way as the “real-usage test” described in this document.</p>
 run only the block for your terminal; same-named skills are
 overwritten):</p>
 <p><strong>Windows (PowerShell)</strong></p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.agents\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.agents\skills\&quot;</span></span></code></pre></div>
-<p><strong>Mac · Linux · Git Bash</strong></p>
 <div class="sourceCode" id="cb21"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.agents/skills</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.agents/skills/</span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.agents\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.agents\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.agents/skills</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/<span class="pp">*</span> ~/.agents/skills/</span></code></pre></div>
 <blockquote>
 <p><strong>The install location follows the <a
 href="https://learn.chatgpt.com/docs/build-skills">official OpenAI
@@ -660,14 +666,23 @@ folder (or instructions folder) of your respective tool.</p>
 <hr />
 <h2 id="7-how-to-use-each-skill-all-10">7. How to Use Each Skill (All
 10)</h2>
+<blockquote>
+<p>For skills with two values, type them in the order listed below.
+Quotes show where each value starts and ends. If a value is missing, the
+skill tells the AI to ask instead of making one up. <strong>This input
+style starts with 0.3.0.</strong> In earlier versions, calling
+<code>/name "value1" "value2"</code> shifted the values by one slot in
+the instructions. If you installed an older copy, see the update steps
+in Section 6.</p>
+</blockquote>
 <h3 id="skill-1-독후감-도우미-book-report-helper">Skill 1: 독후감-도우미
 (Book Report Helper)</h3>
 <p><strong>When to use</strong>: After reading a book and needing to
 write a book report</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Book title</li>
-<li><code>$2</code>: One-line impression</li>
+<li>First: Book title</li>
+<li>Then: One-line impression</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/book-report-helper &quot;The Little Prince&quot; &quot;Adults need a child&#39;s heart too&quot;</code></pre>
@@ -682,9 +697,9 @@ expectations ② Key content ③ What I felt and learned)</p>
 supervisor, or elder</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Recipient (e.g., homeroom teacher)</li>
-<li><code>$2</code>: Purpose in one line (e.g., notifying absence for
-medical appointment)</li>
+<li>First: Recipient (e.g., homeroom teacher)</li>
+<li>Then: Purpose in one line (e.g., notifying absence for medical
+appointment)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/polite-message &quot;Homeroom Teacher&quot; &quot;I will be absent tomorrow due to a medical appointment&quot;</code></pre>
@@ -696,9 +711,8 @@ medical appointment)</li>
 into 3 key points</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$ARGUMENTS</code>: Full text to summarize (single input — not
-<code>$1</code>/<code>$2</code>; all following text is captured at
-once)</li>
+<li>Full text to summarize (everything you type after the command is
+passed as is)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/long-text-summary [paste full text here]</code></pre>
@@ -710,8 +724,8 @@ once)</li>
 concept in simple terms</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Concept to explain (e.g., photosynthesis)</li>
-<li><code>$2</code>: Listener’s age (e.g., 10 years old)</li>
+<li>First: Concept to explain (e.g., photosynthesis)</li>
+<li>Then: Listener’s age (e.g., 10 years old)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/explain-simply &quot;photosynthesis&quot; &quot;10 years old&quot;</code></pre>
@@ -723,9 +737,8 @@ Schedule)</h3>
 study sessions</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Subject and goal (e.g., Math midterm — score
-80)</li>
-<li><code>$2</code>: Duration (e.g., 2 weeks)</li>
+<li>First: Subject and goal (e.g., Math midterm — score 80)</li>
+<li>Then: Duration (e.g., 2 weeks)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/study-planner &quot;Math midterm 80 points&quot; &quot;2 weeks&quot;</code></pre>
@@ -738,9 +751,8 @@ amounts)</p>
 self-introduction but don’t know how</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Personal notes (brief is fine)</li>
-<li><code>$2</code>: Where it will be used (e.g., club application
-form)</li>
+<li>First: Personal notes (brief is fine)</li>
+<li>Then: Where it will be used (e.g., club application form)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/self-intro-polish &quot;Name Kim Minjun, likes soccer, diligent&quot; &quot;Club application&quot;</code></pre>
@@ -753,9 +765,8 @@ Caption)</h3>
 other social media</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Situation (e.g., studying at a café with
-friends)</li>
-<li><code>$2</code>: Mood (e.g., warm and fun)</li>
+<li>First: Situation (e.g., studying at a café with friends)</li>
+<li>Then: Mood (e.g., warm and fun)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/sns-caption &quot;studying at a café with friends&quot; &quot;warm and fun&quot;</code></pre>
@@ -767,9 +778,8 @@ friends)</li>
 natural English</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$ARGUMENTS</code>: Korean sentence (single input — not
-<code>$1</code>/<code>$2</code>; all following text is captured at
-once)</li>
+<li>Korean sentence (everything you type after the command is passed as
+is)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/natural-english &quot;나는 오늘 학교에서 발표를 잘 했어&quot;</code></pre>
@@ -782,9 +792,9 @@ explanation of why it’s phrased that way</p>
 presentation</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Presentation topic (e.g., importance of
-environmental protection)</li>
-<li><code>$2</code>: Presentation duration (e.g., 5 minutes)</li>
+<li>First: Presentation topic (e.g., importance of environmental
+protection)</li>
+<li>Then: Presentation duration (e.g., 5 minutes)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/presentation-script &quot;importance of environmental protection&quot; &quot;5 minutes&quot;</code></pre>
@@ -797,10 +807,8 @@ environmental protection)</li>
 a favor or apologizing</p>
 <p><strong>Required input</strong>:</p>
 <ul>
-<li><code>$1</code>: Situation (e.g., submitted homework one day
-late)</li>
-<li><code>$2</code>: Relationship with the recipient (e.g.,
-teacher)</li>
+<li>First: Situation (e.g., submitted homework one day late)</li>
+<li>Then: Relationship with the recipient (e.g., teacher)</li>
 </ul>
 <p><strong>Example</strong>:</p>
 <pre><code>/request-apology-message &quot;submitted homework one day late&quot; &quot;teacher&quot;</code></pre>
@@ -869,7 +877,7 @@ AI Tool (Claude / Codex / etc.)
                              (skills/book-report-helper/SKILL.md)
                                                    │
                                                    ▼
-                              Fill variables ($1=title, $2=impression)
+                              Put your input into the $ARGUMENTS slot
                                                    │
                                                    ▼
                             AI model reads instructions and generates text
@@ -1015,13 +1023,18 @@ Structure</h2>
 <pre><code>---
 name: book-report-helper            ← Skill name (must match folder name)
 description: When and how to use   ← Read by AI for auto-selection
-argument-hint: &quot;[Book Title] [Impression]&quot;  ← Input hint (wrap the whole value in double quotes)
 ---
 
 [AI instruction body]              ← What AI will execute
 
-$1 = First input value (book title)
-$2 = Second input value (impression)</code></pre>
+$ARGUMENTS = everything you typed (exactly once in the body)
+             List the items to find below it, e.g. &quot;book title · impression&quot;</code></pre>
+<blockquote>
+<p>Numbered placeholders such as <code>$1</code> and <code>$2</code> are
+not used: Claude Code counts from 0, so <code>$1</code> is the second
+value. Do not add an <code>argument-hint</code> line either; the Claude
+app upload format does not allow it.</p>
+</blockquote>
 <hr />
 <h2 id="12-file--document-locations">12. File &amp; Document
 Locations</h2>
@@ -1145,8 +1158,8 @@ Claude Code needs to be restarted</p>
 <p><strong>Solution</strong>:</p>
 <ol type="1">
 <li><p>Check skill file location:</p>
-<div class="sourceCode" id="cb40"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/.claude/skills/</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/.claude/skills/</span></code></pre></div>
 <p>You should see a <code>book-report-helper</code> folder.</p></li>
 <li><p>If only one skill is missing, use the
 <strong>single-skill</strong> commands in the <a href="#14-faq">FAQ</a>;
@@ -1154,8 +1167,8 @@ if all are missing, use <a href="#quick-start-with-claude-code">Section
 5, Step 1</a> (include the line that creates the folder). A full copy
 overwrites every same-named skill.</p></li>
 <li><p>Close and restart Claude Code:</p>
-<div class="sourceCode" id="cb41"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span></span></code></pre></div></li>
 </ol>
 <hr />
 <h3
@@ -1224,9 +1237,9 @@ commands don’t work on Windows</h3>
 <code>C:\...</code> into a bash command breaks it, because bash removes
 the <code>\</code>.</p>
 <p><strong>Solution</strong>: use <strong>PowerShell</strong>.</p>
-<div class="sourceCode" id="cb44"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\<span class="op">*</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
 <p>Or copy directly in File Explorer:</p>
 <ol type="1">
 <li>Select all folders inside the <code>skills</code> folder →
@@ -1239,9 +1252,9 @@ Ctrl+C</li>
 appear corrupted</h3>
 <p><strong>Cause</strong>: Terminal encoding issue</p>
 <p><strong>Solution</strong>:</p>
-<div class="sourceCode" id="cb45"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set UTF-8 encoding</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set UTF-8 encoding</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chcp</span> 65001   <span class="co"># Windows CMD</span></span></code></pre></div>
 <p>Or use File Explorer to copy folders directly.</p>
 <hr />
 <h2 id="14-faq">14. FAQ</h2>
@@ -1267,13 +1280,13 @@ href="#4-download-instructions">Section 4</a>).</p>
 edited somewhere else first.</p>
 </blockquote>
 <p><strong>Windows (PowerShell)</strong></p>
-<div class="sourceCode" id="cb46"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\book-report-helper <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
-<p><strong>Mac · Linux · Git Bash</strong></p>
 <div class="sourceCode" id="cb47"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>ItemType Directory <span class="op">-</span>Force <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills&quot;</span> <span class="op">|</span> <span class="fu">Out-Null</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Copy-Item</span> <span class="op">-</span>Recurse <span class="op">-</span>Force <span class="op">.</span>\skills\book-report-helper <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\&quot;</span></span></code></pre></div>
+<p><strong>Mac · Linux · Git Bash</strong></p>
+<div class="sourceCode" id="cb48"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.claude/skills</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> ./skills/book-report-helper ~/.claude/skills/</span></code></pre></div>
 <p>For another skill, change <code>book-report-helper</code> to its
 folder name and run the last line again.</p>
 <hr />
@@ -1308,11 +1321,11 @@ Code</strong>; for Codex, change <code>.claude</code> to
 <code>.agents</code>. If the folder does not exist, you will see an
 error.</p>
 <p>Windows (PowerShell):</p>
-<div class="sourceCode" id="cb48"><pre
-class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Remove-Item</span> <span class="op">-</span>Recurse <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper&quot;</span></span></code></pre></div>
-<p>Mac · Linux · Git Bash:</p>
 <div class="sourceCode" id="cb49"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
+class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Remove-Item</span> <span class="op">-</span>Recurse <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">\.claude\skills\book-report-helper&quot;</span></span></code></pre></div>
+<p>Mac · Linux · Git Bash:</p>
+<div class="sourceCode" id="cb50"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> ~/.claude/skills/book-report-helper</span></code></pre></div>
 <p>Claude.ai App: Customize → Skills → select skill → Delete</p>
 <hr />
 <p><strong>Q: How do I receive update notifications?</strong> A: Click
@@ -1533,6 +1546,40 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 <hr />
 <h2 id="17-update-history">17. Update History</h2>
 <details open>
+<summary>
+<strong>2026-11-27 — 0.3.0: input fix + upload readiness + stricter
+checks (click to expand)</strong>
+</summary>
+<ul>
+<li><strong>Fixed shifted input values</strong>: the 8 two-value skills
+used <code>$1</code> and <code>$2</code>, but Claude Code counts from 0,
+so <code>/name "value1" "value2"</code> put the second value in the
+first slot and left <code>$2</code> as literal text (reproduced). The
+test model (Haiku) sometimes recovered the values from the typed
+command, so results were not always wrong. Skills now take the whole
+input in one <code>$ARGUMENTS</code> slot and look for the items in it.
+If a value is missing, they are told to look in the conversation or ask.
+The 2026-07-27 note that substitution simulated fine is not valid
+evidence, because that loader counted from 1.</li>
+<li><strong>Removed <code>argument-hint</code></strong>: it is not among
+the front-matter keys the Claude app upload format allows (checked
+against the official docs and Anthropic’s local validator; an actual app
+upload has not been tried).</li>
+<li><strong>Stricter checks</strong>: <code>verify-skills.mjs</code>
+used to pass broken front matter, a quoted <code>argument-hint</code>,
+command files with no matching skill, and a misspelled
+<code>$ARGUMENTS</code>; it now rejects them. Front matter must be one
+<code>key: value</code> per line. We also fixed the evaluation loader
+leaving front matter in the prompt on Windows, and the
+<code>skill-maker</code> check that only passed the old format (still
+<strong>no real <code>promptfoo</code> run</strong>).</li>
+<li>Added the “zip one skill folder” step to the Claude app guidance in
+<code>skill-maker</code>.</li>
+<li>Plugin version <code>0.2.0</code> → <code>0.3.0</code>. Mentions of
+<code>argument-hint</code> in older entries below are history.</li>
+</ul>
+</details>
+<details>
 <summary>
 <strong>2026-11-26 — Corrected the PUBLIC status + fixed a skill-file
 format error (click to expand)</strong>
