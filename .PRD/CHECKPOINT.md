@@ -747,3 +747,11 @@ assertion plain refusal without a question: want False
 ```
 
 **이 시험이 보장하지 않는 것**: 머리말의 YAML 전체 해석, 개인정보를 요구하는 문장 판별(SEC-A3, 사람이 확인), 위 목록 밖의 우회 방법.
+
+#### PR #8 병합과 병합 후 확인 (2026-11-27)
+
+- PR #8 병합 커밋 `83059dd`(`--match-head-commit c7c6abf`). 병합 결과의 파일 내용은 검토받은 `c7c6abf`와 같다. 푸시 직전 이력 검사(`c7c6abf` 시점) 발견 0건(78 commits).
+- 마지막 Codex 재확인(코드 `41a4add0`): 병합 차단 0건. **남긴 한계**: `description: 0x10` 같은 특이한 YAML 숫자 표기는 검사기·판정식이, `1e3`은 판정식이 통과시킬 수 있다.
+- 업데이트 시험: 임시 설정 폴더(실제 설정 파일 해시 변화 없음)에 병합 전 공개본 0.2.0(`327f70c`)을 설치해 두고, 병합 후 README의 두 명령(`claude plugin marketplace update …`, `claude plugin update …`)을 실행해 **0.2.0 → 0.3.0** 확인. 설치본의 `skills/`·`commands/`·`.claude-plugin/` 24개 파일이 `origin/main`과 동일(줄바꿈 제외).
+- 그 설치본 폴더를 `--plugin-dir`로 읽어 `/sodam-prompt:book-report-helper`에 값 2개를 넣으면 지시문에 입력이 적은 순서대로 들어가는 것을 1회 확인(화면 없이 실행, Haiku).
+- 업로드 시험용 `book-report-helper.zip`(최상위에 스킬 폴더 1개, `origin/main` 내용, 로컬 업로드 형식 검사 통과)을 저장소 밖에 생성. **Claude 앱 업로드와 "5분" 시간 측정은 아직 하지 않았다**(사용자만 가능).
