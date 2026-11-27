@@ -16,13 +16,23 @@ module.exports = function loadSkillPrompt({ vars }) {
     throw new Error(`${vars.skill}: skills/ 폴더를 벗어나는 경로는 허용되지 않습니다.`);
   }
 
-  const raw = fs.readFileSync(skillPath, "utf-8");
-  const body = raw.replace(/^---[\s\S]*?---\n/, ""); // frontmatter 제거
+  // Windows 체크아웃은 줄바꿈이 CRLF라서 먼저 LF로 맞춘다(2026-11-27: 맞추지 않아 머리말이
+  // 지우기 규칙에 걸리지 않고 지시문에 섞여 있었다).
+  const raw = fs.readFileSync(skillPath, "utf-8").replace(/\r\n/g, "\n");
+  const frontmatter = raw.match(/^---\n[\s\S]*?\n---\n/);
+  if (!frontmatter) {
+    throw new Error(`${vars.skill}: 머리말(frontmatter)을 찾지 못했습니다.`);
+  }
+  const body = raw.slice(frontmatter[0].length);
+
+  if (vars.arg1 === undefined) {
+    throw new Error(`${vars.skill}: arg1 값이 없습니다.`);
+  }
 
   // 스킬 본문은 $ARGUMENTS 하나만 쓴다. 도구마다 번호 인자($0, $1 …)의 시작이 달라서
   // 번호 자리표시는 금지한다(2026-11-27: Claude Code는 0부터라 $1이 두 번째 값이었고,
   // 이 로더는 1부터로 치환해 결함을 숨겼다).
-  if (/\$\d|\$ARGUMENTS\[/.test(body) || body.split("$ARGUMENTS").length !== 2) {
+  if (/\$\d|\$ARGUMENTS[A-Za-z0-9_\[]/.test(body) || body.split("$ARGUMENTS").length !== 2) {
     throw new Error(`${vars.skill}: 본문에는 $ARGUMENTS가 정확히 한 번 있어야 하고 번호 자리표시는 쓸 수 없습니다.`);
   }
 
