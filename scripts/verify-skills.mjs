@@ -17,8 +17,13 @@ function splitFrontmatter(md) {
 // 머리말 검사: 의존성 없이 YAML 전체를 해석할 수는 없으므로, 이 저장소는 더 좁은 규칙만 허용한다.
 // "한 줄에 `이름: 값` 하나, 이름은 따옴표 없이, 값은 올바르게 닫힌 따옴표 값이거나 안전한 평문".
 // 여러 줄 값·중첩 항목은 올바른 YAML이어도 거부한다.
+// 빈 값·공백뿐인 값·null도 거부한다. 큰따옴표 안의 이스케이프는 \" \\ \n \t \uXXXX 만 허용한다.
 function simpleScalarOk(v) {
-  if (v.startsWith('"')) return /^"(?:[^"\\]|\\.)*"$/.test(v);
+  if (/^(~|null|Null|NULL)$/.test(v) || /^(["'])\s*\1$/.test(v)) return false;
+  if (v.startsWith('"')) {
+    if (!/^"(?:[^"\\]|\\["\\nt]|\\u[0-9A-Fa-f]{4})*"$/.test(v)) return false;
+    return JSON.parse(v.replace(/\t/g, " ")).trim().length > 0;
+  }
   if (v.startsWith("'")) return /^'(?:[^']|'')*'$/.test(v);
   return !/^[\[\]{}&*!|>%@`#,]/.test(v) && !/^[-?:](\s|$)/.test(v) && !/:\s|\s#|:$/.test(v);
 }
@@ -43,10 +48,9 @@ function argumentSlotOk(body) {
   const exact = body.match(/\$ARGUMENTS(?![A-Za-z0-9_\[])/g) || [];
   return all.length === 1 && exact.length === 1;
 }
-// 폴더 안의 모든 파일(하위 폴더 포함). 로컬 도구 상태 폴더(.omc)는 배포 대상이 아니라 제외한다.
+// 폴더 안의 모든 파일(숨김 폴더·하위 폴더 포함). 스킬 폴더를 손으로 ZIP으로 만들면 숨김 폴더도 들어갈 수 있다.
 function listFiles(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
-    if (e.name === ".omc") return [];
     const full = path.join(dir, e.name);
     return e.isDirectory() ? listFiles(full) : [full];
   });

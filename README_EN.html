@@ -288,7 +288,10 @@ what was actually run is marked “verified”)</p>
 <td>✅ Verified</td>
 <td>2026-07-17: natural-language auto-trigger in a fresh session;
 2026-07-18: <code>/sodam-prompt:</code> slash commands registered after
-<code>/plugin install</code>, confirmed on screen</td>
+<code>/plugin install</code>, confirmed on screen (pre-0.3.0 files). The
+0.3.0 files were run on 2026-11-27 in headless mode (Haiku) for all 11
+skills; natural-language auto-trigger was checked once with one skill.
+Not yet checked in the interactive UI</td>
 </tr>
 <tr>
 <td>Claude.ai App</td>
@@ -586,6 +589,9 @@ calls (“write a book report”) work.</p>
 lines in a terminal, then restart Claude Code:</p>
 <pre><code>claude plugin marketplace update sodam-prompt-marketplace
 claude plugin update sodam-prompt@sodam-prompt-marketplace</code></pre>
+<p><strong>If you registered a downloaded local folder</strong>, replace
+that folder’s contents with the new files first, then run the two lines
+above.</p>
 <p>If you installed by copying folders, download the new files and run
 the copy commands above again (same-named skills are overwritten).</p>
 <p><strong>Uninstall (for clean reinstall testing)</strong>:</p>
@@ -1566,15 +1572,21 @@ the front-matter keys the Claude app upload format allows (checked
 against the official docs and Anthropic’s local validator; an actual app
 upload has not been tried).</li>
 <li><strong>Stricter checks</strong>: <code>verify-skills.mjs</code>
-used to pass broken front matter, a quoted <code>argument-hint</code>,
-command files with no matching skill, and a misspelled
-<code>$ARGUMENTS</code>; it now rejects them. Front matter must be one
-<code>key: value</code> per line. We also fixed the evaluation loader
-leaving front matter in the prompt on Windows, and the
-<code>skill-maker</code> check that only passed the old format (still
-<strong>no real <code>promptfoo</code> run</strong>).</li>
+used to pass malformed front matter such as an unclosed quote, an empty
+<code>description</code>, a quoted <code>argument-hint</code>, command
+files with no matching skill, and a misspelled <code>$ARGUMENTS</code>;
+it now rejects them. It does not parse all of YAML: front matter must
+follow a narrow one-<code>key: value</code>-per-line rule. We also fixed
+the evaluation loader leaving front matter in the prompt on Windows, and
+the <code>skill-maker</code> check that only passed the old format
+(still <strong>no real <code>promptfoo</code> run</strong>).</li>
 <li>Added the “zip one skill folder” step to the Claude app guidance in
 <code>skill-maker</code>.</li>
+<li>Also fixed what testing surfaced: skills are now told not to ask for
+personal data such as names when asking for a missing value, not to
+narrate how they read the input, and to explain English translations in
+Korean. Model answers vary, so we do not guarantee these instructions
+are always followed.</li>
 <li>Plugin version <code>0.2.0</code> → <code>0.3.0</code>. Mentions of
 <code>argument-hint</code> in older entries below are history.</li>
 </ul>

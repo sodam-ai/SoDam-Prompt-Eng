@@ -25,8 +25,11 @@ module.exports = function loadSkillPrompt({ vars }) {
   }
   const body = raw.slice(frontmatter[0].length);
 
-  if (vars.arg1 === undefined) {
+  if (vars.arg1 == null) {
     throw new Error(`${vars.skill}: arg1 값이 없습니다.`);
+  }
+  if (vars.arg2 === null) {
+    throw new Error(`${vars.skill}: arg2가 비어 있습니다(값이 하나면 arg2 항목을 빼세요).`);
   }
 
   // 스킬 본문은 $ARGUMENTS 하나만 쓴다. 도구마다 번호 인자($0, $1 …)의 시작이 달라서

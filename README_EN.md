@@ -74,7 +74,7 @@ You only need **one** of the following — not all of them.
 
 | Tool | Status | Basis |
 |------|--------|-------|
-| Claude Code | ✅ Verified | 2026-07-17: natural-language auto-trigger in a fresh session; 2026-07-18: `/sodam-prompt:` slash commands registered after `/plugin install`, confirmed on screen |
+| Claude Code | ✅ Verified | 2026-07-17: natural-language auto-trigger in a fresh session; 2026-07-18: `/sodam-prompt:` slash commands registered after `/plugin install`, confirmed on screen (pre-0.3.0 files). The 0.3.0 files were run on 2026-11-27 in headless mode (Haiku) for all 11 skills; natural-language auto-trigger was checked once with one skill. Not yet checked in the interactive UI |
 | Claude.ai App | △ Owner confirmed once (no detailed record) | Recorded as confirmed by the owner's own use on 2026-07-15 (natural-language auto-trigger works), but there is no screen record, and the ZIP install procedure was not separately run |
 | Codex | △ One direct call of one skill | 2026-11-27, Codex CLI 0.172.0 on Windows: calling the **already installed** `book-report-helper` with `$name` plus a sentence produced output that followed the 3-paragraph rules, and the session log shows the file under `$HOME/.agents/skills` was loaded automatically. Not verified: recognition after a fresh copy with the README commands, automatic selection from natural language, other skills |
 | Cursor · Gemini CLI | ⚠️ Not verified | Designed to work since the format is shared, but not run directly. Check each tool's official docs for the skills folder location |
@@ -319,6 +319,8 @@ After installing this way, both slash commands (`/sodam-prompt:book-report-helpe
 claude plugin marketplace update sodam-prompt-marketplace
 claude plugin update sodam-prompt@sodam-prompt-marketplace
 ```
+**If you registered a downloaded local folder**, replace that folder's contents with the new files first, then run the two lines above.
+
 If you installed by copying folders, download the new files and run the copy commands above again (same-named skills are overwritten).
 
 **Uninstall (for clean reinstall testing)**:
@@ -1100,8 +1102,9 @@ Want to contribute a new skill? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 - **Fixed shifted input values**: the 8 two-value skills used `$1` and `$2`, but Claude Code counts from 0, so `/name "value1" "value2"` put the second value in the first slot and left `$2` as literal text (reproduced). The test model (Haiku) sometimes recovered the values from the typed command, so results were not always wrong. Skills now take the whole input in one `$ARGUMENTS` slot and look for the items in it. If a value is missing, they are told to look in the conversation or ask. The 2026-07-27 note that substitution simulated fine is not valid evidence, because that loader counted from 1.
 - **Removed `argument-hint`**: it is not among the front-matter keys the Claude app upload format allows (checked against the official docs and Anthropic's local validator; an actual app upload has not been tried).
-- **Stricter checks**: `verify-skills.mjs` used to pass broken front matter, a quoted `argument-hint`, command files with no matching skill, and a misspelled `$ARGUMENTS`; it now rejects them. Front matter must be one `key: value` per line. We also fixed the evaluation loader leaving front matter in the prompt on Windows, and the `skill-maker` check that only passed the old format (still **no real `promptfoo` run**).
+- **Stricter checks**: `verify-skills.mjs` used to pass malformed front matter such as an unclosed quote, an empty `description`, a quoted `argument-hint`, command files with no matching skill, and a misspelled `$ARGUMENTS`; it now rejects them. It does not parse all of YAML: front matter must follow a narrow one-`key: value`-per-line rule. We also fixed the evaluation loader leaving front matter in the prompt on Windows, and the `skill-maker` check that only passed the old format (still **no real `promptfoo` run**).
 - Added the "zip one skill folder" step to the Claude app guidance in `skill-maker`.
+- Also fixed what testing surfaced: skills are now told not to ask for personal data such as names when asking for a missing value, not to narrate how they read the input, and to explain English translations in Korean. Model answers vary, so we do not guarantee these instructions are always followed.
 - Plugin version `0.2.0` → `0.3.0`. Mentions of `argument-hint` in older entries below are history.
 
 </details>

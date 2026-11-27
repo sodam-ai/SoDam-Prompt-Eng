@@ -276,7 +276,9 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 <td>✅ 확인됨</td>
 <td>2026-07-17 새 세션에서 자연어 자동 호출, 2026-07-18
 <code>/plugin install</code> 후 <code>/sodam-prompt:</code> 슬래시 명령
-등록을 화면으로 확인</td>
+등록을 화면으로 확인(0.3.0 이전 파일). 0.3.0 파일은 2026-11-27에 화면
+없이 실행하는 방식(Haiku)으로 11개를 시험했고, 말로 요청하는 자동 호출은
+1개 1회만 확인. 대화형 화면에서의 확인은 아직 없음</td>
 </tr>
 <tr>
 <td>Claude.ai 앱</td>
@@ -558,6 +560,8 @@ href="https://github.com/anthropics/claude-code/issues/41842">#41842</a>)이
 실행한 뒤 Claude Code를 다시 시작합니다:</p>
 <pre><code>claude plugin marketplace update sodam-prompt-marketplace
 claude plugin update sodam-prompt@sodam-prompt-marketplace</code></pre>
+<p><strong>다운로드한 로컬 폴더로 등록했다면</strong> 그 폴더의 내용을
+새 파일로 먼저 바꾼 뒤 위 두 줄을 실행합니다.</p>
 <p>폴더 복사로 설치했다면 새 파일을 받은 뒤 위의 복사 명령을 다시
 실행합니다(같은 이름의 스킬은 덮어씁니다).</p>
 <p><strong>제거(재설치 테스트용)</strong>:</p>
@@ -1468,15 +1472,20 @@ href="./CONTRIBUTING.md">CONTRIBUTING.md</a>를 참고하세요.</p>
 <li><strong><code>argument-hint</code> 제거</strong>: Claude 앱 업로드
 형식이 허용하는 머리말 항목에 없습니다(공식 문서와 Anthropic 로컬 검사
 도구로 확인. 실제 앱 업로드는 아직 시험하지 않았습니다).</li>
-<li><strong>검사 보강</strong>: <code>verify-skills.mjs</code>가 깨진
-머리말, 따옴표 붙은 <code>argument-hint</code>, 짝 없는 명령 파일,
-<code>$ARGUMENTS</code> 오타를 통과시키던 빈틈을 막았습니다. 머리말은
-“한 줄에 <code>이름: 값</code>”만 허용합니다. 평가 로더가 Windows에서
-머리말을 지시문에 섞던 문제와, <code>skill-maker</code> 평가 검사가 옛
-형식만 통과시키던 문제도 고쳤습니다(<code>promptfoo</code> 실제 평가는
-여전히 0회).</li>
+<li><strong>검사 보강</strong>: <code>verify-skills.mjs</code>가 닫히지
+않은 따옴표 같은 잘못된 머리말, 빈 <code>description</code>, 따옴표 붙은
+<code>argument-hint</code>, 짝 없는 명령 파일, <code>$ARGUMENTS</code>
+오타를 통과시키던 빈틈을 막았습니다. YAML 전체를 해석하는 검사는 아니고,
+머리말은 “한 줄에 <code>이름: 값</code>”이라는 좁은 규칙만 허용합니다.
+평가 로더가 Windows에서 머리말을 지시문에 섞던 문제와,
+<code>skill-maker</code> 평가 검사가 옛 형식만 통과시키던 문제도
+고쳤습니다(<code>promptfoo</code> 실제 평가는 여전히 0회).</li>
 <li><code>skill-maker</code>의 Claude 앱 안내에 “스킬 폴더 하나를
 ZIP으로 압축” 단계를 넣었습니다.</li>
+<li>시험하면서 찾은 것도 고쳤습니다: 값을 되물을 때 이름 같은 개인정보를
+요청하지 않도록 했고, 입력을 어떻게 읽었는지 덧붙이지 않도록 했으며,
+영작 설명은 한국어로 쓰도록 했습니다. 모델 답은 매번 달라 지시가 항상
+지켜진다고 보장하지는 않습니다.</li>
 <li>플러그인 버전 <code>0.2.0</code> → <code>0.3.0</code>. 아래 옛
 항목의 <code>argument-hint</code> 설명은 당시 기록입니다.</li>
 </ul>

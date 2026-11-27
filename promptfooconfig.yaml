@@ -131,9 +131,10 @@ tests:
 
   # skill-maker는 다른 10개와 달리 "새 스킬 설계"를 대화로 안내하는 메타 스킬이다.
   # 규칙상 정상 응답은 두 가지뿐: 파일 없이 되묻기(질문), 또는 코드블록 2개의 완성된 스킬 파일.
-  # 완성본은 머리말에 argument-hint가 없고, 블록마다 $ARGUMENTS를 정확히 한 번 써야 한다.
+  # 완성본은 머리말에 argument-hint가 없고, 두 블록의 본문이 같고, 본문마다 $ARGUMENTS를 정확히 한 번 써야 한다.
+  # 되묻기는 질문 부호와 스킬 관련 낱말이 있는지만 보는 느슨한 검사다(질문의 적절성은 판별하지 못한다).
   - description: skill-maker
     vars: { skill: skill-maker, arg1: "방 청소 계획 세워주는 스킬 만들고 싶어" }
     assert:
       - type: javascript
-        value: '((blocks) => (blocks.length === 2 && blocks.every((b) => /^---\r?\n/.test(b) && /^description: \S/m.test(b) && !/^\s*["\x27]?argument-hint["\x27]?\s*:/m.test(b) && !/\$\d|\$ARGUMENTS[A-Za-z0-9_\[]/.test(b) && (b.match(/\$ARGUMENTS/g) || []).length === 1) && /^name: \S/m.test(blocks[0]) && !/^name:/m.test(blocks[1])) || (blocks.length === 0 && !/^description\s*:/m.test(output) && /\?/.test(output)))([...output.matchAll(/```[a-z]*\r?\n([\s\S]*?)```/g)].map((m) => m[1]))'
+        value: '((blocks) => ((parts) => blocks.length === 2 && parts.every(Boolean) && parts.every((p) => /^description: /m.test(p[1]) && p[1].split("\n").filter((l) => l.trim()).every((l) => /^(name|description): (?:"(?:[^"\\]|\\["\\nt])*[^"\\\s](?:[^"\\]|\\["\\nt])*"|\x27[^\x27]*[^\x27\s][^\x27]*\x27|(?![\[\]{}&*!|>%@`#,"\x27]|[-?:](?:\s|$)|(?:~|null|Null|NULL)\s*$)(?:(?!:\s|\s#|:$).)+)\s*$/.test(l)) && !/\$ARGUMENTS/.test(p[1]) && !/\$\d|\$ARGUMENTS[A-Za-z0-9_\[]/.test(p[2]) && (p[2].match(/\$ARGUMENTS/g) || []).length === 1) && /^name: \S/m.test(parts[0][1]) && !/^name:/m.test(parts[1][1]) && parts[0][2].trim() === parts[1][2].trim())(blocks.map((b) => b.replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/))) || (blocks.length === 0 && !/^description\s*:/m.test(output) && /\?/.test(output) && /스킬|빈칸|입력|skill/i.test(output)))([...output.matchAll(/```[^\n]*\n([\s\S]*?)```/g)].map((m) => m[1]))'
