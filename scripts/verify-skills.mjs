@@ -43,28 +43,31 @@ for (const d of skillDirs) {
 
   const name = fmField(s.fm, "name");
   const desc = fmField(s.fm, "description");
-  const hint = fmField(s.fm, "argument-hint");
-  const vars = [...new Set(s.body.match(/\$ARGUMENTS|\$1|\$2|\$3/g) || [])].sort().join(",");
+  // Claude 앱 업로드(Agent Skills 규격)가 받는 최상위 항목만 허용한다. 다른 항목이 있으면 업로드가 거부된다.
+  const UPLOAD_KEYS = ["name", "description", "license", "allowed-tools", "metadata", "compatibility"];
+  const extraKeys = [...(s.fm || "").matchAll(/^([A-Za-z0-9_-]+)\s*:/gm)].map((m) => m[1]).filter((k) => !UPLOAD_KEYS.includes(k));
+  // 번호 자리표시는 도구마다 시작 번호가 달라 금지. 본문(명령 파일 포함)은 $ARGUMENTS를 정확히 한 번 쓴다.
+  const numbered = s.body.match(/\$\d|\$ARGUMENTS\[/g) || [];
+  const argCount = (s.body.match(/\$ARGUMENTS(?!\[)/g) || []).length;
 
   const nameOk = name === d;
   const descOk = Boolean(desc);
-  // 따옴표 없는 `[a] [b]`는 올바른 YAML이 아님(2026-11-26 js-yaml 실측: 한 줄에 대괄호 2묶음이면 오류) → 따옴표 필수
-  const hintOk = Boolean(hint) && /^(["']).*\1$/.test(hint);
-  const varsOk = vars.length > 0;
+  const keysOk = extraKeys.length === 0;
+  const varsOk = numbered.length === 0 && argCount === 1;
   // 로컬 체크아웃에서 commands/*.md만 CRLF로 정규화되는 경우가 있어(git index는 둘 다 LF —
   // `git ls-files --eol`로 확인됨) 줄바꿈 차이를 무시하고 실제 내용만 비교한다.
   const norm = (t) => t.replace(/\r\n/g, "\n").trim();
   const bodySame = cExists && norm(s.body) === norm(c.body);
 
-  if (!nameOk || !descOk || !hintOk || !varsOk) { fmIssues++; ok = false; }
+  if (!nameOk || !descOk || !keysOk || !varsOk) { fmIssues++; ok = false; }
   if (!cExists || !bodySame) { bodyMismatch++; ok = false; }
 
   rows.push({
     skill: d,
     "name==폴더": nameOk ? "OK" : `X(${name})`,
     description: descOk ? "OK" : "MISSING",
-    "argument-hint": hintOk ? "OK" : (hint ? "따옴표없음(YAML오류)" : "MISSING"),
-    변수: vars || "MISSING",
+    "업로드 허용 항목만": keysOk ? "OK" : `X(${extraKeys.join(",")})`,
+    입력자리: varsOk ? "OK" : (numbered.length ? `번호금지(${[...new Set(numbered)].join(",")})` : `$ARGUMENTS ${argCount}번`),
     "commands/*.md": cExists ? "OK" : "MISSING",
     본문일치: cExists ? (bodySame ? "OK" : "DIFF") : "-",
   });
